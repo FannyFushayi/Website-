@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fanny Fushayi - Personal Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="page-header">
+        <div class="header-content">
+            <h1 class="page-title">Projects</h1>
+            <nav class="breadcrumb">
+                <a href="index.html" class="breadcrumb-link">Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current">Projects</span>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="portfolio">
+            <h2>Portfolio</h2>
+        
+            <div class="project">
+                <h3><a href="project-hess.html"> The project involved development of a Hybrid Energy Storage System (HESS) for an electric go-kart (February 2024-November 2024)</a></h3>
+                <p class="project-description">Designing and implementing a Hybrid Energy Storage System (HESS) for an electric go-kart. The system combines a battery and a supercapacitor to optimize energy efficiency, improve performance, and extend battery life. Key features include a dynamic energy management system, regenerative braking, and robust safety diagnostics, offering a scalable solution for sustainable electric vehicle applications.</p>
+                <div class="skills">
+                    <div class="skill-tag">Circuit & PCB Design</div>
+                    <div class="skill-tag">Power Systems Design & Control</div>
+                    <div class="skill-tag">Battery Management</div>
+                    <div class="skill-tag">supercapacitors</div>
+                    <div class="skill-tag">Programming (C, MATLAB & Python)</div>
+                    <div class="skill-tag">Documentation & Project management</div>
+                    <div class="skill-tag"> Power simulation & SIMULINK</div>
+                    <div class="skill-tag">Energy system modelling</div>
+                    <div class="skill-tag">STM32</div>
+        
+                </div>
+            </div>
+            
+            <div class="project">
+                <h3><a href="Project-PV.html">Optimizing Energy Distribution in Hybrid Power Systems (February 2024- October 2024)</a></h3>
+                <p class="project-description">This project focuses on analyzing and optimizing hybrid power systems combining photovoltaic (PV), battery, and diesel generator setups. It involves parameter measurement, simulation, and results interpretation to improve system efficiency and minimize operational costs. Key contributions include leveraging Maximum Power Point Tracking (MPPT) for PV optimization, implementing battery models to manage charge and discharge cycles, and using economic dispatch algorithms to reduce reliance on diesel fuel. The findings demonstrate significant cost savings, enhanced power flow management, and the potential for sustainable energy integration.</p>
+                <div class="skills">
+                    <div class="skill-tag">PV systems</div>
+                    <div class="skill-tag">Energy Modelling</div>
+                    <div class="skill-tag">Cost optimisation </div>
+                    <div class="skill-tag">C++</div>
+                    <div class="skill-tag">python</div>
+                    <div class="skill-tag">MATLAB SIMULINK</div>
+                    <div class="skill-tag">Collaboration</div>
+        
+                </div>
+            </div>
+        
+            <div class="project">
+                <h3>Motor Driver and Power system (July 2023 - November 2023)</h3>
+                <p class="project-description">This project involved independent design of Motor driver and Power subsystem for a Maze Navigating robot. A low power H-bridge motor driver was developed from first principles using a combination of N & P channel Mosfets. The gate driver was designed using transistors. The firmware was developed using the Dual-core Tensilica Xtensa LX6 microprocessor, and communication with the other subsystem was realised using an I2C communication protocol.  </p>
+                <div class="skills">
+                    <div class="skill-tag">Engineering Design Process</div>
+                    <div class="skill-tag">Systems Integration </div>
+                    <div class="skill-tag">C++</div>
+                    <div class="skill-tag">python</div>
+                    <div class="skill-tag">spice</div>
+                    <div class="skill-tag">Collaboration</div>
+        
+                </div>
+            </div>
+        
+            <div class="project">
+                <h3>Development of a Robot car for the University of Pretoria <a href ="https://www.up.ac.za/eece/article/2669042/annual-robot-car-race">Annual Robot Car Race</a> (February 2023- June 2023)</a></h3>
+                <p class="project-description">This project involved the develpment of a robot car for the <a href ="https://www.up.ac.za/eece/article/2669042/annual-robot-car-race">Annual Robot Car Race</a> the firmware was written in Pic 18 Assembly.  </p>
+                <div class="skills">
+                    <div class="skill-tag">PIC 18 Assembly</div>
+                    <div class="skill-tag">Embedded design</div>
+                    <div class="skill-tag">Firmware development</div>
+        
+        
+                </div>
+            </div>
+        
+            </section>
+            
+            <script>const projectDescriptions = document.querySelectorAll('.project-description');
+        
+                projectDescriptions.forEach(description => {
+                  description.style.display = 'none'; // Initially hide descriptions
+                
+                  const project = description.parentElement; // Get the parent project element
+                
+                  project.addEventListener('mouseover', () => {
+                    description.style.display = 'block';
+                  });
+                
+                  project.addEventListener('mouseout', () => {
+                    description.style.display = 'none';
+                  });
+                });
+            </script>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Fanny Fushayi | <a href="index.html">Home</a> | <a href="contact.html">Contact</a></p>
+      </footer>
+</body>
+
