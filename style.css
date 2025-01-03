@@ -347,7 +347,7 @@ nav {
 .form-group textarea {
     width: 100%;
     padding: 0.8rem;
-    border: 1px solid #ced4da;
+    border: 1px solid  #310d94;
     border-radius: 4px;
     box-sizing: border-box; /* Include padding and border in element's total width and height */
     font-size: 1rem;
@@ -356,7 +356,7 @@ nav {
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #80bdff;
+    border-color: #310d94;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
@@ -433,9 +433,9 @@ nav {
 }
 /* In your style.css or within a <style> tag */
 .page-header {
-    background-color: #f8f9fa; /* Light background */
+    background-color: #310d94; /* Light background */
     padding: 2rem;
-    border-bottom: 1px solid #ddd; /* Subtle bottom border */
+    border-bottom: 1px solid #3a0707; /* Subtle bottom border */
 }
 
 .header-content {
@@ -469,7 +469,7 @@ nav {
 
 .breadcrumb-separator {
     margin: 0 0.5rem; /* Space between links */
-    color: #777; /* Gray separator */
+    color: #2419c7; /* Gray separator */
 }
 
 /* Responsive Styles (Optional) */
