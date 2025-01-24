@@ -4,76 +4,242 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Post Home Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #ff6f61; /* Coral accent */
+            --secondary-color: #6b5b95; /* Deep purple */
+            --background-color: #1a1a1a; /* Dark background */
+            --text-color: #e0e0e0; /* Light text for contrast */
+            --white: #ffffff; /* Pure white */
+            --card-bg: #2a2a2a; /* Dark card background */
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            background: #b3acac;
-            color: #333;
+            background: var(--background-color);
+            color: var(--text-color);
         }
+
         .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
+
         header {
-            background: #333;
-            color: #fff;
-            padding: 10px 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 60px 0;
             text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         }
+
         header h1 {
             margin: 0;
-            font-size: 2.5em;
+            font-size: 3.5em;
+            font-family: 'Lora', serif;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
-        article {
-            background: #fff;
-            margin: 20px 0;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        header p {
+            font-size: 1.2em;
+            margin: 10px 0 0;
+            opacity: 0.9;
         }
-        article h2 {
-            color: #333;
-        }
-        article p {
-            margin: 10px 0;
-        }
-        footer {
+
+        nav {
+            background: rgba(42, 42, 42, 0.9);
+            padding: 15px 0;
             text-align: center;
-            margin-top: 20px;
-            padding: 10px 0;
-            background: #333;
-            color: #fff;
+            backdrop-filter: blur(10px);
+            margin-top: -20px;
         }
-        a {
-            color: #0099cc;
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.1em;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
-        a:hover {
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        article {
+            background: var(--card-bg);
+            margin: 40px 0;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        article::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        article:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        article h2 {
+            color: var(--white);
+            font-family: 'Lora', serif;
+            font-size: 2.2em;
+            margin-top: 0;
+            position: relative;
+        }
+
+        article h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+
+        article p {
+            margin: 15px 0;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        article a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        article a:hover {
+            color: var(--secondary-color);
             text-decoration: underline;
+        }
+
+        .icon {
+            font-size: 2em;
+            margin-right: 10px;
+            vertical-align: middle;
+            color: var(--primary-color);
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+            clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .social-links {
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: var(--white);
+            margin: 0 15px;
+            font-size: 1.5em;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-links a:hover {
+            opacity: 0.8;
+        }
+
+        .footer-text {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            nav a {
+                font-size: 1em;
+                margin: 0 10px;
+            }
+
+            .container {
+                width: 95%;
+                padding: 10px;
+            }
+
+            article {
+                padding: 20px;
+            }
+
+            article h2 {
+                font-size: 1.8em;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <div><h2>Welcome to the undefined blog</h2></div>
-        <div>The blog will discuss a wide variety of topics seemingly random, a new blog post is posted weekly on Mondays </div>
-
+        <h1>Welcome to the Undefined Blog</h1>
+        <p>The blog will discuss a wide variety of topics, seemingly random. A new blog post is posted weekly on Mondays.</p>
     </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#engineering">Engineering</a>
+        <a href="#philosophy">Philosophy</a>
+        <a href="Contact.html">Contact</a>
+    </nav>
+
+    <!-- Main Content -->
     <div class="container">
-        <article>
-            <h1>Engineering</h1>
-            <p> <a href="theenergyrevolution.html">The energy <i>revolution</i></a>-A battery that spins (January 6) </p>
-            <p> <a href="currentaffairs.html"><I>Current</I> Affairs </a> - HVAC or HVDC (January 13)
+        <!-- Engineering Section -->
+        <article id="engineering">
+            <h2><i class="fas fa-cogs icon"></i>Engineering</h2>
+            <p><a href="theenergyrevolution.html">The Energy <i>Revolution</i></a> - A battery that spins (January 6)</p>
+            <p><a href="currentaffairs.html"><i>Current</i> Affairs</a> - HVAC or HVDC (January 13)</p>
         </article>
-        <article>
-            <h1>Philosophy</h1>
-            <p><a href="Pandora_box.html">Pandora's box</a>- Hope amidst chaos (January 20)</p>
+
+        <!-- Philosophy Section -->
+        <article id="philosophy">
+            <h2><i class="fas fa-brain icon"></i>Philosophy</h2>
+            <p><a href="Pandora_box.html">Pandora's Box</a> - Hope amidst chaos (January 20)</p>
         </article>
+    </div>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Fanny Fushayi |<a href="Contact.html">Contact</a></p>
+        <div class="social-links">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <p class="footer-text">&copy; 2024 Fanny Fushayi | <a href="Contact.html">Contact</a></p>
     </footer>
 </body>
 </html>
