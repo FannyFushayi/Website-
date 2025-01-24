@@ -3,19 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fanny Fushayi - Personal Website</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Fanny Fushayi - Contact</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background: linear-gradient(15deg, #a6a0cc, #ffffff);
+            color: #141212;
+        }
+
+        header {
+            background: rgba(27, 31, 70, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .header-content a:hover {
+            color: #ffd700;
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #04162b;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form-container {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #04162b;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #85aad4;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: #141212;
+            background: #f7fafc;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #04162b;
+        }
+
+        .cta-button {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .primary-button {
+            background: #04162b;
+            color: #ffffff;
+        }
+
+        .primary-button:hover {
+            background: #357abd;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: #04162b;
+            color: #ffffff;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #ffd700;
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <div class="header-content" ><a href="index.html"><h3 >HOME</h3</a></div>
+        <div class="header-content">
+            <a href="index.html"><h3>HOME</h3></a>
+        </div>
     </header>
 
+    <!-- Main Content -->
     <main>
         <section id="contact">
             <h2>Contact Me</h2>
             <div class="contact-form-container">
-                <form action="mailto:fannyfushayi75@gmail.com" method="post" enctype="text/plain">
+                <form id="contactForm">
                     <div class="form-group">
                         <label for="name">Name:</label>
                         <input type="text" id="name" name="name" required>
@@ -33,21 +150,40 @@
             </div>
         </section>
     </main>
- <footer>
-    <p>&copy; 2024 Fanny Fushayi | <a href="index.html">Home</a> | <a href="contact.html">Contact</a></p>
-  </footer>
-<!-- 
+
+    <!-- Footer -->
     <footer>
-      <div class="footer-content">
-          <p>&copy; 2024 Fanny Fushayi</p>
-          <div class="contact-info">
-              <a href="mailto:fannyfushayi75@gmail.com">fannyfushayi75@gmail.com</a><br>
-              <a href="tel:+1-555-123-4567">(+277) 061 503 5646</a><br>
-              <a href="https://www.linkedin.com/in/fanny-fushayi-529880235" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          </div>
-      </div>
-  </footer>
-  -->
-    <script src="script.js"></script>
+        <p>&copy; 2024 Fanny Fushayi | <a href="index.html">Home</a> | <a href="contact.html">Contact</a></p>
+    </footer>
+
+    <!-- JavaScript for Form Submission -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Validate form fields
+            if (!name || !email || !message) {
+                alert('Please fill out all fields.');
+                return;
+            }
+
+            // Simulate form submission (replace with actual submission logic)
+            console.log('Form submitted successfully!');
+            console.log('Name:', name);
+            console.log('Email:', email);
+            console.log('Message:', message);
+
+            // Show a success message
+            alert('Thank you for your message! I will get back to you soon.');
+
+            // Clear the form
+            document.getElementById('contactForm').reset();
+        });
+    </script>
 </body>
 </html>
