@@ -1,7 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pandora's Box (Jar)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Text:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
             --ancient-gold: #D4AF37;
@@ -20,7 +24,7 @@
             background-color: var(--dark-slate);
             color: var(--misty-white);
             font-family: 'Crimson Text', Georgia, serif;
-            line-height: 1.6;
+            line-height: 1.8;
             margin: 0;
             padding: 0;
             -webkit-font-smoothing: antialiased;
@@ -53,27 +57,52 @@
             word-wrap: break-word;
         }
 
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(28, 49, 68, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--ancient-gold);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--misty-white);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--ancient-gold);
+        }
+
         .container {
             width: 100%;
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 1rem;
         }
-
-
-        .container_paragraph {
-            width: 100%;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 1rem;
-        }
-
-
-   
 
         .content {
             background-color: rgba(28, 49, 68, 0.7);
-            padding: 1.5rem;
+            padding: 2rem;
             border-radius: 10px;
             border-left: 4px solid var(--ancient-gold);
             margin-top: 1.5rem;
@@ -108,111 +137,110 @@
             background-size: contain;
         }
 
-        /* Mobile-specific styles */
+        footer {
+            background: var(--greek-blue);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--ancient-gold);
+        }
+
+        .social-links {
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: var(--misty-white);
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--ancient-gold);
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
         @media (max-width: 768px) {
             .header {
                 height: 250px;
                 min-height: 40vh;
             }
-            
-            .container {
-                padding: 0.8rem;
+
+            .nav-links {
+                gap: 1rem;
             }
-            
+
             .content {
-                padding: 1.2rem;
-                border-radius: 8px;
-                border-left-width: 3px;
+                padding: 1.5rem;
             }
 
             .greek-pattern {
                 height: 15px;
                 margin: 1rem 0;
             }
-            
-            /* Improve touch targets */
-            a {
-                padding: 0.5rem 0;
-                display: inline-block;
-            }
-            
-            /* Optimize spacing for mobile */
-            p {
-                margin: 1em 0;
-            }
-            
-            /* Prevent horizontal scroll */
-            img, video, iframe {
-                max-width: 100%;
-                height: auto;
-            }
-        }
-
-        /* Dark mode optimization */
-        @media (prefers-color-scheme: dark) {
-            body {
-                background-color: var(--dark-slate);
-            }
-            
-            .content {
-                background-color: rgba(28, 49, 68, 0.8);
-            }
-        }
-
-        /* Reduce motion if preferred */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation: none !important;
-                transition: none !important;
-            }
-        }
-
-        /* Handle notched phones */
-        @supports (padding: env(safe-area-inset-top)) {
-            .header, .container {
-                padding-left: env(safe-area-inset-left);
-                padding-right: env(safe-area-inset-right);
-            }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="logo">Pandora's Box</div>
+            <div class="nav-links">
+                <a href="blog.html">Home</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
     <header class="header">
         <div>
-            <div class="container"><h4>It has been a difficult week. A week that forced me to realize that I have been holding out more hope than I am afforded. I almost screamed when I thought, “I’ve given all I am, what more do I have to offer?” An outpour of support and "sending of hope" ensued. Naturally, I overanalyzed hope, so instead of taking a good excuse not to blog this week (because of hopelessness and adversity)—here is something. Truly, I wish I could tell you the consistency is in protest to the adversity, but it isn’t. It is with submission that I present to you, this week’s blog:</h4></div>
             <h1 class="title">Pandora's Box (Jar)</h1>
-            <h4>3 minutes 32 seconds  <a href="blog.html">HOME</a> </h4>
+            <h4>4 minutes 45 seconds</h4>
         </div>
     </header>
-    
-    <div class="greek-pattern"></div>
-    
-    <div class="container_paragraph">
-        <article class="content">
-            <p><span class="dropcap">I</span>  do not intend to give a lecture on Greek mythology, and certainly not the myth of Pandora (usually described as completely misunderstood). The story— and the title — serve only as an enigmatic vessel of this week's (very) personal opinion. And besides I cannot, in good conscience, pass up any opportunity to tell a story.</p>
-            <br>
-            <p> <span class="dropcap">T</span>he story of Pandora goes, as told by Hesiod in signiﬁcantly diﬀerrent versions: <a href="https://www.theoi.com/Text/HesiodTheogony.html">Theogeny</a> and (mostly) <a href="https://www.theoi.com/Text/HesiodWorksDays.html">Works and Days</a>. The gods and men meet to settle the proper relation between the two groups. Prometheus slaughters an ox to symbolize the relative status of gods and men through distinct portions. Prometheus attempts to trick Zeus into taking bones (covered in attractive fat), leaving the real meat (covered in repulsive bovine stomach) for the group of men. Zeus enraged, retaliates by withholding fire from men, which Prometheus (the Titan) steals and gives to men. Zeus is quoted to say: </p>
-            <p><i>"Son of Iapetus, surpassing all in cunning, you are glad that you have outwitted me and stolen fire— a great plague to you yourself and to men that shall be. But I will give men as the price for fire <b>an evil thing</b> in which they may all be glad of heart while they embrace their own destruction."</i></p>
-            <p><b>"an evil thing"</b> being Pandora. Hephaestus, Athene, and Aphrodite are charged to make Pandora (Pandora means “all-gifts”). The jar is associated with Pandora, but the myth does not explicitly state which god provides it or where it comes from. It is, however, integral to Zeus's plan to unleash suffering upon humanity as retribution. Prometheus knowing all too well about bogus gifts (ox portions reference), warns men not to take the gift. But humanity chooses to accept it's two gifts, fire and Pandora (along with her jar). Pandora opens the jar unleashing all the evils of the world and guided by the hand of Zeus, closes the lid in time to seal hope in the jar.</p>
-            <br>
-            <p><span class="dropcap">V</span></p>arious interpretations can be drawn from this story. Nietzsche had no doubts about Zeus' malicious intentions and the detrimental effect of the “gift” of hope. "Hope is not the sole good in the midst of evil – it is the greatest evil of all"(Nietzche in <a href="https://www.gutenberg.org/files/38145/38145-h/38145-h.htm">Human, All Too Human</a> ). Some interpret Pandora’s action of replacing the lid as a form of domestication and protection, rather than imprisonment or a trap: keeping hope nearby as a constant human resource. The reader is welcome to interpret, in fact, it is encouraged — on one condition— said interpretation is derived independently of this blog, preferably after finishing the reading.
-            <p>As alluded to earlier, this story (and interpretations) only serve to mystify this week's message and is in fact only mildly related to the theme of Hope. As a final point, I present a second, vaguely related piece of media—a picture. One of my favorite pictures that I have ever taken. Aptly named "The Shoe."</p>
-            <div style="text-align: center;">
-                <img src="Images/The_Shoe.jpg" alt="" style="width: 300px; height: auto;"> 
-            </div>
-            <p>The connection to the theme, if you're curious, lies in the interpretation. I perceive the image as a representation of hope; although the shoe is now useless, it likely never intended to serve as a muse (I’m stretching the meaning a bit). Other interpretations suggest that the shoe is simply a waste of digital space. Readers are still encouraged to draw their own interpretation without any conditions.</p>
-            <div> In conlusion, I pose a question: What does hope mean to you?</div>
-            <p>Sometime this week, I was writing in my head —as usual —and I wrote this line:</p>
-            <p><i>“And in the end life always finds a way to be miserable.”</i></p>
-            <p> I thought of it as an ending, it had to be. A silent sentence that comes after happily ever after, a beginning after the end. Today, the phrase feels like a beginning— and in that sense, it feels hopeful.</p>
-            
-        </article>
-    </div>
-    
+
+    <!-- Greek Pattern Divider -->
     <div class="greek-pattern"></div>
 
+    <!-- Main Content -->
+    <div class="container">
+        <article class="content">
+            <p><span class="dropcap">I</span> do not intend to give a lecture on Greek mythology, and certainly not the myth of Pandora (usually described as completely misunderstood). The story— and the title — serve only as an enigmatic vessel of this week's (very) personal opinion. And besides I cannot, in good conscience, pass up any opportunity to tell a story.</p>
+            <br>
+            <p><span class="dropcap">T</span>he story of Pandora goes, as told by Hesiod in significantly different versions: <a href="https://www.theoi.com/Text/HesiodTheogony.html">Theogeny</a> and (mostly) <a href="https://www.theoi.com/Text/HesiodWorksDays.html">Works and Days</a>. The gods and men meet to settle the proper relation between the two groups. Prometheus slaughters an ox to symbolize the relative status of gods and men through distinct portions. Prometheus attempts to trick Zeus into taking bones (covered in attractive fat), leaving the real meat (covered in repulsive bovine stomach) for the group of men. Zeus enraged, retaliates by withholding fire from men, which Prometheus (the Titan) steals and gives to men. Zeus is quoted to say:</p>
+            <blockquote>"Son of Iapetus, surpassing all in cunning, you are glad that you have outwitted me and stolen fire— a great plague to you yourself and to men that shall be. But I will give men as the price for fire <b>an evil thing</b> in which they may all be glad of heart while they embrace their own destruction."</blockquote>
+            <p><b>"an evil thing"</b> being Pandora. Hephaestus, Athene, and Aphrodite are charged to make Pandora (Pandora means “all-gifts”). The jar is associated with Pandora, but the myth does not explicitly state which god provides it or where it comes from. It is, however, integral to Zeus's plan to unleash suffering upon humanity as retribution. Prometheus knowing all too well about bogus gifts (ox portions reference), warns men not to take the gift. But humanity chooses to accept its two gifts, fire and Pandora (along with her jar). Pandora opens the jar unleashing all the evils of the world and guided by the hand of Zeus, closes the lid in time to seal hope in the jar.</p>
+            <br>
+            <p><span class="dropcap">V</span>arious interpretations can be drawn from this story. Nietzsche had no doubts about Zeus' malicious intentions and the detrimental effect of the “gift” of hope. "Hope is not the sole good in the midst of evil – it is the greatest evil of all"(Nietzche in <a href="https://www.gutenberg.org/files/38145/38145-h/38145-h.htm">Human, All Too Human</a>). Some interpret Pandora’s action of replacing the lid as a form of domestication and protection, rather than imprisonment or a trap: keeping hope nearby as a constant human resource. The reader is welcome to interpret, in fact, it is encouraged — on one condition— said interpretation is derived independently of this blog, preferably after finishing the reading.</p>
+            <p>As alluded to earlier, this story (and interpretations) only serve to mystify this week's message and is in fact only mildly related to the theme of Hope. As a final point, I present a second, vaguely related piece of media—a picture. One of my favorite pictures that I have ever taken. Aptly named "The Shoe."</p>
+            <div style="text-align: center;">
+                <img src="Images/The_Shoe.jpg" alt="The Shoe - A photograph of a shoe" style="width: 300px; height: auto;">
+            </div>
+            <p>The vague relation to the theme, if you are wondering, is in the interpretation. I view the image as hope, the shoe is understandably now useless, and probably never hoped to find use as a muse (I stretched the word as far as it can be). And other interpretations have thought the shoe to be a waste of digital space. The reader is still encouraged to draw their own conclusions this time without conditions.</p>
+            <div>To end I pose a question: What does hope mean to you?</div>
+            <p>Sometime this week, I was writing in my head —as usual —and I wrote this line:</p>
+            <blockquote>“And in the end life always finds a way to be miserable.”</blockquote>
+            <p>I thought of it as an ending, it had to be. A silent sentence that comes after happily ever after, a beginning after the end. Today, the phrase feels like a beginning— and in that sense it feels hopeful.</p>
+        </article>
+    </div>
+
+    <!-- Greek Pattern Divider -->
+    <div class="greek-pattern"></div>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Fanny Fushayi |<a href="Contact.html">Contact</a></p>
+        <div class="social-links">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <p class="footer-text">&copy; 2024 Fanny Fushayi | <a href="Contact.html">Contact</a></p>
     </footer>
 </body>
 </html>
