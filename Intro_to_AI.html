@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Summer: Understanding Artificial Intelligence</title>
+    <style>
+        :root {
+            --gradient-colors: linear-gradient(45deg, 
+                #ff9a9e, 
+                #fad0c4, 
+                #fbc2eb, 
+                #a6c1ee, 
+                #84fab0
+            );
+        }
+        * {
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+        body {
+            font-family: 'Inter', 'Arial', sans-serif;
+            background-color: #f4f4f8;
+            color: #2c3e50;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background: var(--gradient-colors);
+            background-size: 400% 400%;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            animation: gradientShift 15s ease infinite;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+            position: relative;
+        }
+        h1::after, h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient-colors);
+        }
+        .note, .definition {
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .note {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+        }
+        .definition {
+            background-color: #e6f3e8;
+            border-left: 5px solid #28a745;
+        }
+        .ai-animation {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            width: 100px;
+            height: 100px;
+        }
+        .ai-animation svg {
+            animation: robotBounce 2s infinite ease-in-out;
+        }
+        @keyframes robotBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .interactive {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .interactive:hover {
+            transform: scale(1.02);
+        }
+        button {
+            background: var(--gradient-colors);
+            background-size: 200% 200%;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            animation: gradientShift 5s ease infinite;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 17px rgba(0,0,0,0.2);
+        }
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .animated-title {
+            display: inline-block;
+            perspective: 1000px;
+            animation: titleHover 3s infinite alternate;
+        }
+        @keyframes titleHover {
+            0% { transform: rotateX(0deg) rotateY(0deg); }
+            100% { transform: rotateX(10deg) rotateY(15deg); }
+        }
+
+        /* New animation for the header */
+        .header-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-colors);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+      
+      <div>
+        <div><h1><b>AI SUMMER</b></h1>
+        </div>
+        <h4>9 minutes 23 seconds | <a href="blog.html">HOME</a></h4>
+        <div class="ai-animation">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 10 200 100">
+                <rect x="30" y="10" width="40" height="60" fill="#4a4a4a" rx="10"/>
+                <circle cx="50" cy="25" r="10" fill="#ff6b6b"/>
+                <rect x="20" y="70" width="60" height="10" fill="#4a4a4a" rx="5"/>
+                <circle cx="30" cy="85" r="5" fill="#4ecdc4"/>
+                <circle cx="70" cy="85" r="5" fill="#4ecdc4"/>
+                <path d="M20 70 L30 85 M80 70 L70 85" stroke="#4a4a4a" stroke-width="3"/>
+            </svg>
+        </div>
+        
+    </header>
+    
+    <div class="container">
+        <h2>Introduction</h2>
+        <p>Humans dominate the Earth not due to physical strength or speed, but (largely) because of a unique and transformative trait: general intelligence. The evolution of human intelligence was a long and complex journey. For most species, the development of general intelligence is constrained by its high energy demands —and inefficacy. As a result, animals typically evolve narrow intelligence, which is optimized for survival within specific ecological spaces.</p>
+        <p>General intelligence is the ability to learn, reason, and apply knowledge across diverse domains, even those without immediate survival benefits. While most animals excel in narrow intelligence (e.g., a spider spinning a web or a bird building a nest), they lack the cognitive flexibility to apply these skills outside their niche. Humans, on the other hand, can generalize knowledge and use it to tackle entirely new challenges.</p>
+        <div class="note">Some animals exhibit forms of general intelligence (e.g., primates, dolphins), though not to the same extent as humans.</div>
+        <p>The development of human general intelligence has led to transformative milestones, starting with the discovery of fire, the first tools all the way to the digital age. Today, humanity is on the verge of creating "that which makes it the most powerful species in the world"—intelligence. Could this be <a href="https://www.youtube.com/watch?v=fa8k8IQ1_X0">humanity's final invention?</a></p>
+
+        <h2>What is AI?</h2>
+        <p>Artificial Intelligence (AI) is everywhere—both in obvious forms and more subtle applications. From the algorithms behind personalized media recommendations, like those suggesting music, movies, or news article, to self-driving cars navigating (some of) our highways using computer vision, advanced sensors, and actuators, AI has already become deeply integrated into our lives. And, of course, there are large language models like ChatGPT, Claude, and DeepSeek, which are reshaping how we interact with information and technology.</p>
+        <p>But this raises the question: What is artificial intelligence? Could a series of simple if-then statements qualify as AI? If so, how many statements would it take? Defining what AI truly is—and what it isn’t—is complex for several reasons.</p>
+        <p>One challenge is that AI as a field of research lacks a fixed definition. Like fields like biology or chemistry, which study specific phenomena, AI focuses on developing methods to replicate or approximate intelligent behavior. These methods vary widely, from simple decision trees to complex neural networks.</p>
+        
+        <div class="note">
+          <strong>Insight:</strong> AI is a scientific discipline, similar to mathematics or biology. This means that AI encompasses a collection of concepts, problems, and methods for solving them. Since AI is a discipline, it is incorrect to say "an AI," just as we wouldn't say "a biology." This distinction becomes particularly clear when you attempt to use phrases like "we need more artificial intelligences."
+        </div>
+
+        <p>Another complication comes from the legacy of science fiction. Popular culture often depicts AI as a form of general intelligence—a machine capable of independent thought, emotion, and creativity. Think of the robotic monotones delivering overly detailed facts in movies or the humanoid robots that wrestle with existential dilemmas (<a href="https://www.google.com/search?gs_ssp=eJzj4tDP1TdILsnJNmD04ktJLElUKC5JLFIoKUrNBgBssgiP&q=data+star+trek&oq=data+star&gs_lcrp=EgZjaHJvbWUqBwgBEC4YgAQyCQgAEEUYORiABDIHCAEQLhiABDIHCAIQLhiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIJCAYQABgKGIAEMgcIBxAAGIAEMgcICBAAGIAE0gEINTIyNmowajeoAgCwAgA&sourceid=chrome&ie=UTF-8">hmm.. hmm..</a>). In reality, AI today is far from this fictional ideal. The vast majority of AI systems are narrow AI—highly specialized tools designed for specific tasks, such as recognizing faces, translating languages, or washing dishes (surprisingly without hands).</p>
+        <p>There’s also a disconnect in how people perceive the difficulty of creating AI systems. What seems hard to humans is often easy for AI, and what seems easy is surprisingly hard.</p>
+        <ul>
+            <li>For example, people once measured intelligence by the ability to perform high-cognitive tasks, such as playing chess or solving complex mathematical problems. In 1997, IBM’s <a href="https://www.ibm.com/history/deep-blue">Deep Blue</a> defeated <a href="https://www.google.com/search?gs_ssp=eJzj4tDP1TcwTjatNGD04ktPLCqqVMhOLC5ILMovAwBmaAiH&q=garry+kasparov&oq=Garry+&gs_lcrp=EgZjaHJvbWUqDAgBEC4YQxiABBiKBTIGCAAQRRg5MgwIARAuGEMYgAQYigUyDAgCEAAYQxiABBiKBTIMCAMQABhDGIAEGIoFMgwIBBAAGEMYgAQYigUyDAgFEC4YQxiABBiKBTIMCAYQABhDGIAEGIoFMgwIBxAuGEMYgAQYigUyDAgIEC4YQxiABBiKBTIHCAkQABiPAtIBCDQ4ODJqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8">Garry Kasparov</a>, the reigning world chess champion, marking a milestone in AI development. Similarly, <a href="https://deepmind.google/research/breakthroughs/alphago/">AlphaGo</a>, developed by DeepMind, conquered the ancient game of Go in 2016, a task once thought impossible for machines due to the game's complexity and reliance on intuition.</li>
+            <li>On the other hand, tasks that humans consider simple, like motor functions or sensory perception, remain a significant challenge for AI. For instance, designing a robot that can navigate uneven terrain, fold laundry, or pick up a delicate object without breaking it is extraordinarily complex. These tasks require the integration of fine motor skills, real-time decision-making, and adaptability—capabilities that even the most advanced AI systems struggle to achieve. This phenomenon is sometimes referred to as <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(23)01129-7/fulltext#:~:text=Moravec's%20paradox%20is%20a%20phenomenon,large%2Dscale%20data%20analysis)%20are">Moravec's Paradox</a>, which states that tasks requiring high-level reasoning are easier for AI to handle than basic sensorimotor skills.</li>
+        </ul>
+
+        <p>Defining artificial intelligence (AI) has always been a challenge, partly because the definition itself tends to shift as the field progresses. Here are three definitions that highlight different perspectives from <a href="https://www.elementsofai.com/">Elements of AI</a>:</p>
+        <ul>
+            <li><strong>Cool things that computers can't do.</strong>This geeky, old definition reflects an evolving (I want to say outdated) understanding of AI. It captures the tendency to see AI as a problem without a solution—once a task is solved or automated, it often ceases to be considered AI. For example, technologies like optical character recognition (OCR) or basic voice assistants, once viewed as cutting-edge AI, are now considered standard features.</li>
+            <li><strong>AI is the mimicry of human intelligence.</strong>This definition is closely tied to Alan Turing's Imitation Game (<a href="https://www.techtarget.com/searchenterpriseai/definition/Turing-test#:~:text=The%20Turing%20Test%20is%20a,cryptanalyst%2C%20mathematician%20and%20theoretical%20biologist.">Turing Test</a>) and philosophical thought experiments like Searle’s <a href="https://plato.stanford.edu/entries/chinese-room/">Chinese Room Argument</a>. Turing proposed that a machine could be considered intelligent if it could convincingly simulate human responses in a conversation. However, the Chinese Room Argument critiques this by suggesting that mimicking human responses does not equate to understanding; a system can behave intelligently without possessing true comprehension. This perspective underscores that many AI systems are built to simulate intelligence rather than embody it.</li>
+            <li><strong>An AI system is an autonomous and adaptable system.</strong>This definition aligns with real-world AI systems like self-driving cars or recommendation algorithms, which operate in dynamic environments and continuously refine their models based on new inputs. This technical definition highlights two essential attributes of modern AI: Autonomy and Adaptability.</li>
+          </ul>
+
+            <div class="definition">
+              <ul>
+                <li><strong>Autonomous</strong> The ability to perform tasks in complex environments without constant guidance from a user.</li>
+                <li><strong>Adaptable</strong> The ability to improve performance by learning from experience and adapting to new data.</li>
+              </ul>
+            </div>
+
+        <h2>CORE CONCEPTS IN AI</h2>
+        <h3>Machine Learning (ML).</h3>
+        <p>At its core, machine learning involves creating algorithms that learn from data, allowing systems to improve performance over time without being explicitly programmed. ML is often categorized into three types:</p>
+            <ul>
+              <li><strong>Supervised Learning:</strong> The system is trained on labeled data (e.g.,  character recognition using the MINST library).</li>
+              <li><strong>Unsupervised Learning:</strong> The system finds patterns in unlabeled data (e.g., clustering customers by purchasing behavior).</li>
+              <li><strong>Reinforcement Learning:</strong> The system learns by trial and error, receiving rewards or penalties based on its actions (e.g., AlphaGo mastering the game of Go).</li>
+            </ul>
+        <p>Classification is a core aspect of machine learning, allowing algorithms to categorize inputs into predefined classes based on patterns learned from labeled data. Essentially, it’s about teaching a system to assign labels to new inputs based on the characteristics of the training data.</p>
+        <p>A common example of classification is the nearest neighbor classifier. This algorithm classifies a new input by comparing it to the training data and selecting the class of the closest data point. In other words, if you want to predict the category of a new item, the classifier looks for the nearest "neighbor" in the training set and assigns the same category.
+          This method is widely used in various applications, including media recommendation systems. For example, platforms like Netflix or Spotify use classification algorithms to suggest movies, music, or shows. These systems typically classify users into groups based on preferences and behaviors. Once a user is classified, the system suggests media that other similar users have enjoyed but that the current user has yet to discover.</p>
+         
+          <div class="note">
+            <strong>Insight:</strong> There is a significant downside to using nearest neighbor classification in recommendation systems: it can lead to the creation of filter bubbles. A filter bubble occurs when an algorithm continuously recommends similar content to a user based on their past preferences, effectively narrowing their exposure to diverse ideas or media. This can result in users being trapped in echo chambers, where they are repeatedly exposed to the same type of content, reinforcing their existing views and limiting their discovery of new perspectives.
+          </div>
+
+          <h3>Neural Networks</h3>
+          <p>Neural networks are the foundation of deep learning, a subset of machine learning (ML) that has revolutionized fields like image recognition, natural language processing, and autonomous driving. Unlike traditional computing systems, neural networks are inspired by the structure and function of the human brain, enabling them to process information in a fundamentally different way.</p>
+          <div class="definition"> <strong>Deep Learning</strong> takes neural networks to the next level by using multiple hidden layers to model complex patterns and representations. Each layer extracts increasingly abstract features from the data, enabling the network to perform tasks like Image Recognition, natural Language Processing, and autonomous Driving.</div>
+          <p>In traditional computers, information is processed in a central processing unit (CPU), which can only handle one task at a time. The CPU retrieves data from memory, processes it, and stores the result back in memory. This separation of data storage and processing creates a bottleneck, especially for tasks requiring large-scale computations.
+            Neural networks, on the other hand, consist of a large number of neurons (or nodes) that can process information simultaneously. Each neuron operates independently, allowing the network to handle vast amounts of data in parallel. This parallel processing capability is one of the key reasons neural networks excel at tasks like image recognition and language translation</p>
+            <p>In traditional computers, data storage (memory) and processing (CPU) are separate components. Data must be retrieved from memory, processed by the CPU, and then stored back in memory. This back-and-forth can slow down computation, especially for large datasets.
+              In neural networks, storage and processing are integrated. Neurons both store and process information. Short-term data is stored in the activation state of neurons (whether they "fire" or not), while long-term data is stored in the weights of the connections between neurons. These weights determine the strength of the connections and are adjusted during training to improve the network’s performance.</p>
+        
+          <p>A simple neural network consists of three main components:</p>
+          <ul>
+            <li> <strong>Input Layer:</strong>Receives the initial data (e.g., pixel values for an image).</li>
+            <li> <strong>Hidden Layers:</strong>Intermediate layers that extract increasingly abstract features from the data.</li>
+            <li> <strong>Output Layer:</strong>Produces the final result (e.g., a classification or prediction)..</li>
+
+          </ul>
+               
+          <p>Each neuron in a layer is connected to neurons in the next layer via weighted connections. During training, the network adjusts these weights using optimization techniques like gradient descent to minimize errors in its predictions.</p>
+          <P>Regression techniques play a crucial role in training neural networks. They are used to extract the weights that define the connections between neurons.backpropagation is the primary method for adjusting weights. It works by: Calculating the error between the network’s prediction and the actual result. Propagating this error backward through the network to update the weights. Repeating this process iteratively to improve accuracy.</P> 
+          
+          <div class="note">
+            <strong>Advanced Neural Networks:</strong> <ul>
+              <li><strong>Convolutional Neural Networks (CNNs):</strong>Specialized for processing grid-like data, such as images.
+                Use convolutional layers to detect patterns like edges, textures, and shapes.</li>
+                <li> <strong>Large Language Models (LLMs): </strong>Designed for natural language tasks, such as text generation and translation.
+                  Transformers, a type of neural network architecture, are used to process sequential data efficiently.</li>
+            </ul>
+          </div>
+
+  
+        <h2>IMPLICATIONS OF AI</h2>
+         <p>The history of artificial intelligence (AI) has been marked by various paradigms—dominant trends or approaches that gain widespread acceptance among researchers and drive optimism about the field’s potential. These paradigms shape how AI is developed and influence the expectations for its future.</p> 
+         
+         <p>For example, in the 1960s, neural networks emerged as a paradigm. Researchers believed that mimicking the human brain's learning processes could solve all AI problems. This optimism faded as limitations in computing power and understanding of neural networks became apparent, leading to what is now referred to as an AI Winter—a period of reduced funding and interest in AI research.</p>          
+          By the 1980s, a new paradigm emerged with expert systems, which relied on logic and human-coded rules to replicate decision-making processes. These systems showed promise in specialized fields but ultimately proved inflexible and unable to scale effectively for broader applications.
+          
+          <p>The current AI Summer—a period of rapid progress and enthusiasm—was brought about by advancements in processing power, the availability of vast datasets, and breakthroughs in machine learning, particularly deep learning. These factors have enabled AI to make significant strides in areas like computer vision, natural language processing, and robotics.</p>
+          
+          <p>The future of AI is the subject of much speculation, with questions arising about its economic, social, and political implications. Predictions range from utopian visions—such as universal basic income, personalized education, and improved healthcare—to dystopian fears, like AI overlords as popularized by science fiction (e.g., The Terminator).</p>
+          
+          <p>While AI is expected to become increasingly pervasive in our lives, it is the possibility of Artificial General Intelligence (AGI) that raises the most concern. AGI refers to an AI system capable of performing any intellectual task that a human can, with the ability to reason, learn, and adapt across a wide range of domains.AGI remains a theoretical concept and is not yet achievable with current technology. Most AI systems today are narrow AI, designed for specific tasks.</p>
+          <p><a href="https://www.youtube.com/watch?v=KKNCiRWd_j0">Mustafa Suleyman</a>, co-founder of DeepMind, has described AGI as not merely a new technology but a culmination of humanity itself. In his view, AGI will embody the full spectrum of human traits—the good and the bad. Suleyman argues that the challenge of this century is not merely developing AGI but ensuring that it reflects humanity’s empathy, love, and wisdom.</p>
+          
+          
+        </div>
+
+        <!--<div class="interactive">
+            <p>Explore AI's Fascinating World</p>
+            <button onclick="showFunFact()">Reveal AI Insight</button>
+            <p id="funFact" style="display:none; margin-top: 10px; color: #2c3e50;">
+                Technological intelligence emerges not from singular breakthrough, but from cumulative algorithmic sophistication across interconnected computational domains.
+            </p>
+        </div>
+    </div>-->
+
+    <footer>
+        © 2025 Fanny Fushayi 
+    </footer>
+
+    <script>
+        //function showFunFact() {
+           // const funFactElement = document.getElementById('funFact');
+           // funFactElement.style.display = funFactElement.style.display === 'none' ? 'block' : 'none';
+        //}
+    </script>
+</body>
+</html>
