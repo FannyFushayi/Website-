@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperature Control System Simulation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .controls {
+      margin-bottom: 20px;
+    }
+    .controls button, .controls select {
+      padding: 10px 20px;
+      margin-right: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .chart-container {
+      position: relative;
+      width: 800px;
+      height: 400px;
+      margin-bottom: 20px;
+    }
+    canvas {
+      border: 1px solid #ccc;
+    }
+    .description {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 5px;
+      max-width: 800px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Temperature Control System Simulation</h1>
+
+  <div class="controls">
+    <button id="startStopBtn">Start</button>
+    <button id="resetBtn">Reset</button>
+    <select id="controlSelect">
+      <option value="bangbang">Bang-Bang Control</option>
+      <option value="p">Proportional Control</option>
+      <option value="pid">PID Control</option>
+    </select>
+  </div>
+
+  <div class="chart-container">
+    <canvas id="chart" width="800" height="400"></canvas>
+  </div>
+
+  <div class="description">
+    <h3 id="controlTitle">Bang-Bang Control</h3>
+    <p id="controlDescription"></p>
+  </div>
+
+  <script>
+    const SETPOINT = 20;
+    const SAMPLE_RATE = 100;
+    const MAX_POINTS = 100;
+
+    const P_GAIN = 0.3;
+    const I_GAIN = 0.01;
+    const D_GAIN = 0.2;
+
+    let time = 0;
+    let data = [];
+    let isRunning = false;
+    let interval;
+    let selectedControl = 'bangbang';
+    let integral = 0;
+    let lastError = 0;
+
+    function bangBangControl(currentTemp) {
+      return currentTemp < SETPOINT ? 1 : 0;
+    }
+
+    function pControl(currentTemp) {
+      const error = SETPOINT - currentTemp;
+      return Math.max(0, Math.min(1, P_GAIN * error));
+    }
+
+    function pidControl(currentTemp) {
+      const error = SETPOINT - currentTemp;
+      integral += error * (SAMPLE_RATE / 1000);
+      const derivative = (error - lastError) / (SAMPLE_RATE / 1000);
+      lastError = error;
+      const output = P_GAIN * error + I_GAIN * integral + D_GAIN * derivative;
+      return Math.max(0, Math.min(1, output));
+    }
+
+    function updateData() {
+      if (data.length === 0) {
+        data.push({ time: 0, temp: 15, setpoint: SETPOINT, control: 0 });
+      }
+      const currentTemp = data[data.length - 1].temp;
+      let controlOutput;
+      switch (selectedControl) {
+        case 'bangbang':
+          controlOutput = bangBangControl(currentTemp);
+          break;
+        case 'p':
+          controlOutput = pControl(currentTemp);
+          break;
+        case 'pid':
+          controlOutput = pidControl(currentTemp);
+          break;
+        default:
+          controlOutput = 0;
+      }
+      const ambientTemp = 15;
+      const heatingPower = 10;
+      const heatLoss = 0.1;
+      const newTemp = currentTemp + (controlOutput * heatingPower - heatLoss * (currentTemp - ambientTemp)) * (SAMPLE_RATE / 1000);
+      data.push({
+        time: time * (SAMPLE_RATE / 1000),
+        temp: newTemp,
+        setpoint: SETPOINT,
+        control: controlOutput * 100,
+      });
+      if (data.length > MAX_POINTS) {
+        data.shift();
+      }
+    }
+
+    function drawChart() {
+      const canvas = document.getElementById('chart');
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.strokeStyle = '#82ca9d';
+      ctx.beginPath();
+      ctx.moveTo(0, 200);
+      ctx.lineTo(canvas.width, 200);
+      ctx.stroke();
+
+      ctx.strokeStyle = '#8884d8';
+      ctx.beginPath();
+      data.forEach((point, i) => {
+        const x = (i / MAX_POINTS) * canvas.width;
+        const y = 200 - (point.temp - SETPOINT) * 10;
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      });
+      ctx.stroke();
+
+      ctx.strokeStyle = '#ff7300';
+      ctx.beginPath();
+      data.forEach((point, i) => {
+        const x = (i / MAX_POINTS) * canvas.width;
+        const y = 400 - point.control * 2;
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      });
+      ctx.stroke();
+    }
+
+    function toggleSimulation() {
+      isRunning = !isRunning;
+      document.getElementById('startStopBtn').textContent = isRunning ? 'Stop' : 'Start';
+      if (isRunning) {
+        interval = setInterval(() => {
+          time++;
+          updateData();
+          drawChart();
+        }, SAMPLE_RATE);
+      } else {
+        clearInterval(interval);
+      }
+    }
+
+    function resetSimulation() {
+      time = 0;
+      data = [];
+      integral = 0;
+      lastError = 0;
+      drawChart();
+    }
+
+    function updateControlScheme() {
+      selectedControl = document.getElementById('controlSelect').value;
+      resetSimulation();
+      document.getElementById('controlTitle').textContent = selectedControl.toUpperCase() + ' Control';
+      document.getElementById('controlDescription').textContent =
+        selectedControl === 'bangbang' ? 'Bang-bang control turns the heater fully on or off, causing oscillations around the setpoint.' :
+        selectedControl === 'p' ? 'Proportional control adjusts heater power based on the error magnitude, but a steady-state error remains.' :
+        'PID control reduces steady-state error and oscillations by using proportional, integral, and derivative terms.';
+    }
+
+    document.getElementById('startStopBtn').addEventListener('click', toggleSimulation);
+    document.getElementById('resetBtn').addEventListener('click', resetSimulation);
+    document.getElementById('controlSelect').addEventListener('change', updateControlScheme);
+
+    drawChart();
+  </script>
+</body>
+</html>
