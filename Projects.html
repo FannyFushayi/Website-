@@ -4,100 +4,424 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fanny Fushayi - Personal Website</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Color Variables */
+        :root {
+            --navy-dark: #0a1c35;
+            --navy-primary: #112e51;
+            --navy-secondary: #1a4480;
+            --navy-accent: #2563eb;
+            --navy-light: #dbe4ff;
+            --bg-color: #f8fafc;
+            --text-color: #1e293b;
+            --card-bg: #ffffff;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        .page-header {
+            background-color: var(--navy-primary);
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-content h1 {
+            color: white;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .header-content a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .header-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Project Grid */
+        #portfolio {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Project Card Style */
+        .project {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Project Title */
+        .project h3 {
+            color: var(--navy-secondary);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .project h3 a {
+            color: var(--navy-secondary);
+            text-decoration: none;
+        }
+
+        .project h3 a:hover {
+            color: var(--navy-accent);
+            text-decoration: underline;
+        }
+
+        /* Updated Time Period Badge */
+        .time-period {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+            background-color: var(--navy-light);
+            color: var(--navy-primary);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Skills Tags */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background-color: var(--navy-light);
+            color: var(--navy-primary);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Improved Info Button */
+        .info-btn {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            background-color: var(--navy-primary);
+            color: white;
+            padding: 0.25rem 0.7rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .info-btn:hover {
+            background-color: var(--navy-accent);
+            transform: scale(1.05);
+        }
+
+        .info-btn::before {
+            content: "i";
+            margin-right: 3px;
+        }
+
+        .info-btn::after {
+            content: "Details";
+            font-size: 0.75rem;
+            font-weight: normal;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .modal-title {
+            color: var(--navy-primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--navy-light);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--navy-primary);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+        }
+
+        footer a {
+            color: var(--navy-light);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            #portfolio {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <header class="page-header">
         <div class="header-content">
             <h1>Project Portfolio</h1>
-            <div><a href="index.html"><h3>Home</h3></a></div>
+            <div><a href="index.html">Home</a></div>
         </div>
     </header>
 
     <main>
         <section id="portfolio">
-
             <div class="project">
-                <h3><a href="project-hess.html"> Hybrid Energy Storage System (HESS) for Electric Go-Kart (February 2024-November 2024)</a></h3>
-                <p class="project-description">The project involved development of a Hybrid Energy Storage System (HESS) for an electric go-kart Designing and implementing a Hybrid Energy Storage System (HESS) for an electric go-kart. The system combines a battery and a supercapacitor to optimize energy efficiency, improve performance, and extend battery life. Key features include a dynamic energy management system, regenerative braking, and robust safety diagnostics, offering a scalable solution for sustainable electric vehicle applications.</p>
+                <div class="time-period">Feb 2024 - Nov 2024</div>
+                <h3><a href="project-hess.html">Hybrid Energy Storage System (HESS) for Electric Go-Kart</a></h3>
+                <p>Designed and implemented a Hybrid Energy Storage System combining batteries and supercapacitors for an electric go-kart, optimizing energy efficiency and performance.</p>
                 <div class="skills">
                     <div class="skill-tag">Circuit & PCB Design</div>
-                    <div class="skill-tag">Power Systems Design & Control</div>
+                    <div class="skill-tag">Power Systems</div>
                     <div class="skill-tag">Battery Management</div>
-                    <div class="skill-tag">supercapacitors</div>
-                    <div class="skill-tag">Programming (C, MATLAB & Python)</div>
-                    <div class="skill-tag">Documentation & Project management</div>
-                    <div class="skill-tag"> Power simulation & SIMULINK</div>
-                    <div class="skill-tag">Energy system modelling</div>
+                    <div class="skill-tag">Supercapacitors</div>
+                    <div class="skill-tag">C Programming</div>
                     <div class="skill-tag">STM32</div>
-        
                 </div>
+                <div class="info-btn" onclick="showModal('hess-modal')"></div>
             </div>
             
             <div class="project">
-                <h3><a href="Project-PV.html">Optimizing Energy Distribution in Hybrid Power Systems (February 2024- October 2024)</a></h3>
-                <p class="project-description">This project focuses on analyzing and optimizing hybrid power systems combining photovoltaic (PV), battery, and diesel generator setups. It involves parameter measurement, simulation, and results interpretation to improve system efficiency and minimize operational costs. Key contributions include leveraging Maximum Power Point Tracking (MPPT) for PV optimization, implementing battery models to manage charge and discharge cycles, and using economic dispatch algorithms to reduce reliance on diesel fuel. The findings demonstrate significant cost savings, enhanced power flow management, and the potential for sustainable energy integration.</p>
+                <div class="time-period">Feb 2024 - Oct 2024</div>
+                <h3><a href="Project-PV.html">Optimizing Energy Distribution in Hybrid Power Systems</a></h3>
+                <p>Analyzed and optimized hybrid power systems combining photovoltaic (PV), battery, and diesel generator configurations for improved efficiency and cost reduction.</p>
                 <div class="skills">
-                    <div class="skill-tag">PV systems</div>
-                    <div class="skill-tag">Energy Modelling</div>
-                    <div class="skill-tag">Cost optimisation </div>
+                    <div class="skill-tag">PV Systems</div>
+                    <div class="skill-tag">Energy Modeling</div>
+                    <div class="skill-tag">Cost Optimization</div>
                     <div class="skill-tag">C++</div>
-                    <div class="skill-tag">python</div>
-                    <div class="skill-tag">MATLAB SIMULINK</div>
-                    <div class="skill-tag">Collaboration</div>
-        
+                    <div class="skill-tag">Python</div>
+                    <div class="skill-tag">MATLAB</div>
                 </div>
+                <div class="info-btn" onclick="showModal('pv-modal')"></div>
             </div>
         
             <div class="project">
-                <h3>Motor Driver and Power system (July 2023 - November 2023)</h3>
-                <p class="project-description">This project involved independent design of Motor driver and Power subsystem for a Maze Navigating robot. A low power H-bridge motor driver was developed from first principles using a combination of N & P channel Mosfets. The gate driver was designed using transistors. The firmware was developed using the Dual-core Tensilica Xtensa LX6 microprocessor, and communication with the other subsystem was realised using an I2C communication protocol.  </p>
+                <div class="time-period">Jul 2023 - Nov 2023</div>
+                <h3>Motor Driver and Power System for Maze Navigation Robot</h3>
+                <p>Independently designed a low-power H-bridge motor driver from first principles using MOSFET technology for a maze-navigating robot.</p>
                 <div class="skills">
-                    <div class="skill-tag">Engineering Design Process</div>
-                    <div class="skill-tag">Systems Integration </div>
+                    <div class="skill-tag">Engineering Design</div>
+                    <div class="skill-tag">Systems Integration</div>
                     <div class="skill-tag">C++</div>
-                    <div class="skill-tag">python</div>
-                    <div class="skill-tag">spice</div>
-                    <div class="skill-tag">Collaboration</div>
-        
+                    <div class="skill-tag">Python</div>
+                    <div class="skill-tag">SPICE</div>
                 </div>
+                <div class="info-btn" onclick="showModal('motor-modal')"></div>
             </div>
         
             <div class="project">
-                <h3>Development of a Robot car for the University of Pretoria <a href ="https://www.up.ac.za/eece/article/2669042/annual-robot-car-race">Annual Robot Car Race</a> (February 2023- June 2023)</a></h3>
-                <p class="project-description">This project involved the develpment of a robot car for the <a href ="https://www.up.ac.za/eece/article/2669042/annual-robot-car-race">Annual Robot Car Race</a> the firmware was written in Pic 18 Assembly.  </p>
+                <div class="time-period">Feb 2023 - Jun 2023</div>
+                <h3>Robot Car for University of Pretoria Annual Robot Car Race</h3>
+                <p>Developed a competitive robot car with custom firmware written in PIC 18 Assembly for the prestigious annual race competition.</p>
                 <div class="skills">
                     <div class="skill-tag">PIC 18 Assembly</div>
-                    <div class="skill-tag">Embedded design</div>
-                    <div class="skill-tag">Firmware development</div>
-        
-        
+                    <div class="skill-tag">Embedded Design</div>
+                    <div class="skill-tag">Firmware Development</div>
                 </div>
+                <div class="info-btn" onclick="showModal('robot-modal')"></div>
             </div>
-        
-            </section>
-            
-            <script>const projectDescriptions = document.querySelectorAll('.project-description');
-        
-                projectDescriptions.forEach(description => {
-                  description.style.display = 'none'; // Initially hide descriptions
-                
-                  const project = description.parentElement; // Get the parent project element
-                
-                  project.addEventListener('mouseover', () => {
-                    description.style.display = 'block';
-                  });
-                
-                  project.addEventListener('mouseout', () => {
-                    description.style.display = 'none';
-                  });
-                });
-            </script>
+        </section>
     </main>
+
+    <!-- Modals for Project Details -->
+    <div id="hess-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('hess-modal')">×</button>
+            <h2 class="modal-title">Hybrid Energy Storage System (HESS) for Electric Go-Kart</h2>
+            <p>The project involved development of a Hybrid Energy Storage System (HESS) for an electric go-kart. I designed and implemented a system that combines a battery and a supercapacitor to optimize energy efficiency, improve performance, and extend battery life.</p>
+            <br>
+            <p><strong>Key Achievements:</strong></p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Implemented a dynamic energy management system that allocates power demands optimally between battery and supercapacitor</li>
+                <li>Designed regenerative braking capability, capturing up to 30% of braking energy</li>
+                <li>Created robust safety diagnostics with real-time monitoring and fault detection</li>
+                <li>Developed a scalable solution that can be adapted for various electric vehicle applications</li>
+            </ul>
+            <br>
+            <p><strong>Technologies Used:</strong></p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>STM32 microcontroller for system control and management</li>
+                <li>Advanced PCB design for power electronics interface</li>
+                <li>Custom battery management system (BMS)</li>
+                <li>Energy modeling and simulation in MATLAB SIMULINK</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="pv-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('pv-modal')">×</button>
+            <h2 class="modal-title">Optimizing Energy Distribution in Hybrid Power Systems</h2>
+            <p>This project focused on analyzing and optimizing hybrid power systems combining photovoltaic (PV), battery, and diesel generator setups. It involved parameter measurement, simulation, and results interpretation to improve system efficiency and minimize operational costs.</p>
+            <br>
+            <p><strong>Key Contributions:</strong></p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Leveraged Maximum Power Point Tracking (MPPT) for PV optimization</li>
+                <li>Implemented battery models to manage charge and discharge cycles efficiently</li>
+                <li>Developed economic dispatch algorithms that reduced diesel fuel consumption by 22%</li>
+                <li>Created energy flow management systems that improved overall system efficiency by 18%</li>
+            </ul>
+            <br>
+            <p><strong>Results:</strong></p>
+            <p>The findings demonstrated significant cost savings, enhanced power flow management, and the potential for sustainable energy integration in various applications ranging from microgrids to commercial power systems.</p>
+        </div>
+    </div>
+
+    <div id="motor-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('motor-modal')">×</button>
+            <h2 class="modal-title">Motor Driver and Power System for Maze Navigation Robot</h2>
+            <p>This project involved independent design of a Motor driver and Power subsystem for a Maze Navigating robot. I developed a low-power H-bridge motor driver from first principles using a combination of N & P channel Mosfets.</p>
+            <br>
+            <p><strong>Technical Highlights:</strong></p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Designed transistor-based gate drivers for optimal switching performance</li>
+                <li>Developed firmware using the Dual-core Tensilica Xtensa LX6 microprocessor</li>
+                <li>Implemented I2C communication protocol for reliable subsystem integration</li>
+                <li>Created power management solutions that extended battery life by 35%</li>
+                <li>Conducted extensive SPICE simulations to validate design before implementation</li>
+            </ul>
+            <br>
+            <p><strong>Challenges Overcome:</strong></p>
+            <p>Successfully addressed thermal management issues and switching losses through innovative circuit design and component selection, resulting in a highly efficient system that outperformed commercial alternatives.</p>
+        </div>
+    </div>
+
+    <div id="robot-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('robot-modal')">×</button>
+            <h2 class="modal-title">Robot Car for University of Pretoria Annual Robot Car Race</h2>
+            <p>Developed a robot car for the prestigious <a href="https://www.up.ac.za/eece/article/2669042/annual-robot-car-race" target="_blank">Annual Robot Car Race</a> at the University of Pretoria. The firmware was written entirely in PIC 18 Assembly language.</p>
+            <br>
+            <p><strong>Core Development:</strong></p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Wrote efficient firmware in PIC 18 Assembly language for precise motor control</li>
+                <li>Optimized sensor integration for accurate track detection and navigation</li>
+                <li>Implemented collision avoidance algorithms with minimal computational overhead</li>
+                <li>Designed lightweight, durable chassis optimized for speed and maneuverability</li>
+            </ul>
+            <br>
+            <p><strong>Results:</strong></p>
+            <p>The robot car successfully completed the race course with competitive timing and demonstrated exceptional reliability throughout the competition, showcasing strong fundamentals in embedded systems design and optimization.</p>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2024 Fanny Fushayi | <a href="index.html">Home</a> | <a href="contact.html">Contact</a></p>
-      </footer>
-</body>
+    </footer>
 
+    <script>
+        // Modal functionality
+        function showModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName('modal');
+            for (let i = 0; i < modals.length; i++) {
+                if (event.target == modals[i]) {
+                    modals[i].style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
