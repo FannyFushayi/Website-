@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #f9f7f4;
+            color: #2c2c2c;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #4a4a4a;
+            margin-bottom: 1rem;
+        }
+
+        .section-divider {
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #8b0000, transparent);
+            margin: 2rem 0;
+        }
+
+        .quote-container {
+            position: relative;
+            margin: 2rem 0;
+            padding: 2rem;
+            background-color: #fff;
+            border-left: 4px solid #8b0000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #4a4a4a;
+            margin: 0;
+        }
+
+        .quote-author {
+            display: block;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+            text-align: right;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        em {
+            color: #8b0000;
+        }
+
+
+        .easter-egg-container {
+            margin: 3rem 0;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .easter-egg-trigger {
+            color: #8b0000;
+            font-style: italic;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .easter-egg-trigger:hover {
+            opacity: 1;
+        }
+
+        .easter-egg-content {
+            display: none;
+            padding: 2rem;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            margin-top: 1rem;
+            position: relative;
+        }
+
+        .easter-egg-content::before {
+            content: "🤫";
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            font-size: 2rem;
+        }
+
+        .easter-egg-container.revealed .easter-egg-content {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Crime and Punishment: A Philosophical Review</h1>
+        <nav>
+            <a href="blog.html" style="text-decoration: none; color: #8b0000; font-size: 1rem;">Home</a>
+        </nav>
+    </header>
+
+    <p>Firstly, I would like to point out that Fyodor Dostoevsky is (very directly) against the writing of this philosophical review, as quoted in his short story <em>Bobok</em>.</p>
+
+    <div class="quote-container">
+        <p class="quote">"I don't like it when people with only a general education rush to solve problems best left to specialists; and that happens all of the time among us.....; while men educated as engineers prefer discussing philosophy.."</p>
+        <span class="quote-author">— The Unreliable Narrator From Bobok</span>
+    </div>
+
+    <p>This philosophical review will nonetheless still be written—by an engineer. Why? Because Fyodor himself was trained as an engineer!</p>
+
+    <hr class="section-divider">
+
+    <p>Fyodor Mikhailovich Dostoevsky was born in 1821 in Moscow, Russia. He grew up in a religious household, heavily influenced by his father, a strict and deeply pious man, and his mother, who nurtured his early love for literature. Dostoevsky attended the Military Engineering Academy in St. Petersburg, where he trained as an engineer —though he is remembered for his contribution to PHILOSOPHY.</p>
+
+    <p>Dostoevsky's debut novel, <em>Poor Folk</em> (1846), was met with immediate acclaim, establishing him as a promising young writer. However, his involvement with the Petrashevsky Circle, a group of intellectuals advocating for liberal and socialist reforms, led to his arrest in 1849. The Tsarist government, suspicious of revolutionary ideas, charged him with conspiracy against the state.</p>
+
+    <p>Dostoevsky and his fellow conspirators were sentenced to death. On December 22, 1849, they were led to the execution ground, blindfolded, and prepared for a firing squad.</p>
+
+    <div class="quote-container">
+        <p class="quote">"Only to live, to live and live! Life, whatever it may be!"</p>
+        <span class="quote-author">—Fyodor Dostoevsky, Crime and Punishment</span>
+    </div>
+
+    <hr class="section-divider">
+
+    <p>This historical context is essential to understanding the depth of <em>Crime and Punishment</em> because it was written by a dead man (my words), or more precisely, a man who had stared into the abyss and returned from it. Though he did not die in the execution, that moment of facing certain death left an indelible mark on him. Dostoevsky's own experience of mock execution, followed by a four-year sentence of hard labor in Siberia, fundamentally altered his worldview. It is not just the punishment he endured that shapes his later works, but the profound psychological transformation that resulted from his confrontation with his mortality. After his release, he went on to write five of his greatest and most influential works, including <em>The Brothers Karamazov</em>, <em>The Idiot</em>, <em>Demons</em>, <em>The House of the Dead</em>, and, of course, <em>Crime and Punishment</em>.</p>
+
+    <p>These works delve deep into the human psyche, grappling with themes of suffering, redemption, moral anguish, and existential doubt—ideas that were undoubtedly shaped by his time in the Siberian labor camps and his brush with the Grim Reaper. His experience of death—however unrealized—imbued his writings with a sense of urgency, complexity, and a profound understanding of the human condition.</p>
+
+    <div class="quote-container">
+        <p class="quote">"Truly great men must, I think, experience great sorrow on the earth."</p>
+        <span class="quote-author">—Fyodor Dostoevsky, Crime and Punishment</span>
+    </div>
+
+    <hr class="section-divider">
+
+    <p>Now, in my opinion, no summary of <em>Crime and Punishment</em> does justice to its complexity, but for context, it’s necessary. Trust me, I’m reluctant to reduce this masterpiece, so let’s keep this brief. Here it is:</p>
+
+    <p><em>Crime and Punishment</em> follows Rodion Raskolnikov, a young, impoverished former student in St. Petersburg who believes that extraordinary individuals have the right to commit crimes for the greater good. He tests this theory by murdering a pawnbroker, Alyona Ivanovna, believing he could use her money for good purposes. However, the crime doesn’t go as planned, and Raskolnikov becomes consumed by guilt and paranoia, struggling with his moral dilemmas.</p>
+
+    <p>As he unravels, he encounters a range of characters, including Sonia, a compassionate prostitute, and Porfiry, a shrewd police detective, Marmeladov, and Zaharovich. The novel delves into themes of suffering, guilt, and redemption, with Raskolnikov ultimately grappling with his conscience and the idea of atonement. His journey ends with a confession, a sentence of exile to Siberia, and the hope for spiritual renewal.</p>
+
+    <p>My absolute favorite thing about the novel is that each character has an arc with emotional weight, which feels independent of Raskolnikov. For instance, Sonia’s suffering as a prostitute highlights the theme of self-sacrifice and compassion, while Marmeladov’s tragic downfall shows the destructive effects of addiction and despair. These aren’t just characters who exist with Raskolnikov; they each embody a different facet of humanity and suffering. Each story is a standalone thread in the tapestry, but all of them contribute to the greater narrative of human suffering and redemption. And I think Dostoevsky himself implies this:</p>
+
+    
+    <div class="quote-container">
+        <p class="quote">"I did not bow down to you, I bowed down to all the suffering of humanity."
+        </p>
+        <span class="quote-author">—Fyodor Dostoevsky, Crime and Punishment</span>
+    </div>
+
+    <hr class="section-divider">
+
+    <p>It's as if Dostoevsky, through Raskolnikov, is acknowledging that his focus isn’t just on the main character’s guilt or salvation, but on the universal nature of human suffering. Every character, in their own way, represents the existential struggles that all of us face, making the novel as much about humanity in general as it is about Raskolnikov’s journey.</p>
+
+    <p>Raskolnikov’s theory of the “extraordinary man” is not just a justification for murder, but a desperate attempt to escape the burden of being human. By elevating himself to a Nietzschean “Übermensch” (though predating Nietzsche, this theme is explored fully in the podcast <em><a href="https://www.philosophizethis.org/podcast/episode-201-transcript-bkx3e-37rkx-bpl83-ysc9b-kkg62-rk7n2-8j6gw-p837t-fwc2c-armek-de5ar-2at4j-l2jz9-7zdw5-7exg8-8b7k4-rk3et"> philosophize This</a></em>, the episode on <em>Crime and Punishment</em>), he tries to rationalize his alienation and resentment toward a world he perceives as chaotic and unjust. His idolization of Napoleon is less about ambition and more about yearning for existential permission to act without guilt—to transcend the moral “herd” he disdains. Yet the flaw in his logic is glaring: he cannot define the “extraordinary” because it is a fiction, a psychological escape hatch from his insignificance.</p>
+
+    <p>When he confesses, “I wanted to dare, and I dared,” he reveals the hollowness of his ideology. The crime was never truly about testing his theory; it was a performative act of self-creation, an attempt to become extraordinary through violence. But the act backfires because it forces him to confront what he shares with the “ordinary”: a conscience. His physical illness after the murder, his paranoia, and his compulsive returns to the crime scene all betray his body’s rebellion against his mind’s delusions. He is, as Dostoevsky often implies, a soul-divided—split (“Raskolnikov” derives from <em>raskol</em>, meaning “schism” in Russian) between his cold intellectualism and his latent empathy, which Sonia embodies.</p>
+
+    <p>His eventual breakdown in Siberia—where he “blends in” with the other prisoners—is not just acceptance of ordinariness, but a surrender to the relief of belonging. The rigid hierarchy he constructed (extraordinary vs. ordinary) collapses under the weight of shared suffering. In the epilogue, when he weeps at Sonia’s feet, it is a symbolic rejection of his self-imposed isolation. He realizes that “extraordinariness” is not about transcending morality, but about embracing the vulnerability that connects him to others. His redemption begins not when he abandons his theory, but when he stops seeing himself as separate from those he once deemed beneath him.</p>
+
+    <p>In this way, Dostoevsky critiques not just radical individualism, but the danger of any ideology that dehumanizes the “other”—whether through intellectual arrogance, social class, or moral exceptionalism. Raskolnikov’s journey is a parable for the futility of trying to outrun one’s humanity and the transformative power of humility.</p>
+
+    <div class="easter-egg-container" onclick="this.classList.toggle('revealed')">
+        <div class="easter-egg-trigger">
+            *whispers* Psst....
+        </div>
+        <div class="easter-egg-content">
+            <p>You are really going to make me say it? You are really going to make me criticize my hero? Okay then, here it is:</p>
+            
+            <p>Dostoevsky could be unbearably sentimental. At times, his moral resolutions feel almost too neat, his saints too saintly, his sinners too conveniently redeemed. He wrestled with the chaos of the human soul, but sometimes, just sometimes, he gave in to the temptation of tying it all up with a bow—like he couldn't bear to leave us in the abyss for too long.</p>
+            
+            <p>There, I said it. Now let's never speak of this again.</p>
+        </div>
+    </div>
+
+
+    <div class="quote-container">
+        <p class="quote">“People with new ideas, people with the faintest capacity for saying something new, are extremely few in number, extraordinarily so, in fact.”</p>
+        <span class="quote-author">—Fyodor Dostoevsky, Crime and Punishment</span>
+    </div>
+    <hr class="section-divider">
+
+    <p>In the spirit of making everyone ordinary, I will conclude by exploring each of the characters and the experiences I believe them to imbue.</p>
+
+    <div class="character-section">
+        <h2>Rodion Raskolnikov – Guilt, Morality, and Redemption</h2>
+        <div class="quote-container">
+            <p class="quote">I wanted to find out what it was like. What it feels like to commit a murder. I wanted to see if I was a man or a bug.</p>
+            <span class="quote-author">—Fyodor Dostoevsky, Crime and Punishment</span>
+        </div>
+        <p>Raskolnikov's chilling confession reveals his obsession with transcending human frailty. His "extraordinary man" theory masks a deeper fear of insignificance, driving him to murder a perverse experiment in self-definition. Yet his intellectual bravado crumbles under the weight of guilt, exposing the fragility of his moral grandstanding. His eventual redemption—through suffering and Sonia's compassion—underscores Dostoevsky's belief that true humanity lies not in superiority, but in humility and connection.</p>
+    </div>
+
+    <hr class="section-divider">
+
+    <div class="character-section">
+        <h2>Sonia Marmeladov – Sacrifice, Compassion, and Redemption</h2>
+        <div class="quote-container">
+            <p class="quote">It's not the sin, it's the suffering. It's that the more a person suffers, the more he is redeemed.</p>
+            <span class="quote-author">—Fyodor Dostoevsky, Crime and Punishment</span>
+        </div>
+        <p>Sonia embodies Dostoevsky's vision of redemptive love. A sex worker scorned by society, she becomes the novel's moral compass, her quiet endurance and faith contrasting with Raskolnikov's arrogance. Her willingness to bear suffering—both her own and Raskolnikov's—transforms her into a Christ-like figure. Her quote reflects Dostoevsky's conviction that salvation arises not from intellectual posturing, but from empathy and shared pain.</p>
+    </div>
+
+    <hr class="section-divider">
+
+    <div class="character-section">
+        <h2>Fyodor Dmítrich Marmeladov – Despair and the Consequences of Addiction</h2>
+        <div class="quote-container">
+            <p class="quote">I am a man who is incapable of loving. I am a man who is incapable of loving his family.</p>
+            <span class="quote-author">—Fyodor Dostoevsky, Crime and Punishment</span>
+        </div>
+        <p>Marmeladov's self-loathing epitomizes the spiral of addiction and moral decay. His tragic awareness of his failures—abandoning his family for a drink—highlights the destructive power of despair. Dostoevsky uses him to critique societal neglect of the poor, but also to expose how self-pity can paralyze the soul. Marmeladov's death in the gutter serves as a grim counterpoint to Sonia's resilience, illustrating two responses to suffering: surrender and transcendence.</p>
+    </div>
+
+    <hr class="section-divider">
+    <div class="character-section">
+        <h2>Dunya Raskolnikova – Sacrifice, Loyalty, and Moral Strength</h2>
+        <div class="quote-container">
+            <p class="quote">I would have sacrificed my life for you, I would have given my life for you, but you are mistaken in thinking that I would sacrifice my honor.</p>
+            <span class="quote-author">—Fyodor Dostoevsky, Crime and Punishment</span>
+        </div>
+        <p>Dunya's fierce loyalty to her brother clashes with her unyielding moral code. Her refusal to compromise her dignity—even under pressure from Svidrigailov or Raskolnikov's manipulations—positions her as a foil to the novel's male antiheroes. Unlike Raskolnikov, who rationalizes moral shortcuts, Dunya upholds integrity as non-negotiable, embodying Dostoevsky's argument that true strength lies in ethical consistency, not brute force.</p>
+    </div>
+
+    <hr class="section-divider">
+    <div class="character-section">
+        <h2>Porfiry Petrovich – Intellect, Justice, and Psychological Insight</h2>
+        <div class="quote-container">
+            <p class="quote">What do you mean by a 'moral' person? What is it, a moral person?</p>
+            <span class="quote-author">—Fyodor Dostoevsky, Crime and Punishment</span>
+        </div>
+        <p>Porfiry's probing questions dismantle Raskolnikov's intellectual armor. As a detective, he represents a humane form of justice, prioritizing psychological truth over punishment. His quote challenges Raskolnikov's binary morality, suggesting that ethics cannot be reduced to abstract theories. Porfiry's cat-and-mouse interrogations expose the paradox of Raskolnikov's "extraordinary man" delusion: true moral clarity requires acknowledging one's limitations, not denying them.</p>
+    </div>
+
+    <hr class="section-divider">
+    <div class="character-section">
+        <h2>Arkady Ivanovich Svidrigailov – Moral Corruption, Nihilism, and Despair</h2>
+        <div class="quote-container">
+            <p class="quote">I don't believe in the law. I don't believe in anything, nothing in the world...</p>
+            <span class="quote-author">—Fyodor Dostoevsky, Crime and Punishment</span>
+        </div>
+        <p>Svidrigailov is Raskolnikov's dark double, embodying the logical endpoint of nihilism. His rejection of all moral and spiritual frameworks leads to a life of depravity and existential emptiness. Unlike Raskolnikov, who clings to the illusion of purpose, Svidrigailov's suicide reveals the void at the heart of a godless worldview. His quote is a warning: without belief in something, even flawed humanity dissolves into self-destruction.</p>
+    </div>
+
+    <hr class="section-divider">
+    <div class="character-section">
+        <h2>Lizaveta Ivanovna – Innocence, Suffering, and Tragic Fate</h2>
+        <div class="quote-container">
+            <p class="quote">It is better to be poor and suffer than to have everything and lose everything.</p>
+            <span class="quote-author">—Fyodor Dostoevsky, Crime and Punishment</span>
+        </div>
+        <p>Lizaveta's quiet resignation to hardship makes her murder the novel's most visceral indictment of Raskolnikov's ideology. Her death—collateral damage in his quest for "greatness"—symbolizes the human cost of intellectual hubris. Her quote, steeped in meek acceptance, contrasts sharply with Raskolnikov's grandiosity, reminding readers that true nobility lies not in ambition, but in enduring suffering with dignity.</p>
+    </div>
+
+
+    <footer style="text-align: center; margin-top: 3rem; padding: 1rem; background-color: #f1f1f1; border-top: 1px solid #ddd; color: #666; font-size: 0.9rem;"></footer>
+        Fanny Fushayi 2025
+    </footer>
+</body>
+</html>
