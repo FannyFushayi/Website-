@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 2 Machine Learning</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --code-bg: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            transition: background-color 0.3s ease;
+        }
+        
+        .dark-mode {
+            --primary: #1a252f;
+            --secondary: #2980b9;
+            --light: #2c3e50;
+            --dark: #ecf0f1;
+            --code-bg: #34495e;
+            background-color: var(--light);
+            color: var(--dark);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.2;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        main {
+            padding: 50px 0;
+        }
+        
+        section {
+            margin-bottom: 60px;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: var(--primary);
+        }
+        
+        .dark-mode h2 {
+            color: var(--dark);
+        }
+        
+        p {
+            margin-bottom: 20px;
+        }
+        
+        .lib-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .lib-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dark-mode .lib-card {
+            background-color: var(--primary);
+        }
+        
+        .lib-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+        
+        .lib-card h3 {
+            margin-bottom: 15px;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .lib-icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .lib-example {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 15px;
+            background: var(--code-bg);
+            border-radius: 5px;
+            padding: 0 15px;
+        }
+        
+        .lib-example.show {
+            max-height: 500px;
+            padding: 15px;
+        }
+        
+        .projects {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .dark-mode .project-card {
+            background-color: var(--primary);
+        }
+        
+        .project-header {
+            padding: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .project-title {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        
+        .project-body {
+            padding: 25px;
+        }
+        
+        .project-viz {
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            height: 300px;
+            background-color: var(--code-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .viz-placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .tech-used {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .tech-tag {
+            background-color: var(--secondary);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .social-link {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-link:hover {
+            color: var(--secondary);
+        }
+        
+        .mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--secondary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+            border: none;
+            font-size: 1.2rem;
+        }
+        
+        .mode-toggle:hover {
+            transform: scale(1.1);
+        }
+        
+        .chart-container {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .data-point {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .data-point:hover {
+            filter: brightness(1.2);
+        }
+        
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        @media (max-width: 768px) {
+            .lib-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .project-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-bg" id="data-particles"></div>
+        <div class="container header-content">
+            <nav>
+                <div class="logo"><a href="index.html" style="color: var(--accent); font-size: 28px;">HOME</a></div>
+                <div class="nav-links">
+                    <a href="#tools">Tools</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#insights">Insights</a>
+                </div>
+            </nav>
+            <h1>Part 2: Machine Learning </h1>
+            <p class="subtitle">A look at the classical machine learning algorithms with Scikit-learn</p>
+        </div>
+    </header>
+    
+    <main class="container">
+         
+        <section id="intro">
+            <h2>Introduction</h2>
+            <p>Following last week’s data science exploration, the next logical step was to dive into machine learning—specifically, its classical foundations. While artificial intelligence encompasses a broad range of techniques (most of the AI methods you interact with include complex deep neural networks that are far, far more complex), this post focuses purely on traditional machine learning methods.</p>
+            <p>Rather than deep learning—which will get its dedicated post—I explored fundamental algorithms that have shaped the field. These classical approaches form the backbone of many modern AI systems and are essential for understanding how machines can recognize patterns, make predictions, and classify data. This blog provides a high-level overview, with a more detailed breakdown available on my Machine Learning Projects page.</p>
+            <ul>
+                <li><strong>Scikit-learn</strong>: Gained proficiency in using Scikit-learn for implementing classical machine learning algorithms.</li>
+                <li><strong>Model Evaluation Metrics</strong>: Learned to evaluate models using metrics like accuracy, precision, recall, and F1-score.</li>
+                <li><strong>Feature Engineering</strong>: Developed skills in creating and selecting meaningful features to improve model performance.</li>
+                <li><strong>Natural Language Processing</strong>: Explored techniques for processing and analyzing textual data.</li>
+                <li><strong>Problem Solving</strong>: Enhanced problem-solving abilities by tackling real-world machine learning challenges.</li>
+                <li><strong>Statistical Methods</strong>: Applied statistical techniques to analyze data and validate model assumptions.</li>
+            </ul>
+        </section>
+        
+        <section id="tools">
+            <h2>Essential Tools & Libraries</h2>
+            <p>This section showcases the tools and libraries you use in your work. Click on each card to see sample code snippets:</p>
+            
+            <div class="lib-cards">
+            <div class="lib-card" data-lib="scikit-learn">
+                <h3><div class="lib-icon">SK</div>Scikit-learn</h3>
+                <p>The core library for machine learning, used for regression, classification, and ensemble methods like random forests. It also provided utilities for feature scaling, model evaluation, and pipeline creation.</p>
+                <div class="lib-example">
+                <code>
+    # Example code for Scikit-learn<br><br>
+    from sklearn.ensemble import RandomForestClassifier<br>
+    from sklearn.model_selection import train_test_split<br><br>
+    # Split data<br>
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)<br><br>
+    # Train model<br>
+    model = RandomForestClassifier(n_estimators=100, random_state=42)<br>
+    model.fit(X_train, y_train)<br><br>
+    # Evaluate<br>
+    accuracy = model.score(X_test, y_test)<br>
+    print(f"Accuracy: {accuracy}")
+                </code>
+                </div>
+            </div>
+            
+            <div class="lib-card" data-lib="pandas">
+                <h3><div class="lib-icon">PD</div>Pandas</h3>
+                <p>Essential for data manipulation, cleaning, and exploratory data analysis (EDA). It was particularly useful in handling datasets like LendingClub and Yelp reviews.</p>
+                <div class="lib-example">
+                <code>
+    # Example code for Pandas<br><br>
+    import pandas as pd<br><br>
+    # Load dataset<br>
+    df = pd.read_csv('data.csv')<br><br>
+    # Inspect data<br>
+    print(df.head())<br><br>
+    # Clean data<br>
+    df.dropna(inplace=True)
+                </code>
+                </div>
+            </div>
+            
+            <div class="lib-card" data-lib="numpy">
+                <h3><div class="lib-icon">NP</div>NumPy</h3>
+                <p>Used for numerical operations, especially when working with arrays and performing mathematical computations in preprocessing steps.</p>
+                <div class="lib-example">
+                <code>
+    # Example code for NumPy<br><br>
+    import numpy as np<br><br>
+    # Create array<br>
+    arr = np.array([1, 2, 3, 4, 5])<br><br>
+    # Perform operations<br>
+    mean = np.mean(arr)<br>
+    print(f"Mean: {mean}")
+                </code>
+                </div>
+            </div>
+            
+            <div class="lib-card" data-lib="matplotlib-seaborn">
+                <h3><div class="lib-icon">MS</div>Matplotlib & Seaborn</h3>
+                <p>Key visualization tools for plotting relationships in the data, checking distributions, and interpreting model results.</p>
+                <div class="lib-example">
+                <code>
+    # Example code for Matplotlib & Seaborn<br><br>
+    import matplotlib.pyplot as plt<br>
+    import seaborn as sns<br><br>
+    # Plot distribution<br>
+    sns.histplot(data, kde=True)<br>
+    plt.show()
+                </code>
+                </div>
+            </div>
+            
+            <div class="lib-card" data-lib="nltk-string">
+                <h3><div class="lib-icon">NL</div>NLTK & String Library</h3>
+                <p>For natural language processing, NLTK was used to remove stop words and preprocess text, while Python’s string library helped with handling punctuation.</p>
+                <div class="lib-example">
+                <code>
+    # Example code for NLTK<br><br>
+    from nltk.corpus import stopwords<br>
+    import string<br><br>
+    # Remove stop words and punctuation<br>
+    text = "Sample text for NLP preprocessing."<br>
+    stop_words = set(stopwords.words('english'))<br>
+    cleaned_text = ' '.join([word for word in text.split() if word.lower() not in stop_words and word not in string.punctuation])<br>
+    print(cleaned_text)
+                </code>
+                </div>
+            </div>
+            
+            <div class="lib-card" data-lib="tf-idf">
+                <h3><div class="lib-icon">TF</div>TF-IDF Vectorization</h3>
+                <p>A crucial technique for converting text data into numerical features for the NLP project.</p>
+                <div class="lib-example">
+                <code>
+    # Example code for TF-IDF<br><br>
+    from sklearn.feature_extraction.text import TfidfVectorizer<br><br>
+    # Vectorize text<br>
+    vectorizer = TfidfVectorizer()<br>
+    X = vectorizer.fit_transform(corpus)<br>
+    print(X.toarray())
+                </code>
+                </div>
+            </div>
+            
+            <div class="lib-card" data-lib="naive-bayes">
+                <h3><div class="lib-icon">NB</div>Naïve Bayes Classifier</h3>
+                <p>Applied for text classification in the NLP project due to its efficiency in handling text-based tasks.</p>
+                <div class="lib-example">
+                <code>
+    # Example code for Naïve Bayes<br><br>
+    from sklearn.naive_bayes import MultinomialNB<br><br>
+    # Train model<br>
+    model = MultinomialNB()<br>
+    model.fit(X_train, y_train)<br><br>
+    # Predict<br>
+    predictions = model.predict(X_test)<br>
+    print(predictions)
+                </code>
+                </div>
+            </div>
+            
+            <div class="lib-card" data-lib="pipeline">
+                <h3><div class="lib-icon">PL</div>Pipeline (Scikit-learn)</h3>
+                <p>Used to streamline preprocessing and modeling steps, making it easier to test different configurations without repetitive code.</p>
+                <div class="lib-example">
+                <code>
+    # Example code for Pipeline<br><br>
+    from sklearn.pipeline import Pipeline<br>
+    from sklearn.preprocessing import StandardScaler<br>
+    from sklearn.ensemble import RandomForestClassifier<br><br>
+    # Create pipeline<br>
+    pipeline = Pipeline([<br>
+        ('scaler', StandardScaler()),<br>
+        ('model', RandomForestClassifier())<br>
+    ])<br><br>
+    # Fit pipeline<br>
+    pipeline.fit(X_train, y_train)
+                </code>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Capstone Projects Overview</h2>
+            <p>Over the past week, I worked on capstone projects using the Scikit-learn library. In the following sections, I’ll present practical examples of how these algorithms were applied in my capstone projects.</p>
+            
+            <p>Linear regression, a foundational model, predicts numerical outcomes by establishing a linear relationship between variables. Logistic regression extends this approach for binary classification by applying a sigmoid function to estimate probabilities.</p>
+            
+            <p>Supervised learning includes techniques like K-Nearest Neighbors (KNN), a non-parametric method that classifies or predicts based on the proximity of data points in the feature space. Decision Trees and Random Forests are tree-based models used for classification and regression, with decision trees employing a hierarchical structure and random forests enhancing accuracy through ensemble learning.</p>
+            
+            <p>Support Vector Machines (SVMs) are powerful classification models that identify an optimal hyperplane to separate data in high-dimensional spaces.</p>
+            
+            <p>Unsupervised learning includes methods like K-Means Clustering, which groups data into clusters based on similarity, and Principal Component Analysis (PCA), a dimensionality reduction technique used to simplify datasets while preserving essential information.</p>
+            
+            <p>These classical models can also be applied in Natural Language Processing (NLP) for tasks such as sentiment analysis and text classification.</p>
+        </section>
+        
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <div class="projects">
+            <div class="project-card">
+                <div class="project-header">
+                <h3 class="project-title">Customer Spending Analysis</h3>
+                <div>Data set: NYC Online Clothing Company</div>
+                </div>
+                <div class="project-body">
+                <p>Analyzed customer data to determine whether the business should prioritize its mobile app or website. Using Linear Regression, I explored spending patterns and correlations between factors like in-store consultations, app usage, and online orders to provide actionable insights.</p>
+                
+                <p><strong>Key Findings:</strong></p>
+                <ul>
+                    <li>Identified a strong correlation between app usage and total spending.</li>
+                    <li>In-store consultations were a significant predictor of high-value customers.</li>
+                    <li>Website usage showed diminishing returns compared to mobile app engagement.</li>
+                </ul>
+                
+                <p>For detailed analysis and complete code, visit the <a href="https://github.com/FannyFushayi/Classical-Machine-Learning-Algorithms-/blob/main/Linear%20Regression%20on%20Ecommerce%20Customer.ipynb">Customer Spending Analysis page</a>.</p>
+                
+                <div class="tech-used">
+                    <div class="tech-tag">Python</div>
+                    <div class="tech-tag">Pandas</div>
+                    <div class="tech-tag">Scikit-learn</div>
+                    <div class="tech-tag">Linear Regression</div>
+                </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-header">
+                <h3 class="project-title">Ad Click Prediction</h3>
+                <div>Online Advertising</div>
+                </div>
+                <div class="project-body">
+                <p>Built a model to predict whether users would click on ads based on their online activity. This classification problem used Logistic Regression, leveraging features such as user demographics, internet usage, and ad metadata to evaluate ad targeting strategies.</p>
+                
+                <p><strong>Key Findings:</strong></p>
+                <ul>
+                    <li>Achieved 85% accuracy in predicting ad clicks.</li>
+                    <li>Identified key demographic groups with higher click-through rates.</li>
+                    <li>Optimized ad targeting strategies based on user behavior patterns.</li>
+                </ul>
+                
+                <p>For detailed analysis and complete code, visit the <a href="https://github.com/FannyFushayi/Classical-Machine-Learning-Algorithms-/blob/main/Logistic%20Regression%20on%20Advertising%20Data.ipynb">Ad Click Prediction page</a>.</p>
+                
+                <div class="tech-used">
+                    <div class="tech-tag">Python</div>
+                    <div class="tech-tag">Scikit-learn</div>
+                    <div class="tech-tag">Logistic Regression</div>
+                    <div class="tech-tag">Data Visualization</div>
+                </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-header">
+                <h3 class="project-title">Loan Repayment Prediction</h3>
+                <div>Financial Analysis</div>
+                </div>
+                <div class="project-body">
+                <p>Used LendingClub data to predict whether borrowers would repay their loans in full. Employing a Random Forest classification model, I incorporated features like credit scores, income levels, debt-to-income ratios, and payment histories to simulate decision-making for lending investments.</p>
+                
+                <p><strong>Key Findings:</strong></p>
+                <ul>
+                    <li>Achieved 90% accuracy in predicting loan repayment outcomes.</li>
+                    <li>Identified high-risk borrowers based on debt-to-income ratios.</li>
+                    <li>Provided actionable insights for improving lending strategies.</li>
+                </ul>
+                
+                <p>For detailed analysis and complete code, visit the <a href="https://github.com/FannyFushayi/Classical-Machine-Learning-Algorithms-/blob/main/Decision%20Tree%20on%20Loan%20Data.ipynb">Loan Repayment Prediction page</a>.</p>
+                
+                <div class="tech-used">
+                    <div class="tech-tag">Python</div>
+                    <div class="tech-tag">Scikit-learn</div>
+                    <div class="tech-tag">Random Forest</div>
+                    <div class="tech-tag">Feature Engineering</div>
+                </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-header">
+                <h3 class="project-title">Movie Recommender System</h3>
+                <div>Collaborative Filtering</div>
+                </div>
+                <div class="project-body">
+                <p>Explored Recommender Systems through a detailed walkthrough focused on movie recommendations. This exercise introduced me to advanced techniques such as collaborative filtering and matrix factorization, though it came with challenges due to its reliance on linear algebra and structured datasets.</p>
+                
+                <p><strong>Key Findings:</strong></p>
+                <ul>
+                    <li>Learned the fundamentals of collaborative filtering.</li>
+                    <li>Implemented a basic recommendation engine using matrix factorization.</li>
+                    <li>Gained insights into the challenges of sparse datasets.</li>
+                </ul>
+                
+                <p>For detailed analysis and complete code, visit the <a href="https://github.com/FannyFushayi/Classical-Machine-Learning-Algorithms-/blob/main/Advance_Recommender.ipynb">Movie Recommender System page</a>.</p>
+                
+                <div class="tech-used">
+                    <div class="tech-tag">Python</div>
+                    <div class="tech-tag">Pandas</div>
+                    <div class="tech-tag">Matrix Factorization</div>
+                    <div class="tech-tag">Collaborative Filtering</div>
+                </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-header">
+                <h3 class="project-title">Sentiment Analysis on Yelp Reviews</h3>
+                <div>Natural Language Processing</div>
+                </div>
+                <div class="project-body">
+                <p>Classified Yelp reviews as 1-star or 5-star based on their text content. Using NLP methods, I employed classification models that utilized word frequency, sentiment analysis, and text vectorization techniques. By building a sentiment classifier with pipeline methods, I ensured efficiency and scalability in processing textual data.</p>
+                
+                <p><strong>Key Findings:</strong></p>
+                <ul>
+                    <li>Achieved 88% accuracy in classifying Yelp reviews.</li>
+                    <li>Identified key sentiment indicators in textual data.</li>
+                    <li>Streamlined preprocessing and modeling using Scikit-learn pipelines.</li>
+                </ul>
+                
+                <p>For detailed analysis and complete code, visit the <a href="https://github.com/FannyFushayi/Classical-Machine-Learning-Algorithms-/blob/main/NLP%20Project%20Yelp%20Reviews.ipynb">Sentiment Analysis page</a>.</p>
+                
+                <div class="tech-used">
+                    <div class="tech-tag">Python</div>
+                    <div class="tech-tag">Scikit-learn</div>
+                    <div class="tech-tag">NLP</div>
+                    <div class="tech-tag">TF-IDF</div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </section>
+        
+        <section id="insights">
+            <h2>Key Insights & Future Directions</h2>
+            <p>Throughout these projects, I encountered several challenges. For instance, in the NLP project, handling text preprocessing efficiently was tricky—removing stop words helped improve accuracy, but too much cleaning risked losing valuable context. Choosing the right machine learning model was another challenge, especially in classification tasks where trade-offs between interpretability and accuracy had to be considered. Additionally, working with real-world data, particularly in the LendingClub project, required extensive data cleaning due to missing values and imbalanced classes.</p>
+            
+            <p>However, these challenges provided valuable learning experiences, deepening my understanding of data preparation, model selection, and feature engineering.</p>
+            
+            <p>Looking ahead, I plan to explore advanced deep learning techniques, such as neural networks and transformers, to tackle more complex problems. Additionally, I aim to enhance my skills in deploying machine learning models to production environments and working with big data technologies.</p>
+            
+            <p>If you're interested in collaborating or learning more about my work, feel free to reach out or explore my complete portfolio!</p>
+        </section>
+
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 Fanny Fushayi | Engineer </p>
+            
+            <!-- Optional: Add social links -->
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/fanny-fushayi-529880235" class="social-link">LinkedIn</a>
+                <a href="https://github.com/FannyFushayi" class="social-link">GitHub</a>
+
+            </div>
+        </div>
+    </footer>
+    
+    <button class="mode-toggle" id="mode-toggle">
+        <span id="mode-icon">🌙</span>
+    </button>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <script>
+        // Library card interactivity
+        document.querySelectorAll('.lib-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const example = this.querySelector('.lib-example');
+                example.classList.toggle('show');
+            });
+        });
+        
+        // Dark mode toggle
+        const modeToggle = document.getElementById('mode-toggle');
+        const modeIcon = document.getElementById('mode-icon');
+        
+        modeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                modeIcon.textContent = '☀️';
+                updateChartColors(true);
+            } else {
+                modeIcon.textContent = '🌙';
+                updateChartColors(false);
+            }
+        });
+        
+        // Animated header background
+        function createDataParticles() {
+            const canvas = document.createElement('canvas');
+            canvas.width = window.innerWidth;
+            canvas.height = document.querySelector('header').offsetHeight;
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            document.getElementById('data-particles').appendChild(canvas);
+            
+            const ctx = canvas.getContext('2d');
+            const particles = [];
+            
+            for (let i = 0; i < 50; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 3 + 1,
+                    speedX: Math.random() * 2 - 1,
+                    speedY: Math.random() * 2 - 1,
+                    color: `rgba(255, 255, 255, ${Math.random() * 0.5 + 0.1})`
+                });
+            }
+            
+            function drawParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                particles.forEach(p => {
+                    ctx.fillStyle = p.color;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    // Connect nearby particles
+                    particles.forEach(p2 => {
+                        const dx = p.x - p2.x;
+                        const dy = p.y - p2.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < 100) {
+                            ctx.strokeStyle = `rgba(255, 255, 255, ${0.15 - distance/1000})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.beginPath();
+                            ctx.moveTo(p.x, p.y);
+                            ctx.lineTo(p2.x, p2.y);
+                            ctx.stroke();
+                        }
+                    });
+                    
+                    p.x += p.speedX;
+                    p.y += p.speedY;
+                    
+                    if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+                    if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+                });
+                
+                requestAnimationFrame(drawParticles);
+            }
+            
+            drawParticles();
+        }
+        
+        // Initialize chart placeholders if needed
+        function updateChartColors(darkMode) {
+            // This function will update chart colors when implemented
+            // You can customize this for your specific charts
+        }
+        
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            createDataParticles();
+            
+            // Add animation on scroll
+            const sections = document.querySelectorAll('section');
+            const fadeInElements = document.querySelectorAll('.lib-card, .project-card');
+
+            function checkScroll() {
+                const triggerBottom = window.innerHeight * 0.8;
+                
+                fadeInElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    
+                    if (elementTop < triggerBottom) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+                
+                sections.forEach(section => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    
+                    if (sectionTop < triggerBottom) {
+                        section.classList.add('active');
+                    }
+                });
+            }
+
+            // Initial animation styles
+            fadeInElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            });
+
+            // Add CSS for section animation
+            const style = document.createElement('style');
+            style.innerHTML = `
+                section {
+                    opacity: 0;
+                    transform: translateY(30px);
+                    transition: opacity 0.8s ease, transform 0.8s ease;
+                }
+                
+                section.active {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Check scroll on page load
+            checkScroll();
+
+            // Check scroll position on scroll
+            window.addEventListener('scroll', checkScroll);
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
