@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silence Between Words</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.7;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            flex-grow: 1;
+            animation: fadeIn 2s ease-in;
+        }
+        
+        header {
+            margin-bottom: 40px;
+            text-align: center;
+            opacity: 0.8;
+        }
+        
+        h1 {
+            font-weight: normal;
+            font-size: 2.2rem;
+            color: #444;
+            margin-bottom: 10px;
+        }
+        
+        .date {
+            color: #888;
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+        
+        .content {
+            position: relative;
+        }
+        
+        p {
+            margin-bottom: 25px;
+        }
+        
+        em {
+            color: #666;
+        }
+        
+        .signature {
+            font-style: italic;
+            text-align: right;
+            margin-top: 60px;
+            color: #666;
+        }
+        
+        .paper-texture {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.03"><rect width="100%" height="100%" fill="none" stroke="%23000" stroke-width="0.5"/></svg>');
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .strike {
+            text-decoration: line-through;
+            color: #999;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8rem;
+            color: #aaa;
+            border-top: 1px solid #eee;
+        }
+        
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.2em;
+            background-color: #333;
+            margin-left: 2px;
+            vertical-align: middle;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .unfinished {
+            color: #aaa;
+            font-style: italic;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Uninspired 1
+            </h1>
+            <div class="date">April 7, 2025</div>
+        </header>
+        
+        <div class="content">
+            <div class="paper-texture"></div>
+            
+            <p>This week was supposed to be 'non-educational' and thought-provoking and personal. <i>But the words didn't come</i>— well they did, 3,000 of them, just not in the correct order.</p>
+            
+            <p>Not because there's nothing to say—but because there's too much I haven't made sense of yet. The ideas are scattered, the rhythm is off, every sentence feels like it's wearing someone else's clothes, every word is misspelled, and every emotion feels borrowed.</p>
+            
+            <p>I tried. I pulled out old drafts, entertained bold openings, and whispered dramatic endings into my coffee. I built a web page. I tore it down. I stitched together poetry and critique and waited for a spark— it never lit.</p>
+            
+            <p>So this week, I'm not writing to inform, to provoke, or even to finish anything. I'm writing to say: I'm here. Tired, maybe. Quiet, sure. Uninspired, a little. But still here.</p>
+            
+            <p>And I hope, that's enough.</p>
+            
+            <div class="signature">—Fanny</div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="unfinished">2025 Fanny<span class="cursor"></span></div>
+    </footer>
+    
+    <script>
+        // Slowly reveal each paragraph with a slight delay
+        document.addEventListener('DOMContentLoaded', function() {
+            const paragraphs = document.querySelectorAll('p, .signature');
+            
+            paragraphs.forEach((paragraph, index) => {
+                paragraph.style.opacity = '0';
+                paragraph.style.transform = 'translateY(10px)';
+                paragraph.style.transition = 'opacity 1s ease, transform 1s ease';
+                
+                setTimeout(() => {
+                    paragraph.style.opacity = '1';
+                    paragraph.style.transform = 'translateY(0)';
+                }, 400 + (index * 300));
+            });
+            
+            // Add subtle text animation to the emphasized text
+            const emphasizedText = document.querySelector('em');
+            emphasizedText.innerHTML = emphasizedText.textContent.split('').map(char => 
+                `<span style="display:inline-block; animation: fadeIn ${Math.random() * 2 + 1}s;">${char}</span>`
+            ).join('');
+            
+            // Add a subtle hover effect to the page
+            document.querySelector('.container').addEventListener('mousemove', function(e) {
+                const shadow = `${(e.pageX - this.offsetLeft - this.offsetWidth/2)/50}px ${(e.pageY - this.offsetTop - this.offsetHeight/2)/50}px 15px rgba(0,0,0,0.03)`;
+                document.querySelector('.content').style.boxShadow = shadow;
+            });
+        });
+    </script>
+</body>
+</html>
