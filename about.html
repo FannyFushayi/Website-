@@ -1,561 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fanny Fushayi</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Fanny</title>
+  <style>
+    body {
+      background-color: #0a1a2f; /* Navy Blue */
+      color: #f4f4f4;
+      font-family: 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
 
-        :root {
-            --primary: #04162b;
-            --secondary: #85aad4;
-            --accent: #ffd700;
-            --dark: #141212;
-            --light: #ffffff;
-        }
+    h1, h2 {
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
 
-        body {
-    background: linear-gradient(15deg, #a6a0cc, #ffffff); /* Slightly angled gradient */
-    color: var(--dark);
-    line-height: 1.6;
-    overflow-x: hidden;
-}
-        /* turned into a photo */
+    a {
+      color: #8ab4f8;
+      text-decoration: none;
+      border-bottom: 1px solid #8ab4f8;
+    }
 
+    a:hover {
+      color: #aaccff;
+      border-bottom: 1px dashed #aaccff;
+    }
 
-        nav {
-            position: fixed;
-            width: 100%;
-            top: 10;
-            background: rgba(27, 31, 70, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-            z-index: 100;
-        }
+    .footer {
+      margin-top: 6rem;
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
 
-        .nav-content {
-            max-width: 1200px;
-            margin:0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: left;
-        }
+    .section {
+      margin-bottom: 3rem;
+    }
 
-        .logo {
-            font-weight: 500;
-            color: rgb(255, 255, 255);
-            display: flex; /* Use flex for alignment */
-            justify-content: flex-start; /* Align items to the start (left) */
-            align-items: center; /* Center items vertically if needed */
-            gap: 0;
-        }
+    ul {
+      list-style: square;
+      margin-left: 1.5rem;
+    }
 
+    .links {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
 
-        .logo-symbol {
-            width: 24px;
-            height: 24px;
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
+    .links a {
+      padding: 0.5rem 1rem;
+      border: 1px solid #8ab4f8;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
 
-        .logo-symbol::before {
-            content: '⚡';
-            font-size: 12px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: underline;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: right;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .hero {
-            min-height: 100vh; /* Cover the entire viewport height */
-            display: flex;
-            flex-direction: column; /* Align items vertically */
-            /* Remove justify-content: center; */
-            padding: 6rem 2rem 2rem;
-            position: relative;
-            background: linear-gradient(to bottom, #abb6c2, #ffffff); /* Subtle gradient */
-            overflow: hidden;
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1.0fr 0.6fr;
-            gap: 1px;
-            align-items: center;
-         
-        }
-
-        .hero-text {
-            position: relative;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-        }
-
-        .highlight {
-            color: var(--primary);
-        }
-
-        .subtitle {
-            font-size: 1.25rem;
-            color: #666;
-            margin-bottom: 2rem;
-            max-width: 600px;
-        }
-
-        .hero-visual {
-            position: relative;
-            aspect-ratio: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .cta-button {
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .primary-button {
-            background: var(--primary);
-            color: white;
-        }
-
-        .primary-button:hover {
-            background: #357abd;
-            transform: translateY(-2px);
-        }
-
-        .secondary-button {
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-
-        .secondary-button:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .skills {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .skill-tag {
-            background: var(--secondary);
-            color: var(--primary);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .skill-tag::before {
-            content: '';
-            font-size: 0.8rem;
-        }
-
-        @media (max-width: 1024px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-visual {
-                order: -1;
-                max-width: 500px;
-                margin: 0 auto;
-            }
-
-            .skills, .cta-buttons {
-                justify-content: center;
-            }
-
-            h1 {
-                font-size: 2.5rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                gap: 1rem;
-            }
-
-            .hero {
-                padding-top: 5rem;
-            }
-
-            .subtitle {
-                font-size: 1.1rem;
-            }
-        }
-    </style>
+    .links a:hover {
+      background-color: #132b45;
+      color: #ffffff;
+      border-color: #aaccff;
+    }
+  </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-content">
-            <a href="index.html" class="logo">
-                <span>Fanny Fushayi</span>
-            </a>
-            <div class="nav-links">
-                <a href="Projects.html">Projects</a>
-                <a href="blog.html">Blog</a>
-                <a href="Contact.html">Contact</a>
-            </div>
-        </div>
-    </nav>
+  <div class="section">
+    <h1>About Me</h1>
+    <p><strong>Hi, I’m Fanny —</strong><br>
+      an Electrical Engineering graduate, a writer (wannabe at best), and an explorer at the intersection of technology and meaning.
+    </p>
+    <p>
+      By day, I’m knee-deep in power systems, energy systems, and the evolving logic of machines.<br>
+      By night (and let’s be honest, often by day too), I write, and read — blending ideas from literature, AI, and the human condition.
+    </p>
+    <p>
+      This site is both a portfolio and a playground.<br>
+      One week you’ll find deep dives into tech: control systems, machine learning models, or quantum theory breakdowns.<br>
+      The next, reflections stitched from Dostoevsky, circuit boards, and whatever existential mystery I’m orbiting that week.
+    </p>
+    <p>
+      I believe the future needs more than just engineers — it needs curious minds that connect the dots between code and consciousness, systems and stories.
+    </p>
+    <p>
+      So whether you're here professionally, personally, or just to get lost for a while — welcome.
+    </p>
 
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <div class="hero-text animate__animated animate__fadeIn">
-                    <h1>Hie, <span class="highlight">I am Fanny.</span></h1>
-                    <p class="subtitle">I hold a Bachelor of Engineering in Electrical Engineering from the University of Pretoria (<a href="https://www.up.ac.za/">UP</a>). I have completed projects in power systems, control systems, and renewable energy. I am passionate about learning and enjoy exploring a wide range of topics. Beyond engineering, I have a strong interest in the arts. Welcome to my space!</p>
-                    
-                    <div class="skills">
-                        <div class="skill-tag">Circuit Design</div>
-                        <div class="skill-tag">Power Systems</div>
-                        <div class="skill-tag">Automation</div>
-                        <div class="skill-tag">Programming</div>
-                        <div class="skill-tag">Communication</div>
-                        <div class="skill-tag">Documentation</div>
-                        <div class="skill-tag">collaboration</div>
-                    </div>
-
-                    <div class="cta-buttons">
-                        <a href="Projects.html" class="cta-button primary-button">View Projects</a>
-                        <a href="mailto:fannyfushayi75@gmail.com"class="cta-button secondary-button">Email Me</a><br>
-                        <a href="https://www.linkedin.com/in/fanny-fushayi-529880235" target="_blank" rel="noopener noreferrer" class="cta-button primary-button">LinkedIn</a>
-                    </div>
-                </div>
-                
-                <div class="hero-visual animate__animated animate__fadeInRight">
-                    <div class="hero-image">
-                        <img src="Images/Photo.png" alt="Your Photo">
-                    </div>
-                </div>
-            </div>
-        </section>
-<!--
-        <section id="about">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>I am a dedicated electrical engineering student at the University of Pretoria, passionate about developing innovative solutions in power electronics, control systems, and programming with C++, Python, and MATLAB. I thrive in dynamic, hands-on environments that challenge my technical expertise and problem-solving skills.</p>
-        
-                    <p>My leadership and mentorship abilities are evident from my experience tutoring university-level physics. I independently managed classes, created course materials, and helped students grasp complex concepts. This role enhanced my communication skills and reinforced my ability to inspire and support others.</p>
-        
-                    <p>Beyond academics, I excel in project execution and teamwork. My involvement in significant projects like robot design and autonomous system development has equipped me with creative problem-solving skills and practical insights into advanced engineering applications, including energy management systems and hybrid storage solutions.</p>
-        
-                    <p>With a strong academic background, practical technical experience, and a collaborative spirit, I am eager to contribute to engineering roles that blend innovation with real-world application. My goal is to drive meaningful advancements that address real-world challenges while continuously learning and growing as a professional.</p>
-                </div>
-            </div>
-        </section>
--->
-<section id="courses">
-    <h2>Coursework</h2>
-    <div class="courses-content">
-        <ul style="list-style-type: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); grid-gap: 1rem;">
-            <li class="course-item" style="background-color: #f0f0f0; padding: 0.8rem; border-radius: 5px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
-                <span class="course-title">Electrical Drives</span>
-                <p class="course-description" style="display: none; margin-top: 0.5rem; font-size: 0.9rem; color: #555; transition: opacity 0.3s ease;">Covers DC to DC converters with transformer isolation, sizing components in converters, small-signal
-                    converter modelling, magnetic design, DC and induction motors, and variable speed drives.</p>
-            </li>
-
-
-            <li class="course-item" style="background-color: #f0f0f0; padding: 0.8rem; border-radius: 5px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
-                <span class="course-title">Automation</span>
-                <p class="course-description" style="display: none; margin-top: 0.5rem; font-size: 0.9rem; color: #555; transition: opacity 0.3s ease;">Plant automation covers issues, controller setup, sensor and actuator properties, data modeling, platforms, PID and model control, loop tuning, predictive control, and economic evaluation.</p>
-            </li>
-
-            <li class="course-item" style="background-color: #f0f0f0; padding: 0.8rem; border-radius: 5px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
-                <span class="course-title">Power Systems Analysis</span>
-                <p class="course-description" style="display: none; margin-top: 0.5rem; font-size: 0.9rem; color: #555; transition: opacity 0.3s ease;">This module on power systems includes power flow analysis, fault analysis, system protection, control, economic operation, and renewable energy. It covers methods like Gauss-Seidel and Newton-Raphson, protection devices, frequency and voltage control, optimal generation costs, and solar power with MPPT.</p>
-            </li>
-
-            <li class="course-item" style="background-color: #f0f0f0; padding: 0.8rem; border-radius: 5px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
-                <span class="course-title">Microprocessors</span>
-                <p class="course-description" style="display: none; margin-top: 0.5rem; font-size: 0.9rem; color: #555; transition: opacity 0.3s ease;">This module introduces embedded design through projects, covering microprocessor architecture, firmware development, memory, address decoding, programming principles, I/O interfacing, and peripheral devices (timers, ADCs, serial ports, PWM). It uses a microcontroller development board and IDE, and explores current trends in the microcontroller industry.</p>
-            </li>
-
-
-            <li class="course-item" style="background-color: #f0f0f0; padding: 0.8rem; border-radius: 5px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease;">
-                <span class="course-title">Analogue Electronics</span>
-                <p class="course-description" style="display: none; margin-top: 0.5rem; font-size: 0.9rem; color: #555; transition: opacity 0.3s ease;">This module covers operational amplifiers, including non-idealities, amplifier concepts, cascaded stages, feedback and stability, linear circuits (transducers, instrumentation amplifiers, filters), and non-linear circuits (rectifiers, Schmitt triggers, peak detectors, sampling electronics).</p>
-            </li>
-
-        </ul>
+    <div class="links">
+      <a href="Projects.html">View Portfolio</a>
+      <a href="blog.html">Read the Blog</a>
     </div>
-</section>
+  </div>
 
-<script>
-const courseItems = document.querySelectorAll('.course-item'); // Select all elements with class "course-item"
+  <div class="section">
+    <h2>Things I Like</h2>
+    <ul>
+      <li><strong>Coffee</strong></li>
+      <li><strong>Existential fiction:</strong> Dostoevsky, Kafka, Camus — writers who ask the real questions.</li>
+      <li><strong>Tech that feels like magic:</strong> AI, digital twins, quantum computing, and circuits that think.</li>
+      <li><strong>Building things from scratch:</strong> Whether it's a go-kart energy system or a handwritten digit recognizer — all systems are equal.</li>
+      <li><strong>Writing as translation:</strong> From complex to simple. From technical to human. From emotion to words.</li>
+      <li><strong>Coffee</strong> Yes, I mentioned it twice.</li>
+    </ul>
+  </div>
 
-courseItems.forEach(courseItem => {
-  const title = courseItem.querySelector('.course-title');
-  const description = courseItem.querySelector('.course-description');
+  <div class="section">
+    <h2>Currently</h2>
+    <ul>
+      <li>Writing a blog every week — alternating between tech and creativity (very unbalanced).</li>
+      <li>Learning deep learning... and deploying models in the wild (and on Kaggle).</li>
+    </ul>
+  </div>
 
-  courseItem.addEventListener('mouseover', () => {
-    description.style.display = 'block';
-    title.style.color = '#007bff'; // Example hover color
-  });
+  <div class="footer">
+    © 2025 Fanny • 
+  </div>
 
-  courseItem.addEventListener('mouseout', () => {
-    description.style.display = 'none';
-    title.style.color = ''; // Reset to default color
-  });
-});
-</script>
-
-
-<section id="portfolio">
-    <h2>Portfolio</h2>
-
-    <div class="project">
-        <h3><a href="project-hess.html">  Hybrid Energy Storage (HESS) for an Electric Go-kart (February 2024-November 2024)</a></h3>
-        <p class="project-description">The project involved development of a Hybrid Energy Storage System (HESS) for an electric go-kart. Designing and implementing a Hybrid Energy Storage System (HESS) for an electric go-kart. The system combines a battery and a supercapacitor to optimize energy efficiency, improve performance, and extend battery life. Key features include a dynamic energy management system, regenerative braking, and robust safety diagnostics, offering a scalable solution for sustainable electric vehicle applications.</p>
-        <div class="skills">
-            <div class="skill-tag">Circuit & PCB Design</div>
-            <div class="skill-tag">Power Systems Design & Control</div>
-            <div class="skill-tag">Battery Management</div>
-            <div class="skill-tag">supercapacitors</div>
-            <div class="skill-tag">Programming (C, MATLAB & Python)</div>
-            <div class="skill-tag">Documentation & Project management</div>
-            <div class="skill-tag"> Power simulation & SIMULINK</div>
-            <div class="skill-tag">Energy system modelling</div>
-            <div class="skill-tag">STM32</div>
-
-        </div>
-    </div>
-    
-    <div class="project">
-        <h3><a href="Project-PV.html">Optimizing Energy Distribution in Hybrid Power Systems (February 2024- October 2024)</a></h3>
-        <p class="project-description">This project focuses on analyzing and optimizing hybrid power systems combining photovoltaic (PV), battery, and diesel generator setups. It involves parameter measurement, simulation, and results interpretation to improve system efficiency and minimize operational costs. Key contributions include leveraging Maximum Power Point Tracking (MPPT) for PV optimization, implementing battery models to manage charge and discharge cycles, and using economic dispatch algorithms to reduce reliance on diesel fuel. The findings demonstrate significant cost savings, enhanced power flow management, and the potential for sustainable energy integration.</p>
-        <div class="skills">
-            <div class="skill-tag">PV systems</div>
-            <div class="skill-tag">Energy Modelling</div>
-            <div class="skill-tag">Cost optimisation </div>
-            <div class="skill-tag">C++</div>
-            <div class="skill-tag">python</div>
-            <div class="skill-tag">MATLAB SIMULINK</div>
-            <div class="skill-tag">Collaboration</div>
-
-        </div>
-    </div>
-
-    <div class="project">
-        <h3>Motor Driver and Power system (July 2023 - November 2023)</h3>
-        <p class="project-description">This project involved independent design of Motor driver and Power subsystem for a Maze Navigating robot. A low power H-bridge motor driver was developed from first principles using a combination of N & P channel Mosfets. The gate driver was designed using transistors. The firmware was developed using the Dual-core Tensilica Xtensa LX6 microprocessor, and communication with the other subsystem was realised using an I2C communication protocol.  </p>
-        <div class="skills">
-            <div class="skill-tag">Engineering Design Process</div>
-            <div class="skill-tag">Systems Integration </div>
-            <div class="skill-tag">C++</div>
-            <div class="skill-tag">python</div>
-            <div class="skill-tag">spice</div>
-            <div class="skill-tag">Collaboration</div>
-
-        </div>
-    </div>
-
-    <div class="project">
-        <h3>Development of a Robot car for the University of Pretoria <a href ="https://www.up.ac.za/eece/article/2669042/annual-robot-car-race">Annual Robot Car Race</a> (February 2023- June 2023)</a></h3>
-        <p class="project-description">This project involved the develpment of a robot car for the <a href ="https://www.up.ac.za/eece/article/2669042/annual-robot-car-race">Annual Robot Car Race</a> the firmware was written in Pic 18 Assembly.  </p>
-        <div class="skills">
-            <div class="skill-tag">PIC 18 Assembly</div>
-            <div class="skill-tag">Embedded design</div>
-            <div class="skill-tag">Firmware development</div>
-
-
-        </div>
-    </div>
-
-    </section>
-    
-    <script>const projectDescriptions = document.querySelectorAll('.project-description');
-
-        projectDescriptions.forEach(description => {
-          description.style.display = 'none'; // Initially hide descriptions
-        
-          const project = description.parentElement; // Get the parent project element
-        
-          project.addEventListener('mouseover', () => {
-            description.style.display = 'block';
-          });
-        
-          project.addEventListener('mouseout', () => {
-            description.style.display = 'none';
-          });
-        });
-    </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--No CSS file for this contraption -->
-
-<section id="Hobbies">
-    <h2>Passions & Interests</h2>
-    <div class="hobbies-container" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; padding: 2rem;">
-        <div class="hobby-card" style="width: 250px; height: auto; background-color: #fff; border-radius: 10px; box-shadow: 5px 5px 15px rgba(0,0,0,0.2); overflow: hidden; position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease;"
-        onmouseover="this.style.transform = 'scale(1.03)'; this.style.boxShadow = '7px 7px 20px rgba(0,0,0,0.25)';"
-        onmouseout="this.style.transform = 'scale(1)'; this.style.boxShadow = '5px 5px 15px rgba(0,0,0,0.2)';">
-            <img src="Images/reading.jpg" alt="Reading" style="width: 100%; height: auto; object-fit: cover; display: block;">
-            <div class="hobby-content" style="padding: 1rem; text-align: center;">
-                <h3 class="hobby-title" style="margin-bottom: 0.5rem; transition: color 0.3s ease;">Reading</h3>
-                <p class="hobby-description" style="display: none; margin-top: 0.5rem; font-size: 0.9rem; color: #555; transition: opacity 0.3s ease;">The mystery of human existence lies not in just staying alive, but in finding something to live for.
-
-                    ~Fyodor Dostoevsky</p>
-            </div>
-        </div>
-
-        <div class="hobby-card" style="width: 250px; height: auto; background-color: #fff; border-radius: 10px; box-shadow: 5px 5px 15px rgba(0,0,0,0.2); overflow: hidden; position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease;"
-        onmouseover="this.style.transform = 'scale(1.03)'; this.style.boxShadow = '7px 7px 20px rgba(0,0,0,0.25)';"
-        onmouseout="this.style.transform = 'scale(1)'; this.style.boxShadow = '5px 5px 15px rgba(0,0,0,0.2)';">
-            <img src="Images/PhotographyJPG.JPG" alt="Photography" style="width: 100%; height: auto; object-fit: cover; display: block;">
-            <div class="hobby-content" style="padding: 1rem; text-align: center;">
-                <h3 class="hobby-title" style="margin-bottom: 0.5rem; transition: color 0.3s ease;">Photography</h3>
-                <p class="hobby-description" style="display: none; margin-top: 0.5rem; font-size: 0.9rem; color: #555; transition: opacity 0.3s ease;">Capture the beauty of the world through my lens.</p>
-            </div>
-        </div>
-
-        <div class="hobby-card" style="width: 250px; height: auto; background-color: #fff; border-radius: 10px; box-shadow: 5px 5px 15px rgba(0,0,0,0.2); overflow: hidden; position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease;"
-        onmouseover="this.style.transform = 'scale(1.03)'; this.style.boxShadow = '7px 7px 20px rgba(0,0,0,0.25)';"
-        onmouseout="this.style.transform = 'scale(1)'; this.style.boxShadow = '5px 5px 15px rgba(0,0,0,0.2)';">
-            <img src="Images/art.jpg" alt="Art" style="width: 100%; height: auto; object-fit: cover; display: block;">
-            <div class="hobby-content" style="padding: 1rem; text-align: center;">
-                <h3 class="hobby-title" style="margin-bottom: 0.5rem; transition: color 0.3s ease;">Art</h3>
-                <p class="hobby-description" style="display: none; margin-top: 0.5rem; font-size: 0.9rem; color: #555; transition: opacity 0.3s ease;">Express my creativity through various artistic mediums.</p>
-            </div>
-        </div>
-
-        <div class="hobby-card" style="width: 250px; height: auto; background-color: #fff; border-radius: 10px; box-shadow: 5px 5px 15px rgba(0,0,0,0.2); overflow: hidden; position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease;"
-        onmouseover="this.style.transform = 'scale(1.03)'; this.style.boxShadow = '7px 7px 20px rgba(0,0,0,0.25)';"
-        onmouseout="this.style.transform = 'scale(1)'; this.style.boxShadow = '5px 5px 15px rgba(0,0,0,0.2)';">
-            <img src="Images/blog.jpg" alt="Blog" style="width: 100%; height: auto; object-fit: cover; display: block;">
-            <div class="hobby-content" style="padding: 1rem; text-align: center;">
-                <h3 class="hobby-title" style="margin-bottom: 0.5rem; transition: color 0.3s ease;"><a href="blog.html">Blog</a></h3>
-                <p class="hobby-description" style="display: none; margin-top: 0.5rem; font-size: 0.9rem; color: #555; transition: opacity 0.3s ease;">Share my thoughts and experiences with the world.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<script>
-    const hobbyCards = document.querySelectorAll('.hobby-card');
-
-    hobbyCards.forEach(card => {
-        const title = card.querySelector('.hobby-title');
-        const description = card.querySelector('.hobby-description');
-
-        card.addEventListener('mouseover', () => {
-            description.style.display = 'block';
-            title.style.color = '#007bff'; // Example hover color
-        });
-
-        card.addEventListener('mouseout', () => {
-            description.style.display = 'none';
-            title.style.color = ''; // Reset to default color
-        });
+  <script>
+    // Optional: Add a modern touch with JS fade-in effect
+    document.addEventListener("DOMContentLoaded", function () {
+      document.body.style.opacity = 0;
+      document.body.style.transition = "opacity 1s ease-in";
+      setTimeout(() => {
+        document.body.style.opacity = 1;
+      }, 100);
     });
-</script>
-
-
-
-
-    </main>
-
-
-
-
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2024 Fanny Fushayi</p>
-            <div class="contact-info">
-                <a href="mailto:fannyfushayi75@gmail.com">fannyfushayi75@gmail.com</a><br>
-                <a href="tel:+277-061-503-5646">(+277) 061 503 5646</a><br>
-                <a href="https://www.linkedin.com/in/fanny-fushayi-529880235" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            </div>
-        </div>
-    </footer>
+  </script>
 </body>
 </html>
