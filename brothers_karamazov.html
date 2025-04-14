@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marginalia of a Meltdown</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f0ebe3;
+            color: #333;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        header .subtitle {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #f0ebe3;
+            padding: 0 20px;
+            font-size: 0.9em;
+            color: #7f8c8d;
+            transition: background-color 0.5s ease;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            border-bottom: 3px double #7f8c8d;
+            padding-bottom: 10px;
+            margin-bottom: 5px;
+        }
+        h2 {
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        .book-title {
+            color: #7f8c8d;
+            margin-top: 0;
+        }
+        .quote {
+            background-color: #fff;
+            border-left: 5px solid #e74c3c;
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            color: #333;
+        }
+        .quote:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .highlight {
+            background-color: #f9e79f;
+            padding: 0 2px;
+            transition: background-color 0.3s ease;
+        }
+        .personal-note {
+            padding: 15px;
+            background-color: #eaf2f8;
+            border-radius: 5px;
+            margin: 15px 0;
+            color: #333;
+            transition: background-color 0.3s ease;
+        }
+        .toggle-button {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            transition: background-color 0.3s ease;
+        }
+        .toggle-button:hover {
+            background-color: #34495e;
+        }
+        #mood-indicator {
+            text-align: center;
+            font-size: 1.2em;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: rgba(255,255,255,0.8);
+            border-radius: 5px;
+            color: #333;
+            transition: background-color 0.3s ease;
+        }
+        .hidden {
+            display: none;
+        }
+        #ivan-box {
+            padding: 20px;
+            border: 2px dashed #e74c3c;
+            text-align: center;
+            cursor: pointer;
+            margin: 30px 0;
+            transition: background-color 0.3s ease;
+        }
+        #ivan-box:hover {
+            background-color: rgba(231, 76, 60, 0.1);
+        }
+        .conclusion {
+            background: #2c3e50;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+            color: white;
+        }
+        .conclusion p:first-child {
+            margin: 0;
+            font-size: 1.5em;
+            letter-spacing: 3px;
+        }
+        .conclusion p:last-child {
+            margin: 10px 0 0 0;
+            font-size: 2em;
+            font-weight: bold;
+        }
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            padding: 20px;
+            border-top: 3px double #7f8c8d;
+            color: #7f8c8d;
+            font-size: 0.9em;
+            transition: border-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="subtitle">A READING JOURNAL</div>
+            <h1>Marginalia of a Meltdown</h1>
+            <p class="book-title">What I Underlined in <em>The Brothers Karamazov</em> (So Far)</p>
+            <a href="blog.html" class="homepage-button">Home</a>
+        </header>
+        <style>
+            .homepage-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #2c3e50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+            }
+            .homepage-button:hover {
+            background-color: #34495e;
+            }
+        </style>
+
+        <div id="mood-indicator">Current Reading Mood: Contemplative</div>
+        
+        <main>
+            <section>
+                <p>I have a particularly complex relationship with <span class="highlight">The Brothers Karamazov</span>. Some pages feel like spiritual revelations, offering warmth like a hug or delivering the shock of a cold slap. Others feel like trying to read through a migraine. I've hated whole chapters, loved single lines, single words even, and spent many afternoons rereading the same chapter, because who knows what Ivan was on when he was talking about the grand inquisitor.</p>
+                
+                <p>Reading <span class="highlight">The Brothers Karamazov</span> has been a journey of self-discovery, self-retrospection, and introspection— couple that with enough self-isolation to be illegal in max security prison and you get full-blown derangement. So naturally, I started underlining things. Frantically. The underlined lines—those are the ones that either hit too close to home or sent me spiraling.</p>
+
+                <p>I realized on a recent walk— because it is only on a walk that one can come to such conclusions, that my feelings toward this book mirror my feelings toward myself: deep love, intense hatred, mostly unfamiliarity. So, naturally, the lines I love reveal something raw—about Dostoevsky, but mostly about my own tangled thought loops, self-critique, and the occasional teaspoon of self-loathing.</p>
+            </section>
+
+            <h2>My Underlined Passages</h2>
+            
+            <div class="quote" onclick="highlightQuote(this)">
+                "As a general rule, people, even the wicked are much more naive and simple-hearted than we suppose. And we ourselves are too."
+            </div>
+            
+            <div class="personal-note">
+                I suppose this is when I may have thought this was one of the best book ever. It plays into my (naive) belief that people aren't trying to be evil, or good they're just be-ing... themselves. There's no special energy required to be—it just happens.
+            </div>
+            
+            <div class="quote" onclick="highlightQuote(this)">
+                "...not out of spite but because he simply forgot about him."
+            </div>
+            
+            <div class="personal-note">
+                Fyodor Pavlovich just forgot his son existed. Also underlined, because we shouldn't take things too personally.
+            </div>
+            
+            <div id="backstory">
+                <p>Quick backstory for the uninitiated: Fyodor Pavlovich is the father of the four brothers: Dmitri, Ivan, Alyosha, and the illegitimate Smerdyakov. Driven by intense passion, they become involved in their father's murder.</p>
+            </div>
+            
+
+            
+            <div class="quote" onclick="highlightQuote(this)">
+                "Above all, don't lie to yourself. The man who lies to himself and listens to his own lie comes to a point that he cannot distinguish the truth within him, or around him, and so loses all respect for himself and for others. And having no respect he ceases to love."
+            </div>
+            
+            <div class="personal-note">
+                Yeah yeah, everyone loves this one. It's everywhere. It's basic. But also? It's true. I believe actually lying, truly lying can only happen when the liar believes in the lie, after which it becomes very difficult to tell reality from fiction.
+            </div>
+            
+            <div class="quote" onclick="highlightQuote(this)">
+                "That's not a Diderot!"
+            </div>
+            
+            <div class="personal-note">
+                No explanation. I just love it. That level of unhinged literary name-dropping speaks to me. Obviously <a href="https://www.goodreads.com/author/quotes/11004.Denis_Diderot">Denis Diderot</a> was mentioned in context in the book, but I am not here to spoil (a book that's been out for over a century).
+            </div>
+            
+            <p>There have been instances in my life when I have felt so profoundly. I felt so much, so overwhelmed with feeling, that I sat down to describe what I was feeling and yet fell short. I Fell short of words and effort and even felt as though writing it down, expressing the feelings in words, took them —I mean the feelings— away. Some of these feelings are described by Ivan Karamazov.Dostoevsky doesn't do subtle. His characters are either complete saints or existential screamers. Ivan's in the latter category.</p>
+            
+          
+                    <div class="quote">
+                        "The world stands on absurdities and perhaps nothing will come to pass without them, we know what we know."
+                    </div>
+
+            <div class="personal-note">
+                Iconic. Terrifying. You stare at the wall for a few minutes, realizing how utterly absurd it is that you are on a spinning rock, revolving around a "hotter" rock, all while traveling through nothing to nowhere.
+            </div>
+            
+            <div class="quote" onclick="highlightQuote(this)">
+                "I understand nothing. I made up my mind long ago not to understand."
+            </div>
+            
+            <div class="personal-note">
+                Which is basically the thesis statement of my 20s. The intellectual chaos. The emotional numbness. The conscious choice to nope out of trying to make sense of anything. Ivan is the patron saint of "Okay?"
+            </div>
+            
+            <p>Just when I'm ready to declare this book a psychological horror story, Zossima's brother steps in and starts whispering warm, weird things into the void. His deathbed monologues are unironically beautiful. A dying man, taking the weight of the entire world on his shoulder, by deeming himself unworthy of the love, colors, sounds, cruelty of the world and declraring himself the worst human ever. I don't know why this is not underlined, I can't go back and underline it now (that's dishonesty), but there is a quote on that.</p>
+            
+            <div class="quote" onclick="highlightQuote(this)">
+                "Every one of us is undoubtedly responsible for all men and everything on earth."
+            </div>
+            
+            <div class="personal-note">
+                No pressure. If you don't feel particularly responsible for everyone (and everything), then this man defined you as "selfish." It's okay though, because he is responsible for you too. So he is to blame —for your selfishnes, and begs your forgiveness.
+            </div>
+            
+            <div class="quote" onclick="highlightQuote(this)">
+                "Life is paradise, and we are all in paradise, but we refuse to see it."
+            </div>
+            
+            <p>These underlined lines aren't just about <span class="highlight">The Brothers Karamazov</span>. They're little flashes of recognition. Tiny sparks of self-exposure. I didn't choose them—they chose me. One part philosophy, one part personal breakdown, one part meme. The true Karamazov experience.</p>
+            
+            <p>I'll probably underline different things next time. I might even change my mind about all of this. That's part of the fun. Or the madness. It's hard to tell with this book.</p>
+            
+            <p>I will probably take a lot longer to finish this book because I need to spend more time with some of the chapters. I find that I read very slowly when Dostoevsky delves into romantic themes and creates a love pentagon, which I absolutely abhor (older brother to a love triangle, which I only detest with a passion).</p>
+            
+            <p>In Conclusion:</p>
+            <p>I'm Not Fine But Thanks for Asking</p>
+        </main>
+        
+        <button class="toggle-button" onclick="changeMood()">Change Reading Mood</button>
+
+        <footer>
+            <p>Current status: 47% through Book 3<br></p>
+            <p id="last-updated">Last updated: <span id="current-date"></span></p>
+        </footer>
+    </div>
+
+    <script>
+        // Set current date
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString();
+        
+        function highlightQuote(element) {
+            element.classList.toggle('highlighted');
+        }
+        
+        function toggleBackstory() {
+            const backstory = document.getElementById('backstory');
+            backstory.classList.toggle('hidden');
+        }
+        
+        function revealIvan() {
+            const ivanText = document.getElementById('ivan-text');
+            ivanText.classList.toggle('hidden');
+            
+            if (currentMood === moods.indexOf("Ivan-Level Deranged")) {
+                document.body.style.backgroundColor = "#e74c3c";
+                setTimeout(() => {
+                    document.body.style.backgroundColor = "#7f8c8d";
+                }, 300);
+            }
+        }
+        
+        const moods = [
+            "Contemplative", 
+            "Existentially Disturbed", 
+            "Spiritually Awakened", 
+            "Thoroughly Confused", 
+            "Ivan-Level Deranged",
+            "Alyosha-Level Compassionate",
+            "Dmitri-Level Passionate",
+            "Reading Through a Migraine"
+        ];
+        
+        let currentMood = 0;
+        
+        function changeMood() {
+            currentMood = (currentMood + 1) % moods.length;
+            document.getElementById('mood-indicator').textContent = "Current Reading Mood: " + moods[currentMood];
+            
+            // Change page styling based on mood
+            const body = document.body;
+            const container = document.querySelector('.container');
+            const quotes = document.querySelectorAll('.quote');
+            const personalNotes = document.querySelectorAll('.personal-note');
+            const headers = document.querySelectorAll('h2');
+            const highlights = document.querySelectorAll('.highlight');
+            const subtitle = document.querySelector('.subtitle');
+            const footer = document.querySelector('footer');
+            
+            // Reset all specialized elements to ensure readability
+            quotes.forEach(quote => {
+                quote.style.backgroundColor = "#fff";
+                quote.style.borderLeftColor = "#e74c3c";
+            });
+            
+            personalNotes.forEach(note => {
+                note.style.backgroundColor = "#eaf2f8";
+            });
+            
+            switch(moods[currentMood]) {
+                case "Existentially Disturbed":
+                    body.style.backgroundColor = "#2c3e50";
+                    container.style.color = "#ecf0f1";
+                    subtitle.style.backgroundColor = "#2c3e50";
+                    headers.forEach(h => h.style.borderBottomColor = "#ecf0f1");
+                    highlights.forEach(h => h.style.backgroundColor = "#c0392b");
+                    footer.style.borderTopColor = "#ecf0f1";
+                    break;
+                case "Spiritually Awakened":
+                    body.style.backgroundColor = "#f1c40f";
+                    container.style.color = "#34495e";
+                    subtitle.style.backgroundColor = "#f1c40f";
+                    quotes.forEach(quote => {
+                        quote.style.borderLeftColor = "#27ae60";
+                    });
+                    headers.forEach(h => h.style.borderBottomColor = "#27ae60");
+                    break;
+                case "Thoroughly Confused":
+                    body.style.backgroundColor = "#e74c3c";
+                    container.style.color = "#ecf0f1";
+                    subtitle.style.backgroundColor = "#e74c3c";
+                    personalNotes.forEach(note => {
+                        note.style.backgroundColor = "#f39c12";
+                    });
+                    headers.forEach(h => h.style.borderBottomColor = "#f39c12");
+                    footer.style.borderTopColor = "#f39c12";
+                    break;
+                case "Ivan-Level Deranged":
+                    body.style.backgroundColor = "#7f8c8d";
+                    container.style.color = "#ecf0f1";
+                    subtitle.style.backgroundColor = "#7f8c8d";
+                    quotes.forEach(quote => {
+                        quote.style.borderLeftColor = "#9b59b6";
+                    });
+                    headers.forEach(h => h.style.borderBottomColor = "#9b59b6");
+                    footer.style.borderTopColor = "#9b59b6";
+                    break;
+                case "Alyosha-Level Compassionate":
+                    body.style.backgroundColor = "#3498db";
+                    container.style.color = "#ecf0f1";
+                    subtitle.style.backgroundColor = "#3498db";
+                    quotes.forEach(quote => {
+                        quote.style.borderLeftColor = "#2ecc71";
+                    });
+                    headers.forEach(h => h.style.borderBottomColor = "#2ecc71");
+                    footer.style.borderTopColor = "#2ecc71";
+                    break;
+                case "Dmitri-Level Passionate":
+                    body.style.backgroundColor = "#c0392b";
+                    container.style.color = "#ecf0f1";
+                    subtitle.style.backgroundColor = "#c0392b";
+                    quotes.forEach(quote => {
+                        quote.style.borderLeftColor = "#f1c40f";
+                    });
+                    headers.forEach(h => h.style.borderBottomColor = "#f1c40f");
+                    footer.style.borderTopColor = "#f1c40f";
+                    break;
+                case "Reading Through a Migraine":
+                    body.style.backgroundColor = "#1a1a1a";
+                    container.style.color = "#f5f5f5";
+                    subtitle.style.backgroundColor = "#1a1a1a";
+                    quotes.forEach(quote => {
+                        quote.style.backgroundColor = "#333";
+                        quote.style.color = "#f5f5f5";
+                        quote.style.borderLeftColor = "#e74c3c";
+                    });
+                    personalNotes.forEach(note => {
+                        note.style.backgroundColor = "#333";
+                        note.style.color = "#f5f5f5";
+                    });
+                    headers.forEach(h => h.style.borderBottomColor = "#e74c3c");
+                    footer.style.borderTopColor = "#e74c3c";
+                    break;
+                default:
+                    body.style.backgroundColor = "#f0ebe3";
+                    container.style.color = "#333";
+                    subtitle.style.backgroundColor = "#f0ebe3";
+                    headers.forEach(h => h.style.borderBottomColor = "#2c3e50");
+                    highlights.forEach(h => h.style.backgroundColor = "#f9e79f");
+                    footer.style.borderTopColor = "#7f8c8d";
+            }
+        }
+        
+        // Add a little easter egg
+        let clickCount = 0;
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "d") {
+                clickCount++;
+                if (clickCount === 3) {
+                    alert("That's not a Diderot!");
+                    clickCount = 0;
+                }
+            } else {
+                clickCount = 0;
+            }
+        });
+    </script>
+</body>
+</html>
