@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Thousand Times, I've Died</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+    :root {
+      --bg: #0a0a0a;
+      --text: #e0e0e0;
+      --accent: #6b8cae;
+      --fade: rgba(10, 10, 10, 0.9);
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Cormorant Garamond', serif;
+      line-height: 1.8;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      position: relative;
+    }
+
+    h1 {
+      font-weight: 400;
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+      position: relative;
+    }
+
+    h1::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.5;
+    }
+
+    .subtitle {
+      font-style: italic;
+      margin-bottom: 3rem;
+      opacity: 0.8;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      opacity: 0.95;
+    }
+
+    .toggle-stars {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 20px;
+      height: 20px;
+      background: var(--accent);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 20;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .toggle-stars:hover {
+      background: #87a8cf;
+      transform: scale(1.2);
+    }
+
+    #starCanvas {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    .fade-in {
+        animation: fadeIn 1.5s ease-in-out;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        margin: 3rem 0;
+        opacity: 0.3;
+    }
+  </style>
+</head>
+<body>
+  <button id="toggleStars" class="toggle-stars"></button>
+  <canvas id="starCanvas"></canvas>
+
+  <div class="container">
+    <h1>A Thousand Times, I've Died</h1>
+    <p class="subtitle">On memory, identity, and the quiet deaths we live through.</p>
+    <a href="blog.html" class="home-button">Home</a>
+    <style>
+      .home-button {
+        display: inline-block;
+        margin-top: 1rem;
+        font-size: 0.9rem;
+        color: var(--accent);
+        text-decoration: none;
+        border: 1px solid var(--accent);
+        padding: 0.4rem 0.8rem;
+        border-radius: 5px;
+        transition: background 0.3s, color 0.3s;
+      }
+
+      .home-button:hover {
+        background: var(--accent);
+        color: var(--bg);
+      }
+    </style>
+
+    <p class="fade-in">I’ve always been drawn to the question of who we really are, beneath the layers of habit, memory, and expectation. What happens when you strip away everything familiar; the routines, the roles, the stories we tell ourselves—and stand face-to-face with the raw essence of being? Not man, woman, or even human—just being. It’s not a comfortable thought. In fact, it’s downright unsettling. But there’s something irresistible about it— to a certain kind of people—a kind of dare whispered by the universe: Do you even know?</p>
+    
+    <p class="fade-in">I didn’t expect to stumble into that question at five in the morning, caught in the strange purgatory between sleep and waking. I’d been working nonstop for weeks—too many deadlines, too little rest, the kind of overextension that erodes your sense of time. </p>
+    
+    <p class="fade-in">That morning, as I chased the last hour of sleep, my body heavy with exhaustion, sleep never truly came. It twisted: my body surrendered to stillness while my mind snapped alert, stranded between layers of consciousness. The harder I strained toward wakefulness, the deeper the paradox grew — I was neither asleep nor awake, but pinned in the liminal space where selfhood unravels. My limbs were stone. My thoughts, oddly clear, circled the empty space where “I” should have been. It was as if my consciousness floated in isolation, detached from anything physical.</p>
+
+    <p class="fade-in">Around me, the physical world was dark and unreal, and it seemed nothing existed except in a memory I wasn't sure was mine. Time didn't pass; it pulsed, skipping over some moments. Then, something shifted—not outside, but inside.</p>
+    
+    <p class="fade-in">It felt like I was being peeled. Not physically—that world didn't exist, but existentially. One by one, the pieces of myself fell away—names, memories, preferences, fears. I wasn't dreaming in the traditional sense; I was disintegrating. With every passing second, I lost another anchor to the person I had been the second before. And then the terrifying thought arrived, fully formed and uninvited: <span class="highlight">If I can forget myself.. would that mean that version of me doesn't exist anymore?</span></p>
+    
+    <p class="fade-in">Let me try to explain. Every moment of consciousness felt like a new birth. But not the joyful kind. The kind that arrives with the awful realization that something had been there before — and it's now gone. Dead. I existed in bursts. And each burst erased the last. I couldn't hold a thread. I existed in tiny, strobing seconds. Each a separate life. Each blinking into the next with the quiet certainty that the last version of me was gone.</p>
+    
+    <p class="fade-in">I didn't become one person having burnout-induced sleep paralysis. I became a series of people, lined up in single file, each one mourning the last — and then being mourned themselves.</p>
+    
+    <div class="divider"></div>
+    
+    <p class="fade-in">And it wasn't new, not really. I remember being a child and looking into the mirror, asking, "What am I?" Not who — not in search of societal identity —but literally— as a genuine metaphysical question, what is this thing that is me?</p>
+    
+    <p class="fade-in">It felt like a ritual — back then, I'd ask this question multiple times (What am I. What am I), and the first few times the words would feel two-dimensional. But as I go on and concentrate, rarely, they'd stretch — forming into a third dimension, along with the rest of reality. Like reality had depth I hadn't been told about. I'd fall into it. I've never quite managed to get back there since. At least not consciously. But that morning, the trapdoor was opened again. And I fell. Harder.</p>
+    
+    <p class="fade-in">Perhaps the trigger had been a couple of days prior. I saw a picture of myself — five years old, smiling in blue. I looked so sure of who I was. I don't remember the moment. I don't remember the smile, the outfit I was probably obsessed with, or what I was looking at.</p>
+    
+    <p class="fade-in">But I existed. I was real then. And that version of me? Did that person die? That smile doesn't live in me anymore. I don't even like blue. And so the question returns, the one philosophers have been throwing around for centuries: <span class="highlight">the Ship of Theseus</span>.</p>
+    
+    <div class="divider"></div>
+    
+    <p class="fade-in">A simplified version of the Ship of Theseus paradox is often used to make its implications easier to grasp. In this version, the ship consists of exactly 1,000 wooden planks—along with its nails, paint, and sails. Now imagine this: one by one, every part is replaced with a new, identical version. By the end, nothing original remains.</p>
+    
+    <p class="fade-in">But then comes the twist. Suppose a meticulous shipwright, the one overseeing the repairs, kept each discarded piece in pristine condition. After the restoration was complete, they used all the original parts to assemble a new ship—let's call it Ship B. So now we have two ships: one made of entirely new components in the shape of the original, and one made of the original parts but reassembled. Which is the real Ship of Theseus?</p>
+    
+    <p class="fade-in">If every cell in your body regenerates, every belief shifts, and every heartbreak reconfigures you — are you still you? If I no longer laugh at the same things, dress the same, love the same, believe the same — is this still me? <span class="highlight">How many times do we die while still being alive?</span></p>
+    
+    <p class="fade-in">There are several answers. Some say Ship A, the continuously maintained one, holds the identity—because it never ceased to function as the ship. Others argue that Ship B is the “real” ship because it contains all the original material. That would imply that at some point during the restoration, identity transferred from A to B— but at what point?</p>
+    
+    <p class="fade-in">Then there’s the temporal Worm Theory: which stretches identity through time like a thread—suggesting there were always 2 ships of Theseus, all stitched together through temporal continuity(time). Others still go more radical:each time a plank was swapped, a new ship was born. Thousands of ships for thousands of moments. </p>
+    
+    <p class="fade-in">And finally Denial of Transitivity: maybe identity isn't transitive. Maybe all the ships—Ship A, Ship B, the ship with 999 old parts and 1 new one—maybe each one is the Ship of Theseus. Just... not the same Ship of Theseus.</p>
+    
+    <div class="divider"></div>
+    
+    <p class="fade-in">I don't know what consciousness is. I don't know if it's continuous or made of moments. I don't know how many times I've died while still technically alive. But I know I've changed my mind. I've loved and lost and learned and burned. I've stared at old photos and wondered who the hell that kid was.</p>
+    
+    <p class="fade-in">And maybe that's what it means to live —To float, no matter how many planks you've replaced. To always remain me—through all the unequal versions of myself. To die a thousand soft deaths and still be here asking the simpler question.</p>
+    
+    <p class="end-note fade-in">"Does the ship still float?"<br><br>Yes. Somehow, still: yes.</p>
+
+</div>
+<footer>
+    Fanny 2025
+</footer>
+  <script>
+    const canvas = document.getElementById('starCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const stars = [];
+    let animationId;
+
+    class Star {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.radius = Math.random() * 1.5;
+        this.alpha = Math.random();
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+        ctx.fill();
+      }
+    }
+
+    function createStars(count) {
+      for (let i = 0; i < count; i++) {
+        stars.push(new Star());
+      }
+    }
+
+    function animateStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      stars.forEach(star => star.draw());
+      animationId = requestAnimationFrame(animateStars);
+    }
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    const toggleButton = document.getElementById('toggleStars');
+    let starsVisible = false;
+
+    toggleButton.addEventListener('click', () => {
+      if (!starsVisible) {
+        canvas.style.display = 'block';
+        if (stars.length === 0) createStars(200);
+        animateStars();
+      } else {
+        canvas.style.display = 'none';
+        cancelAnimationFrame(animationId);
+      }
+      starsVisible = !starsVisible;
+    });
+  </script>
+</body>
+</html>
