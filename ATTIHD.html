@@ -63,24 +63,38 @@
     }
 
     .toggle-stars {
-      position: fixed;
-      top: 1.5rem;
-      right: 1.5rem;
-      width: 20px;
-      height: 20px;
-      background: var(--accent);
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      z-index: 20;
-      transition: background 0.3s, transform 0.3s;
-    }
-
-    .toggle-stars:hover {
-      background: #87a8cf;
-      transform: scale(1.2);
-    }
-
+        position: fixed;
+        top: 1.5rem;
+        right: 1.5rem;
+        width: 50px;
+        height: 50px;
+        background: var(--accent);
+        color: var(--bg);
+        font-size: 1.5rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(135, 168, 207, 0.7);
+        cursor: pointer;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+      }
+      
+      .toggle-stars:hover {
+        background: #87a8cf;
+        transform: scale(1.2);
+        box-shadow: 0 0 20px rgba(135, 168, 207, 1);
+      }
+      
+      @keyframes pulse {
+        0% { box-shadow: 0 0 8px rgba(107, 140, 174, 0.8); }
+        50% { box-shadow: 0 0 16px rgba(107, 140, 174, 1); }
+        100% { box-shadow: 0 0 8px rgba(107, 140, 174, 0.8); }
+      }
+      
     #starCanvas {
       display: none;
       position: fixed;
@@ -92,33 +106,7 @@
       pointer-events: none;
     }
 
-    .fade-in {
-        animation: fadeIn 1.5s ease-in-out;
-    }
-    
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .divider {
-        height: 1px;
-        background: linear-gradient(90deg, transparent, var(--accent), transparent);
-        margin: 3rem 0;
-        opacity: 0.3;
-    }
-  </style>
-</head>
-<body>
-  <button id="toggleStars" class="toggle-stars"></button>
-  <canvas id="starCanvas"></canvas>
-
-  <div class="container">
-    <h1>A Thousand Times, I've Died</h1>
-    <p class="subtitle">On memory, identity, and the quiet deaths we live through.</p>
-    <a href="blog.html" class="home-button">Home</a>
-    <style>
-      .home-button {
+    .home-button {
         display: inline-block;
         margin-top: 1rem;
         font-size: 0.9rem;
@@ -134,58 +122,54 @@
         background: var(--accent);
         color: var(--bg);
       }
-    </style>
 
-    <p class="fade-in">I’ve always been drawn to the question of who we really are, beneath the layers of habit, memory, and expectation. What happens when you strip away everything familiar; the routines, the roles, the stories we tell ourselves—and stand face-to-face with the raw essence of being? Not man, woman, or even human—just being. It’s not a comfortable thought. In fact, it’s downright unsettling. But there’s something irresistible about it— to a certain kind of people—a kind of dare whispered by the universe: Do you even know?</p>
-    
-    <p class="fade-in">I didn’t expect to stumble into that question at five in the morning, caught in the strange purgatory between sleep and waking. I’d been working nonstop for weeks—too many deadlines, too little rest, the kind of overextension that erodes your sense of time. </p>
-    
-    <p class="fade-in">That morning, as I chased the last hour of sleep, my body heavy with exhaustion, sleep never truly came. It twisted: my body surrendered to stillness while my mind snapped alert, stranded between layers of consciousness. The harder I strained toward wakefulness, the deeper the paradox grew — I was neither asleep nor awake, but pinned in the liminal space where selfhood unravels. My limbs were stone. My thoughts, oddly clear, circled the empty space where “I” should have been. It was as if my consciousness floated in isolation, detached from anything physical.</p>
+  </style>
+</head>
+<body>
+    <button id="toggleStars" class="toggle-stars">★</button>
 
-    <p class="fade-in">Around me, the physical world was dark and unreal, and it seemed nothing existed except in a memory I wasn't sure was mine. Time didn't pass; it pulsed, skipping over some moments. Then, something shifted—not outside, but inside.</p>
-    
-    <p class="fade-in">It felt like I was being peeled. Not physically—that world didn't exist, but existentially. One by one, the pieces of myself fell away—names, memories, preferences, fears. I wasn't dreaming in the traditional sense; I was disintegrating. With every passing second, I lost another anchor to the person I had been the second before. And then the terrifying thought arrived, fully formed and uninvited: <span class="highlight">If I can forget myself.. would that mean that version of me doesn't exist anymore?</span></p>
-    
-    <p class="fade-in">Let me try to explain. Every moment of consciousness felt like a new birth. But not the joyful kind. The kind that arrives with the awful realization that something had been there before — and it's now gone. Dead. I existed in bursts. And each burst erased the last. I couldn't hold a thread. I existed in tiny, strobing seconds. Each a separate life. Each blinking into the next with the quiet certainty that the last version of me was gone.</p>
-    
-    <p class="fade-in">I didn't become one person having burnout-induced sleep paralysis. I became a series of people, lined up in single file, each one mourning the last — and then being mourned themselves.</p>
-    
-    <div class="divider"></div>
-    
-    <p class="fade-in">And it wasn't new, not really. I remember being a child and looking into the mirror, asking, "What am I?" Not who — not in search of societal identity —but literally— as a genuine metaphysical question, what is this thing that is me?</p>
-    
-    <p class="fade-in">It felt like a ritual — back then, I'd ask this question multiple times (What am I. What am I), and the first few times the words would feel two-dimensional. But as I go on and concentrate, rarely, they'd stretch — forming into a third dimension, along with the rest of reality. Like reality had depth I hadn't been told about. I'd fall into it. I've never quite managed to get back there since. At least not consciously. But that morning, the trapdoor was opened again. And I fell. Harder.</p>
-    
-    <p class="fade-in">Perhaps the trigger had been a couple of days prior. I saw a picture of myself — five years old, smiling in blue. I looked so sure of who I was. I don't remember the moment. I don't remember the smile, the outfit I was probably obsessed with, or what I was looking at.</p>
-    
-    <p class="fade-in">But I existed. I was real then. And that version of me? Did that person die? That smile doesn't live in me anymore. I don't even like blue. And so the question returns, the one philosophers have been throwing around for centuries: <span class="highlight">the Ship of Theseus</span>.</p>
-    
-    <div class="divider"></div>
-    
-    <p class="fade-in">A simplified version of the Ship of Theseus paradox is often used to make its implications easier to grasp. In this version, the ship consists of exactly 1,000 wooden planks—along with its nails, paint, and sails. Now imagine this: one by one, every part is replaced with a new, identical version. By the end, nothing original remains.</p>
-    
-    <p class="fade-in">But then comes the twist. Suppose a meticulous shipwright, the one overseeing the repairs, kept each discarded piece in pristine condition. After the restoration was complete, they used all the original parts to assemble a new ship—let's call it Ship B. So now we have two ships: one made of entirely new components in the shape of the original, and one made of the original parts but reassembled. Which is the real Ship of Theseus?</p>
-    
-    <p class="fade-in">If every cell in your body regenerates, every belief shifts, and every heartbreak reconfigures you — are you still you? If I no longer laugh at the same things, dress the same, love the same, believe the same — is this still me? <span class="highlight">How many times do we die while still being alive?</span></p>
-    
-    <p class="fade-in">There are several answers. Some say Ship A, the continuously maintained one, holds the identity—because it never ceased to function as the ship. Others argue that Ship B is the “real” ship because it contains all the original material. That would imply that at some point during the restoration, identity transferred from A to B— but at what point?</p>
-    
-    <p class="fade-in">Then there’s the temporal Worm Theory: which stretches identity through time like a thread—suggesting there were always 2 ships of Theseus, all stitched together through temporal continuity(time). Others still go more radical:each time a plank was swapped, a new ship was born. Thousands of ships for thousands of moments. </p>
-    
-    <p class="fade-in">And finally Denial of Transitivity: maybe identity isn't transitive. Maybe all the ships—Ship A, Ship B, the ship with 999 old parts and 1 new one—maybe each one is the Ship of Theseus. Just... not the same Ship of Theseus.</p>
-    
-    <div class="divider"></div>
-    
-    <p class="fade-in">I don't know what consciousness is. I don't know if it's continuous or made of moments. I don't know how many times I've died while still technically alive. But I know I've changed my mind. I've loved and lost and learned and burned. I've stared at old photos and wondered who the hell that kid was.</p>
-    
-    <p class="fade-in">And maybe that's what it means to live —To float, no matter how many planks you've replaced. To always remain me—through all the unequal versions of myself. To die a thousand soft deaths and still be here asking the simpler question.</p>
-    
-    <p class="end-note fade-in">"Does the ship still float?"<br><br>Yes. Somehow, still: yes.</p>
+  <canvas id="starCanvas"></canvas>
 
-</div>
-<footer>
-    Fanny 2025
-</footer>
+  <div class="container">
+    <h1>A Thousand Times, I've Died</h1>
+    <p class="subtitle">On memory, identity, and the quiet deaths we live through.</p>
+    <a href="blog.html" class="home-button">Home</a>
+
+    <p>I've always been drawn to the question of who we really are, underneath all the habits, memories, and expectations. What would be left if you stripped away your routines, your roles, and the stories you tell yourself? Not man or woman, not even "human" — just being. It's a strange, unsettling thought. But there's something irresistible about it — to a certain kind of people — a kind of dare whispered by the universe. And yet, sometimes, I can't help but chase it.</p>
+
+    <p>I didn’t expect to face that question at five in the morning, stuck in that strange purgatory between sleep and waking. I’d been working too hard, running on too little rest, and my sense of time was starting to blur. That morning, as I tried to grab at least one hour of sleep, exhaustion pinned me down, but sleep never truly came. My body surrendered to stillness while my mind snapped alert, stranded between layers of consciousness. The harder I strained toward wakefulness, the deeper the paradox grew — I was neither asleep nor awake, but pinned in the liminal space where selfhood unravels. My limbs felt like stone. My thoughts circled around a blank space where “I” should have been. It was as if my mind was floating, completely detached from my body and everything familiar.</p>
+
+    <p>The world around me was dark and unreal, like a memory I wasn’t sure belonged to me. Time didn’t pass; it pulsed, skipping over some moments, leaving gaps in existence. And then, something inside me shifted.</p>
+
+    <p>It felt like I was being peeled — not physically, but in a deeper sense. One by one, the pieces of myself fell away — names, memories, preferences, fears. I wasn’t dreaming in the traditional sense; I was disintegrating. With every passing second, I lost another anchor to the person I had been the moment before. And then the terrifying thought arrived, fully formed and uninvited: If I can forget myself completely, does that mean that version of me is gone forever?</p>
+
+    <p>Let me try to explain. Every moment of consciousness felt like a new birth. But not the joyful kind. The kind that arrives with the awful realization that something had been there before — and it’s now gone. Dead. I existed in flashes, each one erasing the last. I couldn’t hold onto any sense of continuity. I existed in tiny, strobing seconds. Each second felt like a separate life, each one quietly replacing the one before it.</p>
+
+    <p>I didn’t feel like one person stuck in a weird, sleepless state. I became a series of people, lined up in single file, each one mourning the last — and then being mourned themselves.</p>
+
+    <p>And it wasn’t the first time I felt this way, not really. I remember being a child and looking into the mirror, asking, “What am I?” Not who — not in search of societal identity, or a role — but literally — as a genuine metaphysical question, what is this thing that is me?</p>
+
+    <p>I’d repeat the question, and at first it felt flat and meaningless. But sometimes, if I really focused, it was like the world stretched and gained an extra dimension, a hidden depth. I’d fall into it for a moment, and then it would slip away. I haven’t found my way back there since — at least not consciously. But that morning, it was like the trapdoor opened again, and I fell in, even deeper.</p>
+
+    <p>Perhaps the trigger had been a couple of days prior. I had seen a picture of myself — five years old, smiling in blue. I looked so sure of who I was. But I don’t remember that moment, or what made me smile, or why I liked blue. That version of me — did he die? That smile doesn’t live in me anymore. And I've probably gone through five color preferences. But I existed. I was real then, as myself.</p>
+
+    <p>This brings me to a classic thought experiment: the Ship of Theseus. Imagine a ship made of 1,000 wooden planks. Over time, every plank is replaced, one by one, until nothing original remains. Is it still the same ship? And if someone took all the old planks and built a second ship, which one is the real Ship of Theseus?</p>
+
+    <p>If every cell in your body regenerates, every belief shifts, and every heartbreak reconfigures you — are you still you? If I no longer laugh at the same things, dress the same, love the same, believe the same — is this still me? How many times do we die while still being alive?</p>
+
+    <p>Some say the ship that’s been maintained all along is the real one. Others say the ship rebuilt from the old parts is the real deal. Some think both are the Ship of Theseus, just not the same one. And some say every time a plank is swapped, a new ship is born — thousands of ships for thousands of moments.</p>
+
+    <p>I don’t know what consciousness really is. I don’t know if it’s one continuous thread or a series of moments independent of each other. I don’t know how many times I’ve changed so much that the old me is gone. But I do know this: I’ve changed my mind. I’ve loved, lost, learned, and grown. I've made mistakes, readjusted my dreams, and at times have been unable to recognize myself.</p>
+
+    <p>Maybe that’s what it means to live: to keep floating, even as the pieces change. To remain “me,” through all the different versions of myself. To die a thousand quiet deaths and still be here, asking the simple question:</p>
+
+    <p><em>Does the ship still float?</em></p>
+
+    <p><strong>Yes. Somehow, still: yes.</strong></p>
+  </div>
+
+  
+
   <script>
     const canvas = document.getElementById('starCanvas');
     const ctx = canvas.getContext('2d');
