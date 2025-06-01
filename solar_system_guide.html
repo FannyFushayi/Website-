@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Off-Grid Solar System Design: A Complete Engineering Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            background: #ffffff;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+        }
+
+        .header {
+            background: #34495e;
+            color: white;
+            padding: 4rem 2rem 3rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .header .subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .nav {
+            background: #f8f9fa;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #e9ecef;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav a {
+            color: #6c757d;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav a:hover {
+            color: #34495e;
+        }
+
+        .content {
+            padding: 3rem 2rem;
+        }
+
+        .intro {
+            margin-bottom: 4rem;
+            font-size: 1.05rem;
+        }
+
+        .intro p {
+            margin-bottom: 1.5rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 3rem;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #34495e;
+        }
+
+        .section h3 {
+            color: #34495e;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem 0;
+        }
+
+        .section p {
+            margin-bottom: 1.2rem;
+        }
+
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 4px solid #34495e;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+        }
+
+        .calc-box {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .formula {
+            background: #2c3e50;
+            color: #ffffff;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+
+        .result-box {
+            background: #34495e;
+            color: white;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            border: 1px solid #dee2e6;
+        }
+
+        .comparison-table th {
+            background: #f8f9fa;
+            color: #2c3e50;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #fafbfc;
+        }
+
+        .warning {
+            background: #fff5f5;
+            border-left: 4px solid #e53e3e;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .tip {
+            background: #f0fff4;
+            border-left: 4px solid #38a169;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            color: #6c757d;
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #dee2e6;
+            font-size: 0.9rem;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        em {
+            font-style: italic;
+            color: #6c757d;
+        }
+
+        strong {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content {
+                padding: 2rem 1rem;
+            }
+            
+            .nav {
+                padding: 1rem;
+            }
+            
+            .nav ul {
+                gap: 1rem;
+            }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 15px 12px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ecf0f1;
+            vertical-align: middle;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        tr:hover {
+            background-color: #e8f4fd;
+            transition: background-color 0.3s ease;
+        }
+        
+        .load-name {
+            text-align: left;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .notes {
+            text-align: left;
+            font-style: italic;
+            color: #7f8c8d;
+            font-size: 13px;
+        }
+        
+        .number {
+            font-weight: bold;
+            color: #27ae60;
+        }
+        
+        .total-row {
+            background: linear-gradient(135deg, #e74c3c, #c0392b) !important;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .total-row td {
+            border-bottom: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Off-Grid Solar System Design</h1>
+            <p class="subtitle">A Case Study</p>
+            <a href="blog.html" style="display:inline-block; margin-top:1.5rem; padding:0.5rem 1.2rem; background:#27ae60; color:#fff; border-radius:5px; text-decoration:none; font-weight:500; font-size:1rem; transition:background 0.2s;">Home</a>
+        </header>
+
+        <nav class="nav">
+            <ul>
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#site">Site Inspection</a></li>
+                <li><a href="#energy">Energy Audit</a></li>
+                <li><a href="#solar">Solar Sizing</a></li>
+                <li><a href="#inverter">Inverter & Controller</a></li>
+                <li><a href="#battery">Battery Design</a></li>
+                <li><a href="#cables">Cable Sizing</a></li>
+                <li><a href="#sims">PVSYST Simulation</a></li>
+                <li><a href="#Costanalysis">Economic Analysis</a></li>
+                <li><a href="#Optimisation">Optimization</a></li>
+            </ul>
+        </nav>
+
+        <div class="content">
+            <section id="intro" class="intro">
+                <p>During a random sketch-up session of our dream family home — the kind where the architectural ideas would give any civil engineer a headache — we hit a roadblock, not because of the floating staircases or very random takedowns of probably important walls, but because an electrical engineer was present, and wouldn't allow a random design of a PV solar system.</p>
+
+                <div class="highlight-box">
+                    The question that threw a spanner in our blueprints was:<br>
+                    <strong>How do we go completely off-grid — properly?</strong>
+                </div>
+
+                <p>It wasn't the first time this question had come up. In most rural parts of Zimbabwe, the default "design method" is simple: buy the biggest solar system you can afford and hope for the best. Honestly, that approach isn't all that bad — economics usually forces people to stay far away from actual overdesign. But it's still reactive and doesn't guarantee you'll have adequate power.</p>
+
+                <p>And I had proof of that — my grandmother's existing off-grid solar system.</p>
+
+                <p>Despite being a good first step, her current setup couldn't keep up with actual usage. Random blackouts, undercharged batteries, appliances that had to be switched off "just in case" — <em>"Tikasadzima handizokwanise kuona TV"</em>.</p>
+
+                <p>So I figured: why not do it properly?</p>
+
+                <p>As an electrical engineer with a fresh course in PV system design, I decided to design a real, well-sized solar setup for her home in Gutu, Zimbabwe. And while I was at it, I thought I'd turn the process into a blog post — partly to explain the concepts to friends and family who keep asking, and partly because I had to teach myself a few things along the way.</p>
+
+                <p>What follows is a walkthrough of that process — from site layout and orientation issues to panel sizing, tilt angles, and how to account for a roof slightly off from true north. All are based on a real home, with real constraints, and hopefully some real-world insights.</p>
+            </section>
+
+            <section id="site" class="section">
+                <h2>1. Site Inspection</h2>
+                
+                <p>I had exactly one option for placing the solar panels: the roof.</p>
+
+                <p>Sure, my grandmother has a good amount of land around the house — classic rural Zimbabwe spacing — but if you know anything about Mbuya Fanny, it's this: she would sooner sleep in the dark than sacrifice a single square meter of perfectly farmable land to a solar array.</p>
+
+                <p>And honestly? She has a point. Ground-mounted panels aren't always the answer, especially when the roof space is usable — which, in this case, it is (more on that later).</p>
+
+                <p>Before committing to the design, though, there were a few environmental factors to consider:</p>
+
+                <p><strong>Shade Analysis:</strong> Fortunately, there are no tall trees, water tanks, or weirdly ambitious neighbor constructions near the homestead. So we can assume minimal shading — a dream scenario in PV design terms.</p>
+
+                <p><strong>Sun Hours:</strong> According to available solar irradiance data for the Gutu region, the area averages around 5.08 Sun hours a day. This value is crucial for estimating how much energy a system can reliably generate.</p>
+
+                <h3>Sun hour calculation:</h3>
+                <p>To improve performance, solar panels shouldn't lie flat. Instead, you tilt them to better align with the sun's position throughout the year. In this case, we used a tilt angle of 23°, close to the latitude a good compromise for year-round performance. But a standard 30 is used.</p>
+
+                <p>To fine-tune our sun hour estimate with tilt factored in, you can use formulas that adjust for declination angle (the sun's position relative to the Earth's equator) and elevation angle (how high the sun gets in the sky).</p>
+
+                <h3>Declination Angle</h3>
+                <p>The declination angle (δ) varies by day of the year and is calculated using:</p>
+                <div class="formula">δ = 23.45° · sin(360/365(284 + n))</div>
+                <p>Where n is the day of the year (1 for Jan 1, 365 for Dec 31).</p>
+
+                <h3>Elevation Angle</h3>
+                <p>The solar elevation angle at solar noon is approximated as:</p>
+                <div class="formula">α = 90° - |latitude - δ|</div>
+                <p>This tells you how high the sun is in the sky — important for knowing how much direct light your panels get.</p>
+
+                <h3>Peak Sun Hours with Tilt</h3>
+                <p>To estimate peak sun hours adjusted for tilt, you can use this simplified approach:</p>
+                <div class="formula">Adjusted Insolation = Horizontal Insolation × (cos(Latitude - Tilt) / cos(Latitude))</div>
+                <p>In our case, using Latitude = 20° and Tilt = 23°, this becomes:</p>
+                <div class="formula">Adjusted Factor = cos(20 - 23) / cos(20) = cos(-3) / cos(20) ≈ 0.9986 / 0.9397 ≈ 1.063</div>
+
+                <p>So we can multiply each month's horizontal insolation by ~1.06 to get a more realistic estimate for a fixed 23° tilted system.</p>
+
+                <p>This gives us a pretty solid average of about 6.0 peak sun hours per day, year-round — excellent conditions for solar generation. However since the maximum and the minimum difference is greater than 2 hours, to ensure that there are no blackouts on those minimum days the minimum is used for the design.</p>
+
+                <p>While declination and elevation angles aren't strictly needed in every residential design — especially when using fixed-tilt panels — they're important for understanding the seasonal movement of the sun, shading behavior, and informing more advanced or optimized designs. I calculated them to get a clearer mental picture of how the sun behaves over my grandmother's house in June vs. December, even if the final system doesn't rely on them directly.</p>
+
+                <p>The north-facing roof of my grandmother's house in Gutu, Zimbabwe, is 10° off from true north. While that's not perfectly aligned, it only reduces the system's efficiency by about 1.5%, which is negligible in most home setups.</p>
+
+                <p>With a roof area of 74 m² and assuming modern 400W panels, I can fit about 43 panels — totaling 17.2 kWp. For rural electrification or a hybrid grid/off-grid system, that's more than enough power to support household appliances, lighting, irrigation, and even a small fridge or freezer.</p>
+            </section>
+
+            <section id="energy" class="section">
+                <h2>2. Energy Audit</h2>
+                <p>We need to figure out how much energy the house consumes on average. For a solar system to work reliably, it must be based on real usage. So, we estimate how much electricity each device or appliance uses, for how long, and how often. The table for that is shown below.</p>
+            
+                <h1>Energy Audit Report</h1>
+        
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Loads</th>
+                            <th>Notes</th>
+                            <th>Power (Watts)</th>
+                            <th>Quantity</th>
+                            <th>Duration (H)</th>
+                            <th>Total Power (Watts)</th>
+                            <th>Energy (Watt.H)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="load-name">Outside Lighting</td>
+                            <td class="notes">Night use</td>
+                            <td class="number">15</td>
+                            <td class="number">3</td>
+                            <td class="number">8</td>
+                            <td class="number">45</td>
+                            <td class="number">360</td>
+                        </tr>
+                        <tr>
+                            <td class="load-name">Room Lighting</td>
+                            <td class="notes">Night use</td>
+                            <td class="number">5</td>
+                            <td class="number">8</td>
+                            <td class="number">8</td>
+                            <td class="number">40</td>
+                            <td class="number">320</td>
+                        </tr>
+                        <tr>
+                            <td class="load-name">TV (LED 55")</td>
+                            <td class="notes">Family room centerpiece</td>
+                            <td class="number">80</td>
+                            <td class="number">1</td>
+                            <td class="number">6</td>
+                            <td class="number">80</td>
+                            <td class="number">480</td>
+                        </tr>
+                        <tr>
+                            <td class="load-name">Refrigerator</td>
+                            <td class="notes">Runs all day, but cycles on/off (~50% duty)</td>
+                            <td class="number">150</td>
+                            <td class="number">1</td>
+                            <td class="number">12</td>
+                            <td class="number">150</td>
+                            <td class="number">1800</td>
+                        </tr>
+                        <tr>
+                            <td class="load-name">Decoder</td>
+                            <td class="notes">Used with TV</td>
+                            <td class="number">7</td>
+                            <td class="number">1</td>
+                            <td class="number">6</td>
+                            <td class="number">7</td>
+                            <td class="number">42</td>
+                        </tr>
+                        <tr>
+                            <td class="load-name">Phones Charging</td>
+                            <td class="notes">4 phones using 20W charging</td>
+                            <td class="number">12</td>
+                            <td class="number">4</td>
+                            <td class="number">2</td>
+                            <td class="number">48</td>
+                            <td class="number">96</td>
+                        </tr>
+                        <tr>
+                            <td class="load-name">Miscellaneous</td>
+                            <td class="notes">Other small devices not included</td>
+                            <td class="number">5</td>
+                            <td class="number">1</td>
+                            <td class="number">0.5</td>
+                            <td class="number">5</td>
+                            <td class="number">2.5</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td colspan="5"><strong>TOTALS</strong></td>
+                            <td><strong>525 W</strong></td>
+                            <td><strong>4.9 KW.Hr</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                           
+            </section>
+
+            <section id="solar" class="section">
+                <h2>3. Solar Array Sizing</h2>
+                <p>To size the PV system, we use the following:</p>
+
+                <div class="calc-box">
+                    <strong>Required Energy per Day:</strong><br>
+                    E_daily = 5 kWh/day  (Rounded Up to the nearest kWh)<br><br>
+                    <strong>System Efficiency Assumption:</strong><br>
+                    Let's assume system losses of ~20%, so efficiency = 0.8<br><br>
+                    <strong>Peak Sun Hours (PSH):</strong><br>
+                    Based on solar data = 5.08 hours/day
+                </div>
+
+                <h3>Required PV Size:</h3>
+                <div class="formula">PV Size (kW) = E_daily / (Efficiency × PSH) = 5 / (0.8 × 5.08)  ≈ 1.23 kW</div>
+
+                <p>So, you'd need roughly a 1.3 kW solar system.</p>
+
+                <h3>Number of Panels:</h3>
+                <p>Assuming you're using 250 W panels:</p>
+                <div class="formula">Number of Panels = 1.3 kW / 250 W/panel = 4.92 ⇒ 5 panels (round up)</div>
+
+                <h3>Area Required:</h3>
+                <p>Each 250W panel typically takes up ~1.6 m², so:</p>
+                <div class="formula">Total Area = 5 × 1.6 = 8 m²</div>
+            </section>
+
+            <section id="inverter" class="section">
+                <h2>4. Inverter and Charge Controller Design</h2>
+                <p>Now that we have our solar array sized, the next step is to make sure all that sunshine can actually power the house and charge the batteries efficiently. This is where the inverter and charge controller come in.</p>
+
+                <h3>Inverter Sizing</h3>
+                <p>The inverter converts the DC power from the panels (and batteries) into AC power that can be used in the home.</p>
+
+                <p><strong>Inverter Power Requirement:</strong><br>
+                We design the inverter based on the maximum load power the house could draw — in this case, we estimated a total load of:</p>
+                <div class="calc-box">P_AC = 600 W (from energy audit, rounded up to the nearest hundred)</div>
+
+                <p>We also account for a power factor of 0.9, which accounts for the inefficiencies in real-world AC loads.</p>
+                <div class="formula">P_inverter = P_AC / Power Factor = 600 / 0.9 ≈ 666kW</div>
+
+                <div class="result-box">
+                    Recommended Inverter: 36 V, 750 W pure sine wave inverter<br>
+                    Must support a DC input of 36V to match our system bus voltage<br>
+                    Preferably includes built-in protections (overload, short circuit, low battery)
+                </div>
+
+                <h3>Charge Controller Sizing</h3>
+                <p>The charge controller sits between the solar panels and the battery bank, managing how the batteries are charged to ensure longevity and safety.</p>
+
+                <p><strong>Minimum Charge Controller Current Rating:</strong><br>
+                We use the maximum current that will go to the batteries to size the controller, and the bus voltage:</p>
+                <div class="formula">I_charge = P_array / V_bus = 1300W / 36 V ≈ 36.25 A</div>
+
+                <p>Add a safety margin of ~25%:</p>
+                <div class="formula">I_safe = 36.25 × 1.25 ≈ 45 A</div>
+
+                <div class="result-box">
+                    Recommended Charge Controller:<br>
+                    Rating: ≥ 45 A, for 36V system<br>
+                    Preferably MPPT type (I'll explain why below)
+                </div>
+
+                <h3>PWM vs MPPT Charge Controllers</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>PWM</th>
+                            <th>MPPT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Cost</strong></td>
+                            <td>Cheaper</td>
+                            <td>More expensive</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Efficiency</strong></td>
+                            <td>~70–80%</td>
+                            <td>~95–98%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Working Principle</strong></td>
+                            <td>Drops panel voltage to match battery voltage</td>
+                            <td>Converts excess voltage into additional current</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Best For</strong></td>
+                            <td>Small systems, low budget</td>
+                            <td>Larger systems, max efficiency</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Why MPPT is Better Here:</h3>
+                <p>In this system, panel voltage is likely higher than battery voltage (especially in colder mornings). An MPPT controller harvests that voltage headroom, converting it into more current — meaning faster charging and less wasted energy.</p>
+
+                <p>Plus, with a relatively modest number of panels and variable solar conditions in Gutu, an MPPT controller ensures that even during cloudy periods or morning/afternoon tilt inefficiencies, you get the best possible energy yield.</p>
+            </section>
+
+            <section id="battery" class="section">
+                <h2>5.Battery Design</h2>
+
+                <h3>Total Amp-Hours Needed</h3>
+                <p>To design for the total battery capacity needed we need to take into account the total energy demand (from the audit) and the Days of autonomy (these are the days we will allow for the batteries to supply load without recharging), and the depth of dicharge which affects the battery life.</p>
+                <div class="formula">Total Ah = Total Energy* Days of Autonomy/ (Bus Voltage* Depth of Discharge*Efficiency)</div>
+                <div class="formula">Total Ah = 5000*2/ (36 × 0.6 × 0.9) = 514.40 Ah</div>
+
+                <h3>Battery Configuration</h3>
+                <p>Each 12 V, 200 Ah battery will be arranged to match the 32 V system bus.</p>
+
+                <p><strong>Series:</strong> 32/12 ≈ 2.66 ⇒ 3 batteries in series = 36V nominal<br>
+                Each string gives 200 Ah</p>
+
+                <p><strong>Parallel Strings:</strong> 514/200 ≈ 2.12 ⇒ 2 parallel strings for safety margin</p>
+
+                <h3>Updated Final Configuration:</h3>
+                <ul>
+                    <li>3 in series (36 V)</li>
+                    <li>2 strings in parallel (600 Ah total)</li>
+                    <li>Total batteries = 3 × 2 = 6 batteries</li>
+                </ul>
+            </section>
+
+            <section id="cables" class="section">
+                <h2>6. Cable Sizing</h2>
+                <p>You can have the best panels, the fanciest inverter, and a battery bank that looks like it could power a Mars mission — but if your cables aren't up to the task, you're just cooking copper. Here's how we make sure the system stays safe and efficient.</p>
+
+                <h3>Step 1: Determine the Maximum Current</h3>
+                <p>We size cables based on the maximum current they'll carry — and in a 32 V DC system, current can get high quickly.</p>
+
+                <p>Let's base our calculations on the inverter input side, which is usually where current is highest.</p>
+                <div class="formula">Power (W) = Voltage (V) × Current (A) ⇒<br>
+                Current = Power / Voltage = 1300 W / 32 V ≈ 40.6 A</div>
+
+                <p>We add a 25% safety margin:</p>
+                <div class="formula">40.6 A × 1.25 = 50.75 A ≈ 51 A</div>
+
+                <p>So we're designing for a maximum current of 51 A.</p>
+
+                <h3>Step 2: Choose the Cable Size</h3>
+                <p>To minimize voltage drop and overheating, we use standard tables (or experience) to select an appropriate size:</p>
+
+                <p>For 12–48 V DC systems carrying ~50 A over short distances (less than 10 m):</p>
+                <ul>
+                    <li><strong>16 mm² copper cable</strong> is a safe choice.</li>
+                    <li>It gives <3% voltage drop and stays cool under load.</li>
+                    <li>Rated for ~70 A (depending on insulation and temperature).</li>
+                </ul>
+
+                <p>If your run is longer than 10 meters, consider bumping up to 25 mm² just to stay on the safe side.</p>
+
+                <h3>Step 3: Voltage Drop Check (Optional)</h3>
+                <p>You can double-check the drop using:</p>
+                <div class="formula">Voltage Drop = (2 × L × I × ρ) / A</div>
+
+                <p>Where:</p>
+                <ul>
+                    <li><strong>L</strong> = one-way cable length (in meters)</li>
+                    <li><strong>I</strong> = current in Amps</li>
+                    <li><strong>ρ</strong> = resistivity of copper (0.0175 Ω·mm²/m)</li>
+                    <li><strong>A</strong> = cable cross-sectional area in mm²</li>
+                </ul>
+
+                <p>Try to keep the voltage drop under 3% for DC systems.</p>
+
+                <h3>Summary of Cable Sizing</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Application</th>
+                            <th>Current (A)</th>
+                            <th>Suggested Cable Size</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Inverter DC Input</td>
+                            <td>~51 A</td>
+                            <td>16 mm² copper</td>
+                        </tr>
+                        <tr>
+                            <td>PV Array to Charge Controller</td>
+                            <td>Depends on panel config (likely less)</td>
+                            <td>6–10 mm²</td>
+                        </tr>
+                        <tr>
+                            <td>Charge Controller to Battery</td>
+                            <td>Similar to inverter input</td>
+                            <td>16 mm²</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Use DC-rated breakers and fuses for protection and always terminate connections properly to avoid heat buildup.</p>
+            </section>
+
+
+        
+            <section id = "sims" class="section ">
+                <h2>PVSYST Simulation</h2>
+                <p>The PVsyst simulation confirms the manual design’s assumptions, proving that a 1.35 kW solar array and 6-battery bank can reliably power the home year-round. The system meets 100% of the load with no missing energy, while maintaining healthy battery operation and generating slightly more than needed — ensuring resilience even during less sunny periods. Minor excess energy during peak months confirms the array has headroom, which can be valuable in future upgrades or load increases.</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: flex-start; justify-content: center;">
+                    <figure style="flex: 1 1 350px; max-width: 420px; text-align: center;">
+                        <img src="/Images/PVSYST_ENERGY.jpg" alt="PVSYST Energy Flow Diagram" style="width:100%; max-width:400px; border-radius: 8px; box-shadow: 0 2px 8px rgba(44,62,80,0.08);">
+                        <figcaption style="margin-top: 1rem; font-size: 0.98rem; color: #34495e;">
+                            <strong>PVSYST Energy Flow:</strong> <br>
+                            <ul style="text-align:left; margin: 0.5rem auto 0 1.5rem; color: #2c3e50;">
+                                <li><span style="color:#e74c3c;">20.3% unused energy</span> (battery full)</li>
+                                <li><span style="color:#e67e22;">11.8% temperature losses</span></li>
+                                <li><span style="color:#f1c40f;">3.7% wiring losses</span></li>
+                                <li><span style="color:#27ae60;">0% loss of load</span></li>
+                            </ul>
+                            <span style="display:block; margin-top:0.5rem;">
+                                <em>
+                                    The system meets <strong>100% of the load</strong> with no blackouts.<br>
+                                    Extra production in some months is stored or lost when batteries are full.<br>
+                                    Increasing battery storage could reduce unused energy further.
+                                </em>
+                            </span>
+                        </figcaption>
+                    </figure>
+                    <figure style="flex: 1 1 350px; max-width: 420px; text-align: center;">
+                        <img src="/Images/Energy_use.jpg" alt="PVSYST Performance Indicators" style="width:100%; max-width:400px; border-radius: 8px; box-shadow: 0 2px 8px rgba(44,62,80,0.08);">
+                        <figcaption style="margin-top: 1rem; font-size: 0.98rem; color: #34495e;">
+                            <strong>Performance Indicators:</strong>
+                            <ul style="text-align:left; margin: 0.5rem auto 0 1.5rem; color: #2c3e50;">
+                                <li>Performance Ratio: <strong>60.6%</strong></li>
+                                <li>Specific Yield: <strong>1318 kWh/kWp/year</strong></li>
+                                <li>Available solar energy: <strong>2.34 MWh/year</strong></li>
+                                <li>Energy supplied to user: <strong>1.78 MWh/year</strong></li>
+                                <li>Excess (unused): <strong>495 kWh/year</strong> (~20%)</li>
+                            </ul>
+                            <span style="display:block; margin-top:0.5rem;">
+                                <em>
+                                    The system is <strong>intentionally oversized</strong> for resilience.<br>
+                                    This provides margin for cloudy days, battery aging, and future load growth.
+                                </em>
+                            </span>
+                        </figcaption>
+                    </figure>
+                </div>
+            </section>
+
+
+            <section id="Costanalysis" class="section">
+                <h2>Solar System Components & Cost Breakdown</h2>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Specs / Description</th>
+                            <th>Qty</th>
+                            <th>Unit Cost (USD)</th>
+                            <th>Total (USD)</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="component">Solar Panels</td>
+                            <td class="specs">250 W, mono/poly crystalline</td>
+                            <td class="qty">5</td>
+                            <td class="cost">$100</td>
+                            <td class="total-cost">$500</td>
+                            <td class="notes">Total panel power: 1250 W</td>
+                        </tr>
+                        <tr>
+                            <td class="component">Charge Controller (MPPT)</td>
+                            <td class="specs">40 A, 150 V MPPT</td>
+                            <td class="qty">1</td>
+                            <td class="cost">$150</td>
+                            <td class="total-cost">$150</td>
+                            <td class="notes">MPPT improves efficiency over PWM</td>
+                        </tr>
+                        <tr>
+                            <td class="component">Battery</td>
+                            <td class="specs">12 V, 200 Ah, deep cycle AGM/Gel</td>
+                            <td class="qty">6</td>
+                            <td class="cost">$180</td>
+                            <td class="total-cost">$1,080</td>
+                            <td class="notes">2S3P config, ~4.9 kWh usable energy</td>
+                        </tr>
+                        <tr>
+                            <td class="component">Inverter</td>
+                            <td class="specs">Pure sine wave, 32 V input, 1300 W output</td>
+                            <td class="qty">1</td>
+                            <td class="cost">$250</td>
+                            <td class="total-cost">$250</td>
+                            <td class="notes">Designed for 583 W load + safety factor</td>
+                        </tr>
+                        <tr>
+                            <td class="component">Mounting Structure</td>
+                            <td class="specs">Roof/ground mount for 5 panels</td>
+                            <td class="qty">1 set</td>
+                            <td class="cost">$150</td>
+                            <td class="total-cost">$150</td>
+                            <td class="notes">Includes rails, clamps, and fasteners</td>
+                        </tr>
+                        <tr>
+                            <td class="component">Cabling</td>
+                            <td class="specs">DC-rated cables (16 mm² + 6 mm²), 25 m total</td>
+                            <td class="qty">1 lot</td>
+                            <td class="cost">$100</td>
+                            <td class="total-cost">$100</td>
+                            <td class="notes">For panel-to-CC and CC-to-battery/inverter runs</td>
+                        </tr>
+                        <tr>
+                            <td class="component">Breakers & Fuses</td>
+                            <td class="specs">DC breakers, inline fuses, disconnects</td>
+                            <td class="qty">1 set</td>
+                            <td class="cost">$50</td>
+                            <td class="total-cost">$50</td>
+                            <td class="notes">For protection and safety compliance</td>
+                        </tr>
+                        <tr>
+                            <td class="component">Battery Enclosure</td>
+                            <td class="specs">Ventilated, lockable</td>
+                            <td class="qty">1</td>
+                            <td class="cost">$80</td>
+                            <td class="total-cost">$80</td>
+                            <td class="notes">Optional, for safety and aesthetic appeal</td>
+                        </tr>
+                        <tr>
+                            <td class="component">Miscellaneous</td>
+                            <td class="specs">Lugs, ties, conduit, grounding rods</td>
+                            <td class="qty">1 lot</td>
+                            <td class="cost">$40</td>
+                            <td class="total-cost">$40</td>
+                            <td class="notes">Always forget these until you're on the roof</td>
+                        </tr>
+                        <tr class="subtotal-row">
+                            <td colspan="4"><strong>SUBTOTAL</strong></td>
+                            <td><strong>$2,400</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr class="total-row">
+                            <td colspan="4"><strong>TOTAL SYSTEM COST</strong></td>
+                            <td><strong>$2,400</strong></td>
+                            <td><strong>Complete Off-Grid Solar System</strong></td>
+                        </tr>
+                    </tbody>
+                </section>
+            </table>
+
+            <section id="Optimisation" class="section">
+                <h2> Optimization </h2>
+                <p> The 6-battery setup can be optimized in a few ways. One option is to use 3 higher-capacity batteries (e.g., 12V 300Ah), which would meet the energy demand with fewer units, though these can be bulky and harder to source affordably. Alternatively, you could deep cycle 3 × 12V 200Ah batteries, pushing them to around 75–80% depth of discharge — this would meet the energy need, but at the cost of reduced lifespan and reliability, making it a short-term solution. A smarter long-term alternative is switching to LiFePO₄ batteries, which safely allow deeper discharges and last significantly longer. While the upfront cost is higher, the total cost of ownership is lower over time, making it the most future-proof and maintenance-friendly option if budget allows.</p>
+                <p>The current design assumes that the solar panels are mounted flat on the roof, which has a pitch of <strong>22°</strong>. However, to optimize solar irradiance, especially during the winter months when the sun is lower in the sky, increasing the tilt angle to <strong>30°</strong> is recommended. This adjustment improves the system's performance but requires additional spacing between panel rows to avoid self-shading. Based on a panel length of 1.6 m and a winter solar elevation angle of approximately <strong>46.5°</strong>, the minimum spacing needed is calculated using shading geometry:
+                
+                <div class="formula"><em>Spacing = (1.6 × sin(30°)) / tan(46.5°) ≈ 0.77 m</em>.</div>
+                <p> This means each row must be spaced at least <strong>0.77 meters</strong> behind the one in front to prevent shading during low-sun periods. While this slightly increases the total area required, it ensures <strong>maximum efficiency year-round</strong> by reducing power loss from shading—especially important in compact or budget-constrained systems where every watt matters.
+                </p>
+                </p>
+
+            </section> 
+        </div>
+            
+
+
+        <footer class="footer">
+            <p>2025 Fanny Fushayi (Design is Theoretical not for official use) </p>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add subtle scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('.nav');
+            if (window.scrollY > 100) {
+                nav.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
