@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Deploy a Machine Learning Algorithm</title>
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --accent-color: #4a6fa5;
+            --light-gray: #e9ecef;
+            --dark-gray: #6c757d;
+            --max-width: 800px;
+            --line-height: 1.6;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: var(--line-height);
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        header {
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--light-gray);
+            padding-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+            font-style: italic;
+        }
+        
+        .content {
+            font-size: 1.05rem;
+        }
+        
+        h2 {
+            font-size: 1.6rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        blockquote {
+            border-left: 3px solid var(--accent-color);
+            padding-left: 1rem;
+            margin-left: 0;
+            color: var(--dark-gray);
+            font-style: italic;
+        }
+        
+        pre {
+            background-color: var(--light-gray);
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+        
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: var(--light-gray);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-size: 0.9rem;
+        }
+        
+        .math {
+            font-family: 'Times New Roman', Times, serif;
+            font-style: italic;
+        }
+        
+        .highlight {
+            background-color: #fff3cd;
+            padding: 0.2rem 0.4rem;
+        }
+        
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--light-gray);
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>How to Deploy a Machine Learning Algorithm</h1>
+            <p class="subtitle">Everything but a guide.</p>
+            <a href="blog.html" style="display:inline-block;margin-top:1rem;padding:0.4rem 1rem;background:var(--accent-color);color:#fff;border-radius:4px;text-decoration:none;font-size:1rem;">Home</a>
+        </header>
+        
+        <div class="content">
+            <p>I'm unreasonably excited just typing this, because this week I've had countless conversations with myself about it. But now I get to have a more structured conversation— with you. Welcome.</p>
+            
+            <p>There's a lot to compress in this post, because it's been a week of learning. And I don't mean just new skills, I also mean learning the very nature of how I learn.</p>
+            
+            <h2>On Learning</h2>
+            <p>I've been thinking a lot about this quote (people who have done practical deep learning for coders by jeremy howard will be familiar with this idea):</p>
+            
+            <blockquote>"You don't teach someone baseball by handing them a textbook on the physics of parabolic motion."</blockquote>
+            
+            <p>That idea stuck with me because I'm genuinely torn between a deep, low-level understanding and chasing the thrill of high-level deployment. So I sit down for hours, grinding through linear algebra, working out backpropagation by hand. It's intense and exhausting. But it's also weirdly satisfying, there's a kind of beauty in visualizing the math, seeing how it all fits together.</p>
+            
+            <p>And yet... it always feels a little distant from the real world.</p>
+            
+            <p>Then I actually build something. A high-level deployment, maybe an image classifier using Gradio and Hugging Face. And at first, it feels almost too easy. A few lines of code, a slick interface, and it works — eventually. A bug hits every now and again and you descend into temporary madness. But strangely, that's when it starts to feel real. Because once it does work, and you see it in action, and you start thinking of all the clever ways you can use it.</p>
+            
+            <p>A mathematician named Paul Lockhart put it even more scathingly in his essay <em>A Mathematician's Lament</em>. He imagines a world where kids aren't allowed to paint until they've memorized pigment formulas, and music is off-limits until they've done years of harmony analysis. And that's basically how we treat math and science. Theory now, joy later (if ever).</p>
+            
+            <p>That vision came flooding back this week as I zigzagged between two very different approaches to understanding neural networks:</p>
+            <ul>
+                <li>A low-level mathematical breakdown: pure theory, equations, backpropagation, the inner workings of each layer.</li>
+                <li>A high-level, practical deployment: using Gradio and Hugging Face to actually build and host a working image classifier that can do something.</li>
+            </ul>
+            
+            <h2>PART 1: Theory</h2>
+            
+            <h3>Convolution</h3>
+            <p>Convolution is a mathematical operation that combines two functions to produce a third. In the context of images, one function is the input image and the other is a small kernel (or filter). You slide the kernel across the image and compute the dot product at every location. The result is a new image (called a feature map) that highlights certain features of the original image.</p>
+            
+            <p>Think of it like this: if the input image is a massive haystack, convolution helps you design tiny, reusable magnets (kernels) to efficiently scan for needles (features like edges or curves).</p>
+            
+            <p>Given an image <span class="math">I</span> and a kernel <span class="math">K</span>, convolution is defined (in 2D) as:</p>
+            
+            <pre>S(i, j) = ∑∑ K(u, v) · I(i + u - 1, j + v - 1)</pre>
+            
+            <p>Where:</p>
+            <ul>
+                <li><span class="math">S(i, j)</span>: The output feature map.</li>
+                <li><span class="math">F</span>: The kernel size (e.g., 3 for a 3×3 kernel).</li>
+            </ul>
+            
+            <p>You're essentially computing a weighted sum of pixels in the local neighborhood around <span class="math">(i, j)</span>.</p>
+            
+            <h4>Famous Kernels in Computer Vision (Before Deep Learning Took Over)</h4>
+            <p>Before CNNs were learning kernels automatically, people used handcrafted kernels for basic image processing. Some notable examples:</p>
+            
+            <table class="kernel-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Purpose</th>
+                        <th>Kernel Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sobel</td>
+                        <td>Edge detection</td>
+                        <td>
+                            <pre>
+            [-1  0  1]
+            [-2  0  2]
+            [-1  0  1]
+                            </pre>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Gaussian</td>
+                        <td>Blurring/smoothing</td>
+                        <td>
+                            <pre>
+            [1  2  1]
+            [2  4  2]
+            [1  2  1] (normalized)
+                            </pre>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Laplacian</td>
+                        <td>Second derivative, detects edges and changes in intensity</td>
+                        <td>
+                            <pre>
+            [ 0 -1  0]
+            [-1  4 -1]
+            [ 0 -1  0]
+                            </pre>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Emboss</td>
+                        <td>Gives a 3D shadow effect</td>
+                        <td>
+                            <pre>
+            [-2 -1  0]
+            [-1  1  1]
+            [ 0  1  2]
+                            </pre>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <style>
+            .kernel-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 2rem 0 2rem 0;
+                background: #fff;
+                font-size: 1rem;
+            }
+            .kernel-table th,
+            .kernel-table td {
+                border: 1px solid #d1d5db;
+                padding: 0.75rem 1rem;
+                text-align: left;
+                vertical-align: top;
+            }
+            .kernel-table thead th {
+                background: var(--light-gray);
+                color: var(--accent-color);
+                font-weight: 600;
+            }
+            .kernel-table pre {
+                margin: 0;
+                background: none;
+                padding: 0;
+                font-size: 0.95em;
+                font-family: 'Courier New', Courier, monospace;
+            }
+            </style>
+            <p>CNNs essentially learn their own custom kernels through training, ones that aren't just for edges or textures, but specialized for things like "cat ear with 3-pixel tilt" or "whisker-like curve."</p>
+            
+            <p>In a typical deep learning model, multiple such kernels are used at each layer. Each kernel detects a different pattern. Instead of being handcrafted, the model learns the values in each kernel during training.</p>
+            
+            <p>So with, say, 32 kernels scanning a 64×64 image, you end up with 32 filtered versions of the original image each one highlighting a different type of feature. These 32 filtered images are called feature maps.</p>
+            
+            <p>This feature detection process continues layer by layer, with deeper layers detecting more abstract features (first layer: edges; second layer: corners and textures; later layers: eyes, paws, whiskers, etc.).</p>
+            
+            <h3>RELU Function</h3>
+            
+            <p>The concept of activation functions has been discussed a lot throughout the series especially in the introduction to deep learning blog.</p>
+            
+            <p>After a convolution operation (i.e. filtering the image for features), you're left with a bunch of numerical values; some positive, some negative. But here's the thing:</p>
+            
+            <p>Without activation functions, your neural network is just stacking a bunch of linear equations. And guess what? A stack of linear equations is still just... one big linear equation.</p>
+            
+            <p>That's where activation functions come in, and ReLU is the reigning champion (especially inbetween the networks).</p>
+            
+            <h4>What is ReLU?</h4>
+            <p>ReLU stands for Rectified Linear Unit, and it's defined by a simple rule:</p>
+            
+            <pre>f(x) = max(0, x)</pre>
+            
+            <p>In other words:</p>
+            <ul>
+                <li>If the value is positive, keep it.</li>
+                <li>If it's negative, squash it to zero.</li>
+            </ul>
+            
+            <p>That's it. Just hard pruning.</p>
+            
+            <h4>Why Use It?</h4>
+            <ul>
+                <li><strong>Non-Linearity</strong>: ReLU introduces non-linearities into the model, allowing the network to learn complex, non-linear mappings from inputs to outputs (like distinguishing between a cat and a pug in bad lighting).</li>
+                <li><strong>Computationally Cheap</strong>: Compared to sigmoid or tanh, ReLU is faster just a comparison with zero.</li>
+                <li><strong>Sparse Representations</strong>: By zeroing out negative values, it creates sparsity in the network. Sparse models are often more efficient and generalize better.</li>
+                <li><strong>Helps Avoid Vanishing Gradients (kind of)</strong>: Unlike sigmoid or tanh, which squish inputs into narrow ranges, ReLU doesn't compress large inputs. This means gradients during backpropagation stay healthier (though it has its own issues "dying ReLU").</li>
+            </ul>
+            
+            <h3>Pooling</h3>
+            
+            <p>After filtering with convolutions and applying ReLU to keep only the strong, positive signals, you're left with feature maps which are rich but still quite large. Convolution results in images that are larger than both the input variables, so at this stage you picture matrix is much larger. However only specific features are detected by the actual neural network, and so you can just "pool" these and get rid of all the whitespace.</p>
+            
+            <p>Pooling achieves that by shrinking things down intelligently.</p>
+            
+            <h4>What Is Pooling?</h4>
+            <p>Pooling is a downsampling technique. It reduces the size of the feature maps while retaining the most important information. The goal is:</p>
+            <ul>
+                <li>Less data to process</li>
+                <li>Less chance of overfitting</li>
+                <li>More robustness to small translations or distortions (e.g., the cat moved a little)</li>
+            </ul>
+            
+            <h4>How Does It Work?</h4>
+            <p>The most common type is Max Pooling.</p>
+            
+            <p><strong>Max Pooling:</strong><br>
+            You slide a small window (e.g. 2×2 or 3×3) over the feature map and pick the maximum value inside that window.</p>
+            
+            <p>If your feature map looks like this:</p>
+            
+            <pre>[1 3 2 4
+ 5 6 1 2
+ 7 8 9 4
+ 3 2 1 0]</pre>
+            
+            <p>...and you apply a 2×2 max pooling with stride 2 (i.e. no overlap), you'll get:</p>
+            
+            <pre>[6 4
+ 8 9]</pre>
+            
+            <p>This kind of pulling only notices the loudest parts of the image"</p>
+            
+            <p><strong>Equation:</strong><br>
+            Let's define it more generally. For a window <span class="math">W ⊂ ℝⁿ×ⁿ</span>, max pooling is:</p>
+            
+            <pre>MaxPool(W) = max(x ∈ W)</pre>
+            
+            <p>There's also Average Pooling, which takes the mean instead of the max, but max pooling is generally preferred for classification tasks — it keeps the strong, defining features.</p>
+            
+            <h4>Why Pool?</h4>
+            <ul>
+                <li><strong>Dimensionality Reduction</strong>: Reduces number of computations in subsequent layers.</li>
+                <li><strong>Translation Invariance</strong>: Slight movements in the input image (e.g., the cat blinked or shifted slightly) don't change the output drastically.</li>
+                <li><strong>Feature Emphasis</strong>: By taking the maximum values, we emphasize the most prominent features, which are usually more relevant.</li>
+            </ul>
+            
+            <h3>Flattening</h3>
+            
+            <p>At this point, we've cleaned the image, filtered it, activated it, and squeezed out the most important spatial features with pooling.</p>
+            
+            <p>Flattening is the step where we say:<br>
+            "Alright, enough image stuff. Let's go full neural net now."</p>
+            
+            <h4>What Is Flattening?</h4>
+            <p>Flattening takes the multi-dimensional output of the previous layer (typically 2D or 3D arrays of features) and unrolls it into a 1D vector. It's like taking every little number from each feature map and laying them all in a straight line.</p>
+            
+            <p>So a 3D array like:<br>
+            Shape: (32, 32, 16)<br>
+            ...becomes a single array:<br>
+            Shape: (32 × 32 × 16) = (16,384,)</p>
+            
+            <p>This vector is then passed into the Fully Connected Layers, i.e. traditional neural network territory. Here's where the model starts making actual decisions based on all the condensed image data — like "cat," "dog,", all from just a (really) long string of numbers!</p>
+            
+            <h4> For the Rest....</h4>
+            <p>At this point, the preprocessing is done. All the heavy image manipulation and filtering is out of the way. Now it's just numbers, weights, biases, and matrix multiplication from here on out.</p>
+            
+            <p>For the rest of the process including the math behind how those weights are updated, what backpropagation is, and how a neural net actually learns. I covered it in my earlier post:<br>
+            <a href="BuildingAI.html">👉 Neural Networks: An Introduction to Deep Learning</a><br>
+            Feel free to check that out for the equations and brain gymnastics.</p>
+            
+            <h2>PART 2: Practical Application</h2>
+            
+            <h3>The Model: Training Before Deployment</h3>
+            <p>Before you can deploy a model, you have to train it. If Part 1 was the theory this is the doing. And trust me, clicking "run" after hours of debugging feels incredible.</p>
+            
+            <p>Using the fastai library (which is built on top of PyTorch), you can get a working image classifier in surprisingly few lines of code.</p>
+            
+            <h4>Step 1: Point to Your Data</h4>
+            <pre>from pathlib import Path
+
+path = Path(r"C:\Users\Fanny\OneDrive - Fanny Fushayi\Computer Science\Building_AI\Computer_Vision\Cat_v_Dog")</pre>
+            
+            <p>You should organize your images into subfolders (e.g., Cat/ and Dog/), because fastai uses folder names to infer class labels.</p>
+            
+            <h4>Step 2: Load and Prepare the Data</h4>
+            <pre>from fastai.vision.all import *
+
+dls = ImageDataLoaders.from_folder(
+    path,
+    train='.',              # Use subfolders as class labels
+    valid_pct=0.2,          # 20% validation split
+    item_tfms=Resize(224),  # Resize all images to 224x224
+    batch_tfms=aug_transforms(), # Data augmentation
+    bs=6                    # Batch size
+)</pre>
+            
+            <h5>What is Data Augmentation?</h5>
+            <p>Think of data augmentation as training your model with optical illusions. It helps the model generalize better by transforming your input images: rotating, flipping, zooming, lighting changes, etc. This simulates real-world variety and helps avoid overfitting.</p>
+            
+            <h4>Step 3: Show a Batch</h4>
+            <pre>dls.show_batch(max_n=9)</pre>
+            
+            <p>This lets you visually confirm that your images are being loaded, labeled, and transformed correctly. If you see upside-down cats or inverted dogs don't panic. That's the augmentation at work.</p>
+            
+            <h4>Step 4: Train the Model</h4>
+            <pre>learn = vision_learner(dls, resnet34, metrics=accuracy)
+learn.fine_tune(2)</pre>
+            
+            <h5>What Is Fine-Tuning?</h5>
+            <p><code>resnet34</code> is a pretrained model, it's already learned to recognize patterns from millions of images (thanks, ImageNet). Fine-tuning means we keep its earlier layers (those that detect general features like edges, textures, and shapes) and only train the final layers on our specific task; classifying cats and dogs.</p>
+            
+            <p>It's like hiring an experienced detective and only teaching them the details of this new case. (<span class="highlight">** now you know why companies require experience on job posts</span>)</p>
+            
+            <h4>Step 5: Save Your Model</h4>
+            <pre>learn.export("My_model.pkl")</pre>
+            
+            <p>This saves your trained model to a .pkl file which is  a serialized file that can be loaded later for inference.</p>
+            
+            <p>You're done with training. Let's go deploy this thing.</p>
+            
+            <h3>Deployment: Taking It Online</h3>
+            <p>Now, this part gets messy. Not because it's hard but because you'll encounter issues that don't feel "ML-related." Like GitHub version control, Python environments, GPU access, OS differences; basically, the adult stuff.</p>
+            
+            <h4>Quick Setup Summary for Hugging Face + GitHub Deployment:</h4>
+            <ol>
+                <li>Create a Hugging Face account</li>
+                <li>Create a new Space (select Gradio as the SDK)</li>
+                <li>Clone the space repo using Git:
+                    <pre>git clone https://huggingface.co/spaces/your-username/your-space-name</pre>
+                </li>
+                <li>Add your files:
+                    <ul>
+                        <li>model.pkl</li>
+                        <li>app.py</li>
+                        <li>requirements.txt (this lists packages to install, like fastai, gradio, etc.)</li>
+                    </ul>
+                </li>
+                <li>Git basics:
+                    <pre>git add .
+git commit -m "Initial commit"
+git push</pre>
+                </li>
+            </ol>
+            
+            <p>Done right, your app launches automatically.</p>
+            
+            <h4>Challenges I Faced</h4>
+            <ul>
+                <li><strong>GPU issues</strong>: My CPU was crawling (180 minutes to train that model — actually to refine). You are going to need a GPU, thankfully you can get one for free on collab or kaggle (comes with learning these platforms as well)</li>
+                <li><strong>Version hell</strong>: Some packages (like torch) don't play nice on older Hugging Face runtimes. I had to dig into specific versions and make sure requirements.txt was used to make this work.</li>
+                <li><strong>Windows/Linux path madness</strong>: FastAI sometimes uses PosixPath which breaks on Windows. Temporarily patching with pathlib hacks fixed it.</li>
+                <li><strong>Git rage moments</strong>: If you forget to commit changes, nothing pushes. If you forget requirements.txt, nothing works. If you forget you need to rename model.pkl to match your loading code, it crashes in silence.</li>
+            </ul>
+            
+            <h4>The Final app.py Code</h4>
+            <pre>import gradio as gr
+from fastai.vision.all import *
+
+# Load the model
+learn = load_learner('model.pkl')
+
+# Define categories (fastai usually infers this automatically)
+categories = ('Dog', 'Cat')
+
+def classify_image(img):
+    pred, idx, probs = learn.predict(img)
+    return dict(zip(categories, map(float, probs)))
+
+# Create interface
+demo = gr.Interface(
+    fn=classify_image,
+    inputs=gr.Image(type="pil"),
+    outputs=gr.Label(num_top_classes=2),
+    title="🐱🐶 Cat vs Dog Classifier",
+    description="Upload an image to classify whether it's a cat or dog!"
+)
+
+if __name__ == "__main__":
+    demo.launch()</pre>
+            
+            <h3>Final Thoughts</h3>
+            <p>The practical side of ML felt easy, until it wasn't. Most of my bugs weren't in matrix multiplication, they were in getting files into the right folders or figuring out why Hugging Face wouldn't boot.</p>
+            
+            <p>But once it worked? I couldn't stop playing with it. I tried random photos, my camera feed, comic cats, even weird color-inverted images. It was fun. It made the whole "low-level theory" suddenly click. Now I knew what all that math was for.</p>
+            
+            <p>And that's why this wasn't just a guide — it was a learning arc.<br>
+            Everything but a guide.</p>
+            
+            <p>Obviously, this is surface level, and if you were to go down the rabbit hole, I'm sure you'd need both at some point; the theory and the tooling. There's a lot of nuanced discussion that can come out of all this. Another one of the projects I did was a family facial recognition system because someone said we all look alike... Not very true, apparently, because it took just one epoch and only 10 images per person to hit 90% accuracy. Go figure. (NB: This is outside the technical section, I am not claiming that it was easy for the NN, it probably could do it because of the augmentations (more samples than 10), and the pretraining of a very good model (that could recognise most of the things anyway))</p>
+            
+            <p>The point is: image classification opens the door to a ton of fun and weird ideas. You can experiment fast, build cool things, and learn a lot along the way (often by breaking stuff).</p>
+            
+            <p>Oh Also Also, if you want to go the extra mile, you can use the Hugging Face API to get more control over the UI, and even embed your model directly into your own website. And make a super duper awesome webpage using your model as you wish (or other people's). Something like this: <a href="AI_model.html">Et Voila</a></p>
+            
+            <pre>import requests
+
+response = requests.post(
+    "https://api-inference.huggingface.co/models/your-username/your-model-name",
+    headers={"Authorization": "Bearer YOUR_HUGGINGFACE_TOKEN"},
+    files={"file": open("my_cat_image.jpg", "rb")}
+)
+
+print(response.json())</pre>
+            
+            <p>With a bit of front-end work, you could turn this into a slick embedded app. No need to use Gradio's hosted UI, just wire it into your own HTML/CSS/JS setup and roll your own thing. Super useful if you want to integrate it into a portfolio or blog.</p>
+            
+            <p>Anywaysssss... however far you decide to go, it's a playground. Just don't forget to <code>git commit</code> before you break something again.</p>
+        </div>
+        
+        <footer>
+            <p>© 2025 Fanny Fushayi | Undefined. Most rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

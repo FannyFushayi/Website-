@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ SUPER ADVANCED AI VISION ✨ (jk it's basic)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap');
+        
+        :root {
+            --warning-yellow: #fffacd;
+            --error-red: #ffcccc;
+            --silly-blue: #add8e6;
+            --silly-purple: #e6c8ff;
+        }
+        
+        body {
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            background: linear-gradient(
+                45deg,
+                var(--silly-blue),
+                var(--silly-purple)
+            );
+            font-family: 'Comic Neue', cursive;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 
+                0 10px 20px rgba(0,0,0,0.1),
+                0 0 0 10px #ffeb3b,
+                0 0 0 15px #ff9800;
+            max-width: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: "⚠️ WARNING: VERY ADVANCED AI ⚠️";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                #ff0,
+                #ff0 10px,
+                #000 10px,
+                #000 20px
+            );
+            color: red;
+            font-weight: bold;
+            padding: 5px;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+        
+        h1 {
+            font-family: 'Bangers', cursive;
+            color: #ff5722;
+            font-size: 2.5rem;
+            margin-top: 1.5rem;
+            text-shadow: 3px 3px 0 #ffeb3b;
+            letter-spacing: 2px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+        
+        .upload-area {
+            border: 4px dashed #ff9800;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem 0;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: var(--warning-yellow);
+        }
+        
+        .upload-area:hover {
+            background: #fffacd;
+            transform: rotate(1deg);
+        }
+        
+        .upload-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        #previewImage {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 10px;
+            margin-top: 1rem;
+            display: none;
+            border: 5px solid #4caf50;
+            box-shadow: 0 0 0 5px #8bc34a;
+        }
+        
+        #predictBtn {
+            background: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 1rem 0;
+            font-family: 'Bangers', cursive;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 0 #e64a19;
+            transition: all 0.1s;
+        }
+        
+        #predictBtn:hover {
+            transform: translateY(2px);
+            box-shadow: 0 3px 0 #e64a19;
+        }
+        
+        #predictBtn:active {
+            transform: translateY(5px);
+            box-shadow: none;
+        }
+        
+        #predictBtn:disabled {
+            background: #ccc;
+            box-shadow: 0 5px 0 #999;
+            cursor: not-allowed;
+        }
+        
+        #result {
+            min-height: 100px;
+            padding: 1rem;
+            background: #f9f9f9;
+            border-radius: 10px;
+            margin-top: 1rem;
+            border: 3px solid #2196f3;
+            position: relative;
+        }
+        
+        #result::before {
+            content: "AI SPEAKS:";
+            position: absolute;
+            top: -12px;
+            left: 10px;
+            background: white;
+            padding: 0 10px;
+            font-weight: bold;
+            color: #2196f3;
+        }
+        
+        .prediction {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #e91e63;
+            margin-bottom: 0.5rem;
+            font-family: 'Bangers', cursive;
+        }
+        
+        .confidence {
+            font-size: 1.2rem;
+            color: #3f51b5;
+        }
+        
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .loading-dots::after {
+            content: "...";
+            animation: dots 1.5s steps(5, end) infinite;
+        }
+        
+        @keyframes dots {
+            0%, 20% { content: "."; }
+            40% { content: ".."; }
+            60%, 100% { content: "..."; }
+        }
+        
+        .disclaimer {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 2rem;
+            background: var(--warning-yellow);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        #imageInput {
+            display: none;
+        }
+        
+        .floating-emoji {
+            position: absolute;
+            font-size: 2rem;
+            animation: float 3s ease-in-out infinite;
+            opacity: 0.7;
+            z-index: -1;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating silly emojis -->
+    <div class="floating-emoji" style="top:10%; left:10%;">🐶</div>
+    <div class="floating-emoji" style="top:20%; right:15%; animation-delay:0.5s;">🐱</div>
+    <div class="floating-emoji" style="bottom:15%; left:20%; animation-delay:1s;">🤖</div>
+    <div class="floating-emoji" style="bottom:25%; right:10%; animation-delay:1.5s;">❓</div>
+    <div class="floating-emoji" style="top:5%; left:50%; animation-delay:2s;">🍕</div>
+    <div class="floating-emoji" style="bottom:5%; right:30%; animation-delay:3s;">🧠</div>
+    <div class="floating-emoji" style="top:45%; left:5%; animation-delay:4s;">🪄</div>
+    
+
+
+
+
+    <div class="container">
+        <h1>DOUBLE DOUBLE MEGA SUPER  AI IMAGE Classifier 9000</h1>
+        <div class="subtitle">
+            " A Universe's Most Advanced" Image Recognition " <br>
+            <small>(Assuming the infinite Universe Theory)</small>
+        </div>
+        
+        <div class="upload-area" id="uploadArea">
+            <div class="upload-icon">🖼️</div>
+            <div>DROP YOUR IMAGE HERE</div>
+            <div><small>Warning: Only works with cats and dogs<br>
+            (and even then it's kinda iffy)</small></div>
+            <img id="previewImage" alt="Preview">
+            <input type="file" id="imageInput" accept="image/*">
+        </div>
+        
+        <button id="predictBtn" disabled> PRESS HERE </button>
+        
+        <div id="result">
+            Waiting for your totally normal image...
+        </div>
+        
+        <div class="disclaimer">
+            ⚠️ Disclaimer: No conscious neural networks were creeated in the making of this demo.
+        </div>
+    </div>
+
+    <script type="module">
+        import { Client } from "https://cdn.jsdelivr.net/npm/@gradio/client/+esm";
+
+        // Elements
+        const imageInput = document.getElementById('imageInput');
+        const predictBtn = document.getElementById('predictBtn');
+        const resultDiv = document.getElementById('result');
+        const previewImage = document.getElementById('previewImage');
+        const uploadArea = document.getElementById('uploadArea');
+
+        let client;
+        let isFirstPrediction = true;
+
+        // Initialize client with silly messages
+        (async () => {
+            const loadingMessages = [
+                "Initializing neural quantum flux capacitors...",
+                "Calibrating hamster brain emulation...",
+                "Downloading more RAM...",
+                "Asking ChatGPT for help...",
+                "Turning it off and on again...",
+                "Consulting the oracle of JPEGs...",
+                "Searching for signs of intelligent pixels...",
+                "Summoning the Great AI Spirit (Probably someone named Gary)...",
+                "Analyzing... slowly... dramatically...",
+                "If this fails, blame the intern."
+            ];
+            
+            let counter = 0;
+            const loadingInterval = setInterval(() => {
+                resultDiv.innerHTML = loadingMessages[counter % loadingMessages.length] + 
+                                    '<span class="loading-dots"></span>';
+                counter++;
+            }, 2000);
+            
+            try {
+                client = await Client.connect("CurrentlyUncertain/minimal");
+                clearInterval(loadingInterval);
+
+                const readyMessages = [
+                    "System ready! Probably. Maybe.",
+                    "You can try a picture to see if you look more like a cat or dog.",
+                    "Ready to judge your image with questionable accuracy.",
+                    "Our AI is awake and slightly caffeinated.",
+                    "Upload an image and let the magic (or chaos) begin!",
+                    "Let's see if your pet is secretly a potato.",
+                    "Ready! (Disclaimer: AI may be more confused than you are.)"
+                ];
+                resultDiv.innerHTML = readyMessages[Math.floor(Math.random() * readyMessages.length)];
+            } catch (error) {
+                clearInterval(loadingInterval);
+                resultDiv.innerHTML = `
+                    <div style="color:red;">
+                        ⚠️ Error: Could not connect to our "super advanced" AI.<br>
+                        <small>Did you try plugging it in?</small>
+                    </div>
+                `;
+                console.error("Pretend this never happened:", error);
+            }
+        })();
+
+        // Handle image upload
+        uploadArea.addEventListener('click', () => imageInput.click());
+        
+        imageInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    previewImage.src = e.target.result;
+                    previewImage.style.display = 'block';
+                    predictBtn.disabled = false;
+                    resultDiv.innerHTML = "Ready for our 'cutting-edge' analysis!";
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Handle prediction with humorous responses
+        predictBtn.addEventListener('click', async () => {
+            const file = imageInput.files[0];
+            
+            if (!file) {
+                resultDiv.innerHTML = "You gotta pick an image first, buddy.";
+                return;
+            }
+            
+            if (!client) {
+                resultDiv.innerHTML = "Our AI is still in bed. Try again later.";
+                return;
+            }
+
+            predictBtn.disabled = true;
+            
+            const loadingPhrases = [
+                "Consulting the magic 8-ball...",
+                "Asking a toddler what they see...",
+                "Flipping a coin...",
+                "Reading tea leaves...",
+                "Throwing darts at a list of animals...",
+                "Fun Fact: AI does not have existential crisises (How Lucky!) .",
+                "Fun Fact: This Message might never be read by anyone ever, I mean other than me ",
+                "The hamsters powering our AI need a break sometimes so slow down.. please.",
+                "Our neural network neural'd too hard it's just getting a glass of good ol H2O.",
+                "Please insert more coins to continue, Just kidding your coin is no good here it's free if you're that pretty."
+            ];
+            
+            const randomLoading = loadingPhrases[Math.floor(Math.random() * loadingPhrases.length)];
+            resultDiv.innerHTML = randomLoading + '<span class="loading-dots"></span>';
+            
+            try {
+                // Add artificial delay to make it seem like it's "thinking"
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                const result = await client.predict("/predict", { img: file });
+                const topPrediction = result.data[0].confidences.reduce((prev, current) => 
+                    (prev.confidence > current.confidence) ? prev : current
+                );
+                
+                let response;
+                if (isFirstPrediction) {
+                    response = `
+                        <div class="prediction">${topPrediction.label.toUpperCase()}!!!</div>
+                        <div class="confidence">${(topPrediction.confidence * 100).toFixed(1)}% confidence</div>
+                        <div style="margin-top:10px; font-size:0.9rem;">
+                            Wow! Our (Yes we are a team, I swear) AI is SO SMART!<br>
+                            <small>(This is probably the peak of its abilities)</small>
+                        </div>
+                    `;
+                    isFirstPrediction = false;
+                } else {
+                    const sassyRemarks = [
+                        `Yep, still a ${topPrediction.label}.`,
+                        `Our (Note there really is a team behind this.. because this is serious) AI is ${(topPrediction.confidence * 100).toFixed(1)}% sure this is a ${topPrediction.label}. ${(topPrediction.confidence > 0.9) ? '(Wow, it\'s actually confident for once!)' : ''}`,
+                        `Behold! A ${topPrediction.label}! Truly groundbreaking.`,
+                        `After extensive analysis (like, 2 seconds), we conclude: ${topPrediction.label}.`,
+                        `🚨 BREAKING NEWS 🚨 It's a ${topPrediction.label}! More at 11.`
+                    ];
+                    response = `
+                        <div class="prediction">${topPrediction.label.toUpperCase()}</div>
+                        <div class="confidence">${(topPrediction.confidence * 100).toFixed(1)}% confidence</div>
+                        <div style="margin-top:10px; font-size:0.9rem;">
+                            ${sassyRemarks[Math.floor(Math.random() * sassyRemarks.length)]}
+                        </div>
+                    `;
+                }
+                
+                resultDiv.innerHTML = response;
+                
+            } catch (error) {
+                const errorMessages = [
+                    "Our AI had an existential crisis.",
+                    "Error: Too awesome to handle this image.",
+                    "The hamsters powering our AI need a break.",
+                    "Our neural network neural'd too hard.",
+                    "Please insert more coins to continue."
+                ];
+                resultDiv.innerHTML = `
+                    <div style="color:red;">
+                        ${errorMessages[Math.floor(Math.random() * errorMessages.length)]}<br>
+                        <small>(Actual error: ${error.message})</small>
+                    </div>
+                `;
+                console.error("Our 'AI' failed spectacularly:", error);
+            } finally {
+                predictBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
