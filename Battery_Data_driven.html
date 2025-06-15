@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battery RUL Estimation</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif; /* A classic, readable serif font */
+            line-height: 1.8; /* Increased line height for better readability */
+            margin: 0 auto;
+            padding: 20px;
+            max-width: 900px; /* Constrain width for a more book-like feel */
+            color: #333; /* Darker text for good contrast */
+            background-color: #fdfdfd; /* Off-white background for a softer look */
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif; /* Another classic serif for headings */
+            color: #2c3e50; /* A deep, professional blue for headings */
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            text-align: center;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 3em;
+        }
+
+        h3 {
+            font-size: 1.8em;
+        }
+
+        p {
+            margin-bottom: 1.2em;
+            text-align: justify; /* Justify text for a clean, block-like appearance */
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 1.2em;
+        }
+
+        li {
+            margin-bottom: 0.6em;
+        }
+
+        strong {
+            color: #5a2d0b; /* A subtle, earthy brown for strong text */
+        }
+
+        em {
+            color: #8c4e23; /* A slightly lighter shade for emphasis */
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace; /* Monospace for code snippets */
+            background-color: #f5f5f5;
+            padding: 2px 4px;
+            border-radius: 3px;
+            color: #c7254e; /* A common code-like color */
+        }
+
+        pre {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-left: 5px solid #2c3e50;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            margin-bottom: 1.5em;
+        }
+
+        .math {
+            font-family: 'Times New Roman', serif; /* Use a classic serif for mathematical expressions */
+            font-style: italic;
+        }
+
+        a {
+            color: #3498db; /* A standard blue for links */
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .section-indent {
+            margin-left: 30px;
+            border-left: 3px solid #f0f0f0;
+            padding-left: 20px;
+        }
+
+                    .container {
+                margin: 10px;
+                border-radius: 8px;
+            }
+            
+            .header {
+                padding: 40px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .section-title {
+                font-size: 1.5em;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+                .header h1 {
+            color: #ece9e9;
+            font-size: 2.8em;
+            font-weight: 300;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+                .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #3498db 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(0px); }
+            100% { transform: translateX(-60px); }
+        }
+
+                .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .footer-content {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="header">
+        <h1>Battery Remaining Useful Life Prediction</h1>
+        <p class="subtitle">A Data-Driven Approach to Energy Storage systems</p>
+        <p>Part 1: Project Definition and Considerations </p>
+
+    </header>
+</div>
+        <p><a href="blog.html">Home</a></p>
+    <h2>Introduction</h2>
+    <p>The role of batteries in modern energy systems has become increasingly critical across a broad range of applications from consumer electronics to electric vehicles and grid-scale energy storage. The global shift towards renewable energy, particularly, has underscored the importance of reliable and efficient energy storage systems. Since renewable sources such as solar and wind are intermittent, batteries are vital for energy buffering and grid stabilization.</p>
+
+    <p>However, batteries are complex, non-linear electrochemical devices. Conventional instrumentation does not allow direct measurement of key internal states, such as the State of Charge (SOC) and State of Health (SOH). These parameters must instead be inferred from measurable quantities like terminal voltage, current, and temperature. Accurate estimation of SOC and SOH is essential for battery management systems (BMS), which ensure the safety, longevity, and optimal performance of battery-powered systems.</p>
+
+    <p>Several methodologies have been proposed in the literature for SOC and SOH estimation. Traditional approaches include open-circuit voltage (OCV) look-up methods, coulomb counting, and more sophisticated model-based estimators such as the Kalman Filter. More recently, data-driven approaches, particularly those utilizing machine learning (ML) and neural networks (NN) have gained traction due to their ability to model highly non-linear relationships without requiring detailed knowledge of internal battery chemistry.</p>
+
+    <p>While SOC estimation methods are relatively well-studied, accurately predicting the Remaining Useful Life (RUL) of a battery remains a significant challenge. RUL estimation seeks to forecast the number of charge/discharge cycles a battery can undergo before it reaches a defined end-of-life threshold. This is particularly valuable in predictive maintenance and long-term energy planning.</p>
+
+    <p>This investigative project is motivated by a prior engineering project involving a hybrid energy storage system (HESS) designed for an electric go-kart. The HESS employed a supercapacitor in parallel with a lithium-ion battery, to mitigate thermal and current-related stresses on the battery by handling high-power transients through the supercapacitor. While it was possible to quantify the thermal load reduction (at maximum load conditions) using electrical and thermal models such as:</p>
+    
+    <div class="formula">
+        P = (I<sub>supercapacitor)² × R<sub>battery</sub>
+    </div>
+
+    <p> The current from the supercapacitor is used because in a battery only system that current would be provided by the battery, c<sub>battery</sub> would be the specific heat capacity of the battery material the internal resistance of the battery is used, to represent the thermal properties of the battery, in the simplest form. This power can be converted into a temperature over a certain time period (t) (e.g., the duration of a high-current pulse) change by the equation: </p>
+
+    <div class="formula">
+        P <sub>battery</sub> * (t) <sub>transient</sub> = m <sub>battery</sub>c <sub>battery</sub> ΔT<sub>reduction</sub> 
+    </div>
+
+
+    <p>m <sub>battery</sub> would be the mass of the battery (or the part of the battery where the heat is generated, like the cell core) ΔT<sub>reduction</sub> would be the estimated reduction in the battery's temperature rise due to the supercapacitor's intervention. However, there was no direct model available to translate the observed temperature reductions into a concrete estimate of additional battery life in terms of cycles.</p>
+
+    <p>The absence of such a model is understandable. Battery degradation is influenced by a multitude of factors, including but not limited to:</p>
+    <ul>
+        <li>Cell chemistry (e.g., NMC, LiFePO₄, LTO),</li>
+        <li>Operating conditions (e.g., depth of discharge, C-rates),</li>
+        <li>Environmental conditions (e.g., ambient temperature, humidity),</li>
+        <li>and electrochemical aging mechanisms (e.g., SEI layer growth, lithium plating).</li>
+    </ul>
+    <p>Due to this complexity, no single analytical model can universally predict battery RUL as a function of thermal or electrical stress.</p>
+
+    <p>Given these limitations, this project investigates data-driven approaches to RUL estimation using the publicly available NASA Battery Dataset and the HENEI Dataset, which contains detailed measurements of cells undergoing controlled degradation. The datasets include terminal voltage, current, temperature, and internal impedance data across hundreds of cycles making it a suitable candidate for machine learning-based modeling.</p>
+
+    <p>This project will follow a multi-phase methodology:</p>
+    <ul>
+        <li><strong>Literature and Community Review</strong> – Analyzing existing work on RUL estimation using classical ML, and deep learning approaches, including published research and practical implementations on Kaggle, the world's largest data science community.</li>
+        <li><strong>Feature Analysis</strong> – Investigating the relevance of various input signals (e.g., impedance, temperature) and their correlation with battery degradation.</li>
+        <li><strong>Model Development</strong> – Comparing regression-based, sequence-based (e.g., LSTM), and hybrid neural network architectures.</li>
+        <li><strong>Validation and Insight</strong> – Evaluating model performance and examining how these tools can support engineering intuition in practical systems like HESS.</li>
+    </ul>
+    <p>Ultimately, the goal of this investigation is twofold:</p>
+    <ul>
+        <li>To investigate robust RUL estimation frameworks grounded in empirical data,</li>
+        <li>And to demonstrate how machine learning can be used not to replace traditional engineering, but to enhance and complement it in complex domains like battery behavior prediction.</li>
+    </ul>
+
+    <h3>NASA Battery Aging Dataset [<a href="https://www.kaggle.com/datasets/patrickfleith/nasa-battery-dataset">Data</a>]</h3>
+    <p>The NASA dataset, developed by the Prognostics Center of Excellence at NASA Ames, comprises detailed measurements from multiple lithium-ion battery cells cycled under controlled conditions. Each cycle includes constant-current/constant-voltage charging, constant-current discharging, and electrochemical impedance spectroscopy (EIS) measurements. The experiments were terminated once the batteries experienced a 30% reduction in capacity, defined as the battery's end of life. This dataset includes time-series data from multiple operational profiles and EIS, allowing for the development of multimodal predictive models.</p>
+
+    <h3>Hawaii Natural Energy Institute (HNEI) Dataset [<a href="https://www.kaggle.com/datasets/ignaciovinuales/battery-remaining-useful-life-rul/data">Data</a>]</h3>
+    <p>The HNEI dataset features data from 14 NMC-LCO 18650 lithium-ion cells manufactured by LG Chem. Each cell was cycled over 1000 times at 25 °C, using a C/2 charge rate and a 1.5C discharge rate. The dataset includes pre-engineered features such as discharge time, time spent at specific voltage thresholds, charging time, minimum/maximum voltages per cycle, and labeled RUL values. These structured features are suitable for classical machine learning models and enable efficient benchmarking and cross-comparison.</p>
+
+
+   <p>The datasets used in this project provide a solid foundation for data-driven battery RUL modeling, but they have limitations. The testing protocols simulate accelerated aging under idealized conditions, failing to capture the variability and irregular stresses found in real-world usage. As a result, the observed degradation trends may not fully apply to practical systems. Impedance data from the NASA dataset is obtained through time-consuming Electrochemical Impedance Spectroscopy (EIS), which only extracts a few key parameters. Alternative methods like Pseudo-Random Impulse Sequence (PRIS) offer faster, more scalable impedance estimation, potentially enhancing real-time monitoring. Despite these limitations, the datasets are valuable for developing and benchmarking RUL prediction models, providing controlled degradation patterns and sufficient data for machine learning approaches.</p>
+
+    <h2>Literature Review and Existing Approaches</h2>
+    <p>Lithium-ion battery degradation and the prediction of remaining useful life (RUL) have emerged as critical areas of research in the context of energy storage systems, particularly for electric vehicles, renewable energy integration, and consumer electronics. Two widely easily accessible benchmark datasets, the NASA Battery Aging Dataset, and the Hawaii Natural Energy Institute (HNEI) dataset provide standardized platforms for the development, evaluation, and comparison of machine learning-based prognostic models.</p>
+
+    <h3>Data Pre-processing Pipelines</h3>
+    <p>As we dive deeper into battery RUL prediction, one of the first things to consider is the data pre-processing pipeline, which forms the foundation of any machine learning model. The NASA Battery Aging Dataset requires significant pre-processing before we can use it for meaningful predictions. The HNEI dataset is already structured for machine learning but with all the constraints already set.</p>
+
+    <p>The NASA Battery Aging Dataset includes voltage, current, and impedance readings for lithium-ion batteries under different cycling conditions. The dataset includes a csv file for each battery cycle, with a separate csv file for impedance per cycle, this gives room for flexible use of the dataset, and therefore introduces many degrees of freedom that need to be carefully considered.</p>
+
+    <p>In this phase of the project, I focus on reviewing existing publicly available pre-processing strategies for the NASA Battery Aging Dataset, particularly from Kaggle. The goal is to understand how other researchers have handled the dataset’s inherent challenges in preparation for Remaining Useful Life (RUL) prediction, and to identify considerations for my own pipeline design. Since the NASA dataset is comparatively raw it presents a non-trivial challenge before any modeling can begin.</p>
+
+    <h3>Review of Existing Pre-processing Strategies</h3>
+    <div class="section-indent">
+        <h4>Darshan Jajoria's Approach [<a href="https://www.kaggle.com/code/darshanjajoria/battery-voltage-prediction-using-nasa-battery-data">Notebook</a>]</h4>
+        <p>One widely circulated approach by Darshan Jajoria focuses on merging all available time-series <code>.csv</code> files into a single dataframe, filtered by essential features such as voltage, current, temperature, and time. This method emphasizes organizing the raw data by assigning battery IDs and sorting chronologically. While it preserves temporal resolution, potentially useful for sequence-based models like LSTMs, it does not involve any cycle-level feature aggregation or construction of an RUL target. It also omits impedance data entirely, focusing instead on preparing a clean, unified dataset that can serve as a foundation for downstream modeling.</p>
+
+        <h4>Harsh Siloiya's Pipeline [<a href="https://www.kaggle.com/code/harshsiloiya/li-ion-rul-estimation">Notebook</a>]</h4>
+        <p>In contrast, Harsh Siloiya’s pipeline takes a more structured approach. Here, charge, discharge, and impedance cycles are parsed and aggregated into engineered features at the cycle level. Metrics such as discharge duration, mean and standard deviation of voltage and temperature, and estimated constant current periods are computed for each discharge phase. Similarly, features from the charge cycle are extracted, and impedance data—specifically the Re and Rct values—is incorporated, averaged when multiple readings are available. RUL is explicitly defined as the difference between the current cycle and the battery’s final recorded cycle, producing a labeled dataset suitable for regression models. This method results in a tabular structure well-aligned with traditional machine learning workflows. While assumptions are made regarding cycle order and completeness, this pipeline presents a clear and effective strategy for generating usable training data from the NASA dataset.</p>
+
+        <h4>Siddhant Purkayastha  [<a href="https://www.kaggle.com/code/siddhantpurkayastha/soc-pred-sid-v1">Notebook</a>]</h4>
+        <p>A third relevant notebook by Siddhant Purkayastha focuses on SOC prediction rather than RUL estimation, but nonetheless introduces a useful strategy for handling battery diversity. The batteries are grouped by identifier into logical sets, facilitating model validation across distinct battery populations. While this work does not emphasize cycle-level feature extraction or RUL targets, it highlights the importance of designing train-test splits that respect inter-battery variance and avoid data leakage. This is a principle I will likely carry forward into my own work.</p>
+    </div>
+
+    <h3>Trade-offs and Design Choices</h3>
+    <p>Reviewing these pipelines clarifies several trade-offs and design choices I will need to make. The question of whether to include impedance is still open. While Siloiya’s inclusion of Re and Rct adds useful electrochemical context, Jajoria’s omission of these features simplifies the dataset and may be appropriate for certain models. Another issue to consider is how to handle negative current values—some implementations leave them unchanged to implicitly indicate discharge, while others may use absolute values alongside a binary indicator to flag charging versus discharging behavior. This remains an important design decision, particularly for models that do not infer directionality well from raw values.</p>
+
+    <p>The choice between preserving full time-series data versus engineering cycle-level summaries is model-dependent. Simpler models, such as XGBoost or Random Forests, benefit from concise engineered features, while sequence-based models may extract more value from raw or minimally processed time-series data. The decision will ultimately depend on the model architecture I choose for the initial implementation, but these reviews offer a roadmap of possibilities.</p>
+
+
+    <h3>Machine Learning Techniques for RUL Prediction</h3>
+
+    <p>For the NASA dataset, the notebook by Harsh Siloiya implements a full end-to-end RUL prediction pipeline using classical machine learning techniques. The author performs detailed cycle-level aggregation and feature extraction, generating a structured dataset with features such as mean discharge voltage, temperature, constant current durations, and impedance values. The final model used in this case is an ensemble regressor—specifically XGBoost, which is known for its performance and ability to handle tabular data effectively. The RUL target is explicitly computed as the difference between the current cycle and the maximum cycle of each battery, making this notebook a textbook application of feature-driven regression modeling. Notably, no temporal modeling (i.e., LSTM or time-series forecasting) is attempted here, which reflects a common trend in applied solutions using the NASA dataset.</p>
+
+    <p>Another notebook, by Darshan Jajoria, approaches the problem from a more foundational perspective by focusing on merging raw time-series data from all valid battery files. While no modeling is conducted in this notebook, the preparation clearly sets up the data for sequence modeling techniques, and would be suitable for a deep learning approach using RNNs or transformers. The absence of feature aggregation or target generation in this case signals a potential opportunity to experiment with deep models that learn degradation patterns directly from raw voltage, current, and temperature readings.</p>
+
+    <p>The HNEI dataset, in contrast, tends to invite more classical approaches. This is primarily due to the structured nature of the dataset, which includes pre-engineered features for each cycle—such as discharge time, time at voltage plateaus, and minimum/maximum voltages—as well as labeled RUL values. These characteristics align closely with classical regression techniques. In the reviewed notebooks using this dataset, the most common models were Random Forests, XGBoost, LightGBM, and ExtraTrees, all of which are powerful tree-based ensemble methods that work well with tabular feature sets.</p>
+
+    <p>These implementations frequently compare the performance of different models using standard metrics such as Root Mean Square Error (RMSE) and Mean Absolute Percentage Error (MAPE). Hyperparameter optimization is often conducted using grid search or cross-validation.</p>
+
+    <p>Interestingly, in many of these notebooks, XGBoost and LightGBM consistently outperform other methods, with RMSE values often under 70 cycles and MAPE below 7% in some cases. This reinforces the conclusion that, when data is clean and features are well-engineered—as in the HNEI dataset—traditional machine learning models remain highly competitive.</p>
+
+    <p>Despite the dominance of machine learning approaches in these notebooks, there is growing interest in applying deep learning methods, especially LSTM networks, to the NASA dataset. Several other studies and repositories outside of Kaggle suggest the use of LSTMs for modeling voltage and capacity degradation over time. However, such approaches often demand more extensive pre-processing to align and structure the time-series data and typically require more computational resources. For this reason, deep learning applications in open-source implementations are still relatively rare, but clearly promising.</p>
+
+    <p>In summary, the Kaggle ecosystem reflects a practical emphasis on machine learning over deep learning, particularly for datasets like HNEI where features are already structured for regression. For the NASA dataset, the trend is more split: while many still use ML after performing feature aggregation, some pipelines lay the groundwork for LSTM-based sequence modeling. This empirical evidence further supports the idea that a hybrid strategy—starting with ML for baseline evaluation, followed by deep learning for time-dependent modeling, and ultimately combining both in an ensemble—is well aligned with current best practices in the field.</p>
+
+    <p>A range of machine learning techniques has been applied to these datasets for RUL prediction. Traditional methods include Support Vector Machines (SVM), which have been used in classification and regression frameworks to distinguish between early- and late-life degradation patterns. Random Forests have shown strong performance due to their robustness to noise and capacity for identifying feature importance. Gaussian Process Regression (GPR) offers the additional advantage of quantifying prediction uncertainty, making it suitable for risk-sensitive applications.</p>
+
+    <p>More recently, deep learning methods have demonstrated superior performance, particularly for modeling non-linear and temporal aspects of battery degradation. Long Short-Term Memory (LSTM) networks have been extensively applied due to their ability to model long-range dependencies in capacity degradation. Convolutional Neural Networks (CNNs) have been used to extract spatial features from voltage-capacity curves and enable early prediction using data from as few as 100 cycles. Transformer-based architectures have shown promise due to their ability to process sequence data in parallel and handle variable-length inputs, outperforming sequential models in accuracy and scalability.</p>
+
+    <p>Hybrid approaches have also been proposed, combining CNNs with LSTMs to exploit spatial and temporal degradation features. Ensemble methods, such as Bayesian Model Averaging (BMA) applied to multiple LSTM networks, have demonstrated improved robustness and predictive confidence through probabilistic model integration. These models enhance prediction accuracy and provide uncertainty quantification, essential for practical deployment in safety-critical systems.</p>
+
+    <h3>Advanced Techniques</h3>
+    <p>Several advanced techniques are emerging in the field. Transfer learning methods have been developed to enable generalization across different battery chemistries and usage conditions. Explainable AI (XAI) methods, such as SHAP (Shapley Additive Explanations), are increasingly used to interpret model outputs and identify the most influential features affecting RUL. Furthermore, early prediction models using deep neural networks have demonstrated the capability to estimate battery lifespan with high accuracy from only a few initial cycles, offering significant practical benefits in battery testing and deployment.</p>
+
+
+    <h3>Battery Grouping and Generalization</h3>
+    <p>Based on the structure and features of the NASA Battery Aging Dataset, one of the most compelling strategies to emerge during this review has been the idea of grouping batteries according to their degradation behavior and cycling patterns. While the original dataset includes a variety of batteries that degrade at different rates and over different total cycle counts, grouping them into more homogeneous subsets appears to be a useful way to maintain consistency in feature distribution and model inputs.</p>
+
+    <p>For example, some batteries in the dataset cycle up to 160 times, while others reach the end of life after as few as 50 cycles. This discrepancy introduces a challenge: should one attempt to generalize across all batteries, or should models be tailored to specific groups?</p>
+    <p>This raises a broader and more fundamental question about model generalization in the context of battery RUL prediction.</p>
+
+    <p>Generalization refers to a model’s ability to make accurate predictions on unseen data—such as batteries outside the training set—while specialization involves optimizing a model to perform exceptionally well on a narrow, well-defined subset of data. Both approaches come with trade-offs. Specialized models may deliver higher predictive accuracy within their target subset but are likely to perform poorly when applied to other batteries with different usage or degradation characteristics. On the other hand, general models may underperform slightly on any one battery but offer broader applicability across a wide range of conditions.</p>
+
+    <p>One possible solution is to avoid full specialization or full generalization by incorporating grouping as a feature in the model rather than creating entirely separate models. For example, instead of training distinct models for each battery type or cycling behavior, a single model could include a categorical or numerical identifier representing the battery group. This allows the model to learn group-specific degradation trends while still preserving its ability to generalize across different battery populations. Additionally, other cycle-dependent variables—such as cycle count, average charge duration, or capacity degradation rate—can be introduced to help the model infer battery-specific behavior without isolating the training data entirely.</p>
+
+    <p>Another strategy is to develop an ensemble of models or apply transfer learning techniques, where a model trained on one group of batteries is fine-tuned on another. This can help preserve learned patterns while adapting to variations in new datasets. Furthermore, cross-validation strategies can be employed to test how well the model generalizes across battery groups. Training on one group and validating on another provides a clear picture of a model’s robustness and ability to adapt to new data distributions.</p>
+
+    <p>What this suggests for my own implementation is that I will likely avoid building isolated models for each battery group. Instead, I intend to preserve the structure of the data in a way that respects battery grouping while still building a unified modeling pipeline. Grouping will inform feature engineering and model input but will not constrain the architecture to fixed subsets. This approach maintains the flexibility needed for generalization and scalability, particularly important if the model is to be applied to future battery datasets or real-world systems.</p>
+
+    <p>Ultimately, generalization is not an afterthought—it is a central design goal. A model that performs well only on one subset of batteries may be academically interesting but would be of limited value in practical deployment scenarios, where new batteries with unseen characteristics must be evaluated. By balancing group-specific learning with broader generalization strategies, the model will be better positioned to provide accurate, reliable RUL estimates across a variety of conditions.</p>
+
+    <h3>Model Selection and Future Directions</h3>
+    <p>Given the structure of the NASA dataset and the mixed strategies employed in previous work, the most promising direction appears to be a staged approach. Initially, classical machine learning models will be implemented using the cycle-level features derived in the pre-processing phase. This allows for rapid iteration, baseline performance estimation, and an interpretable framework for evaluating different feature combinations. Subsequently, once the temporal structure of the data has been better understood, deep learning models such as LSTMs or transformers will be introduced to capture sequential degradation trends. These will be especially useful if the raw time-series data can be structured effectively and aligned across cycles.</p>
+
+    <p>The final step will involve ensemble learning, where both machine learning and deep learning models contribute to the final prediction. This could take the form of a stacked ensemble, where model outputs are fed into a meta-learner, or a weighted averaging scheme based on validation performance. Such a hybrid strategy leverages the interpretability and efficiency of classical models, along with the temporal modeling capacity of deep learning, offering a more robust and generalizable solution.</p>
+
+    <p>While the exact form of each model is still under development, this layered approach provides a clear framework for experimentation and evaluation. It reflects both the practical constraints of the dataset and the long-term goal of building a model that not only performs well, but can adapt to varied battery chemistries and cycling conditions. Generalization remains a key objective, and balancing it with specificity—by capturing the degradation nuances of different battery groups without overfitting to them—will be a central challenge in the model design process.</p>
+
+
+    <script>
+        // Add click event to the Home button to navigate to blog.html
+        document.addEventListener("DOMContentLoaded", function() {
+            var homeBtn = document.getElementById('homeBtn');
+            if (homeBtn) {
+                homeBtn.addEventListener('click', function() {
+                    window.location.href = "blog.html";
+                });
+            }
+        });
+    </script>
+
+    <footer class="footer">
+    <div class="footer-content">
+        <p><em>Note:</em> Not all sources referenced in this document are explicitly listed; many insights are drawn from publicly available Kaggle notebooks and community discussions, and inspirations drawn from multiple research papers. Accessing some of the linked notebooks may require a free Kaggle account.</p>
+        <p style="margin-top: 10px; font-size: 0.8em;">Fanny Fushayi 2025</p>
+    </div>
+    </footer>
+</body>
+</html>
