@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigating the Non-Linear Path of Battery Life Prediction</title>
+    <style>
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px 20px 20px;
+            background: #fafafa;
+        }
+
+        .home-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-family: Georgia, serif;
+            transition: background-color 0.3s ease;
+        }
+
+        .home-button:hover {
+            background: #555;
+            color: white;
+            text-decoration: none;
+        }
+
+        footer {
+            margin-top: 4em;
+            padding: 2em 0 1em 0;
+            border-top: 1px solid #ccc;
+            text-align: center;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 0.5em;
+            border-bottom: 2px solid #333;
+            padding-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            margin-top: 2em;
+            margin-bottom: 1em;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.2em;
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            font-style: italic;
+        }
+
+        p {
+            margin-bottom: 1.2em;
+            text-align: justify;
+        }
+
+        .abstract {
+            font-style: italic;
+            margin: 2em 0;
+            padding: 20px;
+            background: #f5f5f5;
+            border-left: 4px solid #333;
+        }
+
+        .features-list {
+            margin: 1em 0;
+            padding-left: 2em;
+        }
+
+        .features-list li {
+            margin-bottom: 0.5em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2em 0;
+            font-size: 0.9em;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f8f8f8;
+            font-weight: bold;
+        }
+
+        .version-section {
+            margin: 2em 0;
+            padding: 1.5em 0;
+        }
+
+        .version-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 1em;
+        }
+
+        .findings {
+            margin: 1em 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+        }
+
+        .findings h4 {
+            margin-top: 0;
+            margin-bottom: 0.8em;
+            font-size: 1em;
+            text-decoration: underline;
+        }
+
+        .findings ul {
+            margin: 0;
+            padding-left: 1.5em;
+        }
+
+        .findings li {
+            margin-bottom: 0.5em;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            table {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="blog.html" class="home-button">← Home</a>
+    
+    <h1>Navigating the Non-Linear Path of Battery Life Prediction</h1>
+
+    <div class="abstract">
+        When I started this project, the core goal was straightforward: quantify how much extending a battery's lifespan is possible by reducing thermal stress through a supercapacitor-hybrid system. That fundamental objective still guides my work, but as any data scientist or engineer can attest, real progress rarely follows a straight line. It often emerges from a landscape of messy, poorly documented notebooks, abandoned scripts, and perplexing outliers that challenge every assumption.
+    </div>
+
+    <h2>Establishing a Foundation: The HNEI Dataset</h2>
+
+    <p>To kick things off, the Hawaii Natural Energy Institute (HNEI) dataset was chosen as the starting point for model development. Compared to more complex and raw publicly available datasets—like the NASA Battery Aging Dataset—HNEI offers a simpler, more structured entry point. It provides pre-engineered features for each cycle of 14 LG Chem 18650 lithium-ion batteries.</p>
+
+    <p>These features include:</p>
+    <ul class="features-list">
+        <li><strong>Cycle:</strong> The cycle number</li>
+        <li><strong>battery_id:</strong> A unique identifier for each cell</li>
+        <li><strong>discharge_time:</strong> Total discharge duration per cycle</li>
+        <li><strong>charge_time:</strong> Total charge duration</li>
+        <li><strong>min_voltage and max_voltage:</strong> Minimum and maximum voltages during each cycle</li>
+        <li><strong>min_temp and max_temp:</strong> Temperature extremes per cycle</li>
+        <li><strong>avg_current:</strong> Current-related metrics (depending on the version)</li>
+        <li><strong>RUL:</strong> The Remaining Useful Life label (measured in cycles to end-of-life)</li>
+    </ul>
+
+    <p>The structured nature of this dataset makes it exceptionally well-suited for traditional machine learning models like Random Forests and XGBoost. These models excel with tabular, cycle-level data, enabling rapid experimentation with various feature combinations and modeling strategies.</p>
+
+    <p>Working with the HNEI dataset at this initial stage serves two critical purposes: baseline performance benchmarking and providing a controlled environment for model exploration. The HNEI dataset acts as a sandbox—a clean, constrained testbed to validate assumptions, refine preprocessing techniques, and develop a foundational predictive framework.</p>
+
+    <h2>The Versions So Far—and What They've Taught Me</h2>
+
+    <p>I've structured the project into several distinct experimental versions. This approach has been instrumental in surfacing meaningful insights about the data, the models, and the requisites for making robust Remaining Useful Life (RUL) predictions.</p>
+
+    <div class="version-section">
+        <div class="version-title">Version 1: Data Exploration and First Model Run</div>
+        
+        <p>The first version served primarily as a diagnostic tool—a rapid, exploratory sweep to confirm whether machine learning could effectively capture degradation patterns within the HNEI dataset. A comprehensive data inspection was conducted, confirming no missing values or duplicates. Early correlation analysis identified relationships between input features and the RUL target.</p>
+
+        <p>Crucially, this phase highlighted a significant insight: certain columns, particularly the cycle index, were highly correlated with the target variable, introducing severe data leakage if included. Consequently, these were explicitly excluded from the feature set.</p>
+
+        <div class="findings">
+            <h4>Key Findings:</h4>
+            <ul>
+                <li><strong>Data Integrity:</strong> No missing values or duplicate rows were found</li>
+                <li><strong>Feature Correlation with RUL:</strong>
+                    <ul>
+                        <li>Cycle_Index: -0.9998 (Excluded due to data leakage)</li>
+                        <li>Max. Voltage Discharge: +0.7828</li>
+                        <li>Min. Voltage Charge: -0.7598</li>
+                    </ul>
+                </li>
+                <li><strong>Cycle_Index</strong> was identified as a major data leakage source due to its near-perfect correlation with RUL</li>
+            </ul>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Model</th>
+                    <th>MAE</th>
+                    <th>MSE</th>
+                    <th>RMSE</th>
+                    <th>R²</th>
+                    <th>MAPE</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Extra Trees Regressor</td>
+                    <td>5.39</td>
+                    <td>255.53</td>
+                    <td>15.41</td>
+                    <td>0.9976</td>
+                    <td>7.22%</td>
+                </tr>
+                <tr>
+                    <td>Ensemble of Top Models</td>
+                    <td>6.69</td>
+                    <td>261.10</td>
+                    <td>15.61</td>
+                    <td>0.9975</td>
+                    <td>8.28%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>These impressively high results were expected given the lack of a proper train-test split—the model had seen all the data during training. This demonstrates a strong signal within the data and that the features are highly predictive of battery degradation.</p>
+    </div>
+
+    <div class="version-section">
+        <div class="version-title">Version 2: Battery Split Validation</div>
+        
+        <p>Version 2 marked a significant shift in data approach. Instead of randomly sampling data points, the strategy involved withholding entire batteries from the training set. This battery-wise split more accurately simulates a real-world scenario: deploying a model on a battery it has never seen before.</p>
+
+        <p>Consequently, performance dropped—precisely as expected. This revealed that earlier results were likely inflated by leakage between train and test data originating from the same battery, allowing the model to memorize rather than generalize.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Condition</th>
+                    <th>MAE</th>
+                    <th>MSE</th>
+                    <th>RMSE</th>
+                    <th>R²</th>
+                    <th>MAPE</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>With Outliers</td>
+                    <td>8.8735</td>
+                    <td>387.4732</td>
+                    <td>19.4128</td>
+                    <td>0.9962</td>
+                    <td>0.1222</td>
+                </tr>
+                <tr>
+                    <td>After Outlier Removal</td>
+                    <td>5.2155</td>
+                    <td>202.8682</td>
+                    <td>13.8752</td>
+                    <td>0.9980</td>
+                    <td>0.0756</td>
+                </tr>
+                <tr>
+                    <td>With Battery ID Feature</td>
+                    <td>6.6877</td>
+                    <td>261.0975</td>
+                    <td>15.6079</td>
+                    <td>0.9975</td>
+                    <td>0.0828</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="findings">
+            <h4>Key Observations:</h4>
+            <ul>
+                <li>Outlier removal offered the most significant improvement, bringing the RMSE down by over 5 cycles</li>
+                <li>Adding battery_id as a feature increased accuracy but introduced the risk of leakage</li>
+                <li>Prediction error is higher when RUL is low and decreases as the estimated RUL increases</li>
+            </ul>
+        </div>
+
+        <p>One consistent trend emerged: prediction error is higher when RUL is low and decreases as the estimated RUL increases. This intuitively makes sense; the early stages of battery life exhibit more predictable, smooth degradation patterns, while the final stretch often features sharp and erratic performance drops.</p>
+    </div>
+
+    <div class="version-section">
+        <div class="version-title">Version 3: End-of-Life Split – Where It All Falls Apart (for Now)</div>
+        
+        <p>This version aimed to challenge the model by training it exclusively on the earlier life of each battery and testing it solely on the end-of-life cycles. The hypothesis was to see if a model trained on "healthy" battery behavior could generalize to predict degradation trends as failure approached.</p>
+
+        <p>However, almost immediately, performance plummeted. The model's predictions lost all coherence, and metrics that previously looked robust became unrecognizable. Initially, I suspected a bug in the implementation. After investigation, I realized a crucial oversight: although I had filtered the dataset to remove end-of-life cycles from the training set, PyCaret was still randomly splitting the remaining data behind the scenes.</p>
+
+        <div class="findings">
+            <h4>Critical Insight:</h4>
+            <ul>
+                <li>End-of-life behavior might simply be too chaotic to predict using patterns observed in early cycles</li>
+                <li>Batteries don't degrade linearly; when they begin to fail, they often do so abruptly, noisily, and in deeply non-linear ways</li>
+                <li>How we split the data is just as important as how we model it</li>
+            </ul>
+        </div>
+
+        <p>Therefore, this version isn't a failure—it's a powerful signal. I now need to manually enforce the train-test split and experiment with models better suited for capturing late-life volatility, potentially revisiting time-aware approaches.</p>
+    </div>
+
+    <h2>Up Next</h2>
+
+    <p>This week, I'll be meticulously exploring the End-of-Life split and visualizing how the model's performance varies across the battery lifespan. The ultimate goal is to train models that comprehend long-term degradation patterns—not just within a single battery, but across diverse batteries.</p>
+
+    <p>Once that's achieved, we'll delve into the broader modeling question: should we stick with traditional machine learning, or venture into deep learning? Do we prioritize interpretability or sequence modeling? Whatever the choice, the final answer will likely involve ensemble learning—because if one model isn't entirely sure, perhaps five models can collectively converge on the truth.</p>
+
+    <p>Stay tuned for more updates. And if you've ever felt overwhelmed by a pile of half-working notebooks—rest assured, you're not alone.</p>
+
+    <footer>
+        <p>&copy; Fanny Fushayi 2025. All rights reserved.</p>
+    </footer>
+</body>
+</html>
