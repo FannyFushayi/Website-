@@ -167,12 +167,11 @@
 
     <h2>Establishing a Foundation: The HNEI Dataset</h2>
 
-    <p>To kick things off, the Hawaii Natural Energy Institute (HNEI) dataset was chosen as the starting point for model development. Compared to more complex and raw publicly available datasets—like the NASA Battery Aging Dataset—HNEI offers a simpler, more structured entry point. It provides pre-engineered features for each cycle of 14 LG Chem 18650 lithium-ion batteries.</p>
+    <p>To kick things off, the Hawaii Natural Energy Institute (HNEI) dataset was chosen as the starting point for model development. Compared to the NASA Battery Aging Dataset, HNEI offers a simpler, more structured entry point. It provides features for each cycle of 14 LG Chem 18650 lithium-ion batteries.</p>
 
     <p>These features include:</p>
     <ul class="features-list">
         <li><strong>Cycle:</strong> The cycle number</li>
-        <li><strong>battery_id:</strong> A unique identifier for each cell</li>
         <li><strong>discharge_time:</strong> Total discharge duration per cycle</li>
         <li><strong>charge_time:</strong> Total charge duration</li>
         <li><strong>min_voltage and max_voltage:</strong> Minimum and maximum voltages during each cycle</li>
@@ -181,20 +180,63 @@
         <li><strong>RUL:</strong> The Remaining Useful Life label (measured in cycles to end-of-life)</li>
     </ul>
 
-    <p>The structured nature of this dataset makes it exceptionally well-suited for traditional machine learning models like Random Forests and XGBoost. These models excel with tabular, cycle-level data, enabling rapid experimentation with various feature combinations and modeling strategies.</p>
+    <p>The structured nature of this dataset makes it exceptionally well-suited for traditional machine learning models (see <a href="ML.html">Traditional ML</a> ). These models excel with tabular, cycle-level data, enabling rapid experimentation with various feature combinations and modeling strategies.</p>
 
-    <p>Working with the HNEI dataset at this initial stage serves two critical purposes: baseline performance benchmarking and providing a controlled environment for model exploration. The HNEI dataset acts as a sandbox—a clean, constrained testbed to validate assumptions, refine preprocessing techniques, and develop a foundational predictive framework.</p>
+    <div class="findings" style="margin-top:1.5em;">
+        <h4>Insight: Machine Learning and Deep Learning</h4>
+        <ul>
+            <li>
+                Traditional ML methods (like linear regression or random forests) are much faster than deep learning for small-to-medium datasets (often seconds versus hours) since they use simpler math, run on CPUs, and don’t require massive data.
+            </li>
+            <li>
+                For regression problems, starting with traditional ML is almost always best: these models are interpretable, data-efficient, and provide strong baselines quickly.
+            </li>
+            <li>
+                Deep learning only becomes necessary if you have huge datasets, complex patterns (such as images or text), or if traditional methods plateau. This saves time, avoids overkill, and keeps things simple.
+            </li>
+        </ul>
+    </div>
+
+    <p>Working with the HNEI dataset at this initial stage serves two critical purposes:</p>
+
+    <ol>
+        <li><strong>Baseline Performance Benchmarking:</strong> Building models on a clean, standardized dataset allows for precise quantification of model quality using interpretable metrics such as Mean Absolute Error (MAE), Root Mean Square Error (RMSE), and R². These benchmarks will be crucial comparison points when progressing to more complex datasets, like NASA’s, which will demand significant additional preprocessing and sequence modeling.
+        </li>
+        <li>
+            <strong>Controlled Environment for Model Exploration:</strong> The HNEI dataset provides a controlled setting to investigate model behavior and sensitivity. For instance, it allows for analysis of how performance changes with different train/test splitting strategies (e.g., by battery, cycle, or end-of-life). It also supports feature importance analysis, outlier detection, and error analysis with minimal preprocessing overhead. These insights are vital for building an intuitive understanding of what works (and what breaks) before transitioning to more sophisticated approaches like LSTMs or transformer-based networks.
+        </li>
+    </ol>
+    <div class="findings">
+        <h4>Insights: Key Metrics for Linear Regression</h4>
+        <ul>
+            <li>
+                <strong>R² (R-squared):</strong> Measures how much variance your model explains (ranges from 0 to 1; higher values indicate a better fit).
+            </li>
+            <li>
+                <strong>Mean Squared Error (MSE):</strong> Average of squared prediction errors (lower is better, but sensitive to outliers). As a rule of thumb, a "good" MSE is about 10% of your target variable’s variance in this case RUL has a variance of 103,961.
+            </li>
+            <li>
+                <strong>Root Mean Squared Error (RMSE):</strong> Square root of MSE, expressed in the original units of the target variable (easier to interpret).
+            </li>
+            <li>
+                <strong>Mean Absolute Error (MAE):</strong> Average of absolute errors (more robust to outliers, but does not indicate error direction).
+            </li>
+            <li>
+                Use R² for overall fit, RMSE/MAE for error magnitude—prefer MAE if outliers distort results. Always check residual plots to spot hidden patterns.
+            </li>
+        </ul>
+    </div>
 
     <h2>The Versions So Far—and What They've Taught Me</h2>
 
     <p>I've structured the project into several distinct experimental versions. This approach has been instrumental in surfacing meaningful insights about the data, the models, and the requisites for making robust Remaining Useful Life (RUL) predictions.</p>
 
     <div class="version-section">
-        <div class="version-title">Version 1: Data Exploration and First Model Run</div>
+        <div class="version-title">Version 1: Data Exploration and First Model Run [ <a href="https://colab.research.google.com/drive/1Ka1GBcjUoSjvlVJ44iDyVvkXWWWXE4mQ"> Notebook</a> ]</div>
         
         <p>The first version served primarily as a diagnostic tool—a rapid, exploratory sweep to confirm whether machine learning could effectively capture degradation patterns within the HNEI dataset. A comprehensive data inspection was conducted, confirming no missing values or duplicates. Early correlation analysis identified relationships between input features and the RUL target.</p>
 
-        <p>Crucially, this phase highlighted a significant insight: certain columns, particularly the cycle index, were highly correlated with the target variable, introducing severe data leakage if included. Consequently, these were explicitly excluded from the feature set.</p>
+        <p>Crucially, this phase highlighted a significant insight: certain columns, particularly the cycle index, were highly correlated with the target variable, introducing severe data leakage if included, as the results will show </p>
 
         <div class="findings">
             <h4>Key Findings:</h4>
@@ -208,6 +250,7 @@
                     </ul>
                 </li>
                 <li><strong>Cycle_Index</strong> was identified as a major data leakage source due to its near-perfect correlation with RUL</li>
+                <li> Battery Id might also be a source of Data leakage </li>
             </ul>
         </div>
 
@@ -242,11 +285,11 @@
             </tbody>
         </table>
 
-        <p>These impressively high results were expected given the lack of a proper train-test split—the model had seen all the data during training. This demonstrates a strong signal within the data and that the features are highly predictive of battery degradation.</p>
+        <p>These results are unrealistically strong—likely due to data leakage. Without a proper train-test split, the model was evaluated on data it had already seen during training, artificially inflating performance. While the features may contain useful signals, true predictive power can only be validated with rigorous holdout testing.</p>
     </div>
 
     <div class="version-section">
-        <div class="version-title">Version 2: Battery Split Validation</div>
+        <div class="version-title">Version 2: Battery Split Validation [ <a href="https://colab.research.google.com/drive/1bsbEtcKzKqwT0zxOLXzAS9_iyrbrSMgi"> Notebook</a> ]</div>
         
         <p>Version 2 marked a significant shift in data approach. Instead of randomly sampling data points, the strategy involved withholding entire batteries from the training set. This battery-wise split more accurately simulates a real-world scenario: deploying a model on a battery it has never seen before.</p>
 
@@ -273,12 +316,12 @@
                     <td>0.1222</td>
                 </tr>
                 <tr>
-                    <td>After Outlier Removal</td>
-                    <td>5.2155</td>
-                    <td>202.8682</td>
-                    <td>13.8752</td>
-                    <td>0.9980</td>
-                    <td>0.0756</td>
+                    <td>Without Battery_ID</td>
+                    <td>26.9881</td>
+                    <td>1343.7324</td>
+                    <td>36.6570</td>
+                    <td>0.9872</td>
+                    <td>0.4437</td>
                 </tr>
                 <tr>
                     <td>With Battery ID Feature</td>
@@ -294,41 +337,84 @@
         <div class="findings">
             <h4>Key Observations:</h4>
             <ul>
-                <li>Outlier removal offered the most significant improvement, bringing the RMSE down by over 5 cycles</li>
+                <li>Outlier removal offered the most significant improvement, bringing the RMSE down by over 5 cycles but this is not useful because baseline has not been established yet, as model is unrealistically good and I still need to make it trustworthy.</li>
                 <li>Adding battery_id as a feature increased accuracy but introduced the risk of leakage</li>
                 <li>Prediction error is higher when RUL is low and decreases as the estimated RUL increases</li>
             </ul>
         </div>
 
-        <p>One consistent trend emerged: prediction error is higher when RUL is low and decreases as the estimated RUL increases. This intuitively makes sense; the early stages of battery life exhibit more predictable, smooth degradation patterns, while the final stretch often features sharp and erratic performance drops.</p>
+
+        <p>While the Extra Trees Regressor (selected via PyCaret's compare_models()) achieved strong battery-wise generalization (RMSE=35.97, R²=0.9876), further validation is critical: time-based splits should test temporal robustness, and leave-multiple-battery-out evaluation could reveal dependency on specific units. Though performance aligns with literature (e.g., Zhang et al.'s physics-informed models ( <a href="https://doi.org/10.1016/j.jpowsour.2020.228710" target="_blank">Zhang et al., 2020</a>)), PyCaret's automated feature selection warrants inspection—key degradation features may dominate. Future work should compare against sequential models (e.g., LSTMs) and validate on heterogeneous battery datasets to assess industrial applicability.</p>
+
+
+        <p>The consistent inverse relationship between prediction error and RUL—higher errors near end-of-life (EOL)—reflects fundamental degradation physics: early-stage capacity fade often follows quasi-linear trends (well-captured by PyCaret’s top-performing tree models), while EOL behavior becomes nonlinear due to cascading failures such as lithium plating and SEI layer breakdown (<a href="https://doi.org/10.1149/2.0411913jes" target="_blank">J. Electrochem. Soc. (2019)</a>). This pattern aligns with observations from the <a href="https://ti.arc.nasa.gov/tech/dash/groups/pcoe/" target="_blank">NASA PCoE Dataset</a>, where prediction uncertainty spikes below 50 cycles RUL. While PyCaret’s compare_models() efficiently surfaces this trend via aggregated metrics, targeted mitigation—such as EOL-focused ensemble weights or survival analysis techniques (<a href="https://doi.org/10.1016/j.est.2022.105346" target="_blank">Energy Storage (2022)</a>)—could further improve actionable warning times.</p>
     </div>
 
     <div class="version-section">
-        <div class="version-title">Version 3: End-of-Life Split – Where It All Falls Apart (for Now)</div>
+ <div class="version-title">Version 3: Finally Some Structure [ <a href=https://colab.research.google.com/drive/1KDEShRlfxGNq2d7QzcP6o7aIdSl30wnq#scrollTo=EQbaDkoo2SNr> Notebook</a> ]</div>
         
-        <p>This version aimed to challenge the model by training it exclusively on the earlier life of each battery and testing it solely on the end-of-life cycles. The hypothesis was to see if a model trained on "healthy" battery behavior could generalize to predict degradation trends as failure approached.</p>
+        <p>Version 3 represents a methodological maturation—moving from ad-hoc experimentation to rigorous ML engineering practices. The key insight: <strong>proper validation requires proper structure</strong>, both in data splitting and model evaluation.</p>
 
-        <p>However, almost immediately, performance plummeted. The model's predictions lost all coherence, and metrics that previously looked robust became unrecognizable. Initially, I suspected a bug in the implementation. After investigation, I realized a crucial oversight: although I had filtered the dataset to remove end-of-life cycles from the training set, PyCaret was still randomly splitting the remaining data behind the scenes.</p>
+        <h4>The Structural Revolution</h4>
+        
+        <p>Building on Version 2's battery-wise splitting revelation, Version 3 introduces <strong>leave-multiple-batteries-out validation</strong> with systematic preprocessing pipelines. Instead of arbitrary single-battery holdouts, this version implements a more robust approach by leaving out batteries 13 and 14 for testing.</p>
+
+        <p>More critically, Version 3 eliminates the battery_id leakage trap that plagued earlier versions. While Version 2 showed that including battery_id as a feature boosted performance (RMSE: 15.61), Version 3 properly excludes it from model training while preserving it for GroupKFold validation—critical for real-world deployment scenarios.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Model</th>
+                    <th>MAE</th>
+                    <th>MSE</th>
+                    <th>RMSE</th>
+                    <th>R²</th>
+                    <th>MAPE</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Extra Trees Regressor</td>
+                    <td>58.82</td>
+                    <td>5831.39</td>
+                    <td>76.36</td>
+                    <td>0.9439</td>
+                    <td>0.4181</td>
+                </tr>
+            </tbody>
+        </table>
 
         <div class="findings">
-            <h4>Critical Insight:</h4>
+            <h4>The Leakage Lesson:</h4>
             <ul>
-                <li>End-of-life behavior might simply be too chaotic to predict using patterns observed in early cycles</li>
-                <li>Batteries don't degrade linearly; when they begin to fail, they often do so abruptly, noisily, and in deeply non-linear ways</li>
-                <li>How we split the data is just as important as how we model it</li>
+                <li>Version 1: RMSE ~19 (random split with temporal leakage)</li>
+                <li>Version 2: RMSE ~36 (battery-wise split, but still some leakage)</li>
+                <li>Version 3: RMSE ~76 (proper isolation, no feature leakage)</li>
             </ul>
         </div>
 
-        <p>Therefore, this version isn't a failure—it's a powerful signal. I now need to manually enforce the train-test split and experiment with models better suited for capturing late-life volatility, potentially revisiting time-aware approaches.</p>
+        <p>With target variance ~103,300, these results reflect <strong>genuine generalization capability</strong>. The 4x performance degradation from Version 1 isn't failure—it's <strong>methodological honesty</strong>. Real-world battery RUL prediction means deploying on completely unseen units, and Version 3's approach finally simulates this correctly.</p>
+
+        <p>The MAPE of ~42% might seem high, but context is critical. Battery degradation exhibits high variability even within identical units due to manufacturing tolerances, thermal history, and usage patterns. Academic literature often reports overly optimistic results due to similar leakage issues that Version 3 explicitly addresses. The consistent R² of 0.94+ across proper validation suggests the model captures fundamental degradation physics, not just memorized patterns.</p>
+
+        <p>The GroupKFold validation strategy ensures that during cross-validation, entire batteries are held out—preventing the model from learning battery-specific artifacts. This mirrors the final train-test split and provides more realistic performance estimates during hyperparameter tuning. The preprocessing pipeline's systematic approach—removing temporal features like Cycle_Index while preserving electrochemical signals—creates a foundation for genuine degradation modeling rather than time-series memorization.</p>
+
+        <p>Version 3 establishes the methodological baseline for trustworthy battery RUL prediction. Future work should explore temporal validation with time-based splits, heterogeneous dataset validation across manufacturers, uncertainty quantification beyond point estimates, and sequential modeling with LSTM/Transformer architectures. The journey from Version 1's impressive-but-hollow metrics to Version 3's honest-but-actionable results exemplifies the difference between research theater and production readiness—sometimes, the best progress looks like taking a step backward.</p>
     </div>
 
-    <h2>Up Next</h2>
+<h2>Up Next</h2>
 
-    <p>This week, I'll be meticulously exploring the End-of-Life split and visualizing how the model's performance varies across the battery lifespan. The ultimate goal is to train models that comprehend long-term degradation patterns—not just within a single battery, but across diverse batteries.</p>
+    <p>This week, I'll be tackling the <strong>End-of-Life (EOL) split challenge</strong>—a critical decision that could fundamentally reshape our modeling approach. The question: should we train separate models for different battery life stages, or maintain the unified approach that Version 3 established?</p>
 
-    <p>Once that's achieved, we'll delve into the broader modeling question: should we stick with traditional machine learning, or venture into deep learning? Do we prioritize interpretability or sequence modeling? Whatever the choice, the final answer will likely involve ensemble learning—because if one model isn't entirely sure, perhaps five models can collectively converge on the truth.</p>
+    <p>The physics argues for splitting. Early-stage degradation follows quasi-linear capacity fade patterns that tree-based models handle well, while end-of-life behavior becomes chaotic—dominated by cascading failures like lithium plating and SEI breakdown. Our Version 2 observation that "prediction error spikes when RUL is low" suggests these aren't just different data points, but fundamentally different phenomena.</p>
 
-    <p>Stay tuned for more updates. And if you've ever felt overwhelmed by a pile of half-working notebooks—rest assured, you're not alone.</p>
+    <p>Yet the pragmatics argue against it. EOL data is already scarce and high-variance. Further splitting risks creating unreliable test sets, and real-world deployment will encounter the full RUL spectrum. Where would we even draw the line—50 cycles? 100? The boundary becomes arbitrary.</p>
+
+    <p>My current plan: implement a <strong>hybrid stratification approach</strong>. Keep the battery-wise split that Version 3 established, but analyze performance separately across RUL ranges. This preserves methodological rigor while revealing whether the model truly understands degradation physics or just averages across life stages.</p>
+
+    <p>Beyond EOL splits, the broader modeling architecture question looms: traditional ML vs. deep learning? Interpretable tree ensembles vs. sequence-aware LSTMs? The answer will likely involve ensemble learning—because when predicting something as complex as battery failure, perhaps five models can collectively converge on truth where one cannot.</p>
+
+    <p>Stay tuned for more updates. And if you've ever felt overwhelmed by a pile of half-working notebooks scattered across multiple "final" versions—rest assured, you're not alone.</p>
 
     <footer>
         <p>&copy; Fanny Fushayi 2025. All rights reserved.</p>
