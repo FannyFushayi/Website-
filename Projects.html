@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fanny Fushayi - Personal Website</title>
+    <title>Fanny Fushayi - Project Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Color Variables */
         :root {
@@ -14,7 +17,9 @@
             --navy-light: #dbe4ff;
             --bg-color: #f8fafc;
             --text-color: #1e293b;
+            --text-light: #64748b;
             --card-bg: #ffffff;
+            --transition: all 0.3s ease;
         }
 
         /* Base Styles */
@@ -22,13 +27,14 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* Header Styles */
@@ -36,12 +42,15 @@
             background-color: var(--navy-primary);
             padding: 1.5rem 0;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .header-content {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1.5rem;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -49,24 +58,65 @@
 
         .header-content h1 {
             color: white;
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 600;
+            letter-spacing: -0.5px;
         }
 
         .header-content a {
             color: white;
             text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
         }
 
         .header-content a:hover {
-            text-decoration: underline;
+            color: var(--navy-light);
+        }
+
+        .header-content a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--navy-light);
+            transition: var(--transition);
+        }
+
+        .header-content a:hover::after {
+            width: 100%;
         }
 
         /* Main Content */
         main {
             max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Headings */
+        .section-heading {
+            color: var(--navy-primary);
+            margin-bottom: 2rem;
+            font-weight: 600;
+            font-size: 1.75rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background-color: var(--navy-accent);
+            border-radius: 3px;
         }
 
         /* Project Grid */
@@ -79,49 +129,59 @@
         /* Project Card Style */
         .project {
             background-color: var(--card-bg);
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            padding: 1.5rem;
-            transition: transform 0.2s, box-shadow 0.2s;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+            padding: 1.75rem;
+            transition: var(--transition);
             display: flex;
             flex-direction: column;
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .project:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+            border-color: var(--navy-light);
         }
 
         /* Project Title */
         .project h3 {
-            color: var(--navy-secondary);
-            margin-bottom: 1rem;
+            color: var(--navy-primary);
+            margin-bottom: 0.75rem;
             font-size: 1.25rem;
+            font-weight: 600;
         }
 
         .project h3 a {
-            color: var(--navy-secondary);
+            color: var(--navy-primary);
             text-decoration: none;
+            transition: var(--transition);
         }
 
         .project h3 a:hover {
             color: var(--navy-accent);
-            text-decoration: underline;
         }
 
-        /* Updated Time Period Badge */
+        .project p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Time Period Badge */
         .time-period {
             position: relative;
             display: inline-block;
             margin-bottom: 0.75rem;
             background-color: var(--navy-light);
             color: var(--navy-primary);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
+            padding: 0.3rem 0.7rem;
+            border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 500;
+            width: fit-content;
         }
 
         /* Skills Tags */
@@ -129,50 +189,57 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-top: 1rem;
+            margin-top: auto;
+            padding-top: 1rem;
         }
 
         .skill-tag {
             background-color: var(--navy-light);
             color: var(--navy-primary);
-            padding: 0.25rem 0.6rem;
-            border-radius: 4px;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 500;
+            transition: var(--transition);
         }
 
-        /* Improved Info Button */
+        .project:hover .skill-tag {
+            background-color: var(--navy-accent);
+            color: white;
+        }
+
+        /* Info Button */
         .info-btn {
             position: absolute;
-            bottom: 1rem;
-            right: 1rem;
+            bottom: 1.5rem;
+            right: 1.5rem;
             background-color: var(--navy-primary);
             color: white;
-            padding: 0.25rem 0.7rem;
+            padding: 0.4rem 1rem;
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            font-weight: bold;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.2s, transform 0.2s;
+            font-weight: 500;
+            font-size: 0.8rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            border: none;
+            outline: none;
         }
 
         .info-btn:hover {
             background-color: var(--navy-accent);
-            transform: scale(1.05);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
         .info-btn::before {
             content: "i";
-            margin-right: 3px;
-        }
-
-        .info-btn::after {
-            content: "Details";
-            font-size: 0.75rem;
-            font-weight: normal;
+            margin-right: 5px;
+            font-style: italic;
+            font-weight: bold;
         }
 
         /* Modal Styles */
@@ -187,17 +254,30 @@
             z-index: 1000;
             align-items: center;
             justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .modal-content {
             background-color: white;
-            padding: 2rem;
-            border-radius: 8px;
-            max-width: 600px;
+            padding: 2.5rem;
+            border-radius: 10px;
+            max-width: 700px;
             width: 90%;
-            max-height: 80vh;
+            max-height: 85vh;
             overflow-y: auto;
             position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .close-btn {
@@ -208,14 +288,46 @@
             background: none;
             border: none;
             cursor: pointer;
-            color: #666;
+            color: var(--text-light);
+            transition: var(--transition);
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close-btn:hover {
+            background-color: #f1f1f1;
+            color: var(--navy-primary);
         }
 
         .modal-title {
             color: var(--navy-primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .modal-content p {
             margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--navy-light);
+            line-height: 1.7;
+        }
+
+        .modal-content ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .modal-content li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .modal-content strong {
+            color: var(--navy-primary);
+            font-weight: 600;
         }
 
         /* Footer Styles */
@@ -223,23 +335,63 @@
             background-color: var(--navy-primary);
             color: white;
             text-align: center;
-            padding: 1.5rem 0;
-            margin-top: 3rem;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
         }
 
         footer a {
             color: var(--navy-light);
             text-decoration: none;
+            transition: var(--transition);
+            font-weight: 500;
         }
 
         footer a:hover {
+            color: white;
             text-decoration: underline;
         }
 
         /* Responsive Adjustments */
         @media (max-width: 768px) {
+            .header-content {
+                padding: 0 1.5rem;
+            }
+            
+            main {
+                padding: 0 1.5rem;
+                margin: 2rem auto;
+            }
+            
             #portfolio {
                 grid-template-columns: 1fr;
+            }
+            
+            .section-heading {
+                font-size: 1.5rem;
+            }
+            
+            .modal-content {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-content {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 1rem;
+            }
+            
+            .header-content h1 {
+                font-size: 1.3rem;
+            }
+            
+            .project {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -248,12 +400,13 @@
 <body>
     <header class="page-header">
         <div class="header-content">
-            <h1>PROJECT PORTFOLIO</h1>
-            <div><a href="index.html">Home</a></div>
+            <h1>FANNY FUSHAYI | PROJECT PORTFOLIO</h1>
+            <div><a href="index.html">← Back to Home</a></div>
         </div>
     </header>
 
     <main>
+        <h2 class="section-heading">Featured Projects</h2>
         <section id="portfolio">
             <div class="project">
                 <div class="time-period">Feb 2024 - Nov 2024</div>
@@ -267,7 +420,7 @@
                     <div class="skill-tag">C Programming</div>
                     <div class="skill-tag">STM32</div>
                 </div>
-                <div class="info-btn" onclick="showModal('hess-modal')"></div>
+                <button class="info-btn" onclick="showModal('hess-modal')">Details</button>
             </div>
             
             <div class="project">
@@ -282,7 +435,7 @@
                     <div class="skill-tag">Python</div>
                     <div class="skill-tag">MATLAB</div>
                 </div>
-                <div class="info-btn" onclick="showModal('pv-modal')"></div>
+                <button class="info-btn" onclick="showModal('pv-modal')">Details</button>
             </div>
         
             <div class="project">
@@ -296,7 +449,7 @@
                     <div class="skill-tag">Python</div>
                     <div class="skill-tag">SPICE</div>
                 </div>
-                <div class="info-btn" onclick="showModal('motor-modal')"></div>
+                <button class="info-btn" onclick="showModal('motor-modal')">Details</button>
             </div>
         
             <div class="project">
@@ -308,13 +461,11 @@
                     <div class="skill-tag">Embedded Design</div>
                     <div class="skill-tag">Firmware Development</div>
                 </div>
-                <div class="info-btn" onclick="showModal('robot-modal')"></div>
+                <button class="info-btn" onclick="showModal('robot-modal')">Details</button>
             </div>
 
-
             <div class="project">
-                <div class="time-period">2025
-                </div>
+                <div class="time-period">2025</div>
                 <h3><a href="emegence_anal.html">Data Analysis on 911 Emergency Calls</a></h3>
                 <p>Conducted a comprehensive data analysis project on 911 emergency call data to uncover trends, patterns, and insights. The project involved data cleaning, visualization, and statistical analysis.</p>
                 <div class="skills">
@@ -324,9 +475,9 @@
                     <div class="skill-tag">NumPy</div>
                     <div class="skill-tag">Matplotlib</div>
                     <div class="skill-tag">Plotly</div>
-                    <div class="skill-tag"> Seaborn</div>
+                    <div class="skill-tag">Seaborn</div>
                 </div>
-                <div class="info-btn" onclick="showModal('data-modal')"></div>
+                <button class="info-btn" onclick="showModal('data-modal')">Details</button>
             </div>
 
             <div class="project">
@@ -342,7 +493,7 @@
                     <div class="skill-tag">Plotly</div>
                     <div class="skill-tag">Seaborn</div>
                 </div>
-                <div class="info-btn" onclick="showModal('financial-modal')"></div>
+                <button class="info-btn" onclick="showModal('financial-modal')">Details</button>
             </div>
 
             <div class="project">
@@ -359,10 +510,12 @@
                     <div class="skill-tag">K-Means Clustering</div>
                     <div class="skill-tag">PCA</div>
                 </div>
-                <div class="info-btn" onclick="showModal('ml-modal')"></div>
+                <button class="info-btn" onclick="showModal('ml-modal')">Details</button>
             </div>
+        </section>
 
-            <!-- Personal Projects -->
+        <h2 class="section-heading" style="margin-top: 3rem;">Personal Projects</h2>
+        <section id="portfolio">
             <div class="project">
                 <div class="time-period">2024</div>
                 <h3>Battery RUL Prediction</h3>
@@ -386,8 +539,10 @@
                     <div class="skill-tag">Web Hosting</div>
                 </div>
             </div>
+        </section>
 
-            <!-- Zindi Competitions -->
+        <h2 class="section-heading" style="margin-top: 3rem;">Competitions & Kaggle</h2>
+        <section id="portfolio">
             <div class="project">
                 <div class="time-period">2023</div>
                 <h3>Zindi CV Competition</h3>
@@ -410,8 +565,6 @@
                     <div class="skill-tag">Zindi</div>
                 </div>
             </div>
-
-            <!-- Kaggle Projects -->
             <div class="project">
                 <div class="time-period">2023-2024</div>
                 <h3>Kaggle Battery Datasets Exploration</h3>
@@ -424,10 +577,6 @@
                     <div class="skill-tag">Reproducibility</div>
                 </div>
             </div>
-
-
-
-
         </section>
     </main>
 
@@ -439,7 +588,7 @@
             <p>The project involved development of a Hybrid Energy Storage System (HESS) for an electric go-kart. I designed and implemented a system that combines a battery and a supercapacitor to optimize energy efficiency, improve performance, and extend battery life.</p>
             <br>
             <p><strong>Key Achievements:</strong></p>
-            <ul style="margin-left: 20px; margin-top: 10px;">
+            <ul>
                 <li>Implemented a dynamic energy management system that allocates power demands optimally between battery and supercapacitor</li>
                 <li>Designed regenerative braking capability, capturing up to 30% of braking energy</li>
                 <li>Created robust safety diagnostics with real-time monitoring and fault detection</li>
@@ -447,7 +596,7 @@
             </ul>
             <br>
             <p><strong>Technologies Used:</strong></p>
-            <ul style="margin-left: 20px; margin-top: 10px;">
+            <ul>
                 <li>STM32 microcontroller for system control and management</li>
                 <li>Advanced PCB design for power electronics interface</li>
                 <li>Custom battery management system (BMS)</li>
@@ -463,7 +612,7 @@
             <p>This project focused on analyzing and optimizing hybrid power systems combining photovoltaic (PV), battery, and diesel generator setups. It involved parameter measurement, simulation, and results interpretation to improve system efficiency and minimize operational costs.</p>
             <br>
             <p><strong>Key Contributions:</strong></p>
-            <ul style="margin-left: 20px; margin-top: 10px;">
+            <ul>
                 <li>Leveraged Maximum Power Point Tracking (MPPT) for PV optimization</li>
                 <li>Implemented battery models to manage charge and discharge cycles efficiently</li>
                 <li>Developed economic dispatch algorithms that reduced diesel fuel consumption by 22%</li>
@@ -482,7 +631,7 @@
             <p>This project involved independent design of a Motor driver and Power subsystem for a Maze Navigating robot. I developed a low-power H-bridge motor driver from first principles using a combination of N & P channel Mosfets.</p>
             <br>
             <p><strong>Technical Highlights:</strong></p>
-            <ul style="margin-left: 20px; margin-top: 10px;">
+            <ul>
                 <li>Designed transistor-based gate drivers for optimal switching performance</li>
                 <li>Developed firmware using the Dual-core Tensilica Xtensa LX6 microprocessor</li>
                 <li>Implemented I2C communication protocol for reliable subsystem integration</li>
@@ -502,7 +651,7 @@
             <p>Developed a robot car for the prestigious <a href="https://www.up.ac.za/eece/article/2669042/annual-robot-car-race" target="_blank">Annual Robot Car Race</a> at the University of Pretoria. The firmware was written entirely in PIC 18 Assembly language.</p>
             <br>
             <p><strong>Core Development:</strong></p>
-            <ul style="margin-left: 20px; margin-top: 10px;">
+            <ul>
                 <li>Wrote efficient firmware in PIC 18 Assembly language for precise motor control</li>
                 <li>Optimized sensor integration for accurate track detection and navigation</li>
                 <li>Implemented collision avoidance algorithms with minimal computational overhead</li>
@@ -514,15 +663,14 @@
         </div>
     </div>
 
-    
-    <div id="robot-modal" class="modal">
+    <div id="data-modal" class="modal">
         <div class="modal-content">
-            <button class="close-btn" onclick="closeModal('robot-modal')">×</button>
+            <button class="close-btn" onclick="closeModal('data-modal')">×</button>
             <h2 class="modal-title">Data Analysis on 911 Emergency Calls</h2>
             <p>Conducted a comprehensive data analysis project on 911 emergency call data to uncover trends, patterns, and insights. The project involved data cleaning, visualization, and statistical analysis.</p>
             <br>
             <p><strong>Core Development:</strong></p>
-            <ul style="margin-left: 20px; margin-top: 10px;">
+            <ul>
                 <li>Performed data cleaning and preprocessing to handle missing values and inconsistencies</li>
                 <li>Utilized Python libraries such as Pandas, NumPy, and Matplotlib for data manipulation and visualization</li>
                 <li>Conducted exploratory data analysis (EDA) to identify key trends and patterns</li>
@@ -534,42 +682,69 @@
         </div>
     </div>
 
+    <div id="financial-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('financial-modal')">×</button>
+            <h2 class="modal-title">Financial Data Analysis</h2>
+            <p>Conducted a comprehensive financial data analysis project to uncover trends, patterns, and insights in financial markets. The project involved data collection, cleaning, and advanced statistical analysis.</p>
+            <br>
+            <p><strong>Core Development:</strong></p>
+            <ul>
+                <li>Developed automated data pipelines for collecting and processing financial data</li>
+                <li>Implemented time series analysis techniques to identify market trends</li>
+                <li>Created risk assessment models using statistical methods</li>
+                <li>Built interactive dashboards for visualizing financial metrics and KPIs</li>
+            </ul>
+            <br>
+            <p><strong>Results:</strong></p>
+            <p>The analysis revealed significant patterns in market behavior, provided insights into risk factors, and demonstrated the potential for predictive modeling in financial markets. The interactive dashboards enabled stakeholders to explore data and gain actionable insights.</p>
+        </div>
+    </div>
+
     <div id="ml-modal" class="modal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal('ml-modal')">×</button>
-            <h2 class="modal-title">Machine Learning Projects</h2>
+            <h2 class="modal-title">Machine Learning Capstone Projects</h2>
             <p>Explored various machine learning techniques and implemented projects using the Scikit-learn library. The projects include regression and classification models, as well as natural language processing (NLP) with text analysis.</p>
             <br>
             <p><strong>Core Development:</strong></p>
-            <ul style="margin-left: 20px; margin-top: 10px;">
+            <ul>
                 <li>Developed regression and classification models using Scikit-learn</li>
-                <li>Implemented natural language processing (NLP) techniques for text analysis using Python's string library</li>
+                <li>Implemented natural language processing (NLP) techniques for text analysis</li>
                 <li>Utilized Bayesian methods for probabilistic modeling and inference</li>
                 <li>Leveraged libraries such as NumPy, Pandas, and Seaborn for data manipulation and visualization</li>
                 <li>Built machine learning pipelines for streamlined data preprocessing and model training</li>
             </ul>
             <br>
             <p><strong>Results:</strong></p>
-            <p>The projects demonstrated the ability to predict outcomes with high accuracy, uncover patterns in data, and analyze text effectively. These findings highlight the potential of machine learning in solving real-world problems.</p>
+            <p>The projects demonstrated the ability to predict outcomes with high accuracy, uncover patterns in data, and analyze text effectively. These findings highlight the potential of machine learning in solving real-world problems across various domains.</p>
         </div>
     </div>
 
-
-
-
     <footer>
-        <p>&copy; 2024 Fanny Fushayi | <a href="index.html">Home</a> | <a href="contact.html">Contact</a></p>
+        <p>&copy; 2024 Fanny Fushayi</p>
+        <p><a href="index.html">Home</a> | <a href="contact.html">Contact</a></p>
     </footer>
 
     <script>
-        // Modal functionality
+        // Enhanced Modal functionality
         function showModal(modalId) {
-            document.getElementById(modalId).style.display = 'flex';
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
+            
+            // Add keyboard escape functionality
+            document.addEventListener('keydown', function escClose(e) {
+                if (e.key === 'Escape') {
+                    closeModal(modalId);
+                    document.removeEventListener('keydown', escClose);
+                }
+            });
         }
         
         function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
         
