@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alyosha the Absurdly Good</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #f4f1e8 0%, #e8dcc0 100%);
+            color: #3a2f1f;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 80px 0 60px;
+            background: linear-gradient(135deg, #8b6f3f 0%, #6b4423 100%);
+            color: #f4f1e8;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(244, 241, 232, 0.1) 0%, transparent 70%);
+            animation: gentle-pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes gentle-pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.05); opacity: 0.1; }
+        }
+
+        .title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 300;
+            letter-spacing: 0.02em;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            font-weight: 300;
+            opacity: 0.9;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 60px 0;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            margin: -40px 20px 0;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .article {
+            padding: 0 40px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .article p {
+            margin-bottom: 24px;
+            font-size: 1.1rem;
+            text-align: justify;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .article p:nth-child(odd) {
+            animation-delay: 0.1s;
+        }
+
+        .article p:nth-child(even) {
+            animation-delay: 0.2s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            margin: 40px 0;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image:hover {
+            transform: scale(1.02);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #6b4423;
+            margin: 50px 0 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(139, 111, 63, 0.3);
+            font-weight: 400;
+        }
+
+        .afterword {
+            background: rgba(139, 111, 63, 0.05);
+            padding: 40px;
+            margin: 60px 0;
+            border-radius: 15px;
+            border: 1px solid rgba(139, 111, 63, 0.2);
+        }
+
+        .afterword h3 {
+            color: #6b4423;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .navigation {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .home-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #6b4423;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 15px 30px;
+            border: 2px solid #8b6f3f;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .home-link:hover {
+            background: #8b6f3f;
+            color: #f4f1e8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(139, 111, 63, 0.3);
+        }
+
+        .home-link::before {
+            content: '←';
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .home-link:hover::before {
+            transform: translateX(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                margin: -20px 10px 0;
+                border-radius: 15px;
+            }
+            
+            .article {
+                padding: 0 20px;
+            }
+            
+            .quote-highlight {
+                padding: 20px;
+                margin: 30px 0;
+            }
+            
+            .afterword {
+                padding: 25px;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(139, 111, 63, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #8b6f3f;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6b4423;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1 class="title">Alyosha the Absurdly Good</h1>
+            <div class="subtitle">On faith, disappointment, and the miracle of a single onion</div>
+        </div>
+        <img src="Images/Alyosha_and_the_Onion.png" alt="Silhouette of a person holding an onion against a warm, sepia background" class="hero-image" style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%) scale(1.1); opacity: 0.18; pointer-events: none; width: 90%; max-width: 700px; z-index: 0;">
+    </div>
+
+    <div class="container">
+        <div class="content">
+            <div class="article">
+                
+                
+                <p>I don't know about you, but I've built entire mythologies around people. A teacher, a mentor, an artist. You see a light in them and mistake it for the sun. You expect them to be above the petty, messy business of being human. And then one day, they do something disappointingly, unforgivably normal. They get bitter, or they sell out, or they just show themselves to be flawed. The pedestal shatters. And the silence that follows feels a lot like a crisis of faith.</p>
+
+                <p>What do you do when a hero reveals their humanity? When the miracle you were counting on fails to arrive?</p>
+
+                <p>There's a part in an old, sprawling Russian novel that wrestles with this exact feeling. The Brothers Karamazov doesn't give you neat theology. It gives you rot.</p>
+
+                <p>In the book, there's a young man who has staked his entire life on the goodness of his mentor, a monk so revered that people expect him to be declared a saint upon his death. The ultimate proof, they whisper, will be a miracle: his body will not decay. It will be pure, incorruptible, a sign from God that this man had transcended ordinary flesh.</p>
+
+                <p>The mentor dies.</p>
+
+                <p>The body not only decays, but it does so with an almost malicious speed. The stench of corruption fills the monastery, a foul, biological fact that suffocates all the whispers of holiness. The cynics are delighted. The believers are horrified. And the young man, the devoted apprentice, feels the floor of his world fall away. His rebellion isn't loud. It's a quiet, cold despair. He walks out of the monastery and decides to find someone "wicked," as if to confirm that the whole project of goodness was a fraud from the start.</p>
+
+                <p>So the young man, lost in his doubt, goes to see a woman the town considers a seductress, a source of chaos. He goes there looking for sin, maybe to lose himself in it. But instead of a caricature of wickedness, he finds another person in pain. And in that moment of shared vulnerability, she tells him a story.</p>
+
+                <p>It's a folktale about a cruel, selfish woman who dies and goes to hell. Her guardian angel, desperate to find a single good deed she ever performed, finally remembers one: she once gave a beggar an onion. Just one. God says the angel can use that onion to pull her out of the lake of fire. As she's being lifted, other sinners grab onto her legs, hoping to be saved too. "Let go!" she shrieks, kicking them away. "It's my onion, not yours!"</p>
+
+                <p><em>And the onion breaks.</em></p>
+
+                <p>She falls back in, and that's the end of her story. But not the end of this one. Because by sharing this tiny story—this "onion"—the woman offers the grieving young man a moment of connection, though not in the way she understands it herself. She even admits she's just like the woman in the tale, cynically noting that she's learned the lesson: don't kick others away when your turn for salvation comes. But for the young man, her calculation is irrelevant. What he hears is something else entirely. It isn't a miracle. It isn't a sign from God. It's the revelation that all anyone has is a single onion. In that moment, the "holy" man and the "wicked" woman are the same, and he sees that his path isn't to be above it all, but to be part of it—to always forgive, to always ask for forgiveness, and to always see the onion in others.</p>
+
+                <p>Can one good moment outweigh a thousand bad ones? The book doesn't give a clean answer. But it leaves you with the feeling that maybe we've been looking for goodness in the wrong places. Not in perfect saints, but in flawed people sharing their one onion.</p>
+
+                <p>The young man's faith returns, but it's different now. It's not a belief in celestial proofs or incorruptible bodies. It's a faith in the sacredness of the earth under his feet and the profound grace of a single, shared kindness in the dark.</p>
+
+                <p><em>And maybe that's the only miracle we ever needed. It's not about whether our heroes fall. It's about whether we can find the courage to offer an onion to someone else who has. And to realize that, sometimes, we are the ones who need to be offered one, too.</em></p>
+
+                <div class="afterword">
+                    <h3>Afterword: For Those Who've Walked These Pages</h3>
+                    <p>What I love about Alyosha—especially as someone who often sees him through the skeptical, smirking eyes of Ivan—is how unimposing his belief is. He doesn't preach. He doesn't debate. His faith isn't a position to defend. It's a way of being. He lives with kindness, not as a tactic but as a quiet wager: if goodness is real, it will ripple outward on its own.</p>
+                    
+                    <p>It reminds me of that line often attributed to St. Francis: "Preach the Gospel at all times. Use words only when necessary." Whether Dostoevsky ever read it or not, Alyosha lives it. His presence is his testimony.</p>
+                    
+                    <p>And yet, I'm aware of something I've missed.</p>
+                    
+                    <p>As I was writing and rereading this section, I realized how little I engaged with Grushenka. She plays such a key role in Alyosha's turning point—many readers see that moment as just as much her redemption as his. I've seen entire discussions devoted to her character arc, to the complexity she brings.</p>
+                    
+                    <p>But I have to admit: I didn't feel it.</p>
+                    
+                    <p>At least, not yet.</p>
+                    
+                    <p>I'm not sure if that's a flaw in the book or in me. Maybe I wasn't ready to see her clearly. Maybe I was too focused on the ideas Alyosha was carrying to pay attention to the person standing in front of him.</p>
+                    
+                    <p>Either way, I'll keep thinking about it.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <a href="blog.html" class="home-link">Home</a>
+        </div>
+
+        <div><footer>Fanny Fushayi 2025</footer></div>
+    </div>
+
+    <script>
+        // Smooth reveal animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all paragraphs for animation
+        document.querySelectorAll('.article p').forEach(p => {
+            observer.observe(p);
+        });
+
+        // Add subtle parallax effect to header
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const header = document.querySelector('.header');
+            const rate = scrolled * -0.5;
+            header.style.transform = `translateY(${rate}px)`;
+        });
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
