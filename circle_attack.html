@@ -453,41 +453,122 @@
             }
         }
 
-        // --- Bot Logic ---
+        // --- Advanced Bot Logic ---
         function performBotTurn() {
             if (gameState.gamePhase !== 'aiming' || gameState.currentPlayer !== 1) return;
             
             const bot = gameState.players[1];
             const human = gameState.players[0];
+            const now = Date.now();
             
-            // Simple bot strategy:
-            // 1. If not loaded, aim for the circle
-            // 2. If loaded, aim for the player
-            // 3. Add some randomness to make it less perfect
+            // 1. Decision Making - Choose best action
+            let target, power, angle;
+            const timeSinceLastShot = now - (bot.lastShotTime || 0);
             
-            const target = bot.loaded ? human : gameState.circle;
+            // Strategic options with weights
+            const options = [];
             
-            // Calculate direction to target
-            let dx = target.x - bot.x;
-            let dy = target.y - bot.y;
-            const distanceToTarget = Math.sqrt(dx * dx + dy * dy);
+            // Option 1: Go for circle if not loaded
+            if (!bot.loaded) {
+                const circlePath = getPathToTarget(bot, gameState.circle);
+                options.push({
+                    type: 'circle',
+                    priority: 0.8,
+                    path: circlePath,
+                    target: gameState.circle
+                });
+            }
             
-            // Add some randomness to aim (more when farther away)
-            const aimVariance = distanceToTarget * 0.1 * (Math.random() - 0.5);
-            const angle = Math.atan2(dy, dx) + aimVariance;
+            // Option 2: Attack human if loaded
+            if (bot.loaded) {
+                const attackPath = getPathToTarget(bot, human, true);
+                options.push({
+                    type: 'attack',
+                    priority: 1.2,
+                    path: attackPath,
+                    target: human
+                });
+            }
             
-            // Calculate power (full power when far, less when close)
-            const power = Math.min(MAX_POWER * 0.9, distanceToTarget / 5);
+            // Option 3: Collect power-up if available and valuable
+            gameState.powerUps.forEach(pu => {
+                if (pu.active && now - pu.spawnTime < 8000) { // Only consider fresh power-ups
+                    const path = getPathToTarget(bot, pu);
+                    const value = getPowerUpValue(pu.type, bot);
+                    options.push({
+                        type: 'powerup',
+                        priority: value * 0.6,
+                        path: path,
+                        target: pu
+                    });
+                }
+            });
             
-            // Set velocity
+            // Option 4: Defensive positioning if human is loaded
+            if (human.loaded) {
+                const safeSpot = findSafePosition(bot, human);
+                if (safeSpot) {
+                    options.push({
+                        type: 'defense',
+                        priority: 1.0,
+                        path: getPathToTarget(bot, safeSpot),
+                        target: safeSpot
+                    });
+                }
+            }
+            
+            // Select best option based on priority and path quality
+            let bestOption = null;
+            let bestScore = -Infinity;
+            
+            options.forEach(option => {
+                const pathScore = option.path.difficulty * option.priority;
+                if (pathScore > bestScore) {
+                    bestScore = pathScore;
+                    bestOption = option;
+                }
+            });
+            
+            // If no good options (shouldn't happen), default to circle
+            if (!bestOption) {
+                bestOption = {
+                    target: gameState.circle,
+                    path: { angle: Math.atan2(gameState.circle.y - bot.y, gameState.circle.x - bot.x), power: MAX_POWER * 0.7 }
+                };
+            }
+            
+            // 2. Calculate shot with prediction and skill adjustment
+            if (bestOption.type === 'attack') {
+                // Predict human movement
+                const predictedPos = predictMovement(
+                    human,
+                    timeSinceLastShot > 2000 ? 1.0 : 0.7 // More prediction if human hasn't moved recently
+                );
+                
+                // Calculate intercept course
+                const intercept = calculateIntercept(bot, predictedPos, human.vx, human.vy);
+                angle = intercept.angle;
+                power = intercept.power;
+            } else {
+                // Standard shot to target
+                angle = bestOption.path.angle;
+                power = bestOption.path.power;
+            }
+            
+            // 3. Apply skill level (0-1, where 1 is perfect)
+            const botSkill = 1; // Adjust this between 0.7 (good) and 0.95 (expert)
+            applySkillLevel(angle, power, botSkill);
+            
+            // 4. Execute the shot
             const vx = Math.cos(angle) * power;
             const vy = Math.sin(angle) * power;
             
-            // Update game state
             let newPlayers = [...gameState.players];
             newPlayers[1] = {
                 ...newPlayers[1],
-                vx, vy
+                vx,
+                vy,
+                lastShotTime: now
             };
             
             gameState = {
@@ -508,6 +589,252 @@
             animate();
         }
 
+        // --- Helper Functions for Advanced Bot ---
+
+        function getPathToTarget(bot, target, isAttack = false) {
+            // Calculate direct path
+            let dx = target.x - bot.x;
+            let dy = target.y - bot.y;
+            let directDistance = Math.sqrt(dx * dx + dy * dy);
+            let directAngle = Math.atan2(dy, dx);
+            
+            // Find obstacles in the way
+            let obstacleInPath = null;
+            let minObstacleDist = Infinity;
+            
+            gameState.obstacles.forEach(obstacle => {
+                const obstacleToBot = distance(bot, obstacle);
+                const obstacleToTarget = distance(target, obstacle);
+                
+                // Simple line-circle intersection test
+                const obstacleRadius = obstacle.radius + PLAYER_RADIUS + 5;
+                const intersection = lineCircleIntersection(
+                    bot.x, bot.y, target.x, target.y,
+                    obstacle.x, obstacle.y, obstacleRadius
+                );
+                
+                if (intersection) {
+                    const dist = distance(bot, {x: intersection.x, y: intersection.y});
+                    if (dist < minObstacleDist) {
+                        minObstacleDist = dist;
+                        obstacleInPath = obstacle;
+                    }
+                }
+            });
+            
+            // If no obstacle, simple direct path
+            if (!obstacleInPath) {
+                const power = isAttack ? 
+                    Math.min(MAX_POWER * 0.95, directDistance / 4.5) : 
+                    Math.min(MAX_POWER * 0.8, directDistance / 5);
+                
+                return {
+                    angle: directAngle,
+                    power: power,
+                    difficulty: 1.0 // Easy path
+                };
+            }
+            
+            // Calculate path around obstacle
+            const obstacle = obstacleInPath;
+            const goLeft = Math.random() > 0.5; // Randomize which way to go around
+            
+            // Calculate tangent points
+            const tangentPoints = getTangentPoints(
+                bot.x, bot.y, 
+                obstacle.x, obstacle.y, 
+                obstacle.radius + PLAYER_RADIUS + 10,
+                goLeft
+            );
+            
+            // Choose best tangent point based on target direction
+            let bestTangent = null;
+            let bestScore = -Infinity;
+            
+            tangentPoints.forEach(point => {
+                const angleToTarget = Math.atan2(target.y - point.y, target.x - point.x);
+                const angleFromBot = Math.atan2(point.y - bot.y, point.x - bot.x);
+                const angleDiff = Math.abs(angleToTarget - angleFromBot);
+                
+                // Score based on how little we have to turn after going around
+                const score = 1.0 - (angleDiff / Math.PI);
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestTangent = point;
+                }
+            });
+            
+            // Calculate angles and power for two-part path
+            const angleToTangent = Math.atan2(bestTangent.y - bot.y, bestTangent.x - bot.x);
+            const angleToTarget = Math.atan2(target.y - bestTangent.y, target.x - bestTangent.x);
+            
+            // Weighted average angle
+            const distToTangent = distance(bot, bestTangent);
+            const distTangentToTarget = distance(bestTangent, target);
+            const totalDist = distToTangent + distTangentToTarget;
+            
+            const weightedAngle = (
+                angleToTangent * distToTangent + 
+                angleToTarget * distTangentToTarget
+            ) / totalDist;
+            
+            return {
+                angle: weightedAngle,
+                power: Math.min(MAX_POWER * 0.9, totalDist / 5),
+                difficulty: 0.6 // Harder path
+            };
+        }
+
+        function predictMovement(target, predictionFactor = 0.8) {
+            // Predict where target will be based on current velocity
+            const framesToPredict = 10 * predictionFactor; // Adjust based on skill
+            const friction = Math.pow(FRICTION, framesToPredict);
+            
+            return {
+                x: target.x + target.vx * framesToPredict * friction,
+                y: target.y + target.vy * framesToPredict * friction
+            };
+        }
+
+        function calculateIntercept(shooter, target, targetVx, targetVy) {
+            // Simple intercept calculation (could be enhanced)
+            const dist = distance(shooter, target);
+            const timeToImpact = dist / MAX_POWER; // Approximate
+            
+            const predictedX = target.x + targetVx * timeToImpact * 0.7;
+            const predictedY = target.y + targetVy * timeToImpact * 0.7;
+            
+            const dx = predictedX - shooter.x;
+            const dy = predictedY - shooter.y;
+            const angle = Math.atan2(dy, dx);
+            
+            // Adjust power based on distance and prediction confidence
+            const actualDist = distance(shooter, {x: predictedX, y: predictedY});
+            const power = Math.min(MAX_POWER * 0.95, actualDist / 4.3);
+            
+            return { angle, power };
+        }
+
+        function findSafePosition(bot, threat) {
+            // Find position that maximizes distance from threat while staying in bounds
+            const maxAttempts = 10;
+            let bestPosition = null;
+            let bestScore = -Infinity;
+            
+            for (let i = 0; i < maxAttempts; i++) {
+                // Try positions on opposite side of circle from threat
+                const angle = Math.atan2(bot.y - threat.y, bot.x - threat.x) + 
+                            (Math.random() - 0.5) * Math.PI * 0.5;
+                
+                const distanceFromThreat = Math.min(
+                    CANVAS_WIDTH * 0.4, 
+                    CANVAS_HEIGHT * 0.4,
+                    distance(bot, threat) * 1.3
+                );
+                
+                const pos = {
+                    x: threat.x + Math.cos(angle) * distanceFromThreat,
+                    y: threat.y + Math.sin(angle) * distanceFromThreat
+                };
+                
+                // Keep within bounds
+                pos.x = Math.max(PLAYER_RADIUS, Math.min(CANVAS_WIDTH - PLAYER_RADIUS, pos.x));
+                pos.y = Math.max(PLAYER_RADIUS, Math.min(CANVAS_HEIGHT - PLAYER_RADIUS, pos.y));
+                
+                // Score based on distance from threat and proximity to circle
+                const threatDist = distance(pos, threat);
+                const circleDist = distance(pos, gameState.circle);
+                const score = threatDist - circleDist * 0.3;
+                
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestPosition = pos;
+                }
+            }
+            
+            return bestPosition;
+        }
+
+        function getPowerUpValue(type, bot) {
+            // Calculate how valuable a power-up is to the bot right now
+            const hasShield = bot.powerUps.some(pu => pu.type === 'shield');
+            
+            switch (type) {
+                case 'shield':
+                    return hasShield ? 0.3 : 1.0;
+                case 'speed':
+                    return 0.7;
+                case 'double-shot':
+                    return bot.loaded ? 1.2 : 0.5;
+                default:
+                    return 0.5;
+            }
+        }
+
+        function applySkillLevel(angle, power, skill) {
+            // skill is between 0 (bad) and 1 (perfect)
+            const maxAngleError = (1 - skill) * Math.PI / 8;
+            const maxPowerError = (1 - skill) * MAX_POWER * 0.3;
+            
+            // Apply random error based on skill
+            angle += (Math.random() - 0.5) * maxAngleError;
+            power *= 1 + (Math.random() - 0.5) * (1 - skill) * 0.4;
+            
+            // Ensure power is within bounds
+            power = Math.max(MAX_POWER * 0.3, Math.min(MAX_POWER, power));
+            
+            return { angle, power };
+        }
+
+        // Math helper functions
+        function lineCircleIntersection(x1, y1, x2, y2, cx, cy, r) {
+            // Vector from point 1 to point 2
+            const dx = x2 - x1;
+            const dy = y2 - y1;
+            
+            // Vector from point 1 to circle center
+            const fx = cx - x1;
+            const fy = cy - y1;
+            
+            const a = dx * dx + dy * dy;
+            const b = 2 * (fx * dx + fy * dy);
+            const c = fx * fx + fy * fy - r * r;
+            const discriminant = b * b - 4 * a * c;
+            
+            if (discriminant < 0) return null;
+            
+            const t = (-b - Math.sqrt(discriminant)) / (2 * a);
+            if (t >= 0 && t <= 1) {
+                return {
+                    x: x1 + t * dx,
+                    y: y1 + t * dy
+                };
+            }
+            
+            return null;
+        }
+
+        function getTangentPoints(x1, y1, x2, y2, r, left = true) {
+            const dx = x2 - x1;
+            const dy = y2 - y1;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            
+            if (dist <= r) return []; // No tangents
+            
+            const angle = Math.atan2(dy, dx);
+            const tangentAngle = Math.acos(r / dist);
+            
+            return [
+                {
+                    x: x2 + r * Math.cos(angle + tangentAngle + (left ? 0 : Math.PI)),
+                    y: y2 + r * Math.sin(angle + tangentAngle + (left ? 0 : Math.PI))
+                },
+                {
+                    x: x2 + r * Math.cos(angle - tangentAngle + (left ? 0 : Math.PI)),
+                    y: y2 + r * Math.sin(angle - tangentAngle + (left ? 0 : Math.PI))
+                }
+            ];
+        }
         // --- Drawing ---
         function draw() {
             ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
