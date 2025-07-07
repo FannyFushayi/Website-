@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Circle Strike</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style>
+        body {
+            background: #111827;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+        h1 { 
+            font-size: 2.5em; 
+            margin: 0.5em 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            background: linear-gradient(90deg, #3b82f6, #ef4444);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .panel {
+            margin-bottom: 1em;
+            text-align: center;
+            background: rgba(31, 41, 55, 0.8);
+            padding: 1em;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            width: 80%;
+            max-width: 600px;
+        }
+        .panel h2 { 
+            margin: 0.5em 0; 
+            font-size: 1.5em;
+        }
+        .panel p { 
+            margin: 0.5em 0;
+            line-height: 1.4;
+        }
+        .btn {
+            padding: 0.7em 1.8em;
+            background: #2563eb;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 1em;
+            transition: all 0.2s;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .btn:hover { 
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        .btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+        }
+        canvas {
+            border: 2px solid #374151;
+            background: #1f2937;
+            cursor: crosshair;
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border-radius: 8px;
+        }
+        .rules {
+            margin: 1.5em 0;
+            color: #d1d5db;
+            max-width: 600px;
+            text-align: center;
+            font-size: 1em;
+            background: rgba(31, 41, 55, 0.7);
+            padding: 1em;
+            border-radius: 8px;
+        }
+        .yellow { color: #fbbf24; text-shadow: 0 0 5px rgba(251, 191, 36, 0.5); }
+        .red { color: #ef4444; text-shadow: 0 0 5px rgba(239, 68, 68, 0.5); }
+        .green { color: #22c55e; text-shadow: 0 0 5px rgba(34, 197, 94, 0.5); }
+        .blue { color: #3b82f6; text-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+        .power-meter {
+            height: 8px;
+            background: #374151;
+            border-radius: 4px;
+            margin: 0.5em auto;
+            width: 200px;
+            overflow: hidden;
+        }
+        .power-level {
+            height: 100%;
+            background: linear-gradient(90deg, #22c55e, #fbbf24, #ef4444);
+            width: 0%;
+            transition: width 0.1s;
+        }
+        .scoreboard {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 600px;
+            margin: 1em 0;
+            background: rgba(31, 41, 55, 0.7);
+            padding: 0.5em;
+            border-radius: 8px;
+        }
+        .player-score {
+            text-align: center;
+            padding: 0.5em 1em;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+        .bot-controls {
+            margin: 1em 0;
+            text-align: center;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .pulse {
+            animation: pulse 1.5s infinite;
+        }
+        
+        /* Mobile-specific styles */
+        @media (max-width: 800px) {
+            body {
+                touch-action: none;
+                overflow: hidden;
+                position: fixed;
+                width: 100%;
+                height: 100%;
+            }
+            
+            canvas {
+                width: 100%;
+                height: auto;
+                max-height: 80vh;
+                border: none;
+            }
+            
+            .panel, .rules {
+                width: 90%;
+                padding: 0.5em;
+                font-size: 0.9em;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+                margin: 0.3em 0;
+            }
+            
+            .btn {
+                padding: 1em;
+                font-size: 1.1em;
+            }
+            
+            .power-meter {
+                width: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>⚡ CIRCLE STRIKE ⚡</h1>
+    
+    <div class="scoreboard">
+        <div class="player-score blue" id="score-p1">Player 1: 0</div>
+        <div class="player-score red" id="score-p2">Player 2: 0</div>
+    </div>
+    
+    <div class="panel" id="panel"></div>
+    
+    <div class="bot-controls">
+        <button class="btn" id="toggleBot">Enable Bot (Player 2)</button>
+    </div>
+    
+    <div class="power-meter">
+        <div class="power-level" id="powerMeter"></div>
+    </div>
+    
+    <canvas id="game" width="800" height="600"></canvas>
+    
+    <div class="rules">
+        <p><strong>🎯 How to Play:</strong> Click/touch and drag from your disc to aim. Release to shoot!</p>
+        <p><strong>🏆 Goal:</strong> Enter the <span class="yellow">yellow circle</span> to get "loaded", then eliminate your opponent.</p>
+        <p><strong>💡 Strategy:</strong> Miss your attack and you become unloaded and vulnerable!</p>
+        <p><strong>⚡ Power-ups:</strong> Collect flashing orbs for special abilities!</p>
+    </div>
+
+    <script>
+        // --- Game Constants ---
+        const CANVAS_WIDTH = 800;
+        const CANVAS_HEIGHT = 600;
+        const PLAYER_RADIUS = 15;
+        const FRICTION = 0.97;
+        const MAX_POWER = 15;
+        const MIN_VELOCITY = 0.2;
+        const POWER_UP_RADIUS = 12;
+        const POWER_UP_DURATION = 5000; // 5 seconds
+
+        // --- Game State ---
+        let gameState = {
+            players: [
+                { 
+                    x: 100, 
+                    y: 300, 
+                    vx: 0, 
+                    vy: 0, 
+                    loaded: false, 
+                    color: '#3b82f6',
+                    score: 0,
+                    powerUps: []
+                },
+                { 
+                    x: 700, 
+                    y: 300, 
+                    vx: 0, 
+                    vy: 0, 
+                    loaded: false, 
+                    color: '#ef4444',
+                    score: 0,
+                    powerUps: []
+                }
+            ],
+            circle: { 
+                x: 400, 
+                y: 300, 
+                radius: 40 
+            },
+            obstacles: [
+                { x: 250, y: 200, radius: 25 },
+                { x: 550, y: 400, radius: 25 },
+                { x: 350, y: 150, radius: 20 },
+                { x: 450, y: 450, radius: 20 },
+                { x: 400, y: 100, radius: 15 },
+                { x: 100, y: 500, radius: 20 },
+                { x: 500, y: 100, radius: 20 },
+                { x: 400, y: 500, radius: 15 }
+            ],
+            powerUps: [],
+            currentPlayer: 0,
+            gamePhase: 'aiming', // 'aiming', 'moving', 'attacking', 'gameOver'
+            winner: null,
+            aimStart: null,
+            aimEnd: null,
+            isAiming: false,
+            lastPowerUpSpawn: 0,
+            botEnabled: false,
+            sounds: {
+                shoot: null,
+                hit: null,
+                powerUp: null,
+                win: null
+            }
+        };
+
+        // --- DOM Elements ---
+        const canvas = document.getElementById('game');
+        const ctx = canvas.getContext('2d');
+        const panel = document.getElementById('panel');
+        const powerMeter = document.getElementById('powerMeter');
+        const scoreP1 = document.getElementById('score-p1');
+        const scoreP2 = document.getElementById('score-p2');
+        const toggleBotBtn = document.getElementById('toggleBot');
+        let animationRef = null;
+
+        // --- Sound Effects ---
+        function initSounds() {
+            gameState.sounds = {
+                shoot: new Audio('data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU...'),
+                hit: new Audio('data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU...'),
+                powerUp: new Audio('data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU...'),
+                win: new Audio('data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU...')
+            };
+            
+            // Reduce volume for all sounds
+            Object.values(gameState.sounds).forEach(sound => {
+                sound.volume = 0.3;
+            });
+        }
+
+        // --- Utility Functions ---
+        function distance(p1, p2) {
+            return Math.sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2);
+        }
+
+        function checkCollision(player, obstacle) {
+            return distance(player, obstacle) < PLAYER_RADIUS + obstacle.radius;
+        }
+
+        function randomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function spawnPowerUp(type_ind) {
+            const now = Date.now();
+            if (now - gameState.lastPowerUpSpawn < 10000 && gameState.powerUps.length > 0) return;
+            
+            const types = ['speed', 'shield', 'double-shot'];
+            const type = types[type_ind];
+            
+            let x, y, validPosition;
+            do {
+                validPosition = true;
+                x = randomInt(50, CANVAS_WIDTH - 50);
+                y = randomInt(50, CANVAS_HEIGHT - 50);
+                
+                // Check if too close to players
+                gameState.players.forEach(player => {
+                    if (distance({x, y}, player) < 50) validPosition = false;
+                });
+                
+                // Check if too close to circle
+                if (distance({x, y}, gameState.circle) < 80) validPosition = false;
+                
+                // Check if too close to obstacles
+                gameState.obstacles.forEach(obstacle => {
+                    if (distance({x, y}, obstacle) < obstacle.radius + 30) validPosition = false;
+                });
+                
+                // Check if too close to other power-ups
+                gameState.powerUps.forEach(pu => {
+                    if (distance({x, y}, pu) < 40) validPosition = false;
+                });
+                
+            } while (!validPosition);
+            
+            gameState.powerUps.push({
+                x,
+                y,
+                type,
+                radius: POWER_UP_RADIUS,
+                spawnTime: now,
+                active: true
+            });
+            
+            gameState.lastPowerUpSpawn = now;
+        }
+
+        // --- Input Handling ---
+        function getInputCoordinates(event) {
+            const rect = canvas.getBoundingClientRect();
+            let clientX, clientY;
+            
+            if (event.type.includes('touch')) {
+                clientX = event.touches[0].clientX;
+                clientY = event.touches[0].clientY;
+                event.preventDefault();
+            } else {
+                clientX = event.clientX;
+                clientY = event.clientY;
+            }
+            
+            return {
+                x: clientX - rect.left,
+                y: clientY - rect.top
+            };
+        }
+
+        function handleInputStart(event) {
+            if (gameState.gamePhase !== 'aiming') return;
+            const { x, y } = getInputCoordinates(event);
+            const currentPlayer = gameState.players[gameState.currentPlayer];
+            const playerDistance = distance({ x, y }, currentPlayer);
+            
+            if (playerDistance < PLAYER_RADIUS + 30) {
+                gameState.isAiming = true;
+                gameState.aimStart = { x: currentPlayer.x, y: currentPlayer.y };
+                gameState.aimEnd = { x, y };
+                draw();
+            }
+        }
+
+        function handleInputMove(event) {
+            if (!gameState.isAiming) return;
+            const { x, y } = getInputCoordinates(event);
+            gameState.aimEnd = { x, y };
+            draw();
+            if (event.type.includes('touch')) {
+                event.preventDefault();
+            }
+        }
+
+        function handleInputEnd() {
+            if (!gameState.isAiming || !gameState.aimStart || !gameState.aimEnd) return;
+            
+            const dx = gameState.aimEnd.x - gameState.aimStart.x;
+            const dy = gameState.aimEnd.y - gameState.aimStart.y;
+            const aimDistance = Math.sqrt(dx * dx + dy * dy);
+            const power = Math.min(aimDistance / 4, MAX_POWER);
+            
+            if (power > 0.5) {
+                const angle = Math.atan2(dy, dx);
+                let vx = Math.cos(angle) * power;
+                let vy = Math.sin(angle) * power;
+                
+                // Check for double shot
+                const currentPlayer = gameState.players[gameState.currentPlayer];
+                const hasDoubleShot = currentPlayer.powerUps.some(pu => pu.type === 'double-shot');
+                
+                if (hasDoubleShot && gameState.gamePhase === 'attacking') {
+                    // Create a second shot at a slight angle
+                    const angle2 = angle + 0.3;
+                    let newPlayers = [...gameState.players];
+                    newPlayers[gameState.currentPlayer] = {
+                        ...newPlayers[gameState.currentPlayer],
+                        vx: Math.cos(angle2) * power * 0.8,
+                        vy: Math.sin(angle2) * power * 0.8
+                    };
+                    gameState.players = newPlayers;
+                }
+                
+                let newPlayers = [...gameState.players];
+                newPlayers[gameState.currentPlayer] = {
+                    ...newPlayers[gameState.currentPlayer],
+                    vx, vy
+                };
+                
+                gameState = {
+                    ...gameState,
+                    players: newPlayers,
+                    gamePhase: 'moving',
+                    isAiming: false,
+                    aimStart: null,
+                    aimEnd: null
+                };
+                
+                // Play shoot sound
+                if (gameState.sounds.shoot) {
+                    gameState.sounds.shoot.currentTime = 0;
+                    gameState.sounds.shoot.play();
+                }
+                
+                draw();
+                updatePanel();
+                if (animationRef) cancelAnimationFrame(animationRef);
+                animate();
+            } else {
+                gameState.isAiming = false;
+                gameState.aimStart = null;
+                gameState.aimEnd = null;
+                draw();
+            }
+        }
+
+        // --- Bot Logic ---
+        function performBotTurn() {
+            if (gameState.gamePhase !== 'aiming' || gameState.currentPlayer !== 1) return;
+            
+            const bot = gameState.players[1];
+            const human = gameState.players[0];
+            
+            // Simple bot strategy:
+            // 1. If not loaded, aim for the circle
+            // 2. If loaded, aim for the player
+            // 3. Add some randomness to make it less perfect
+            
+            const target = bot.loaded ? human : gameState.circle;
+            
+            // Calculate direction to target
+            let dx = target.x - bot.x;
+            let dy = target.y - bot.y;
+            const distanceToTarget = Math.sqrt(dx * dx + dy * dy);
+            
+            // Add some randomness to aim (more when farther away)
+            const aimVariance = distanceToTarget * 0.1 * (Math.random() - 0.5);
+            const angle = Math.atan2(dy, dx) + aimVariance;
+            
+            // Calculate power (full power when far, less when close)
+            const power = Math.min(MAX_POWER * 0.9, distanceToTarget / 5);
+            
+            // Set velocity
+            const vx = Math.cos(angle) * power;
+            const vy = Math.sin(angle) * power;
+            
+            // Update game state
+            let newPlayers = [...gameState.players];
+            newPlayers[1] = {
+                ...newPlayers[1],
+                vx, vy
+            };
+            
+            gameState = {
+                ...gameState,
+                players: newPlayers,
+                gamePhase: 'moving'
+            };
+            
+            // Play sound
+            if (gameState.sounds.shoot) {
+                gameState.sounds.shoot.currentTime = 0;
+                gameState.sounds.shoot.play();
+            }
+            
+            draw();
+            updatePanel();
+            if (animationRef) cancelAnimationFrame(animationRef);
+            animate();
+        }
+
+        // --- Drawing ---
+        function draw() {
+            ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+            
+            // Background with subtle grid
+            ctx.fillStyle = '#1f2937';
+            ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+            
+            // Draw grid lines
+            ctx.strokeStyle = 'rgba(55, 65, 81, 0.3)';
+            ctx.lineWidth = 1;
+            for (let x = 0; x < CANVAS_WIDTH; x += 40) {
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, CANVAS_HEIGHT);
+                ctx.stroke();
+            }
+            for (let y = 0; y < CANVAS_HEIGHT; y += 40) {
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(CANVAS_WIDTH, y);
+                ctx.stroke();
+            }
+
+            // Obstacles with shadow
+            ctx.shadowColor = 'rgba(0,0,0,0.5)';
+            ctx.shadowBlur = 10;
+            ctx.shadowOffsetY = 3;
+            ctx.fillStyle = '#6b7280';
+            gameState.obstacles.forEach(obstacle => {
+                ctx.beginPath();
+                ctx.arc(obstacle.x, obstacle.y, obstacle.radius, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            ctx.shadowBlur = 0;
+            ctx.shadowOffsetY = 0;
+
+            // Target circle with glow effect
+            ctx.save();
+            ctx.shadowColor = '#fbbf24';
+            ctx.shadowBlur = 20;
+            ctx.strokeStyle = '#fbbf24';
+            ctx.lineWidth = 3;
+            ctx.setLineDash([5, 5]);
+            ctx.beginPath();
+            ctx.arc(gameState.circle.x, gameState.circle.y, gameState.circle.radius, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            ctx.shadowBlur = 0;
+            ctx.restore();
+
+            // Power-ups
+            const now = Date.now();
+            gameState.powerUps = gameState.powerUps.filter(pu => {
+                if (!pu.active) return false;
+                if (now - pu.spawnTime > 10000) return false; // 10 second lifespan
+                
+                // Flash effect when about to expire
+                if (now - pu.spawnTime > 8000) {
+                    const flashPhase = Math.floor(now / 200) % 2;
+                    if (flashPhase === 0) return true;
+                }
+                
+                let color;
+                switch (pu.type) {
+                    case 'speed': color = '#22c55e'; break;
+                    case 'shield': color = '#3b82f6'; break;
+                    case 'double-shot': color = '#fbbf24'; break;
+                }
+                
+                ctx.fillStyle = color;
+                ctx.beginPath();
+                ctx.arc(pu.x, pu.y, POWER_UP_RADIUS, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Draw icon based on type
+                ctx.fillStyle = 'white';
+                ctx.font = '14px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                
+                switch (pu.type) {
+                    case 'speed': 
+                        ctx.fillText('⚡', pu.x, pu.y);
+                        break;
+                    case 'shield':
+                        ctx.fillText('🛡️', pu.x, pu.y);
+                        break;
+                    case 'double-shot':
+                        ctx.fillText('✖', pu.x, pu.y);
+                        break;
+                }
+                
+                return true;
+            });
+
+            // Players with effects
+            gameState.players.forEach((player, index) => {
+                ctx.save();
+                
+                // Shield effect if player has shield power-up
+                const hasShield = player.powerUps.some(pu => pu.type === 'shield');
+                if (hasShield) {
+                    ctx.strokeStyle = '#3b82f6';
+                    ctx.lineWidth = 3;
+                    ctx.beginPath();
+                    ctx.arc(player.x, player.y, PLAYER_RADIUS + 8, 0, Math.PI * 2);
+                    ctx.stroke();
+                }
+                
+                // Player disc with glow when loaded
+                ctx.fillStyle = player.color;
+                if (player.loaded) {
+                    ctx.shadowColor = player.color;
+                    ctx.shadowBlur = 20;
+                }
+                ctx.beginPath();
+                ctx.arc(player.x, player.y, PLAYER_RADIUS, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.shadowBlur = 0;
+
+                // Player indicator
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 14px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText(`P${index + 1}`, player.x, player.y - 22);
+                
+                if (player.loaded) {
+                    ctx.fillStyle = '#fbbf24';
+                    ctx.font = 'bold 12px Arial';
+                    ctx.fillText('LOADED', player.x, player.y + 25);
+                }
+                
+                // Draw active power-up icons
+                if (player.powerUps.length > 0) {
+                    const iconSize = 14;
+                    const startX = player.x - (player.powerUps.length * iconSize) / 2 + iconSize/2;
+                    
+                    player.powerUps.forEach((pu, i) => {
+                        let icon = '';
+                        switch (pu.type) {
+                            case 'speed': icon = '⚡'; break;
+                            case 'shield': icon = '🛡️'; break;
+                            case 'double-shot': icon = '✖'; break;
+                        }
+                        
+                        ctx.fillStyle = 'white';
+                        ctx.font = `${iconSize}px Arial`;
+                        ctx.fillText(icon, startX + i * iconSize, player.y + 40);
+                    });
+                }
+                
+                ctx.restore();
+            });
+
+            // Current player indicator
+            if (gameState.gamePhase === 'aiming') {
+                const currentPlayer = gameState.players[gameState.currentPlayer];
+                ctx.strokeStyle = '#ffffff';
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.arc(currentPlayer.x, currentPlayer.y, PLAYER_RADIUS + 8, 0, Math.PI * 2);
+                ctx.stroke();
+                
+                // Draw turn arrow
+                ctx.fillStyle = '#ffffff';
+                ctx.beginPath();
+                ctx.moveTo(currentPlayer.x, currentPlayer.y - PLAYER_RADIUS - 15);
+                ctx.lineTo(currentPlayer.x - 5, currentPlayer.y - PLAYER_RADIUS - 25);
+                ctx.lineTo(currentPlayer.x + 5, currentPlayer.y - PLAYER_RADIUS - 25);
+                ctx.closePath();
+                ctx.fill();
+            }
+
+            // Aim line with power indicator
+            if (gameState.isAiming && gameState.aimStart && gameState.aimEnd) {
+                const dx = gameState.aimEnd.x - gameState.aimStart.x;
+                const dy = gameState.aimEnd.y - gameState.aimStart.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                const power = Math.min(distance / 4, MAX_POWER);
+                
+                // Update power meter
+                powerMeter.style.width = `${(power / MAX_POWER) * 100}%`;
+
+                // Draw arrow line
+                const angle = Math.atan2(dy, dx);
+                const headLength = 15;
+                const endX = gameState.aimStart.x + dx * 0.95;
+                const endY = gameState.aimStart.y + dy * 0.95;
+                
+                ctx.strokeStyle = `rgba(255,255,255,${Math.max(0.3, power / MAX_POWER)})`;
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.moveTo(gameState.aimStart.x, gameState.aimStart.y);
+                ctx.lineTo(endX, endY);
+                ctx.stroke();
+                
+                // Draw arrow head
+                ctx.fillStyle = `rgba(255,255,255,${Math.max(0.3, power / MAX_POWER)})`;
+                ctx.beginPath();
+                ctx.moveTo(endX, endY);
+                ctx.lineTo(
+                    endX - headLength * Math.cos(angle - Math.PI/6),
+                    endY - headLength * Math.sin(angle - Math.PI/6)
+                );
+                ctx.lineTo(
+                    endX - headLength * Math.cos(angle + Math.PI/6),
+                    endY - headLength * Math.sin(angle + Math.PI/6)
+                );
+                ctx.closePath();
+                ctx.fill();
+
+                // Power indicator text
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 16px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText(`${Math.round(power)}% POWER`, gameState.aimStart.x, gameState.aimStart.y - 35);
+            } else {
+                powerMeter.style.width = '0%';
+            }
+        }
+
+        // --- Physics Update ---
+        function updatePhysics() {
+            if (gameState.gamePhase !== 'moving') return;
+
+            // Spawn power-ups occasionally
+            if (Math.random() < 0.005) {
+                spawnPowerUp(1);
+            }
+
+            let newPlayers = gameState.players.map(player => {
+                let newPlayer = { ...player };
+                
+                // Apply velocity
+                newPlayer.x += newPlayer.vx;
+                newPlayer.y += newPlayer.vy;
+                
+                // Apply speed boost if player has speed power-up
+                const speedBoost = player.powerUps.some(pu => pu.type === 'speed') ? 1.3 : 1;
+                newPlayer.vx *= FRICTION * speedBoost;
+                newPlayer.vy *= FRICTION * speedBoost;
+                
+                // Bounce off walls
+                if (newPlayer.x - PLAYER_RADIUS <= 0 || newPlayer.x + PLAYER_RADIUS >= CANVAS_WIDTH) {
+                    newPlayer.vx *= -0.7;
+                    newPlayer.x = Math.max(PLAYER_RADIUS, Math.min(CANVAS_WIDTH - PLAYER_RADIUS, newPlayer.x));
+                }
+                if (newPlayer.y - PLAYER_RADIUS <= 0 || newPlayer.y + PLAYER_RADIUS >= CANVAS_HEIGHT) {
+                    newPlayer.vy *= -0.7;
+                    newPlayer.y = Math.max(PLAYER_RADIUS, Math.min(CANVAS_HEIGHT - PLAYER_RADIUS, newPlayer.y));
+                }
+                
+                // Obstacles
+                gameState.obstacles.forEach(obstacle => {
+                    if (checkCollision(newPlayer, obstacle)) {
+                        const dx = newPlayer.x - obstacle.x;
+                        const dy = newPlayer.y - obstacle.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist > 0) {
+                            const overlap = PLAYER_RADIUS + obstacle.radius - dist;
+                            if (overlap > 0) {
+                                const normalX = dx / dist;
+                                const normalY = dy / dist;
+                                newPlayer.x += normalX * overlap;
+                                newPlayer.y += normalY * overlap;
+                                // Reflect velocity
+                                const dot = newPlayer.vx * normalX + newPlayer.vy * normalY;
+                                newPlayer.vx -= 2 * dot * normalX;
+                                newPlayer.vy -= 2 * dot * normalY;
+                                newPlayer.vx *= 0.7;
+                                newPlayer.vy *= 0.7;
+                            }
+                        }
+                    }
+                });
+                
+                return newPlayer;
+            });
+
+            // Check power-up collection
+            const now = Date.now();
+            gameState.powerUps = gameState.powerUps.filter(pu => {
+                if (!pu.active) return false;
+                
+                newPlayers.forEach((player, playerIndex) => {
+                    if (distance(player, pu) < PLAYER_RADIUS + POWER_UP_RADIUS) {
+                        // Add power-up to player
+                        newPlayers[playerIndex].powerUps.push({
+                            type: pu.type,
+                            expireTime: now + POWER_UP_DURATION
+                        });
+                        
+                        // Play sound
+                        if (gameState.sounds.powerUp) {
+                            gameState.sounds.powerUp.currentTime = 0;
+                            gameState.sounds.powerUp.play();
+                        }
+                        
+                        pu.active = false;
+                    }
+                });
+                
+                return pu.active;
+            });
+            
+            // Remove expired power-ups
+            newPlayers.forEach(player => {
+                player.powerUps = player.powerUps.filter(pu => pu.expireTime > now);
+            });
+
+            // Player collision (elimination)
+            const player1 = newPlayers[0];
+            const player2 = newPlayers[1];
+
+            if (distance(player1, player2) < PLAYER_RADIUS * 2) {
+                let winner = null;
+                
+                // Check if either player has double-shot power-up
+                const p1DoubleShot = player1.powerUps.some(pu => pu.type === 'double-shot');
+                const p2DoubleShot = player2.powerUps.some(pu => pu.type === 'double-shot');
+                const p1Shield = player1.powerUps.some(pu => pu.type ==='shield')
+                const p2Shield = player2.powerUps.some(pu => pu.type ==='shield')
+                
+                if (player1.loaded && !player2.loaded && !p2DoubleShot && !p2Shield) winner = 0;
+                else if (player2.loaded && !player1.loaded && !p1DoubleShot && !p1Shield) winner = 1;
+                else if (player1.loaded && player2.loaded) {
+                    // Both loaded - check for shields
+                    const p1Shield = player1.powerUps.some(pu => pu.type === 'shield');
+                    const p2Shield = player2.powerUps.some(pu => pu.type === 'shield');
+                    
+                    if (p1Shield && !p2Shield) winner = 0;
+                    else if (p2Shield && !p1Shield) winner = 1;
+                    else winner = gameState.currentPlayer; // Current player wins in tie
+                }
+                
+                if (winner !== null) {
+                    // Update score
+                    newPlayers[winner].score++;
+                    updateScores();
+                    
+                    gameState = {
+                        ...gameState,
+                        players: newPlayers,
+                        gamePhase: 'gameOver',
+                        winner
+                    };
+                    
+                    // Play win sound
+                    if (gameState.sounds.win) {
+                        gameState.sounds.win.currentTime = 0;
+                        gameState.sounds.win.play();
+                    }
+                    
+                    draw();
+                    updatePanel();
+                    return;
+                }
+            }
+
+            // Check if current player is in circle
+            const currentPlayer = newPlayers[gameState.currentPlayer];
+            const inCircle = distance(currentPlayer, gameState.circle) <= gameState.circle.radius - PLAYER_RADIUS;
+
+            // Check if movement stopped
+            const isMoving = newPlayers.some(player =>
+                Math.abs(player.vx) > MIN_VELOCITY || Math.abs(player.vy) > MIN_VELOCITY
+            );
+
+            if (!isMoving) {
+                // Movement stopped
+                if (inCircle && !gameState.players[gameState.currentPlayer].loaded) {
+                    newPlayers[gameState.currentPlayer].loaded = true;
+                    const nextPlayer = (gameState.currentPlayer + 1) % 2;
+                    gameState = {
+                        ...gameState,
+                        players: newPlayers,
+                        currentPlayer: nextPlayer,
+                        gamePhase: 'aiming'
+                    };
+                    setTimeout(()=>{
+                        spawnPowerUp((gameState.currentPlayer)% 2);
+                    }, 500);
+                } else {
+                    if (gameState.players[gameState.currentPlayer].loaded && !inCircle) {
+                        newPlayers[gameState.currentPlayer].loaded = false;
+                    }
+                    const nextPlayer = (gameState.currentPlayer + 1) % 2;
+                    gameState = {
+                        ...gameState,
+                        players: newPlayers,
+                        currentPlayer: nextPlayer,
+                        gamePhase: 'aiming'
+                    };
+                }
+                draw();
+                updatePanel();
+                return;
+            }
+
+            // Still moving - update circle status during movement
+            if (inCircle && !gameState.players[gameState.currentPlayer].loaded) {
+                newPlayers[gameState.currentPlayer].loaded = false;
+            }
+
+            gameState = {
+                ...gameState,
+                players: newPlayers
+            };
+            draw();
+        }
+
+        // --- Animation Loop ---
+        function animate() {
+            if (gameState.gamePhase === 'moving') {
+                updatePhysics();
+                animationRef = requestAnimationFrame(animate);
+            } else if (gameState.gamePhase === 'aiming' && gameState.botEnabled && gameState.currentPlayer === 1) {
+                // Bot's turn - wait a moment to make it feel more natural
+                setTimeout(performBotTurn, 1000);
+            }
+        }
+
+        // --- Score Display ---
+        function updateScores() {
+            scoreP1.textContent = `Player 1: ${gameState.players[0].score}`;
+            scoreP2.textContent = `Player 2: ${gameState.players[1].score}`;
+        }
+
+        // --- Panel UI ---
+        function updatePanel() {
+            let html = '';
+            if (gameState.gamePhase === 'gameOver') {
+                const winnerColor = gameState.winner === 0 ? 'blue' : 'red';
+                html = `<h2 class="${winnerColor} pulse">Player ${gameState.winner + 1} Wins!</h2>
+                    <p>Player 1: ${gameState.players[0].score} | Player 2: ${gameState.players[1].score}</p>
+                    <button class="btn" id="playAgain">Play Again</button>`;
+            } else if (gameState.gamePhase === 'attacking') {
+                const playerColor = gameState.currentPlayer === 0 ? 'blue' : 'red';
+                html = `<h2 class="${playerColor}">Player ${gameState.currentPlayer + 1} - ATTACK TURN!</h2>
+                    <p>You're <span class="yellow">LOADED</span>! Eliminate your opponent with one shot.</p>
+                    <button class="btn" id="attackBtn">Take Your Shot</button>`;
+            } else if (gameState.gamePhase === 'moving') {
+                html = `<h2 class="yellow">Movement in Progress...</h2>
+                    <p>Waiting for discs to stop moving</p>`;
+            } else {
+                const playerColor = gameState.currentPlayer === 0 ? 'blue' : 'red';
+                html = `<h2 class="${playerColor}">Player ${gameState.currentPlayer + 1}'s Turn</h2>
+                    <p>Click and drag from your disc to aim and shoot</p>`;
+                if (gameState.players[gameState.currentPlayer].loaded) {
+                    html += `<p class="yellow"><b>You are LOADED and can attack!</b></p>`;
+                }
+                
+                // Show active power-ups
+                const powerUps = gameState.players[gameState.currentPlayer].powerUps;
+                if (powerUps.length > 0) {
+                    html += `<p><b>Active Power-ups:</b> `;
+                    html += powerUps.map(pu => {
+                        switch (pu.type) {
+                            case 'speed': return '⚡ Speed';
+                            case 'shield': return '🛡️ Shield';
+                            case 'double-shot': return '✖ Double Shot';
+                        }
+                    }).join(', ');
+                    html += `</p>`;
+                }
+            }
+            
+            panel.innerHTML = html;
+            
+            // Button handlers
+            const playAgain = document.getElementById('playAgain');
+            if (playAgain) playAgain.onclick = resetGame;
+            
+            const attackBtn = document.getElementById('attackBtn');
+            if (attackBtn) attackBtn.onclick = function() {
+                gameState.gamePhase = 'aiming';
+                updatePanel();
+                draw();
+            };
+        }
+
+        // --- Reset Game ---
+        function resetGame() {
+            if (animationRef) {
+                cancelAnimationFrame(animationRef);
+                animationRef = null;
+            }
+            
+            gameState = {
+                players: [
+                    { 
+                        x: 100, 
+                        y: 300, 
+                        vx: 0, 
+                        vy: 0, 
+                        loaded: false, 
+                        color: '#3b82f6',
+                        score: gameState.players[0].score,
+                        powerUps: []
+                    },
+                    { 
+                        x: 700, 
+                        y: 300, 
+                        vx: 0, 
+                        vy: 0, 
+                        loaded: false, 
+                        color: '#ef4444',
+                        score: gameState.players[1].score,
+                        powerUps: []
+                    }
+                ],
+                circle: { x: 400, y: 300, radius: 60 },
+                obstacles: [
+                    { x: 250, y: 200, radius: 25 },
+                    { x: 550, y: 400, radius: 25 },
+                    { x: 350, y: 150, radius: 20 },
+                    { x: 450, y: 450, radius: 20 },
+                    { x: 400, y: 100, radius: 15 },
+                    { x: 400, y: 500, radius: 15 }
+                ],
+                powerUps: [],
+                currentPlayer: gameState.winner !== null ? gameState.winner : 0,
+                gamePhase: 'aiming',
+                winner: null,
+                aimStart: null,
+                aimEnd: null,
+                isAiming: false,
+                lastPowerUpSpawn: 0,
+                botEnabled: gameState.botEnabled, // Preserve bot setting
+                sounds: gameState.sounds
+            };
+            
+            draw();
+            updatePanel();
+        }
+
+        // --- Init ---
+        function initGame() {
+            initSounds();
+            
+            // Set up event listeners
+            canvas.addEventListener('mousedown', handleInputStart);
+            canvas.addEventListener('touchstart', handleInputStart, { passive: false });
+            canvas.addEventListener('mousemove', handleInputMove);
+            canvas.addEventListener('touchmove', handleInputMove, { passive: false });
+            canvas.addEventListener('mouseup', handleInputEnd);
+            canvas.addEventListener('touchend', handleInputEnd);
+            canvas.addEventListener('touchcancel', handleInputEnd);
+            
+            // Bot toggle button
+            toggleBotBtn.addEventListener('click', function() {
+                gameState.botEnabled = !gameState.botEnabled;
+                this.textContent = gameState.botEnabled ? 
+                    'Disable Bot (Player 2)' : 
+                    'Enable Bot (Player 2)';
+                
+                // If it's currently the bot's turn, let it move
+                if (gameState.botEnabled && gameState.currentPlayer === 1) {
+                    performBotTurn();
+                }
+            });
+            
+            draw();
+            updatePanel();
+            updateScores();
+            
+            // Start with one power-up
+            setTimeout(() => spawnPowerUp(0), 2000);
+        }
+
+        initGame();
+    </script>
+</body>
+</html>
