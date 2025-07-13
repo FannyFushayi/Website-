@@ -1,0 +1,369 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The LSTM Strikes Again: Lessons from Sequence Modeling on Battery Data</title>
+    <style>
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px 20px 20px;
+            background: #fafafa;
+        }
+
+        .home-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-family: Georgia, serif;
+            transition: background-color 0.3s ease;
+        }
+
+        .home-button:hover {
+            background: #555;
+            color: white;
+            text-decoration: none;
+        }
+
+        footer {
+            margin-top: 4em;
+            padding: 2em 0 1em 0;
+            border-top: 1px solid #ccc;
+            text-align: center;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 0.5em;
+            border-bottom: 2px solid #333;
+            padding-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            margin-top: 2em;
+            margin-bottom: 1em;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.2em;
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            font-style: italic;
+        }
+
+        p {
+            margin-bottom: 1.2em;
+            text-align: justify;
+        }
+
+        .abstract {
+            font-style: italic;
+            margin: 2em 0;
+            padding: 20px;
+            background: #f5f5f5;
+            border-left: 4px solid #333;
+        }
+
+        .features-list {
+            margin: 1em 0;
+            padding-left: 2em;
+        }
+
+        .features-list li {
+            margin-bottom: 0.5em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2em 0;
+            font-size: 0.9em;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f8f8f8;
+            font-weight: bold;
+        }
+
+        .version-section {
+            margin: 2em 0;
+            padding: 1.5em 0;
+        }
+
+        .version-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 1em;
+        }
+
+        .findings {
+            margin: 1em 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+        }
+
+        .findings h4 {
+            margin-top: 0;
+            margin-bottom: 0.8em;
+            font-size: 1em;
+            text-decoration: underline;
+        }
+
+        .findings ul {
+            margin: 0;
+            padding-left: 1.5em;
+        }
+
+        .findings li {
+            margin-bottom: 0.5em;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 15px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            table {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="blog.html" class="home-button">← Home</a>
+    
+    <h1>The LSTM Strikes Again: Lessons from Sequence Modeling on Battery Data</h1>
+
+    <div class="abstract">
+        This week has been a rollercoaster of regression experiments. After trying various approaches, I dove into sequence models—specifically LSTMs—hoping they’d crack the battery Remaining Useful Life (RUL) prediction problem in a way traditional models couldn’t.
+    </div>
+
+    <h2>Why LSTMs?</h2>
+
+    <p>Traditional machine learning models performed admirably on tabular snapshots of cycle-level data. But they treated each cycle independently, ignoring the fact that battery degradation isn’t random noise—it’s a process, a story unfolding over time. LSTMs, in theory, are designed to understand such stories by remembering past information and detecting temporal patterns.</p>
+
+    <p>So, I reframed the RUL prediction as a sequence modeling task. Instead of feeding the model isolated cycles, I fed it sliding windows of consecutive past cycles. The hope? That the LSTM would learn how RUL evolves by recognizing trends across time, giving it a memory of the battery’s health trajectory.</p>
+
+    <h2>The Challenges</h2>
+
+    <p>No explicit time column: We only had Cycle_Index as an ordering proxy, which I excluded from inputs to avoid data leakage. Sequences were grouped by battery ID to maintain continuity.</p>
+    <ul class="features-list">
+        <li>No explicit time column: We only had Cycle_Index as an ordering proxy, which I excluded from inputs to avoid data leakage. Sequences were grouped by battery ID to maintain continuity.</li>
+        <li>Avoiding battery mixing: Sequences had to be strictly within a single battery to preserve temporal coherence.</li>
+        <li>Strictly autoregressive: Only past cycles were used to predict the current cycle’s RUL—no peeking into the future.</li>
+    </ul>
+
+    <h2>The Outcome: A Spectacular Failure [<a href="https://colab.research.google.com/drive/1Bn0ZSu35MEGEQtOuZXjfNnMyC4VVO0JJ">Bear Witness</a>]</h2>
+
+    <p>Despite careful setup, the LSTM failed spectacularly:</p>
+
+    <div class="findings" style="margin-top:1.5em;">
+        <h4>Performance Metrics</h4>
+        <ul>
+            <li>MAE over 270 cycles.</li>
+            <li>RMSE over 300.</li>
+            <li>Negative R² — worse than guessing.</li>
+        </ul>
+    </div>
+
+    <h3>What Went Wrong?</h3>
+
+    <p>Sequence construction issues: Possibly misaligned sequences or noisy padding corrupted the temporal signal.</p>
+    <ul class="features-list">
+        <li>Sequence construction issues: Possibly misaligned sequences or noisy padding corrupted the temporal signal.</li>
+        <li>Data scarcity: Only 14 batteries and limited degradation patterns made generalization tough.</li>
+        <li>Normalization inconsistencies: Variations in feature scaling across batteries may have overwhelmed the model.</li>
+        <li>Insufficient model tuning: LSTMs demand careful hyperparameter tuning and often more data.</li>
+        <li>Lack of real “time”: Cycle_Index orders data but doesn’t capture temporal irregularities or environmental factors.</li>
+    </ul>
+
+    <h2>What This Means for Application</h2>
+
+    <h3>Why Is It Surprising That the Model Can Predict RUL Without Historical Cycle Information?</h3>
+
+    <p>At first glance, it seems counterintuitive that a model could accurately predict Remaining Useful Life (RUL) without access to historical cycle data. Battery degradation is fundamentally a temporal process—it accumulates over time, and past cycles typically provide crucial context to understand how the battery is aging.</p>
+
+    <p>Conventional wisdom suggests that to forecast RUL effectively, a model should analyze how features like voltage, current, and temperature change across multiple cycles, capturing degradation trends. Without this temporal context, it feels like the model is flying blind.</p>
+
+    <p>Yet, surprisingly, snapshot models that rely solely on features from the current cycle can still perform well. This suggests that instantaneous measurements—such as voltage profiles and discharge characteristics—encode rich, latent information about the battery’s health state. In other words, the battery’s current condition implicitly reflects its entire degradation history, allowing the model to infer RUL without explicitly seeing past cycles.</p>
+
+    <p>This insight is particularly valuable in real-world scenarios where historical data might be incomplete or unavailable, making snapshot-based predictions not only practical but also surprisingly effective.</p>
+
+    <h3>How Does the Model Infer Damage Progression Without Analyzing Past Cycle Patterns?</h3>
+
+    <p>You might wonder: if the model doesn’t analyze past cycles, how does it “know” how damage has progressed?</p>
+
+    <p>The answer lies in the fact that the battery’s current cycle features act as a compressed summary of its degradation history. Measurements like voltage curves, internal resistance, and discharge times at a single cycle carry embedded signatures of cumulative damage. These features reflect the physical and chemical changes the battery has undergone, effectively encoding the story of its aging process in a snapshot.</p>
+
+    <p>Machine learning models, especially deep neural networks, excel at detecting subtle, nonlinear patterns in these features that correlate strongly with the battery’s health and RUL. They learn to map these instantaneous signals directly to the expected remaining life, bypassing the need for explicit temporal sequences.</p>
+
+    <p>Think of it like a doctor diagnosing a patient’s health from a single blood test that reveals markers of chronic conditions accumulated over years. While a full medical history helps, sometimes that one snapshot tells a surprisingly detailed story.</p>
+
+    <p>That said, this approach has limits. It may miss nuances like changes in degradation rate or environmental effects that unfold over time—patterns that sequence models like LSTMs are designed to capture. Combining snapshot features with temporal modeling remains a promising path forward.</p>
+
+    <p>The ability of snapshot models to predict RUL without historical cycle data challenges our assumptions and highlights the richness of instantaneous battery features. Yet, the quest to harness temporal dynamics through LSTMs and other sequence models continues, promising even deeper insights once we overcome practical hurdles.</p>
+
+    <p>The fact that snapshot models—ignoring past cycles—can predict RUL reasonably well is, frankly, astonishing. It suggests that voltage and other instantaneous features carry strong predictive signals. But ignoring temporal dynamics feels like leaving valuable information on the table.</p>
+
+    <p>This failure motivates me to keep digging into LSTMs. They should, in principle, leverage historical data to improve predictions. Perhaps with richer temporal features, better alignment of sequences, and more rigorous data prep, they’ll deliver on their promise.</p>
+
+    <p>For now, though, if you’re wondering whether to always apply snapshot models or sequence models in practice: snapshots are simpler and surprisingly effective, but sequence models hold untapped potential—if you can get them right.</p>
+
+    <h2>The Problem of Alignment: More Than Just Metrics</h2>
+
+    <p>On a related note, I want to share a recent insight about alignment—not the sci-fi AI takeover kind, but the practical, everyday kind that trips up even simple classifiers.</p>
+
+    <p>I spent an infuriating hour debugging an “optimized” Extra Trees classifier that performed worse than its unoptimized version. The culprit? Misalignment of objectives.</p>
+
+    <p>I told the optimizer to maximize recall, but without constraints on precision. The result was a model that blindly sacrificed precision for recall, ending up nearly useless. The unoptimized model, by contrast, naturally balanced the two.</p>
+
+    <h3>Why Does This Matter?</h3>
+
+    <p>This is a classic case of Goodhart’s Law: when a measure becomes a target, it ceases to be a good measure. My objective function was a proxy that didn’t fully capture what I actually wanted—a balanced, useful classifier.</p>
+
+    <h3>What Is Alignment in AI?</h3>
+
+    <p>In AI safety research, alignment means ensuring AI systems pursue goals that truly reflect human values and intentions, even when those goals are complex or ambiguous. My classifier’s failure was a microcosm of this: the objective I defined didn’t align with the real goal, causing unintended behavior.</p>
+
+    <h3>The Real Challenge</h3>
+
+    <p>Alignment isn’t just about algorithms or code. It’s about the assumptions, values, and objectives we embed in those algorithms. Every misaligned AI reflects our own oversights and the difficulty of formalizing human intentions perfectly.</p>
+
+    <h3>Moving Forward: Practical Tips</h3>
+
+    <p>Specify objectives carefully: Don’t optimize blindly for one metric; consider trade-offs explicitly.</p>
+    <ul class="features-list">
+        <li>Specify objectives carefully: Don’t optimize blindly for one metric; consider trade-offs explicitly.</li>
+        <li>Use multi-objective optimization: Balance precision, recall, fairness, robustness, and more.</li>
+        <li>Incorporate human feedback: Human-in-the-loop approaches catch misalignments early.</li>
+        <li>Stay informed: Understanding alignment challenges prepares us for future AI developments.</li>
+    </ul>
+
+    <p>Alignment isn’t just a theoretical concern for AGI researchers—it’s a practical challenge for every AI practitioner, from tuning classifiers to designing autonomous systems.</p>
+
+    <h2>Final Thoughts</h2>
+
+    <p>The journey with LSTMs taught me that sometimes, simpler snapshot models can surprise you with their power, but the promise of sequence modeling remains tantalizing if only we can solve the practical hurdles. Meanwhile, the alignment lesson reminds me to always question what I’m optimizing for—not just how.</p>
+
+    <p>As I continue to explore these models and concepts, I’m excited to share the breakthroughs and setbacks alike. Because in AI, every failure is a step toward deeper understanding.</p>
+
+
+    <section>
+  <h2>References</h2>
+  <ul>
+    <li>
+      Paneru, B., Thapa, B., Mainali, D. P., et al. (2024). Remaining Useful Life Prediction for Batteries Utilizing an Explainable AI Approach with a Predictive Application for Decision-Making. 
+      <a href="https://arxiv.org/pdf/2409.17931.pdf" target="_blank" rel="noopener noreferrer">arXiv:2409.17931</a>
+    </li>
+    <li>
+      Zhang, X., et al. (2025). Remaining useful life prediction of Lithium-ion batteries based on data preprocessing and joint convolutional networks. 
+      <a href="https://www.sciencedirect.com/science/article/pii/S014206152500170X" target="_blank" rel="noopener noreferrer">ScienceDirect</a>
+    </li>
+    <li>
+      Li, Y., et al. (2025). Multi-time scale feature extraction for early prediction of battery RUL using deep learning. 
+      <a href="https://www.sciencedirect.com/science/article/abs/pii/S2352152X25007376" target="_blank" rel="noopener noreferrer">ScienceDirect</a>
+    </li>
+    <li>
+      Wang, J., et al. (2024). An interpretable online prediction method for remaining useful life of lithium-ion batteries. 
+      <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11143267/" target="_blank" rel="noopener noreferrer">Sci Rep. 2024 May 31</a>
+    </li>
+    <li>
+      Liu, H., et al. (2023). Remaining useful life prediction of Lithium-ion batteries based on PSO-RF algorithm. 
+      <a href="https://www.frontiersin.org/journals/energy-research/articles/10.3389/fenrg.2022.937035/full" target="_blank" rel="noopener noreferrer">Frontiers in Energy Research</a>
+    </li>
+    <li>
+      Chen, L., et al. (2022). Remaining useful life prediction of lithium-ion batteries using CEEMDAN and WOA-SVR model. 
+      <a href="https://www.frontiersin.org/journals/energy-research/articles/10.3389/fenrg.2022.984991/full" target="_blank" rel="noopener noreferrer">Frontiers in Energy Research</a>
+    </li>
+    <li>
+      Zhang, T., et al. (2024). Prediction of Remaining Useful Life of Battery Using Partial Discharge Data. 
+      <a href="https://www.mdpi.com/2079-9292/13/17/3475" target="_blank" rel="noopener noreferrer">MDPI Electronics</a>
+    </li>
+    <li>
+      Sun, W., et al. (2024). Lithium-Ion Battery Remaining Useful Life Prediction Based on CEEMDAN Decomposition. 
+      <a href="https://www.mdpi.com/2071-1050/15/7/6261" target="_blank" rel="noopener noreferrer">MDPI Sustainability</a>
+    </li>
+    <li>
+      Zhang, J., et al. (2024). Predicting the Remaining Useful Life of Lithium-Ion Batteries Using Sparse Data and Flexible Parallel Neural Network. 
+      <a href="https://doaj.org/article/a60204eee2b9496f8992178f1249c80a" target="_blank" rel="noopener noreferrer">DOAJ</a>
+    </li>
+    <li>
+      Zhang, Y., et al. (2023). Data-driven snapshot methods leveraging data fusion to estimate battery state of health onboard ships. 
+      <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/est2.476" target="_blank" rel="noopener noreferrer">Wiley Online Library</a>
+    </li>
+  </ul>
+</section>
+
+
+
+    <footer>
+        <p>© 2025. All rights reserved.</p>
+    </footer>
+</body>
+</html>
