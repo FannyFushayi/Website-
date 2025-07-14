@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanity Card Showcase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0a0a0a;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: #e0e0e0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .title {
+            color: #d4af37;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+            position: relative;
+        }
+
+        .title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #d4af37, transparent);
+            margin: 0.5rem auto 0;
+        }
+
+        .card-container {
+            position: relative;
+            height: 500px;
+            margin: 2rem 0;
+            perspective: 1200px;
+        }
+
+        .card {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #121212;
+            border-radius: 8px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            opacity: 0;
+            transform: translateX(100px) rotateY(15deg);
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #d4af37, #f4e5c2);
+        }
+
+        .card.active {
+            opacity: 1;
+            transform: translateX(0) rotateY(0deg);
+        }
+
+        .card.prev {
+            opacity: 0;
+            transform: translateX(-100px) rotateY(-15deg);
+        }
+
+        .card-number {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: rgba(212, 175, 55, 0.1);
+            color: #d4af37;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .card-content {
+            text-align: center;
+            max-width: 90%;
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            color: #d4af37;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .card-message {
+            font-size: 1.1rem;
+            color: #b0b0b0;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .card-date {
+            background: rgba(212, 175, 55, 0.1);
+            color: #d4af37;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: inline-block;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            letter-spacing: 0.5px;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 1px solid #d4af37;
+            color: #d4af37;
+            padding: 10px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+            transition: all 0.5s ease;
+        }
+
+        .nav-btn:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .nav-btn:hover::before {
+            left: 100%;
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .nav-btn:disabled:hover {
+            background: transparent;
+        }
+
+        .dots {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: #d4af37;
+            transform: scale(1.3);
+        }
+
+        .counter {
+            color: rgba(212, 175, 55, 0.7);
+            font-size: 0.9rem;
+            margin: 0 1rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+            
+            .card {
+                padding: 2rem;
+                height: 450px;
+            }
+            
+            .card-title {
+                font-size: 1.5rem;
+            }
+            
+            .card-message {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .navigation {
+                gap: 1rem;
+                margin-top: 2rem;
+            }
+            
+            .nav-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Vanity Cards</h1>
+        
+        <div class="card-container">
+            <div class="card active" data-index="0">
+                <div class="card-number">Card #000</div>
+                <div class="card-content">
+                    <h2 class="card-title">Card Index 000</h2>
+                    <p class="card-message">"Most of what I write on the blog is processed. I have always entertained the idea of understanding (everything), and while the processed blog helps me make sense of the world, much of the mystery remains within (myself). Every time I understand something external, I also want to explore something (raw) within. Hence, the vanity cards. I won't try to be clear or edit these (beyond what is reasonable to me). In parallel with whatever the week was about, I will publish a vanity card of self-discovery."</p>
+                    <div class="card-date">Submitted: July 14, 2025</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <button class="nav-btn" id="prevBtn">Previous</button>
+            <div class="dots" id="dots"></div>
+            <span class="counter"><span id="current">1</span> / <span id="total">5</span></span>
+            <button class="nav-btn" id="nextBtn">Next</button>
+        </div>
+    </div>
+
+    <script>
+        class VanityCardShowcase {
+            constructor() {
+                this.cards = document.querySelectorAll('.card');
+                this.currentIndex = 0;
+                this.totalCards = this.cards.length;
+                
+                this.prevBtn = document.getElementById('prevBtn');
+                this.nextBtn = document.getElementById('nextBtn');
+                this.dotsContainer = document.getElementById('dots');
+                this.currentCounter = document.getElementById('current');
+                this.totalCounter = document.getElementById('total');
+                
+                this.init();
+            }
+            
+            init() {
+                this.createDots();
+                this.updateCounters();
+                this.updateButtons();
+                this.bindEvents();
+            }
+            
+            createDots() {
+                for (let i = 0; i < this.totalCards; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = i === 0 ? 'dot active' : 'dot';
+                    dot.addEventListener('click', () => this.goToCard(i));
+                    this.dotsContainer.appendChild(dot);
+                }
+            }
+            
+            bindEvents() {
+                this.prevBtn.addEventListener('click', () => this.prevCard());
+                this.nextBtn.addEventListener('click', () => this.nextCard());
+                
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') this.prevCard();
+                    if (e.key === 'ArrowRight') this.nextCard();
+                });
+                
+                // Touch/swipe support
+                let startX = 0;
+                let endX = 0;
+                
+                document.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                });
+                
+                document.addEventListener('touchend', (e) => {
+                    endX = e.changedTouches[0].clientX;
+                    const diff = startX - endX;
+                    
+                    if (Math.abs(diff) > 50) {
+                        if (diff > 0) {
+                            this.nextCard();
+                        } else {
+                            this.prevCard();
+                        }
+                    }
+                });
+            }
+            
+            goToCard(index) {
+                if (index === this.currentIndex) return;
+                
+                // Update card visibility
+                this.cards.forEach((card, i) => {
+                    card.classList.remove('active', 'prev');
+                    if (i === index) {
+                        card.classList.add('active');
+                    } else if (i < index) {
+                        card.classList.add('prev');
+                    }
+                });
+                
+                // Update dots
+                document.querySelectorAll('.dot').forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+                
+                this.currentIndex = index;
+                this.updateCounters();
+                this.updateButtons();
+            }
+            
+            nextCard() {
+                if (this.currentIndex < this.totalCards - 1) {
+                    this.goToCard(this.currentIndex + 1);
+                }
+            }
+            
+            prevCard() {
+                if (this.currentIndex > 0) {
+                    this.goToCard(this.currentIndex - 1);
+                }
+            }
+            
+            updateCounters() {
+                this.currentCounter.textContent = this.currentIndex + 1;
+                this.totalCounter.textContent = this.totalCards;
+            }
+            
+            updateButtons() {
+                this.prevBtn.disabled = this.currentIndex === 0;
+                this.nextBtn.disabled = this.currentIndex === this.totalCards - 1;
+            }
+        }
+        
+        // Initialize the showcase when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new VanityCardShowcase();
+        });
+    </script>
+</body>
+</html>
