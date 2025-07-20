@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Vanity Card Showcase</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,15 +14,18 @@
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #0a0a0a;
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #fff9f9;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow-x: hidden;
-            color: #e0e0e0;
+            color: #333;
             touch-action: pan-y;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%23e63946" fill-opacity="0.05" d="M30,50 Q50,30 70,50 T90,50 T70,70 T50,90 T30,70 T10,50 T30,30 Z"/></svg>');
+            background-size: 200px;
+            background-position: center;
         }
 
         .container {
@@ -34,7 +37,7 @@
         }
 
         .title {
-            color: #d4af37;
+            color: #e63946;
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
             font-weight: 300;
@@ -49,7 +52,7 @@
             display: block;
             width: 50px;
             height: 2px;
-            background: linear-gradient(90deg, #d4af37, transparent);
+            background: linear-gradient(90deg, #e63946, transparent);
             margin: 0.5rem auto 0;
         }
 
@@ -65,10 +68,10 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background: #121212;
+            background: white;
             border-radius: 6px;
             padding: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 15px rgba(230, 57, 70, 0.1);
             opacity: 0;
             transform: translateX(80px) rotateY(10deg);
             transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease;
@@ -76,7 +79,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            border: 1px solid rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(230, 57, 70, 0.1);
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
         }
@@ -88,7 +91,7 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, #d4af37, #f4e5c2);
+            background: linear-gradient(90deg, #e63946, #f4a5ae);
         }
 
         .card.active {
@@ -105,14 +108,14 @@
             position: absolute;
             top: 15px;
             right: 20px;
-            background: rgba(212, 175, 55, 0.1);
-            color: #d4af37;
+            background: rgba(230, 57, 70, 0.1);
+            color: #e63946;
             padding: 6px 12px;
             border-radius: 3px;
             font-weight: 500;
             font-size: 0.8rem;
             letter-spacing: 0.5px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            border: 1px solid rgba(230, 57, 70, 0.2);
         }
 
         .card-content {
@@ -124,29 +127,29 @@
 
         .card-title {
             font-size: 1.4rem;
-            color: #d4af37;
+            color: #e63946;
             margin-bottom: 1rem;
-            font-weight: 400;
+            font-weight: 500;
             letter-spacing: 0.3px;
         }
 
         .card-message {
             font-size: 0.95rem;
-            color: #b0b0b0;
+            color: #555;
             line-height: 1.6;
             margin-bottom: 1.5rem;
             font-weight: 300;
         }
 
         .card-date {
-            background: rgba(212, 175, 55, 0.1);
-            color: #d4af37;
+            background: rgba(230, 57, 70, 0.1);
+            color: #e63946;
             padding: 10px 18px;
             border-radius: 3px;
             font-weight: 500;
             font-size: 0.8rem;
             display: inline-block;
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            border: 1px solid rgba(230, 57, 70, 0.2);
             letter-spacing: 0.3px;
             margin-bottom: 0.5rem;
         }
@@ -162,8 +165,8 @@
 
         .nav-btn {
             background: transparent;
-            border: 1px solid #d4af37;
-            color: #d4af37;
+            border: 1px solid #e63946;
+            color: #e63946;
             padding: 8px 16px;
             border-radius: 3px;
             cursor: pointer;
@@ -177,8 +180,12 @@
             min-width: 80px;
         }
 
+        .nav-btn:hover {
+            background: rgba(230, 57, 70, 0.1);
+        }
+
         .nav-btn:active {
-            background: rgba(212, 175, 55, 0.1);
+            background: rgba(230, 57, 70, 0.2);
             transform: scale(0.98);
         }
 
@@ -199,18 +206,18 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: rgba(212, 175, 55, 0.3);
+            background: rgba(230, 57, 70, 0.3);
             cursor: pointer;
             transition: all 0.2s ease;
         }
 
         .dot.active {
-            background: #d4af37;
+            background: #e63946;
             transform: scale(1.2);
         }
 
         .counter {
-            color: rgba(212, 175, 55, 0.7);
+            color: rgba(230, 57, 70, 0.7);
             font-size: 0.8rem;
             margin: 0 0.5rem;
             font-weight: 500;
@@ -285,173 +292,185 @@
                     <div class="card-date">Submitted: July 14, 2025</div>
                 </div>
             </div>
+            
+            <div class="card" data-index="1">
+                <div class="card-number">Card #001</div>
+                <div class="card-content">
+                    <h2 class="card-title">Card Index 001</h2>
+                    <p class="card-message">"Here is a sentence I spoke this week 'I am going to stop trying, because I am afraid I will win.' And now I am thinking (with equal conviction) 'Perhaps I stopped trying because I am afraid I will still lose (after having tried).' Which one is true?"</p>
+                    <div class="card-date">Submitted: July 20, 2025</div>
+                </div>
+            </div>
+            
+            <!-- Add more cards here as needed -->
+
+
+
         </div>
         
         <div class="navigation">
             <button class="nav-btn" id="prevBtn">Previous</button>
             <div class="dots" id="dots"></div>
-            <span class="counter"><span id="current">1</span> / <span id="total">5</span></span>
+            <span class="counter"><span id="current">1</span> / <span id="total">3</span></span>
             <button class="nav-btn" id="nextBtn">Next</button>
         </div>
     </div>
 
     <script>
-        class VanityCardShowcase {
-            constructor() {
-                this.cards = document.querySelectorAll('.card');
-                this.currentIndex = 0;
-                this.totalCards = this.cards.length;
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const dotsContainer = document.getElementById('dots');
+            const currentCounter = document.getElementById('current');
+            const totalCounter = document.getElementById('total');
+            
+            let currentIndex = 0;
+            const totalCards = cards.length;
+            
+            // Initialize the showcase
+            function init() {
+                createDots();
+                updateCounters();
+                updateButtons();
+                adjustCardHeight();
                 
-                this.prevBtn = document.getElementById('prevBtn');
-                this.nextBtn = document.getElementById('nextBtn');
-                this.dotsContainer = document.getElementById('dots');
-                this.currentCounter = document.getElementById('current');
-                this.totalCounter = document.getElementById('total');
+                // Add event listeners
+                prevBtn.addEventListener('click', prevCard);
+                nextBtn.addEventListener('click', nextCard);
                 
-                this.touchStartX = 0;
-                this.touchEndX = 0;
-                this.swipeThreshold = 50;
+                // Keyboard navigation
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'ArrowLeft') prevCard();
+                    if (e.key === 'ArrowRight') nextCard();
+                });
                 
-                this.init();
+                // Touch/swipe support
+                const container = document.querySelector('.card-container');
+                let touchStartX = 0;
+                let touchEndX = 0;
+                
+                container.addEventListener('touchstart', function(e) {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, { passive: true });
+                
+                container.addEventListener('touchend', function(e) {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                }, { passive: true });
+                
+                // Window resize listener
+                window.addEventListener('resize', adjustCardHeight);
             }
             
-            init() {
-                this.createDots();
-                this.updateCounters();
-                this.updateButtons();
-                this.bindEvents();
-                this.adjustCardHeight();
-                
-                // Add resize listener for orientation changes
-                window.addEventListener('resize', () => this.adjustCardHeight());
+            // Create navigation dots
+            function createDots() {
+                dotsContainer.innerHTML = '';
+                for (let i = 0; i < totalCards; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'dot';
+                    if (i === currentIndex) {
+                        dot.classList.add('active');
+                    }
+                    dot.addEventListener('click', () => goToCard(i));
+                    dotsContainer.appendChild(dot);
+                }
             }
             
-            adjustCardHeight() {
-                if (this.cards.length === 0) return;
+            // Go to specific card
+            function goToCard(index) {
+                if (index === currentIndex || index < 0 || index >= totalCards) return;
                 
-                // Reset height to auto first to get natural height
-                this.cards.forEach(card => {
+                cards[currentIndex].classList.remove('active');
+                cards[currentIndex].classList.add('prev');
+                
+                currentIndex = index;
+                
+                cards[currentIndex].classList.remove('prev');
+                cards[currentIndex].classList.add('active');
+                
+                updateDots();
+                updateCounters();
+                updateButtons();
+            }
+            
+            // Go to next card
+            function nextCard() {
+                if (currentIndex < totalCards - 1) {
+                    goToCard(currentIndex + 1);
+                }
+            }
+            
+            // Go to previous card
+            function prevCard() {
+                if (currentIndex > 0) {
+                    goToCard(currentIndex - 1);
+                }
+            }
+            
+            // Handle swipe gestures
+            function handleSwipe() {
+                const threshold = 50;
+                const diff = touchStartX - touchEndX;
+                
+                if (Math.abs(diff) > threshold) {
+                    if (diff > 0) {
+                        nextCard();
+                    } else {
+                        prevCard();
+                    }
+                }
+            }
+            
+            // Update navigation dots
+            function updateDots() {
+                const dots = document.querySelectorAll('.dot');
+                dots.forEach((dot, index) => {
+                    if (index === currentIndex) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Update counter display
+            function updateCounters() {
+                currentCounter.textContent = currentIndex + 1;
+                totalCounter.textContent = totalCards;
+            }
+            
+            // Update button states
+            function updateButtons() {
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex === totalCards - 1;
+            }
+            
+            // Adjust card height to match tallest card
+            function adjustCardHeight() {
+                // Reset heights
+                cards.forEach(card => {
                     card.style.height = 'auto';
                 });
                 
-                // Find the tallest card
+                // Find tallest card
                 let maxHeight = 0;
-                this.cards.forEach(card => {
+                cards.forEach(card => {
                     maxHeight = Math.max(maxHeight, card.offsetHeight);
                 });
                 
-                // Set all cards to the tallest height
-                this.cards.forEach(card => {
+                // Set all cards to max height
+                cards.forEach(card => {
                     card.style.height = `${maxHeight}px`;
                 });
                 
                 // Update container height
                 const container = document.querySelector('.card-container');
-                if (container) {
-                    container.style.minHeight = `${maxHeight}px`;
-                }
+                container.style.minHeight = `${maxHeight}px`;
             }
             
-            createDots() {
-                this.dotsContainer.innerHTML = '';
-                for (let i = 0; i < this.totalCards; i++) {
-                    const dot = document.createElement('div');
-                    dot.className = i === 0 ? 'dot active' : 'dot';
-                    dot.addEventListener('click', () => this.goToCard(i));
-                    this.dotsContainer.appendChild(dot);
-                }
-            }
-            
-            bindEvents() {
-                this.prevBtn.addEventListener('click', () => this.prevCard());
-                this.nextBtn.addEventListener('click', () => this.nextCard());
-                
-                // Keyboard navigation
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'ArrowLeft') this.prevCard();
-                    if (e.key === 'ArrowRight') this.nextCard();
-                });
-                
-                // Touch/swipe support with better detection
-                const container = document.querySelector('.card-container');
-                if (container) {
-                    container.addEventListener('touchstart', (e) => {
-                        this.touchStartX = e.changedTouches[0].screenX;
-                    }, { passive: true });
-                    
-                    container.addEventListener('touchend', (e) => {
-                        this.touchEndX = e.changedTouches[0].screenX;
-                        this.handleSwipe();
-                    }, { passive: true });
-                }
-            }
-            
-            handleSwipe() {
-                const diff = this.touchStartX - this.touchEndX;
-                
-                if (Math.abs(diff) > this.swipeThreshold) {
-                    if (diff > 0) {
-                        this.nextCard();
-                    } else {
-                        this.prevCard();
-                    }
-                }
-            }
-            
-            goToCard(index) {
-                if (index === this.currentIndex || index < 0 || index >= this.totalCards) return;
-                
-                // Update card visibility with optimized animation
-                requestAnimationFrame(() => {
-                    this.cards.forEach((card, i) => {
-                        card.classList.remove('active', 'prev');
-                        if (i === index) {
-                            card.classList.add('active');
-                        } else if (i < index) {
-                            card.classList.add('prev');
-                        }
-                    });
-                    
-                    // Update dots
-                    const dots = document.querySelectorAll('.dot');
-                    if (dots.length > 0) {
-                        dots.forEach((dot, i) => {
-                            dot.classList.toggle('active', i === index);
-                        });
-                    }
-                    
-                    this.currentIndex = index;
-                    this.updateCounters();
-                    this.updateButtons();
-                });
-            }
-            
-            nextCard() {
-                if (this.currentIndex < this.totalCards - 1) {
-                    this.goToCard(this.currentIndex + 1);
-                }
-            }
-            
-            prevCard() {
-                if (this.currentIndex > 0) {
-                    this.goToCard(this.currentIndex - 1);
-                }
-            }
-            
-            updateCounters() {
-                this.currentCounter.textContent = this.currentIndex + 1;
-                this.totalCounter.textContent = this.totalCards;
-            }
-            
-            updateButtons() {
-                this.prevBtn.disabled = this.currentIndex === 0;
-                this.nextBtn.disabled = this.currentIndex === this.totalCards - 1;
-            }
-        }
-        
-        // Initialize the showcase when the page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            new VanityCardShowcase();
+            // Initialize the showcase
+            init();
         });
     </script>
 </body>

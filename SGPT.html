@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building AI in My Mother Tongue - Blog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 2rem 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .home-link {
+            display: inline-block;
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .home-link:hover {
+            color: #2c2c2c;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+            font-weight: 400;
+        }
+
+        .meta {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .language-toggle {
+            background-color: #2c2c2c;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            border: 2px solid transparent;
+        }
+
+        .language-toggle:hover {
+            background-color: #4a4a4a;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .language-toggle.active {
+            background-color: #666;
+            border-color: #888;
+        }
+
+        main {
+            padding-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            margin: 2rem 0 1rem 0;
+            color: #2c2c2c;
+            font-weight: 400;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin: 1.5rem 0 0.8rem 0;
+            color: #2c2c2c;
+            font-weight: 400;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+
+        .shona-text {
+            font-style: italic;
+            color: #2c2c2c;
+        }
+
+        .english-text {
+            font-style: normal;
+            color: #2c2c2c;
+        }
+
+        .bilingual-container {
+            position: relative;
+            display: inline;
+        }
+
+        .code-formula {
+            background-color: #f8f8f8;
+            padding: 8px 12px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+            display: inline-block;
+        }
+
+        .highlight-box {
+            background-color: #f9f9f9;
+            border-left: 3px solid #2c2c2c;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+        }
+
+        ul {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.4rem;
+            }
+            
+            h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="home-link">← Back to Home</a>
+            <h1>Building AI in My Mother Tongue</h1>
+            <p class="meta">On the transformer architecture , attention mechanisms, and preserving African languages in AI</p>
+            <button class="language-toggle" id="languageToggle">Kana usingadi dudziro dzvanya apa</button>
+        </header>
+
+        <main>
+            <p>Large language models (LLMs) have become an integral part of our society. Like everything else I've ever used, I've always wondered how it all comes together at the most fundamental level of abstraction.</p>
+
+            <p>So I turned to the paper that started it all: Attention Is All You Need. And using Andrej Karpathy's lecture based on the same paper, I built up the simplest form of a chatbot: a text generator. To give it a personal twist, I made it speak my mother tongue, Shona.</p>
+
+            <p>At a much higher level of abstraction. LLMs like GPT-4 are advanced neural networks trained on massive text datasets to predict and generate human-like text. Built on the Transformer architecture, they use self-attention mechanisms to understand word relationships and context, enabling capabilities like translation, writing, and question-answering. While powerful, they have limitations—they don't truly "understand" content, can produce biased or fabricated outputs, and rely more on training data quality than just parameter count (despite marketing hype). Their strength lies in pattern recognition from vast data, not genuine reasoning, making them versatile tools that still require careful oversight.</p>
+
+            <p>This blog isn't a demo; you'll find a demo here. It's an educational walk on the mechanics of transformers. I say "educational" because what you'll see here runs on a couple of hundred kilobytes of text and a model with less than a million parameters. In contrast, ChatGPT and its cousins operate on hundreds of billions of tokens and models with tens to hundreds of billions of parameters. That scale enables conversation, reasoning, and memory, but the fundamental building blocks are the same. This post dives into those building blocks, from scratch.</p>
+
+            <h2>The Tech Stack</h2>
+            <ul>
+                <li>Python</li>
+                <li>PyTorch</li>
+                <li>Shona dataset (discussed below)</li>
+            </ul>
+
+            <h2>The Dataset</h2>
+
+            <p>The challenge of finding a dataset for this project nearly matched the challenge of building the model itself. And somewhere in that struggle, a more uncomfortable realization set in: how much of African languages and culture will be left out of this new AI-powered era?</p>
+
+            <p>To be honest, I hadn't been paying attention to that part — not until I was forced to. But this isn't just a technical gap. It's a cultural one. The language models of the future will shape how knowledge is accessed, how ideas are expressed, and whose stories are told. If we don't make sure our languages — our metaphors, idioms, and ways of thinking — are part of that, we risk being rendered invisible by default.</p>
+
+            <div class="highlight-box">
+                So, this project isn't just about making a toy chatbot. It's about putting a small marker on the map and saying: "We're here too."
+            </div>
+
+            <p>Finding Shona datasets is like looking for poetry on a calculator. Most corpora are either academic relics or religious texts. Here's what I scraped together:</p>
+
+            <ul>
+                <li><strong>Leipzig Shona Corpus</strong> – A clean set of 10,000–30,000 web sentences. Simple and structured.</li>
+                <li><strong>Tatoeba</strong> – Community-submitted Shona sentences (some translated from English).</li>
+                <li><strong>Manual Copy-Paste</strong> – Yes. I did that. Anything vaguely coherent and Shona got fed into the model.</li>
+            </ul>
+
+            <p>In total: about 200 KB of usable data, pitiful by modern standards, but enough for a toy model to start hallucinating.</p>
+
+            <h2>LOW-LEVEL ABSTRACTION</h2>
+
+            <p>To truly grasp the capabilities of Large Language Models (LLMs), it's essential to understand four fundamental concepts that form the backbone of these remarkable systems: token prediction, attention mechanisms, self-supervised learning, and positional context.</p>
+
+            <h3>What Are Tokens and Token Prediction?</h3>
+            <h3>The Building Blocks of Language Understanding</h3>
+
+            <p>Tokens are the fundamental units that LLMs use to process text. Think of them as the "atoms" of language processing—small pieces of text that can represent anything from individual words to parts of words, punctuation marks, or even spaces. For instance, the sentence "<span class="bilingual-container"><span class="bilingual-text" data-shona="Mhoro Nyika!" data-english="Hello World!">Mhoro Nyika!</span></span>" might be broken down into tokens like ["Mhoro", " Nyika", "!"].</p>
+
+            <p>Modern LLMs don't work with raw text directly. Instead, they convert human-readable text into numerical representations called tokens through a process known as tokenization. Each token is assigned a unique numerical identifier that the model can process mathematically, so our text would now be [1,2,3].</p>
+
+            <h3>How Token Prediction Works</h3>
+
+            <p>Token prediction is the core mechanism by which LLMs generate text. At its heart, this process involves predicting the most likely next token in a sequence based on all the previous tokens. This approach is called autoregressive generation—the model generates text one token at a time, using previous outputs as input for the next prediction.</p>
+
+            <p>Here's how it works step-by-step:</p>
+            <ul>
+                <li><strong>Input Processing:</strong> The user provides a prompt, which gets tokenized into numerical representations.</li>
+                <li><strong>Contextual Analysis:</strong> The model analyzes the input using neural networks to understand relationships between tokens</li>
+                <li><strong>Probability Calculation:</strong> For each possible next token, the model calculates a probability based on patterns learned during training</li>
+                <li><strong>Token Selection:</strong> The model selects the next token using various strategies (like picking the most likely one or sampling from the top candidates)</li>
+                <li><strong>Iteration:</strong> The chosen token gets added to the sequence, and the process repeats until a stopping condition is met</li>
+            </ul>
+
+            <p>What makes this particularly powerful is that LLMs predict probability distributions over their entire vocabulary. This means they assign probabilities to every possible next token, allowing for both deterministic and creative text generation depending on the sampling strategy used.</p>
+
+            <h3>Attention Mechanisms: The Key to Understanding Context</h3>
+            <h3>The Revolutionary Breakthrough</h3>
+
+            <p>The attention mechanism represents one of the most significant breakthroughs in modern AI. It allows models to focus selectively on different parts of the input sequence when making predictions, much like how humans pay attention to relevant information while ignoring less important details.</p>
+
+            <p>Traditional models like Recurrent Neural Networks (RNNs) processed text sequentially, one word at a time, which made it difficult to capture relationships between distant words (The RNN movie). The attention mechanism revolutionized this by allowing models to examine the entire sequence simultaneously and decide which parts deserve focus.</p>
+
+            <h3>How Attention Works Mathematically</h3>
+
+            <p>The core attention mechanism can be expressed through a mathematical formula:</p>
+            <div class="code-formula">Attention(Q,K,V) = softmax(QK^T/√d_k)V</div>
+
+            <p>Where:</p>
+            <ul>
+                <li><strong>Q (Query):</strong> Represents what we're looking for</li>
+                <li><strong>K (Key):</strong> Represents what we're looking at</li>
+                <li><strong>V (Value):</strong> Represents the actual information we want to extract</li>
+                <li><strong>d_k:</strong> A scaling factor to prevent numerical instability</li>
+            </ul>
+
+            <p>This formula essentially computes the attention each part of the input should receive when generating each output token.</p>
+
+            <h3>Multi-Head Attention: Multiple Perspectives</h3>
+
+            <p>Modern transformers use multi-head attention, which runs several attention mechanisms in parallel. Each attention "head" can focus on different types of relationships. For example, one head might focus on grammatical relationships while another focuses on semantic meaning, allowing the model to capture multiple types of dependencies simultaneously.</p>
+
+            <h3>Self-Attention: Looking Inward</h3>
+
+            <p>Self-attention is a special case where the model computes attention over the same sequence for queries, keys, and values. This enables each position in the sequence to attend to all other positions, allowing the model to understand how different parts of the input relate to each other.</p>
+
+            <h3>Self-Supervised Learning: Learning Without Labels</h3>
+            <h3>The Power of Learning from Structure</h3>
+
+            <p>Self-supervised learning is a training paradigm that allows models to learn from data without requiring human-labeled examples. Instead of relying on external labels, these models generate supervisory signals from the structure of the data itself.</p>
+
+            <p>In the context of language models, self-supervised learning typically involves pretext tasks—artificial learning objectives created from the data structure. The most common pretext task for LLMs is predicting the next word (or token) in a sequence, using the preceding context as input.</p>
+
+            <h3>How It Works in Practice</h3>
+
+            <p>Consider a simple example: Given the sentence "<span class="bilingual-container"><span class="bilingual-text" data-shona="Kunze kwakanaka uye kune zuva" data-english="Outside it's nice and there's sun">Kunze kwakanaka uye kune zuva</span></span>," a self-supervised model might mask out the word "<span class="bilingual-container"><span class="bilingual-text" data-shona="uye" data-english="and">uye</span></span>" and try to predict it from the context "<span class="bilingual-container"><span class="bilingual-text" data-shona="Kunze kwakanaka {****} kune zuva" data-english="Outside it's nice {****} there's sun">Kunze kwakanaka {****} kune zuva</span></span>." The model learns by repeatedly performing this task across millions of text examples, gradually building an understanding of language patterns, grammar, and meaning.</p>
+
+            <p>This approach is powerful because:</p>
+            <ul>
+                <li><strong>No Manual Labeling Required:</strong> The model can learn from any text data without human annotation.</li>
+                <li><strong>Scalable:</strong> It can leverage vast amounts of unlabeled text available on the internet, or in this case, unavailable.</li>
+                <li><strong>Rich Representations:</strong> It learns deep, contextual understanding rather than simple pattern matching, which would not work for an entire language.</li>
+            </ul>
+
+            <h3>Pretext vs. Downstream Tasks</h3>
+
+            <p>Self-supervised learning typically involves two phases:</p>
+            <ul>
+                <li><strong>Pretext Task:</strong> The model learns general language representations through self-supervised objectives like next-word prediction.</li>
+                <li><strong>Downstream Task:</strong> The pre-trained model is fine-tuned for specific applications like translation, summarization, or question-answering</li>
+            </ul>
+
+            <p>This two-stage approach allows a single pre-trained model to be adapted for numerous specific tasks, making it incredibly versatile and efficient.</p>
+
+            <h3>Positional Context: Understanding Order and Sequence</h3>
+            <h3>The Challenge of Position in Transformers</h3>
+
+            <p>Unlike RNNs that process text sequentially and naturally encode position information, transformer models process all tokens in parallel. This parallel processing is what makes transformers fast and efficient, but it creates a problem: how does the model know the order of words in a sentence?</p>
+
+            <p>This is where positional encoding becomes crucial. The position of words fundamentally matters in language "<span class="bilingual-container"><span class="bilingual-text" data-shona="Ndino rara pamba" data-english="I sleep at home">Ndino rara pamba</span></span>" and "<span class="bilingual-container"><span class="bilingual-text" data-shona="Ndino pamba rara" data-english="I home sleep - nonsensical">Ndino pamba rara</span></span>" illustrates this.</p>
+
+            <h3>How Positional Encoding Works</h3>
+
+            <p>Positional encoding adds information about each token's position in the sequence to help the model understand word order. The most common approach uses sinusoidal functions to create unique positional representations:</p>
+
+            <p>For position k and dimension i:</p>
+            <div class="code-formula">PE(k,2i) = sin(k/10000^(2i/d))</div>
+            <div class="code-formula">PE(k,2i+1) = cos(k/10000^(2i/d))</div>
+
+            <p>Where d is the model dimension and k is the position in the sequence.</p>
+
+            <p>These positional encodings are added element-wise to the token embeddings, so each token's representation contains both its semantic meaning and its position in the sequence.</p>
+
+            <h3>Why This Mathematical Approach Works</h3>
+
+            <p>The sinusoidal approach has several advantages:</p>
+            <ul>
+                <li><strong>Uniqueness:</strong> Each position gets a unique encoding pattern</li>
+                <li><strong>Scalability:</strong> The model can handle sequences longer than those seen during training</li>
+                <li><strong>Relative Relationships:</strong> The mathematical properties allow the model to learn relative distances between positions</li>
+                <li><strong>Smooth Transitions:</strong> Adjacent positions have similar encodings, helping the model understand local relationships</li>
+            </ul>
+
+            <h3>Positional Bias and Context Windows</h3>
+
+            <p>Modern LLMs often exhibit positional bias—they perform differently depending on where relevant information appears in their input. This has led to phenomena like "lost in the middle," where models struggle with information placed in the center of long contexts.</p>
+
+            <p>Researchers continue developing improved positional encoding methods to address these challenges, including techniques like Multi-scale Positional Encoding (Ms-PoE) and Position Interpolation.</p>
+
+            <h3>How These Concepts Work Together</h3>
+            <h3>The Complete Picture</h3>
+
+            <p>These four concepts work synergistically in modern LLMs:</p>
+            <ul>
+                <li>Tokenization converts raw text into processable units</li>
+                <li>Positional encoding ensures the model understands word order</li>
+                <li>Self-attention allows the model to understand relationships between all tokens</li>
+                <li>Token prediction generates new text one piece at a time</li>
+                <li>Self-supervised learning enables the model to learn these patterns from vast amounts of text data</li>
+            </ul>
+
+            <h3>The Generation Process in Action</h3>
+
+            <p>When you prompt an LLM with "<span class="bilingual-container"><span class="bilingual-text" data-shona="Nhasi kuri" data-english="Today it is">Nhasi kuri</span></span> ", here's what happens:</p>
+            <ul>
+                <li>The text is tokenized: ["Nhasi", " kuri"]</li>
+                <li>Each token receives positional encoding indicating its place in the sequence</li>
+                <li>The self-attention mechanism analyzes relationships between all tokens</li>
+                <li>The model predicts probability distributions for the next token (perhaps "<span class="bilingual-container"><span class="bilingual-text" data-shona="kutonhora" data-english="cold">kutonhora</span></span>," "<span class="bilingual-container"><span class="bilingual-text" data-shona="kupisa" data-english="hot">kupisa</span></span>," "<span class="bilingual-container"><span class="bilingual-text" data-shona="kurara" data-english="to sleep">kurara</span></span>")</li>
+                <li>A token is selected based on the sampling strategy</li>
+                <li>The process repeats with the new token added to the context</li>
+            </ul>
+
+            <p>This cycle continues until the model generates a complete response, with each new token informed by the growing context and the patterns learned during self-supervised training.</p>
+
+            <p>Understanding these four concepts provides a solid foundation for comprehending how modern LLMs work. Token prediction gives us the generation mechanism, attention provides contextual understanding, self-supervised learning enables scalable training, and positional encoding ensures proper sequence comprehension. Together, they form the backbone of the language understanding systems that are transforming how we interact with AI.</p>
+
+            <p>The implementation here uses character-level tokenization, which means the model predicts one character at a time. So when it manages to generate a word like "<span class="bilingual-container"><span class="bilingual-text" data-shona="kuyambuka" data-english="to cross over">kuyambuka</span></span>", even if it stumbles elsewhere, you've got to give it some credit — it's assembling words letter by letter, without ever having seen the word as a whole.</p>
+
+            <p>To improve it meaningfully, we'd need more — and better — data. I couldn't find a digitized, open-source Shona book corpus. Most of what's available is dry and formulaic — which is why the model currently sounds like a newsreader stuck in 2011.</p>
+
+            <p>Long-term, a language-specific tokenizer would help. Shona has its own structure: roots, prefixes, infixes — a rhythm to how meaning is built. Reconnecting with that, even computationally, brought me back to my O-Level Shona lessons, and gave me a new respect for my teacher, Ms. Chihewure, who made that structure make sense long before transformers did.</p>
+        </main>
+    </div>
+    <footer>
+        @ Fanny Fushayi 2025 <a href="VAnity_cards.html"> Card 001</a>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.getElementById('languageToggle');
+            const bilingualTexts = document.querySelectorAll('.bilingual-text');
+            let showingShonaWithTranslation = true;
+
+            // Function to toggle language display
+            function toggleLanguage() {
+                showingShonaWithTranslation = !showingShonaWithTranslation;
+                
+                bilingualTexts.forEach(text => {
+                    if (showingShonaWithTranslation) {
+                        // Show Shona with English translation in parentheses
+                        text.textContent = text.dataset.shona + " (" + text.dataset.english + ")";
+                        toggleButton.textContent = 'Handidi dudziro';
+                    } else {
+                        // Show only Shona text
+                        text.textContent = text.dataset.shona;
+                        toggleButton.textContent = 'Please translate';
+                    }
+                });
+
+                // Update button state
+                if (showingShonaWithTranslation) {
+                    toggleButton.classList.remove('active');
+                } else {
+                    toggleButton.classList.add('active');
+                }
+            }
+
+            // Initialize all text to show Shona with English translations
+            bilingualTexts.forEach(text => {
+                text.textContent = text.dataset.shona + " (" + text.dataset.english + ")";
+            });
+
+            // Add event listener
+            toggleButton.addEventListener('click', toggleLanguage);
+        });
+    </script>
+</body>
+</html>
