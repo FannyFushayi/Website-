@@ -191,12 +191,18 @@
         }
 
         .profile-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            background: 
+                linear-gradient(rgba(20,24,38,0.7), rgba(20,24,38,0.7)),
+                url('Images/new_background.png') center center/cover no-repeat;
+            backdrop-filter: blur(6px);
             border-radius: 20px;
             padding: 2rem;
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: transform 0.3s ease;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
         }
 
         .profile-card:hover {
@@ -535,13 +541,15 @@
     <section id="about">
         <h2 class="section-title">About Me</h2>
         <div class="about-content">
-            <div class="about-text">
-                <p>Hi, I'm Fanny.</p>
-                <p>I’m an Electrical Engineer. By nature, a perpetual overthinker. And by necessity, a writer, though I sometimes resist the title. All three roles are best performed with a coffee in hand.</p>
-                <p>My days oscillate between power systems, Machine Learning, and the pursuit of clean energy. When the equations blur, you’ll find me reading Dostoevsky or thinking about questions that circuits can’t answer.</p>
-                <p>This site is my hybrid playground: part engineering portfolio, part philosophical sandbox. One week, it’s machine learning or quantum circuits; the next, it’s thoughts on identity, memory, or why Kafka’s absurdity feels familiar.</p>
-                <p>I believe the future needs more than technical minds. It needs bridges—between hardware and humanity, algorithms and art, the tangible and the intangible. If engineering is my language, then philosophy, literature, and asking "why?" are my compass.</p>
+            <div class="about-text" style="font-family: 'Caveat', 'Pacifico', 'Comic Sans MS', cursive, sans-serif; font-size: 1.3rem;">
+                <p>Hi, I’m Fanny.</p>
+                <p>Electrical Engineer by training, overthinker by default. A reluctant but inevitable writer (some thoughts demand to be untangled on paper). All three roles run on coffee, and passion (mostly coffee though).</p>
+                <p>I live at the intersection of electrical engineering, machine learning, and philosophy. When the numbers stop making sense, I turn to Dostoevsky or dwell on questions that (do not) have answers.</p>
+                <p>This site is my bridge: half engineering lab, half existential notebook. One week, it’s quantum circuits or neural nets; the next, it’s Kafka’s paradoxes or the anatomy of memory.</p>
+                <p>I build "stuff" , but I’m also interested in the sparks between logic and lyricism, innovation and introspection. If engineering is my syntax, then philosophy is my semantics.</p>
             </div>
+            <!-- Handwriting font import -->
+            <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Pacifico&display=swap" rel="stylesheet">
             <div class="about-image">
                 <div class="profile-card">
                     <div style="width: 150px; height: 150px; background: linear-gradient(45deg, #ff6b6b, #4ecdc4); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Pulse of Being</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            margin: 0;
+            font-family: 'Merriweather', serif;
+            color: #2d2d2d;
+            line-height: 1.7;
+            scroll-behavior: smooth;
+            background: linear-gradient(to bottom, #f8f8f8, #ececec);
+            transition: background 1.5s ease-in-out;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            min-height: 100vh;
+        }
+        .stanza {
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 1.2s ease, transform 1.2s ease;
+            margin-bottom: 70px;
+            padding: 25px;
+            border-left: 2px solid transparent;
+        }
+        .stanza.visible {
+            opacity: 1;
+            transform: translateY(0);
+            border-left-color: #6b7280;
+        }
+        .stanza.final-stanza.visible {
+            transition: opacity 10s ease;
+        }
+        .stanza p {
+            margin: 0;
+            font-size: 1.3em;
+            font-weight: 400;
+        }
+        .stanza p strong {
+            font-weight: 700;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.8em;
+            margin-bottom: 50px;
+            color: #1f2937;
+            font-weight: 700;
+            font-style: italic;
+        }
+        /* Subtler mood-based background colors */
+        .mood-joyful { background: linear-gradient(to bottom, #f8f8f8, #e6e6e6); }
+        .mood-uplifting { background: linear-gradient(to bottom, #e6f3e9, #d4e8db); }
+        .mood-ecstatic { background: linear-gradient(to bottom, #fdefe0, #fae6cc); }
+        .mood-melancholy { background: linear-gradient(to bottom, #e8ecef, #d9dfe5); }
+        .mood-heavy { background: linear-gradient(to bottom, #e2e4e8, #d1d5db); }
+        /* Cursor fade-out */
+        body {
+            cursor: default;
+            transition: cursor 0.3s ease;
+        }
+        body.cursor-hidden {
+            cursor: none;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .stanza p {
+                font-size: 1.1em;
+            }
+            .container {
+                padding: 40px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The Pulse of Being</h1>
+        <div class="stanza" data-mood="joyful">
+            <p>I’ll tell you how it starts.<br>
+            It starts with a chorus.<br>
+            A chorus that burrows, curls inside your skull,<br>
+            hummed four times in the secrecy of your mind<br>
+            a guilty pleasure, an almost stolen joy.<br>
+            Your toes tap the rhythm quietly against the floor.<br>
+            The fifth time, you dare to <strong>sing it aloud</strong>,</p>
+        </div>
+        <div class="stanza" data-mood="uplifting">
+            <p>And it feels like <strong>inhaling for the first time</strong>,<br>
+            air and light come crushing into you.<br>
+            Your lungs feel like they are holding morning dew,<br>
+            and the heart taps onto a softer pulse.<br>
+            As if someone finally cracked a window<br>
+            in a room you didn’t know was sealed.</p>
+        </div>
+        <div class="stanza" data-mood="ecstatic">
+            <p>And the world makes sense, <strong>just once</strong>.<br>
+            The winter air wraps you in a strange warmth,<br>
+            sunlight spills gold over everything,<br>
+            The next song comes on, brighter, sweeter,<br>
+            and you laugh,<br>
+            just to hear yourself laugh.<br>
+            Then laugh harder because it sounds like <strong>ecstasy</strong>.</p>
+        </div>
+        <div class="stanza" data-mood="ecstatic">
+            <p>You dance. Slow. Fast. <strong>Reckless</strong>.<br>
+            The whole earth is swaying with you.<br>
+            The air is crisp. The music is pure.<br>
+            Everything is beautiful.<br>
+            The trees, the pavement, the strangers<br>
+            "<strong>No one is cruel</strong>," you exclaim.<br>
+            You want to press your palms to the ground.<br>
+            Grab hold of a single ray of sunshine,<br>
+            You want to kiss the wind.<br>
+            This is it—this is what being alive means.</p>
+        </div>
+        <div class="stanza" data-mood="melancholy">
+            <p>Then, the tenth song. The air sags.<br>
+            The lyrics start to <strong>mean</strong> things.<br>
+            Your eyes grow slow, your joints unspool.<br>
+            You’ve been sitting too long.</p>
+        </div>
+        <div class="stanza" data-mood="heavy">
+            <p>And then—the thought:<br>
+            <strong>None of this matters, does it?</strong><br>
+            There’s so much pain. Everywhere.<br>
+            In the man on the sidewalk. In your father’s voice.<br>
+            In you. Always in you.</p>
+        </div>
+        <div class="stanza" data-mood="heavy">
+            <p>Your teeth grind like stones.<br>
+            Your guts coil, a nest of snakes.<br>
+            Your shoulders slump, but your eyelids—<br>
+            Oh, your eyelids are <strong>lead</strong>.<br>
+            So heavy you can't keep your eyes open.</p>
+        </div>
+        <div class="stanza final-stanza" data-mood="heavy">
+            <p>You don’t move.<br>
+            You <strong>can’t</strong>.<br>
+            The music plays on.<br>
+            And that’s how it ends.<br>
+            (It mostly stays like that.)</p>
+        </div>
+    </div>
+    <button class="audio-control" onclick="toggleAudio()">▶</button>
+    <audio id="ambient-audio" loop muted>
+        <source src="https://cdn.pixabay.com/audio/2023/08/08/audio_5b3b9b2f7a.mp3" type="audio/mp3">
+    </audio>
+    <script>
+        // Smooth scrolling and stanza visibility
+        const stanzas = document.querySelectorAll('.stanza');
+        const body = document.body;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    const mood = entry.target.dataset.mood;
+                    body.classList.remove('mood-joyful', 'mood-uplifting', 'mood-ecstatic', 'mood-melancholy', 'mood-heavy');
+                    body.classList.add(`mood-${mood}`);
+                    if (entry.target.classList.contains('final-stanza')) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '0.8';
+                        }, 10000);
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+
+        stanzas.forEach(stanza => observer.observe(stanza));
+
+        // Cursor hide on inactivity
+        let cursorTimeout;
+        document.addEventListener('mousemove', () => {
+            body.classList.remove('cursor-hidden');
+            clearTimeout(cursorTimeout);
+            cursorTimeout = setTimeout(() => {
+                body.classList.add('cursor-hidden');
+            }, 3000);
+        });
+
+
+
+        // Ensure the page starts at the top
+        window.addEventListener('load', () => {
+            window.scrollTo(0, 0);
+            body.classList.add('mood-joyful');
+        });
+    </script>
+</body>
+</html>
