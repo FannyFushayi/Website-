@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Think Like an Engineer</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Georgia', serif;
+            background-color: #F5F5F0;
+            color: #1A3A3A;
+            line-height: 1.8;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #1A3A3A; /* Deep jungle green */
+            color: #F5F5F0;
+            text-align: center;
+            padding: 3rem 2rem;
+            border-bottom: 3px solid #6B8E23; /* Olive green accent */
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            font-weight: normal;
+            letter-spacing: 1px;
+            font-variant: small-caps;
+        }
+        header::after {
+            content: "❧";
+            display: block;
+            font-size: 1.5rem;
+            color: #6B8E23;
+            margin-top: 1rem;
+        }
+        nav {
+            background-color: #2A4B3A; /* Darker jungle green */
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #6B8E23;
+        }
+        nav a {
+            color: #F5F5F0;
+            text-decoration: none;
+            font-size: 1.1rem;
+            margin: 0 1.5rem;
+            letter-spacing: 0.5px;
+        }
+        nav a:hover {
+            color: #6B8E23;
+            text-underline-offset: 4px;
+        }
+        main {
+            max-width: 720px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            flex: 1;
+        }
+        h2 {
+            color: #1A3A3A;
+            font-size: 1.8rem;
+            margin: 2.5rem 0 1.5rem;
+            font-weight: normal;
+            border-bottom: 1px solid #6B8E23;
+            padding-bottom: 0.5rem;
+        }
+        h3 {
+            color: #2A4B3A;
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            font-weight: normal;
+            font-style: italic;
+        }
+        p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            hyphens: auto;
+        }
+        em {
+            font-style: italic;
+            color: #556B2F;
+        }
+        .section-divider {
+            text-align: center;
+            margin: 3rem 0;
+            color: #6B8E23;
+            font-size: 1.2rem;
+        }
+        .arrow-up {
+            text-align: center;
+            margin: 3rem 0;
+        }
+        .arrow-up a {
+            color: #1A3A3A;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border: 1px solid #6B8E23;
+            padding: 0.5rem 1.5rem;
+            border-radius: 3px;
+        }
+        .arrow-up a:hover {
+            background-color: #F5F5F0;
+        }
+        footer {
+            background-color: #1A3A3A;
+            color: #6B8E23;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+            border-top: 1px solid #6B8E23;
+        }
+        .initial::first-letter {
+            float: left;
+            font-size: 4rem;
+            line-height: 0.8;
+            margin: 0.1em 0.1em 0 0;
+            color: #6B8E23;
+        }
+        blockquote {
+            border-left: 3px solid #6B8E23;
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            color: #2A4B3A;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Think Like an Engineer</h1>
+    </header>
+    <nav>
+        
+    </nav>
+    <main>
+    
+        <p>Hello!</p>
+        <p>This is going to sound ridiculous.</p>
+        <p>For two reasons. First, you might think I overcomplicate things, which I do. Second, you might accuse me of textbook engineer behavior. I'll say it now, I am guilty. But in my defense, “all associated privileges” were conferred upon me.</p>
+        <p>Earlier this year, I was working manual labor (truck hand duty). One job involved helping a customer move what I can only describe as heavy, chaotic sewing stuff from one location to another. I feel obligated to emphasize just how heavy this stuff was. It was heavy. Indisputably, completely heavy.</p>
+        <p>Midway through the delivery, while the crew and I were actively manhandling some large, unidentified textile contraption, the customer, a woman overseeing the move, looked at all of us and asked, cheerfully:</p>
+        <blockquote>“Which location do you think is better?”</blockquote>
+        <p>The others were seasoned professionals. They gave her the perfect answer without hesitation. “This one, definitely.”</p>
+        <p>I, on the other hand, was too busy trying not to fall over and die. But I could feel her eyes on me. Waiting for my opinion. And under that pressure, my brain did what it always does when cornered by ambiguity: actively seek a scope, then cover that with nonsense.</p>
+        <p>So I answered.</p>
+        <blockquote>“Do you mean in terms of loading and offloading? Because it’s hard to compare. Loading works against gravity; offloading works with gravity, so offloading is always going to feel easier, and if things are that obvious, a comparison seems unfair.”</blockquote>
+        <p>She blinked. I had misunderstood.</p>
+        <p>She clarified that she meant business-wise. As in, which shop location was better for her informal sewing operation?</p>
+        <p>This surprised me. Why was I being consulted? I was barely managing to survive the delivery, and now I’m being asked to weigh in on commercial strategy?</p>
+        <p>But I gave it a shot. A very long, instinctive shot.</p>
+        <p>I explained that her old location, while safer and flanked by high-end shops, probably didn’t attract much foot traffic. Her business is informal, and being surrounded by formal, upscale establishments can be a mismatch. The new area, on the other hand, is denser, more residential, and has a more chaotic energy. Safety goes out the window. But more people, more potential customers. Assuming she doesn’t face serious local competition. And for a business like this, where trust plays a huge role, competition can be fatal.</p>
+        <p>Now, you might be wondering how I managed to rattle all this off. The answer is: I didn’t.</p>
+        <p>What I actually said was probably garbled, abstract, and mildly incoherent. I'm pretty sure she walked away unsure what I was trying to say, which is precisely why this blog project exists: To train my thoughts into structure.</p>
+        <p>But setting aside my poor articulation for a moment. What I want to focus on is the reflex. The mental habit that kicked in when faced with a problem. How an engineering-trained (cough cough) mind instinctively tried to model, compare, isolate variables, and search for assumptions, while sweating under a 40kg load of fabric-based who-knows-what.</p>
+        <p>This post is about that reflex and others like it. Mental habits trained in the lab sneak into life everywhere else. Sometimes they create confusion (I'll have you know that the lady did, in fact, move back to her old location, and I probably had no hand in it). This reflex to overanalyze, to see the connections between foot traffic, competition, and customer trust, is a habit called systems thinking.</p>
+        <div class="section-divider">• • •</div>
+        <h3>PART ONE: "It was all of them, a system problem!"</h3>
+        <p>Back in June of 2023, my team and I were working on a line-following robot (aptly named GRACE). She was meant to be fast, elegant, and autonomous. At this point, we were implementing the final control algorithm, trying to optimize her performance. That’s when we hit a bottleneck.</p>
+        <p>The robot could navigate the line, but only up to a certain speed. Beyond that, it would veer off or jitter. We had reached the edge of stability. And here’s the interesting part: this wasn’t a code problem. Or a sensor problem. Or a hardware problem. It was all of them, a system problem!</p>
+        <p>The components in question had been developed months apart. The sensors (how many, how sensitive, and how fast they sampled) were dictated by the hardware we had acquired, the chassis design, and other constraints. The motor control code, now being tested, was technically modifiable, but that didn’t mean it could fix everything. Any change we made to one piece ricocheted through the whole system. We had run face-first into systems thinking.</p>
+        <div class="section-divider">—</div>
+        <h3>Systems Thinking</h3>
+        <p>Systems thinking is the cognitive shift from linear cause-and-effect logic to multi-variable, dynamic interaction modeling. In other words, it’s the difference between fixing a single leaky pipe and understanding how water pressure, pipe age, and foundation shifts all connect to cause floods.</p>
+        <p>It's easy to understand simple chains: A causes B. Push a button, get a light. But real systems don’t work like that. In systems thinking, an action in one part of the system might trigger ripple effects in another—often indirectly, sometimes with delay, and not always in predictable ways.</p>
+        <p>You don’t wait for things to bottleneck; you study how they interact under different conditions before the design. You start asking:</p>
+        <p>What would happen throughout the system if this variable doubled?<br>
+        Who else does this decision affect?<br>
+        Are there invisible constraints shaping this process?<br>
+        What assumptions are baked into the system that nobody is questioning?</p>
+        <p>Look beyond what’s being presented. Analyze not just the problem, but the surrounding structure. Review the mechanisms already in place. Consider where incentives, friction, or feedback might be hiding.</p>
+        <p>But seeing the system is only half the battle. When the system is rigid, you have to adapt. This requires a different kind of mental agility: flexible problem-solving.</p>
+        <p>And in case you are wondering Grace participated in the race.</p>
+        <div class="section-divider">• • •</div>
+        <h3>PART TWO: "Developer wizarding words"</h3>
+        <p>Earlier this year, my favorite uncle came to me in a state of loud panic. An app he depended on refused to install on his phone. He’d already done the rounds: technicians, salespeople, advice from every possible anybody. The consensus was brutal: get a better phone. Translation: spend money you don’t have.</p>
+        <p>Naturally, I offered my services.</p>
+        <p>But not without a disclaimer. I’m known in the family for my... let’s say, experimental approach to fixing things. So I made him agree verbally, if not legally, that any irreversible damage would be chalked up to "engineering risk."</p>
+        <p>Then I got to work.</p>
+        <p>Step one: define the failure precisely. No vague “it won’t install.” I needed the actual error. After some digging, I found the exact constraint: a permissions conflict, the Draw Over Other Apps privilege, which this phone’s Android version handled in a strange, restrictive way. The system was blocking the install because it couldn’t reconcile access across layers.</p>
+        <p>The "solution" wasn’t in the app settings or the installer. It was inside the system’s permission architecture. So I read. I tested. I bricked the phone temporarily (just a little). A few hours later, I was manually modifying parts of the phone’s source-level config via debug mode (Developer wizarding words).</p>
+        <p>Nothing fancy, just a bypass of the overlay permission using shell commands. But it worked.</p>
+        <p>The app installed. My uncle could breathe again. And the phone lived to tell the tale, for a while (it was stolen shortly after said occasion).</p>
+        <div class="section-divider">—</div>
+        <h3>Flexible Problem Solving</h3>
+        <p>It’s the cognitive habit of working within constraints you don’t control (which is all the time), while refusing to collapse into helplessness or brute force.</p>
+        <p>It’s, and this includes venturing into unknown territory:<br>
+        Identifying the problem (not just the symptoms)<br>
+        Understanding what can’t change (the hardware, the OS version, the money, the scope, there's always something)<br>
+        Finding what can be reconfigured.<br>
+        Learning just enough to execute something targeted and safe.</p>
+        <div class="section-divider">• • •</div>
+        <h3>FINAL PART: "Montages are not fun when you’re starring in them"</h3>
+        <p>I’ve had the pleasure of handing out this piece of advice: <em>"Just be tenacious."</em></p>
+        <p>It sounds poetic when I say it. But I suspect it lands like one of those <em>"don’t be sad"</em> lines—useless in practice. Advice is frustrating that way, often too narrow to mean much. But that’s beside the point.</p>
+        <p>The point: here’s the fourth and final story.</p>
+        <p>There’s one week from two years ago that I can account for, hour by hour. It started with a phone call. I rang my parents (yes, I’m confessing to that) and told them I had failed. Their response was a less poetic version of <em>"you don’t know how to fail."</em></p>
+        <p>Then I loaded my non-working H-bridge contraption into the car, grabbed my 50th 9-volt battery, and drove to campus for what we now call the <em>Tenacity Demo</em>. I failed. Completely. But I was given a week to try again.</p>
+        <p>What followed was a montage. Except here’s the thing I’ve learned: Montages are not fun when you’re starring in them.</p>
+        <p>For seven straight days, I lived at my desk. That’s not a metaphor. I slept under it. When I couldn’t debug circuits or code anymore, I closed my eyes wrapped myself up in a blanket and threw myself on the floor. When I could function again, I sat up and resumed.</p>
+        <p>Important note: Tenacity is not a solo performance. Yes, I worked like a lunatic. But I was carried by others.</p>
+        <p>A neighbor made me food.<br>
+        A friend answered late-night calls and walked me through logic I couldn’t trust myself to parse.<br>
+        Someone brought me a resistor when I was out of breath and out of options.</p>
+        <p>When it was time for the <em>Redemo</em>, it worked.</p>
+        <p>I had learned what tenacity is. I still can’t define it for you. Technically, Tenacity, in engineering or life, means iterating beyond failure with courage and community. Tenacity isn’t just blind persistence; it’s boundless and limited, and a dozen other contradictions you could write poems about.</p>
+        <p>So yes, I’ll keep giving that advice. <em>Be tenacious.</em></p>
+        <p>And if you made it all the way here, I now confer upon you all the privileges I am afforded to confer.</p>
+        <p>Byeeeeeeeee!</p>
+    </main>
+    <div class="arrow-up">
+        <a href="blog.html">← Back to Home</a>
+    </div>
+    <footer>
+        Fanny Fushayi &copy; 2025
+    </footer>
+</body>
+</html>
