@@ -1,759 +1,451 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="Fanny Fushayi, Electrical Engineer, Machine Learning, AI, Power Systems, Energy Systems, Control Systems, Writing, Technology Blog, Engineering Portfolio, Deep Learning, Data Science, Projects, Philosophy, Technical Writing, Creative Writing, Book Club, Tech Blog, Embedded Systems, Battery Diagnostics, Go-Kart Energy System">
-    <title>Fanny Fushayi</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Fanny Fushayi — Electrical engineer, machine learning practitioner, and writer. Portfolio of projects, blog and contact." />
+    <meta name="keywords" content="Fanny Fushayi, Electrical Engineer, Machine Learning, AI, Power Systems, Energy Systems, Control Systems, Writing, Technology Blog, Engineering Portfolio" />
+    <title>Fanny Fushayi — Engineer · Writer · Maker</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Handlee&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Reset & base */
+        *{box-sizing:border-box;margin:0;padding:0}
+        html,body{height:100%}
+        body{
+            font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+            background:#06060a;color:#eef2f6;line-height:1.55;
+            -webkit-font-smoothing:antialiased;overflow-x:hidden;
         }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #0a0a0a;
-            color: #ffffff;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+        /* Animated gradient background (subtle, accessible) */
+        .bg-animation{position:fixed;inset:0;background:linear-gradient(135deg,#071029 0%,#071a2a 50%,#08101d 100%);z-index:-2;}
+        .bg-noise{position:fixed;inset:0;opacity:0.03;background-image:radial-gradient(circle at 10% 10%, rgba(255,255,255,0.02) 0, transparent 20%), radial-gradient(circle at 90% 90%, rgba(255,255,255,0.02) 0, transparent 20%);z-index:-1}
 
-        /* Animated background */
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-            z-index: -1;
-        }
+        /* Layout */
+        nav{position:fixed;top:0;left:0;right:0;padding:0.7rem 1rem;background:rgba(6,6,10,0.55);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.03);z-index:999}
+        .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+        .logo{font-weight:800;font-size:1.1rem;background:linear-gradient(90deg,#ff6b6b,#4ecdc4);-webkit-background-clip:text;background-clip:text;color:transparent}
 
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+        /* Desktop nav links */
+        .nav-links{display:flex;gap:1rem;align-items:center}
+        .nav-links a{color:var(--muted,#dbe8ee);text-decoration:none;padding:0.45rem 0.6rem;border-radius:6px;font-weight:600}
+        .nav-links a:hover{color:white;background:rgba(255,255,255,0.02)}
+        .resume-btn{background:linear-gradient(90deg,#4ecdc4,#ff6b6b);padding:0.45rem 0.9rem;border-radius:999px;color:#061017;font-weight:700;text-decoration:none}
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1rem 2rem;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
+        /* Hamburger (mobile) */
+        .hamburger{display:none;background:transparent;border:0;color:inherit;font-size:1.25rem;cursor:pointer}
+        .mobile-menu{display:none;position:absolute;top:100%;right:1rem;background:rgba(6,6,10,0.95);border-radius:10px;padding:0.75rem;box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+        .mobile-menu a{display:block;padding:0.5rem 0.75rem;color:#dbe8ee;text-decoration:none}
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        /* Hero */
+        .hero{min-height:85vh;display:flex;align-items:center;justify-content:center;padding:6rem 1rem 4rem}
+        .hero-inner{max-width:1100px;text-align:left;display:grid;grid-template-columns:1fr 380px;gap:2rem;align-items:center}
+        .hero-copy h1{font-size:2.6rem;margin-bottom:0.6rem;line-height:1.05}
+        .hero-copy p.lead{font-size:1.05rem;color:#cfdce6;margin-bottom:1rem}
+        .hero-actions{display:flex;gap:0.8rem;flex-wrap:wrap}
+        .btn{display:inline-block;padding:0.8rem 1rem;border-radius:12px;text-decoration:none;font-weight:700}
+        .btn-primary{background:linear-gradient(90deg,#4ecdc4,#ff6b6b);color:#041018}
+        .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#dbe8ee}
+        .hero-meta{font-size:0.9rem;color:#9fb0bd;margin-top:0.6rem}
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: #4ecdc4;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero-content h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero-content p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            color: #b0b0b0;
-            animation: fadeInUp 1s ease 0.3s both;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeInUp 1s ease 0.6s both;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.3);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        /* Profile card */
+        .profile-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border-radius:16px;padding:1rem;border:1px solid rgba(255,255,255,0.04);text-align:center}
+        .profile-pic{width:140px;height:140px;border-radius:50%;overflow:hidden;margin:0 auto 0.75rem;border:4px solid rgba(78,205,196,0.12)}
+        .profile-pic img{width:100%;height:100%;object-fit:cover;display:block}
+        .profile-name{font-weight:800}
+        .profile-role{font-size:0.95rem;color:#9fb0bd}
 
         /* Sections */
-        section {
-            padding: 6rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+        main{max-width:1200px;margin:0 auto;padding:2rem 1rem}
+        section{padding:3.25rem 0;border-top:1px solid rgba(255,255,255,0.02)}
+        .section-title{font-size:1.8rem;margin-bottom:1rem;background:linear-gradient(90deg,#ff6b6b,#4ecdc4);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+        /* About grid */
+        .about-grid{display:grid;grid-template-columns:1fr 360px;gap:2rem;align-items:start}
+        .about-text p{margin-bottom:0.9rem;color:#d7e6ef}
+        .about-bullets{margin-top:0.8rem;display:flex;flex-direction:column;gap:0.45rem}
+        .bullet{display:flex;gap:0.6rem;align-items:flex-start}
+        .bullet strong{min-width:110px;display:inline-block;color:#cfeef8}
+
+        /* Skills */
+        .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+        .skill-card{padding:1rem;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03)}
+        .skill-name{font-weight:700;margin-bottom:0.4rem}
+        .skill-meta{font-size:0.85rem;color:#9fb0bd}
+        .skill-bar{height:10px;background:rgba(255,255,255,0.04);border-radius:999px;overflow:hidden;margin-top:0.6rem}
+        .skill-progress{height:100%;background:linear-gradient(90deg,#4ecdc4,#ff6b6b);width:0%;transition:width 900ms cubic-bezier(.2,.9,.2,1)}
+        .skill-foot{font-size:0.8rem;color:#8ea7b2;margin-top:0.5rem}
+
+        /* Projects */
+        .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+        .project-card{padding:1rem;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);display:flex;flex-direction:column;gap:0.6rem}
+        .project-thumb{height:140px;border-radius:8px;overflow:hidden;background:#0b1220}
+        .project-thumb img{width:100%;height:100%;object-fit:cover}
+        .tech-tags{display:flex;flex-wrap:wrap;gap:0.4rem}
+        .tech-tag{font-size:0.8rem;padding:0.2rem 0.5rem;border-radius:999px;background:rgba(78,205,196,0.08);color:#9fe9e0}
+        .project-links{display:flex;gap:0.6rem;margin-top:auto}
+
+        /* Contact & CTAs */
+        .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:1rem}
+        .contact-methods{display:flex;flex-direction:column;gap:0.6rem}
+        .contact-card{padding:0.8rem;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03)}
+
+        /* AI assistant (demo) */
+        .ai-assistant{position:fixed;right:1rem;bottom:1rem;z-index:999}
+        .ai-button{width:56px;height:56px;border-radius:999px;border:0;cursor:pointer;font-weight:700;background:linear-gradient(90deg,#4ecdc4,#ff6b6b);color:#041018;box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+        .ai-panel{width:320px;max-height:420px;background:rgba(6,6,10,0.98);border-radius:12px;padding:0.6rem;border:1px solid rgba(255,255,255,0.03);display:none;flex-direction:column}
+        .ai-panel.active{display:flex}
+        .ai-tts{font-size:0.85rem;color:#9fb0bd;padding:0.45rem;border-bottom:1px solid rgba(255,255,255,0.02)}
+        .ai-messages{padding:0.6rem;overflow:auto;flex:1;display:flex;flex-direction:column;gap:0.45rem}
+        .ai-msg{padding:0.5rem;border-radius:8px;background:rgba(78,205,196,0.06);color:#bff6ef;font-size:0.85rem}
+        .ai-controls{display:flex;gap:0.4rem;margin-top:0.5rem}
+        .ai-controls button{flex:1;padding:0.5rem;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:#dbe8ee}
+
+        /* Footer */
+        footer{padding:2rem 1rem;text-align:center;color:#93a9b6}
+
+        /* Responsive */
+        @media (max-width:980px){
+            .hero-inner{grid-template-columns:1fr}
+            .about-grid{grid-template-columns:1fr}
+            .contact-grid{grid-template-columns:1fr}
+        }
+        @media (max-width:720px){
+            .nav-links{display:none}
+            .hamburger{display:inline-block}
+            .mobile-menu{display:none}
+            .mobile-menu.active{display:block}
         }
 
-        .section-title {
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #b0b0b0;
-        }
-
-        .about-image {
-            text-align: center;
-        }
-
-        .profile-card {
-            background: 
-                linear-gradient(rgba(20,24,38,0.7), rgba(20,24,38,0.7)),
-                url('Images/new_background.png') center center/cover no-repeat;
-            backdrop-filter: blur(6px);
-            border-radius: 20px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-            color: #fff;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .profile-card:hover {
-            transform: translateY(-10px);
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .skill-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .skill-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .skill-bar {
-            background: rgba(255, 255, 255, 0.1);
-            height: 8px;
-            border-radius: 4px;
-            overflow: hidden;
-            margin-top: 1rem;
-        }
-
-        .skill-progress {
-            height: 100%;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            border-radius: 4px;
-            transition: width 2s ease;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .project-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-        }
-
-        .project-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #ffffff;
-        }
-
-        .project-description {
-            color: #b0b0b0;
-            margin-bottom: 1rem;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .tech-tag {
-            background: rgba(78, 205, 196, 0.2);
-            color: #4ecdc4;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .project-link {
-            color: #4ecdc4;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .project-link:hover {
-            color: #ff6b6b;
-        }
-
-        /* Contact Section */
-        .contact-content {
-            text-align: center;
-        }
-
-        .contact-methods {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-method {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease;
-            text-decoration: none;
-            color: #ffffff;
-            min-width: 200px;
-        }
-
-        .contact-method:hover {
-            transform: translateY(-5px);
-        }
-
-        .contact-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: #4ecdc4;
-        }
-
-        /* AI Assistant */
-        .ai-assistant {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 1000;
-        }
-
-        .ai-button {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
-        }
-
-        .ai-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
-        }
-
-        .ai-chat {
-            position: absolute;
-            bottom: 80px;
-            right: 0;
-            width: 300px;
-            height: 400px;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 1rem;
-            display: none;
-            flex-direction: column;
-        }
-
-        .ai-chat.active {
-            display: flex;
-        }
-
-        .ai-header {
-            text-align: center;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            margin-bottom: 1rem;
-        }
-
-        .ai-messages {
-            flex: 1;
-            overflow-y: auto;
-            margin-bottom: 1rem;
-        }
-
-        .ai-message {
-            background: rgba(78, 205, 196, 0.1);
-            border-radius: 10px;
-            padding: 0.8rem;
-            margin-bottom: 0.5rem;
-            color: #4ecdc4;
-            font-size: 0.9rem;
-        }
-
-        .ai-questions {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .ai-question {
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: #ffffff;
-            padding: 0.8rem;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-            font-size: 0.8rem;
-        }
-
-        .ai-question:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-content p {
-                font-size: 1.2rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-methods {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .ai-chat {
-                width: 280px;
-                height: 350px;
-            }
-        }
-
-
-        @media (max-width: 600px) {
-            .ai-assistant {
-                right: 1rem;
-                bottom: 1rem;
-            }
-            .ai-button {
-                width: 100vw !important;
-                min-width: 0 !important;
-                max-width: 100vw !important;
-                height: auto !important;
-                border-radius: 20px !important;
-                padding: 1rem !important;
-                font-size: 1rem !important;
-                box-sizing: border-box;
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: center !important;
-            }
-            .ai-chat {
-                width: 98vw !important;
-                min-width: 0 !important;
-                max-width: 98vw !important;
-                left: 50% !important;
-                right: auto !important;
-                transform: translateX(-50%);
-                height: 60vh !important;
-                bottom: 80px !important;
-                border-radius: 15px !important;
-                padding: 0.5rem !important;
-            }
-        }
+        /* small accessibility tweak: focus outlines */
+        a:focus,button:focus{outline:3px solid rgba(78,205,196,0.14);outline-offset:3px}
     </style>
-
-    <link rel="icon" href="Images/favicon.ico" type="image/x-icon" />
-
 </head>
 <body>
-    <div class="bg-animation"></div>
-    
-    <nav>
-        <div class="nav-container">
+    <div class="bg-animation" aria-hidden="true"></div>
+    <div class="bg-noise" aria-hidden="true"></div>
+
+    <!-- NAV -->
+    <nav role="navigation" aria-label="Main navigation">
+        <div class="nav-inner">
             <div class="logo">Fanny</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+
+            <div class="nav-links" id="desktopNav">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+                <!-- <a class="resume-btn" href="Fanny_CV.pdf" target="_blank" rel="noopener">Resume</a>-->
+            </div>
+
+            <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">☰</button>
+            <div class="mobile-menu" id="mobileMenu" role="menu" aria-hidden="true">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+                <!--  <a href="Fanny_CV.pdf" target="_blank" rel="noopener">Resume</a>-->
+            </div>
         </div>
     </nav>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Hi, I'm Fanny</h1>
-            <p>Engineer, Writer & Explorer at the intersection of technology and meaning</p>
-            <a href="#about" class="cta-button">Discover My Journey</a>
+    <!-- HERO -->
+    <section id="home" class="hero" aria-labelledby="home-heading">
+        <div class="hero-inner">
+            <div class="hero-copy">
+                <h1 id="home-heading">Hi — I'm Fanny.</h1>
+                <p class="lead">Electrical engineer, ML practitioner, and writer. I design power systems, build data-driven models, and write about all my experiences, technical and none.</p>
+
+                <div class="hero-actions" role="region" aria-label="Primary actions">
+                    <a class="btn btn-primary" href="#projects">See Engineering Work</a>
+                    <a class="btn btn-ghost" href="#contact">Let's Collaborate</a>
+                    <a class="btn btn-ghost" href="blog.html">Read the Blog</a>
+                </div>
+  <!--
+                <div class="hero-meta">
+                    Based in South Africa • Open to roles in power systems, controls, & ML research • <strong>Available for interviews</strong>
+                </div>   -->
+            </div>
+
+            <aside class="profile-card" aria-label="Profile snapshot">
+                <div class="profile-pic">
+                    <img src="Images/MY_PHOTO.jpeg" alt="Portrait of Fanny Fushayi" width="280" height="280" loading="lazy">
+                </div>
+                <div class="profile-name">Fanny Fushayi</div>
+                <div class="profile-role">Electrical Engineer · ML & Systems · Writer</div>
+                <div style="margin-top:0.8rem;font-size:0.9rem;color:#9fb0bd">5+ years in projects across energy systems, battery diagnostics, and embedded control.</div>
+                <div style="margin-top:0.75rem;display:flex;gap:0.5rem;justify-content:center">
+                    <a class="btn btn-ghost" href="mailto:fannyfushayi75@gmail.com">Email</a>
+                    <a class="btn btn-ghost" href="https://www.linkedin.com/in/fanny-fushayi-529880235" target="_blank" rel="noopener">LinkedIn</a>
+                </div>
+            </aside>
         </div>
     </section>
 
-    <section id="about">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-content">
-            <div class="about-text" style="font-family: 'Caveat', 'Pacifico', 'Comic Sans MS', cursive, sans-serif; font-size: 1.3rem;">
-                <p>Hi, I’m Fanny.</p>
-                <p>Electrical Engineer by training, overthinker by default. A reluctant but inevitable writer (some thoughts demand to be untangled on paper). All three roles run on coffee, and passion (mostly coffee though).</p>
-                <p>I live at the intersection of electrical engineering, machine learning, and philosophy. When the numbers stop making sense, I turn to Dostoevsky or dwell on questions that (do not) have answers.</p>
-                <p>This site is my bridge: half engineering lab, half existential notebook. One week, it’s quantum circuits or neural nets; the next, it’s Kafka’s paradoxes or the anatomy of memory.</p>
-                <p>I build "stuff" , but I’m also interested in the sparks between logic and lyricism, innovation and introspection. If engineering is my syntax, then philosophy is my semantics.</p>
-            </div>
-            <!-- Handwriting font import -->
-            <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Pacifico&display=swap" rel="stylesheet">
-            <div class="about-image">
-                <div class="profile-card">
-                    <div style="width: 150px; height: 150px; background: linear-gradient(45deg, #ff6b6b, #4ecdc4); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                        <img src="Images/MY_PHOTO.jpeg" alt="" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+    <main>
+        <!-- ABOUT -->
+        <section id="about" aria-labelledby="about-title">
+            <h2 id="about-title" class="section-title">About</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Engineer by training, writer by habit. I solve practical engineering problems with a taste for theory and a tendency to ask inconvenient questions.</p>
+                    <p>My sweet spot: systems where electronics, control logic, and data meet — battery diagnostics, power converters, energy management, and ML applied to physical systems.</p>
+
+                    <div class="about-bullets" aria-hidden="false">
+                        <div class="bullet"><strong>Qualification</strong><span>B.Eng (Electrical) — University of Pretoria</span></div>
+                        <div class="bullet"><strong>Current focus</strong><span>Battery RUL prediction, embedded power electronics, ML model deployment</span></div>
+                        <div class="bullet"><strong>Tools</strong><span>Python, NumPy, scikit-learn, PyTorch, MATLAB, LTspice, Git</span></div>
+                        <div class="bullet"><strong>Interest</strong><span>Philosophy of AI, systems design, technical storytelling</span></div>
                     </div>
-                    <h3>Fanny</h3>
+
+                    <p style="margin-top:0.8rem;color:#cfeef8">If you want the short version: I build things that measure, predict, and control. If you want the long version: follow my blog or message me.</p>
+
+                    <div style="margin-top:0.9rem;display:flex;gap:0.6rem;flex-wrap:wrap">
+                        <!--<a class="btn btn-primary" href="Fanny_CV.pdf">Download CV</a>-->
+                        <a class="btn btn-ghost" href="blog.html">Recent Posts</a>
+                        <a class="btn btn-ghost" href="#projects">Projects</a>
+                    </div>
                 </div>
+
+                <!-- Snapshot / social proof -->
+                <aside aria-label="Snapshot" style="padding:0 0.5rem">
+                    <div style="margin-bottom:0.8rem;color:#9fb0bd;font-weight:700">Snapshot</div>
+                    <div style="padding:0.7rem;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03)">
+                        <div style="font-size:1rem;color:#dff7f2;margin-bottom:0.4rem">Selected outcomes</div>
+                        <ul style="color:#cfeef8;list-style:disc;margin-left:1.1rem">
+                            <li>Battery RUL pipeline — dataset -> features -> model -> deploy (improved early-warning detection).</li>
+                            <li>Go-kart energy manager — custom BMS + power distribution for reduced losses in race conditions.</li>
+                        </ul>
+                    </div>
+
+                    <div style="margin-top:0.9rem;padding:0.7rem;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03)">
+                        <div style="font-weight:700;color:#dff7f2;margin-bottom:0.4rem">Availability</div>
+                        <div style="color:#cfeef8">Open to collaborations, consulting, and research roles. <a href="#contact" style="color:#9fe9e0">Get in touch</a>.</div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills" aria-labelledby="skills-title">
+            <h2 id="skills-title" class="section-title">Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card" data-percent="85">
+                    <div class="skill-name">Electrical Engineering</div>
+                    <div class="skill-meta">Power systems, converters, protection, energy storage</div>
+                    <div class="skill-bar" aria-hidden="true"><div class="skill-progress" style="width:0%"></div></div>
+                    <div class="skill-foot">80% university degree ; used in 7+ projects</div>
+                </div>
+
+                <div class="skill-card" data-percent="75">
+                    <div class="skill-name">Writing & Communication</div>
+                    <div class="skill-meta">Technical reports, blogs, storytelling</div>
+                    <div class="skill-bar" aria-hidden="true"><div class="skill-progress" style="width:0%"></div></div>
+                    <div class="skill-foot">75% — regular weekly writing, teaching experience</div>
+                </div>
+
+                <div class="skill-card" data-percent="80">
+                    <div class="skill-name">Systems & Analysis</div>
+                    <div class="skill-meta">Diagnostics, systems design, project management</div>
+                    <div class="skill-bar" aria-hidden="true"><div class="skill-progress" style="width:0%"></div></div>
+                    <div class="skill-foot">80% — cross-disciplinary systems work</div>
+                </div>
+
+                <div class="skill-card" data-percent="55">
+                    <div class="skill-name">Machine Learning & AI</div>
+                    <div class="skill-meta">Modeling, deployment, signal & data processing</div>
+                    <div class="skill-bar" aria-hidden="true"><div class="skill-progress" style="width:0%"></div></div>
+                    <div class="skill-foot">50% — actively learning deep learning & deployment</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" aria-labelledby="projects-title">
+            <h2 id="projects-title" class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <article class="project-card" aria-labelledby="p1-title">
+                    <div class="project-thumb">
+                        <img src="Images/battery_pack.png" alt="Battery pack and diagnostic plots" loading="lazy">
+                    </div>
+                    <h3 id="p1-title">Battery RUL Prediction</h3>
+                    <p style="color:#cfeef8">Data-driven Remaining Useful Life (RUL) model for lithium-ion packs. Pipeline from raw signals → features → model → deployment.</p>
+                    <div class="tech-tags"><span class="tech-tag">Python</span><span class="tech-tag">PyTorch</span><span class="tech-tag">Feature Engineering</span></div>
+                    <div class="project-links">
+                        <a class="btn btn-ghost" href="battery-data-driven.html">View Project</a>
+                        <a class="btn btn-ghost" href="https://github.com/FannyFushayi">Source</a>
+                    </div>
+                </article>
+
+                <article class="project-card" aria-labelledby="p2-title">
+                    <div class="project-thumb"><img src="Images/go_kart.png" alt="Electric go-kart power system" loading="lazy"></div>
+                    <h3 id="p2-title">Go-kart Energy System</h3>
+                    <p style="color:#cfeef8">Power electronics, custom BMS and energy distribution to improve efficiency and endurance in racing conditions.</p>
+                    <div class="tech-tags"><span class="tech-tag">Power Electronics</span><span class="tech-tag">Embedded</span><span class="tech-tag">BMS</span></div>
+                    <div class="project-links">
+                        <a class="btn btn-ghost" href="project-hess.html">Case Study</a>
+                        <a class="btn btn-ghost" href="go-kart-report.pdf">Technical Report</a>
+                    </div>
+                </article>
+
+                <article class="project-card" aria-labelledby="p3-title">
+                    <div class="project-thumb"><img src="images/bblog.png" alt="Freedom" loading="lazy"></div>
+                    <h3 id="p3-title">Weekly Tech & Philosophy Blog</h3>
+                    <p style="color:#cfeef8">A hybrid feed alternating technical deep dives and philosophical reflections on tech and society.</p>
+                    <div class="tech-tags"><span class="tech-tag">Writing</span><span class="tech-tag">Communication</span></div>
+                    <div class="project-links">
+                        <a class="btn btn-ghost" href="blog.html">Read</a>
+                    </div>
+                </article>
+            </div>
+
+            <div style="margin-top:1rem;display:flex;gap:0.6rem;justify-content:center">
+                <a class="btn btn-primary" href="projects.html">Full portfolio</a>
+                <a class="btn btn-ghost" href="fun_projects.html">Fun projects</a>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" aria-labelledby="contact-title">
+            <h2 id="contact-title" class="section-title">Let's Connect</h2>
+            <div class="contact-grid">
+                <div>
+                    <p style="color:#d7e6ef">Interested in collaborating or hiring? I prefer concise messages that state scope, timeline and the key deliverable. If you want a fast response include a few bullet points about the project.</p>
+
+                    <div style="margin-top:0.8rem;display:flex;gap:0.6rem;flex-wrap:wrap">
+                        <a class="btn btn-primary" href="mailto:fannyfushayi75@gmail.com">Email Me</a>
+                        <a class="btn btn-ghost" href="https://calendly.com/fannyfushayi" target="_blank" rel="noopener">Schedule a Call</a>
+                        <a class="btn btn-ghost" href="https://github.com/FannyFushayi" target="_blank" rel="noopener">GitHub</a>
+                    </div>
+
+                    <div style="margin-top:1rem;color:#9fb0bd">Or drop a quick note: <a href="mailto:fannyfushayi75@gmail.com" style="color:#9fe9e0">fannyfushayi75@gmail.com</a></div>
+                </div>
+
+                <aside>
+                    <div class="contact-card">
+                        <div style="font-weight:700;color:#dff7f2;margin-bottom:0.4rem">Book club & reading</div>
+                        <div style="color:#cfeef8">Monthly discussions — <a href="books.html" style="color:#9fe9e0">Join the list</a>.</div>
+                    </div>
+
+
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <!-- AI Assistant (DEMO) -->
+    <div class="ai-assistant" aria-hidden="false">
+        <button id="aiBtn" class="ai-button" aria-expanded="false" aria-controls="aiPanel" aria-label="Open assistant">AI</button>
+        <div id="aiPanel" class="ai-panel" role="dialog" aria-label="Assistant (demo)">
+            <div class="ai-tts">Demo assistant — sample answers. This panel is a demonstration and not a live chatbot.</div>
+            <div id="aiMessages" class="ai-messages" aria-live="polite">
+                <div class="ai-msg">Tip: Try "skills", "projects", or "contact".</div>
+            </div>
+            <div class="ai-controls">
+                <button onclick="demoAsk('skills')">skills</button>
+                <button onclick="demoAsk('projects')">projects</button>
+                <button onclick="demoAsk('contact')">contact</button>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section id="skills">
-        <h2 class="section-title">Skills & Expertise</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <div class="skill-icon">⚡</div>
-                <h3>Electrical Engineering</h3>
-                <p>Power Systems, Energy Systems, Control System, BSS, PV</p>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="width: 85%"></div>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <div class="skill-icon">✍️</div>
-                <h3>Writing & Communication</h3>
-                <p>Technical Writing, Creative Writing, Storytelling</p>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="width: 75%"></div>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <div class="skill-icon">🔬</div>
-                <h3>Systems & Analysis</h3>
-                <p>Systems Design, Diagnostics, Problem solving, Project Management</p>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="width: 80%"></div>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <div class="skill-icon">🤖</div>
-                <h3>Machine Learning & AI</h3>
-                <p>Deep Learning, Model Deployment, Data Science</p>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="width: 50%"></div>
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-    <section id="projects">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <h3 class="project-title">Battery RUL Prediction</h3>
-                <p class="project-description">A multipart project focused on predicting the Remaining Useful Life (RUL) of batteries using data-driven approaches and machine learning techniques.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Machine Learning</span>
-                    <span class="tech-tag">Data Analysis</span>
-                    <span class="tech-tag">Battery Diagnostics</span>
-                </div>
-                <div class="project-links">
-                    <a href="Battery_Data_driven.html" class="project-link">View Project</a>
-                    <a href="https://github.com/FannyFushayi" class="project-link">Source Code</a>
-                </div>
-            </div>
-            <div class="project-card">
-                <h3 class="project-title">Go-Kart Energy System</h3>
-                <p class="project-description">A custom energy management system for electric go-karts, combining power electronics with efficient energy distribution and monitoring.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Circuit Design</span>
-                    <span class="tech-tag">Power Electronics</span>
-                    <span class="tech-tag">Energy Management</span>
-                    <span class="tech-tag">Embedded Systems</span>
-                </div>
-                <div class="project-links">
-                    <a href="project-hess.html" class="project-link">View Details</a>
-                    <a href="https://drive.google.com/file/d/1EAsNxIesiDmJv1T9Fixs7b_9sh_oN9ul/view?usp=drive_web" class="project-link">Technical Report</a>
-                </div>
-            </div>
-            <div class="project-card">
-                <h3 class="project-title">Weekly Tech & Philosophy Blog</h3>
-                <p class="project-description">A weekly blog exploring the intersection of technology and human consciousness, alternating between technical deep dives and philosophical reflections.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Writing</span>
-                    <span class="tech-tag">Technical Communication</span>
-                    <span class="tech-tag">Philosophy</span>
-                    <span class="tech-tag">Storytelling</span>
-                </div>
-                <div class="project-links">
-                    <a href='blog.html' class="project-link">Read Blog</a>
-                </div>
-            </div>
-        </div>
-
-        <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2.5rem;">
-            <a href="Projects.html" class="cta-button">Project Portfolio</a>
-            <a href="fun_projects.html" class="cta-button">More (fun projects)</a>
-        </div>
-    </section>
-
-    <section id="contact">
-        <h2 class="section-title">Let's Connect</h2>
-        <div class="contact-content">
-            <p>Ready to bring your ideas to life? Let's collaborate and create something amazing together!</p>
-            <div class="contact-methods">
-                <a href="mailto:fannyfushayi75@gmail.com" class="contact-method">
-                    <div class="contact-icon">📧</div>
-                    <h3>Email</h3>
-                    <p>fannyfushayi75@gmail.com</p>
-                </a>
-                <a href="blog.html" class="contact-method">
-                    <div class="contact-icon">✍️</div>
-                    <h3>Blog</h3>
-                    <p>Read my thoughts</p>
-                </a>
-                <a href="books.html" class="contact-method">
-                    <div class="contact-icon">📚</div>
-                    <h3>Book Club</h3>
-                    <p>Literary discussions</p>
-                </a>
-                <a href="https://www.linkedin.com/in/fanny-fushayi-529880235" class="contact-method" target="_blank" rel="noopener">
-                    <div class="contact-icon">💼</div>
-                    <h3>LinkedIn</h3>
-                    <p>Connect professionally</p>
-                </a>
-                <a href="https://github.com/FannyFushayi" class="contact-method" target="_blank" rel="noopener">
-                    <div class="contact-icon">🐙</div>
-                    <h3>GitHub</h3>
-                    <p>View my code</p>
-                </a>
-            </div>
-        </div>
-    </section>
-
+    <footer>
+        <div>© <strong>Fanny Fushayi</strong> — Built with pragmatism and curiosity.</div>
+    </footer>
 
     <script>
-        function toggleAI() {
-            const aiChat = document.getElementById('aiChat');
-            aiChat.classList.toggle('active');
-        }
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        hamburger && hamburger.addEventListener('click', () => {
+            const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+            hamburger.setAttribute('aria-expanded', String(!expanded));
+            mobileMenu.classList.toggle('active', !expanded);
+            mobileMenu.setAttribute('aria-hidden', String(expanded));
+        });
 
-        function askQuestion(topic) {
-            const messages = document.getElementById('aiMessages');
-            const responses = {
-                skills: "Fanny is an Electrical Engineering graduate with expertise in power systems, energy systems, and control systems. He's particularly passionate about machine learning, AI, and the intersection of technology with human consciousness. He also loves writing and exploring existential questions through both technical and creative lenses.",
-                projects: "Fanny has worked on fascinating projects including a handwritten digit recognizer using deep learning, a go-kart energy system combining power electronics with efficient energy management, and maintains a weekly blog exploring the intersection of technology and philosophy. He believes in building things from scratch - whether circuits or stories.",
-                experience: "Fanny explores the intersection of technology and meaning. By day, he's knee-deep in power systems and the evolving logic of machines. By night, he writes and reads, blending ideas from literature, AI, and the human condition. He's currently learning deep learning and deploying models while writing weekly blogs alternating between tech and creativity.",
-                contact: "You can reach Fanny through email at fanny@fushayifanny.co.za, read his thoughts on his blog, or join his book club for literary discussions. He's always open to conversations about technology, literature, and the curious connections between code and consciousness!"
-            };
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (mobileMenu.classList.contains('active') && 
+                !e.target.closest('.mobile-menu') && 
+                !e.target.closest('.hamburger')) {
+                mobileMenu.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+                mobileMenu.setAttribute('aria-hidden', 'true');
+            }
+        });
 
-            const userMessage = document.createElement('div');
-            userMessage.className = 'ai-message';
-            userMessage.style.background = 'rgba(255, 107, 107, 0.1)';
-            userMessage.style.color = '#ff6b6b';
-            userMessage.textContent = `You asked about ${topic}`;
-            messages.appendChild(userMessage);
-
-            setTimeout(() => {
-                const response = document.createElement('div');
-                response.className = 'ai-message';
-                response.textContent = responses[topic];
-                messages.appendChild(response);
-                messages.scrollTop = messages.scrollHeight;
-            }, 500);
-        }
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+        // Smooth scroll for anchors (works for both desktop and mobile)
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function(e){
+                const href = this.getAttribute('href');
+                if(!href.startsWith('#')) return;
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                const el = document.querySelector(href);
+                if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+                // close mobile menu after click
+                if(window.innerWidth <= 720 && mobileMenu.classList.contains('active')){
+                    mobileMenu.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded','false');
+                    mobileMenu.setAttribute('aria-hidden','true');
                 }
             });
         });
 
-        // Animate skill bars on scroll
-        const observerOptions = {
-            threshold: 0.5,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
+        // Animate skill bars when visible
+        const skills = document.querySelectorAll('.skill-card');
+        const skillObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const skillBars = entry.target.querySelectorAll('.skill-progress');
-                    skillBars.forEach(bar => {
-                        bar.style.width = bar.style.width || '0%';
-                    });
+                if(entry.isIntersecting){
+                    const percent = entry.target.getAttribute('data-percent') || '60';
+                    const bar = entry.target.querySelector('.skill-progress');
+                    setTimeout(()=> bar.style.width = percent + '%', 120);
                 }
             });
-        }, observerOptions);
+        },{threshold:0.25});
+        skills.forEach(s => skillObserver.observe(s));
 
-        document.querySelectorAll('#skills').forEach(section => {
-            observer.observe(section);
+        // AI demo responses (static)
+        const demoResponses = {
+            skills: "Fanny: Electrical systems (power, converters), systems analysis, and growing expertise in ML & deployment. Relevant tools: Python, PyTorch, MATLAB.",
+            projects: "Battery RUL prediction (data pipeline + model + deploy), go-kart energy system (custom BMS & energy distribution), weekly blog on tech & philosophy.",
+            contact: "Email: fannyfushayi75@gmail.com — include a 2-sentence brief + timeline for fastest response. Schedule a call via the link on the contact section."
+        };
+
+        function demoAsk(topic){
+            const box = document.getElementById('aiMessages');
+            const msg = document.createElement('div');
+            msg.className = 'ai-msg';
+            msg.textContent = demoResponses[topic] || 'No data for this topic.';
+            box.appendChild(msg);
+            box.scrollTop = box.scrollHeight;
+        }
+
+        // Accessibility: reduce motion if user prefers
+        if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+            document.querySelectorAll('.skill-progress').forEach(el=>el.style.transition='none');
+        }
+
+        // Basic client-side image fallback: if profile image fails, show initials
+        const profImg = document.querySelector('.profile-pic img');
+        profImg && profImg.addEventListener('error', () => {
+            const parent = profImg.parentElement;
+            parent.innerHTML = '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(90deg,#4ecdc4,#ff6b6b);color:#041018;font-weight:800;font-size:2rem">FF</div>';
+        });
+
+        // Small UX: reveal AI panel
+        const aiBtn = document.getElementById('aiBtn');
+        const aiPanel = document.getElementById('aiPanel');
+        aiBtn && aiBtn.addEventListener('click', () => {
+            const open = aiPanel.classList.toggle('active');
+            aiBtn.setAttribute('aria-expanded', String(open));
         });
     </script>
 </body>
