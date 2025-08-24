@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freshly Grown Ancient Knowledge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Merriweather', serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f7f3;
+            color: #4a3f35;
+        }
+        header {
+            background-color: #3b2f2f;
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        header h1 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            margin: 0;
+            font-size: 2.5em;
+            letter-spacing: 1px;
+        }
+        header p {
+            font-style: italic;
+            opacity: 0.9;
+        }
+        .home-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #4CAF50; /* Vibrant green for a "young/fresh" feel */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+        .home-button:hover {
+            background-color: #45a049;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+        section {
+            margin-bottom: 50px;
+            position: relative;
+        }
+        section::before {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 2px;
+            background-color: #d4a373;
+            margin: 0 auto 20px;
+        }
+        h2 {
+            font-family: 'Roboto', sans-serif;
+            color: #6b4f4f;
+            font-size: 1.8em;
+            text-align: center;
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 20px;
+        }
+        h3 {
+            font-family: 'Roboto', sans-serif;
+            color: #8b5e3c;
+            font-size: 1.4em;
+        }
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        ul, ol {
+            padding-left: 30px;
+            margin-bottom: 20px;
+        }
+        .proverb {
+            font-style: italic;
+            color: #7a4d4d;
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #f4ede4;
+            border-left: 4px solid #d4a373;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #3b2f2f;
+            color: #fff;
+            margin-top: 40px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="home-button">Home</a>
+        <h1>Freshly Grown Ancient Knowledge</h1>
+
+    </header>
+    
+    <div class="container">
+        <section>
+            <p>Hello. This is going to be life-changing! Because in this blog, I will invent new proverbs, or more accurately Tsumo.</p>
+            <p>I am probably a descendant of a long line of Tsumo writers. Which leads me to believe that the knack for crafting concise wisdom runs in my blood. As the saying goes, Mhembwe rudzi inozvara mwana ane kazhumu (the apple does not fall far from the tree). If you are wondering what tree I speak of, I have proved this mathematically (Though I do not recommend reading the proof).</p>
+            
+            <button id="toggle-math" style="display:block;margin:20px auto;padding:10px 20px;background-color:#d4a373;color:#fff;border:none;border-radius:5px;font-family:'Roboto',sans-serif;cursor:pointer;">Please bore me with probably incorrect math</button>
+            <div id="math-section" style="display:none;">
+                <h3>Reasoning (with a simple model):</h3>
+                <p>The mathematical model I propose for the number of people in my bloodline at any given point in history is independently derived—because I am an independent mind, and so it is, independently, not completely thought out.</p>
+                <p>It starts with a few simple definitions:</p>
+                <ul>
+                    <li>n is the generation we're considering.</li>
+                    <li>n = 0 is just me, the apple.</li>
+                    <li>Moving to n - 1 would therefore lead to a very unpredictable future.</li>
+                    <li>Moving to n + 1 takes us toward the past, the tree.</li>
+                </ul>
+                <p>Taking into account that parents come in pairs (we can all agree it becomes natural to have a two somewhere in there), the initial equation is:</p>
+                <p class="proverb">ancestors = 2^n</p>
+                <p>(You can try it. at n = 0 you have yourself as the ancestor, at n = 1 your parents etc.)</p>
+                <p>The more critical of you might have realized this model only considers the people above a generation and completely discards the current generation and their descendants. The even more critical may have already realized why this is, and so more on that shall be discussed in the near future.</p>
+                <p>Roughly estimating a generation to be 25 years, we can sfigure out n with the equation:</p>
+                <p class="proverb">n = (2025 - year) / 25</p>
+                <p>And so our full equation becomes:</p>
+                <p class="proverb">ancestors = 2 ^ ( (2025 - year) / 25 )</p>
+                <p>Now, if we put 1600 as the year, we get 17 generations and 131,072 distinct ancestors. And as promised, the equation does not take a sum of all the people involved because it derives how many concurrent ancestors I have at any moment in time.</p>
+                <p>This model, of course, assumes no pedigree collapse. I refuse to expamd upon that cool?</p>
+            </div>
+            <script>
+            document.getElementById('toggle-math').onclick = function() {
+                var mathSection = document.getElementById('math-section');
+                if (mathSection.style.display === 'none') {
+                    mathSection.style.display = 'block';
+                    this.textContent = 'Hide probably incorrect math';
+                } else {
+                    mathSection.style.display = 'none';
+                    this.textContent = 'Please bore me with probably incorrect math';
+                }
+            };
+            </script>
+            <p>You've either skipped the proof or not, either way you have come to the same conclusion. Now that you are confident in my ability to impart upon the world great wisdom, We shall now look into how the current wisdom was crafted, its characteristics, and how I have come to the conclusion that I can participate.</p>
+        </section>
+        
+        <section>
+            <h2>PART 2: Chara chimwe hachitswanyi inda (One person cannot do all things alone).</h2>
+            <p>The first thing I must point out is an obvious fact: none of these proverbs are credited to an author or, more precisely, to a philosopher. This is something distinctly different about the African tradition from which they come.</p>
+            <p>To us—and here I speak with a naivety I ask you to take with a grain of salt—the world was not a race to become the 'best of the best', or to be remembered. It was a collective project for the greater good of everyone. The wisdom belonged to the whole, and so the proverbs carry no names.</p>
+            <p>Or, perhaps, it was simply a matter of data compression. Transferred through oral tradition and not written down, it was likely easier to remember the clean, ccompressed wisdom itself than to also carry the name of its original philosopher across centuries.</p>
+            <p>Either way, I shall be continuing this tradition. I will distribute the ownership of the knowledge I impart to everyone. This comes with associated risks and privileges, though I am certain the former outweighs the latter—hence the decision.</p>
+        </section>
+        
+        <section>
+            <h2>PART 3: Chiri mumusakasaka chinozvinzwira (In a bundle of advice, each person takes what applies to them.)</h2>
+            <p>This leads me to the second characteristic: there are no rigid interpretations of this philosophy. (Although, for exam purposes, it is better to stick to the interpretation your Shona teacher provides. I am not your Shona teacher.)</p>
+            <p>For all other applications, the wisdom is deeply contextual. It is a tool, not a commandment. Its meaning shifts and focuses depending on the situation it is used to illuminate.</p>
+            <p>Thanks to this ancient principle, I feel liberated from the need to provide a single, "correct" interpretation for the tsumo I will present. The interpretation, adoption, and application shall be left entirely in the hands of the larger community. I will accept the verdict on their usefulness completely.</p>
+            <p>There is one more hallmark of the tsumo I must honour: its breathtaking efficiency. The language often uses a tiny story—a vessel—to carry a profound idea, ensuring the knowledge arrives as a complete package with its own example. This requires almost supernatural concision.</p>
+            <p>I must confess, this is the part of the "assignment" where I will most definitely struggle. This is where my European ancestry (which I can mathematically prove) might betray me. I have never once been able to say only a few words, especially when I am electrified by an idea.</p>
+            <p>And so, I ask you to forgive a slightly higher-than-average word count. I will strive for the elegant compactness of my ancestors, but I make no promises.</p>
+        </section>
+        
+        <section>
+            <h2>PART 4: CHITSVA CHIRI MURUTSOKA (What is new is in the journey.)</h2>
+            <p>I have now established my claim to the tsumo bloodline and outlined the philosophy behind their creation. But you might be asking: what is it that I am bringing to the tsumo world that is new?</p>
+            <p>To which I answer: Travel.</p>
+            <p>(Though, it must be said, on a very tight budget. An exceptionally tight budget.)</p>
+            <p>I am speaking of the most potent form of travel available to the modern mind: travel through books and movies. I have walked the tense, philosophical streets of Dostoevsky’s Russia. I have felt the absurdist sun in Camus’s France. Through Kafka, I have been bureaucratically lost in a German-Czech Prague. I have seen the dystopian surveillance of Orwell’s Airstrip One, a province of the superstate Oceania, the glittering wit of Wilde’s England, and the flowing consciousness of Woolf’s England. Osami’s Japan, Grisham’s America, Browns America... you get the point. As I said, using less words for a point is going to be challenging.</p>
+            <p>I have, in effect, travelled through space and time. The budget was tight—almost free. In fact, the delivery of these worlds is, more often than not, completely free.</p>
+            <p>This is my new ingredient. I will be filtering the timeless, collective wisdom of the Shona tsumo through the singular, global perspectives I have visited. The result, I hope, will be a new kind of proverb: one born from the soil of Africa but watered by rains from every corner of the world.</p>
+            <p>From this global literary journey, my particular angle of approach to the tsumo tradition will lean toward the pessimistic and realist side—a philosophical perspective that is certainly not new to the world.</p>
+            <p>If we can take my affinity for these themes as evidence, I might even be able to pinpoint a high-probability lineage of tsumo writers within my own bloodline who specialized in this very vein of wisdom. The sheer number of proverbs that grapple with hardship and stark reality is telling.</p>
+            <p>To illustrate this, consider these three examples (and it occurs to me that someone should seriously analyze the distribution of these themes—by "someone," I mean a person taking this more seriously than I am, which is basically everyone. They should especially look into the romance section, as I found a surprising number of tsumos on love, like the perfectly succinct Rudo ibofu—"Love is blind") okay long tangent if you forgot what I am doing, I am finding tsumos that I think my ansestors wrote....:</p>
+            <ol>
+                <li class="proverb">Chiri pamuchena chiri pamutenure. (The poor man’s victories do not last.)<br>A deeply realist, almost cynical take on the fleeting nature of success for those without means.</li>
+                <li class="proverb">Murombo haarovi chinenguwo. (The poor man hardly makes a huge success.)<br>A stark observation on the systemic barriers of poverty, echoing the deterministic struggles in the works of Dostoevsky or Orwell.</li>
+                <li class="proverb">Mudzimu wakupa chironda wati nhunzi dzikudye. (For everything that happens, there is a reason.)<br>This can be taken earnestly as faith or ironically as a comment on absurdity—a search for meaning in suffering that would feel right at home in a Kafka parable.</li>
+            </ol>
+        </section>
+        
+        <section>
+            <h2>PART 5: kuudza mwana hupedzisira (translation avoided to not overexplain the joke)</h2>
+            <p>If you are to take away anything from this blog, let it be the words that follow. Most of these come to me in dreams, so they might be a bit nonsensical, but in the spirit of Dostoevsky, I say: I speak nonsense, therefore I am.</p>
+            <p>(I am being modest, of course. These are pure genius.)</p>
+            <ol>
+                <li class="proverb">Anoramba kuregerera, anorinda mhosva yemoyo wake.<br>(One who withholds forgiveness guards the guilt in their own heart.)</li>
+                <p>The backstory for this one is probably the same as for any major shift in my mentality: The Brothers Karamazov. As I neared the conclusion of that book—the greatest ever written—I noticed the author was openly accusing me of being unforgiving. I realized I could not allow the characters to change; they were once bad, and so they shall remain. I thought long and hard and realized this was because I could never forgive myself.</p>
+                <p>Okay, on to the next one.</p>
+                <li class="proverb">Mhembwe inodya mupunga inoti isina haina mufaro; isina inoti inawo haina kuchema.<br>(The antelope that eats grain thinks the one without it knows no joy; the one without thinks the one with knows no sorrow.)</li>
+                <p>This is a terrible, terrible example, as I suppose there's no emotional objective to animals feeding. But I will keep it so, as there needs to be animals in tsumo.Perhaps you get what I mean. I remind you of my naivety again, but I don’t believe in wealth. (Please check back in a few years; I’m sure this might have changed.)</p>
+                <p>Don’t get me wrong—striving to be wealthy is a great worldly pastime. Perhaps my mind is too simple to comprehend your big dreams of having so much (that is only because some will not have, by the way; otherwise, it’s useless).</p>
+                <p>Look, people are different. But I will tell you, as someone who has laughed at the funeral of someone I loved: it was the best laugh of my entire life. Did I go back to feeling like I was drowning while dry, feeling like my head was stuck while being moved around, and feeling like I swallowed an entire mountain? Yes, almost instantly.</p>
+                <p>But I have never laughed like I did for those few seconds. The highs after lows are higher than the highs after a high—basic differentiation. So are the lows. I think all life has the same average. This is too complex even for me to convey.</p>
+                <p>What I am saying, in short, is: LIVE! Life, whatever it may be—LIVE!</p>
+            </ol>
+            <p>I take my leave (Pun... no?).</p>
+            <p>P.S. The joke in the title of the chapter is: if you want to leave instructions for a child, the best time to do it is just before you go… get it? Like, I put my tsumos at the end because… you know what? It’s okay...</p>
+            <p>Byeeeeeee</p>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Freshly Grown Ancient Knowledge. All rights reserved.</p>
+    </footer>
+</body>
+</html>
