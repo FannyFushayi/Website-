@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Grid Cable Design</title>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+        nav {
+            background-color: #2c2c2c;
+            padding: 1rem;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #00aaff;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        article {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #1a1a1a;
+            font-size: 1.8rem;
+            margin-top: 2rem;
+        }
+        h3 {
+            color: #333;
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+        }
+        p {
+            margin: 1rem 0;
+        }
+        ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+        .equation {
+            font-family: 'Courier New', monospace;
+            background: #f0f0f0;
+            padding: 0.5rem;
+            border-radius: 4px;
+            display: inline-block;
+            margin: 0.5rem 0;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #1a1a1a;
+            color: #fff;
+            margin-top: 2rem;
+        }
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .container {
+                margin: 1rem;
+            }
+        }
+        .case-study {
+            border: 1px solid #b0b0b0;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            background-color: #fff;
+            font-style: italic;
+            border-radius: 8px;
+        }
+
+        .case-study h3 {
+            color: #00aaff;
+            margin-top: 0;
+            font-style: italic;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Transmission Cable Design</h1>
+        <h2 style="font-weight:400; font-size:1.2rem; margin-top:0.5rem; color:#fff;"></h2>
+            Includes a case study and insights from the Electrical Distribution Network
+        </h2>
+    </header>
+
+    <div class="container">
+        <article>
+            <section id="intro">
+                <p>It goes without saying that cables are a critical part of any electrical system. Their simplicity and lack of “fancy” parts can mislead you into thinking they're one of the simpler components to design. However, one of the greatest challenges and thus a major source of innovation in the early days of the power grid was in cable design.  Every power grid in the world is built around that cable design problem. We will ultimately discuss what this innovation is, after it has been put into context. </p>
+            </section>
+            <section id="part1">
+                <h2>Part 1: How Cables Fail (Electrically)</h2>
+                <p>Let's start with how cables fail. A cable's sole purpose is to transmit power from the source to the load. But to understand failure, we need to look past power itself and break it down into its two fundamental components: current and voltage. <span class="equation">P = VI</span>, where P is power, V is voltage, and I is current.Therefore, a cable transmits power by maintaining a voltage across its length and conducting a current through its lines. This means there are two primary electrical failure modes (we'll leave mechanical ones for later): a cable can fail because of a voltage it can't withstand, or a current it can't carry.</p>
+                <h3>1. Voltage Failure</h3>
+                <p>The voltage rating of a cable is determined by the insulation material between the conductors. If the voltage across the cable is too high, it can overwhelm the insulation, leading to a catastrophic breakdown, such as an arc or short circuit.</p>
+                <h3>2. Current Failure</h3>
+                <p>The current rating, on the other hand, is all about heat. The current flowing through the conductor generates heat due to the cable's inherent resistance (<span class="equation">I²R</span> losses). If the current is too high, the conductor can overheat, degrading its insulation, melting, or even starting a fire.</p>
+                <p>But beyond outright failure, a good design must also account for performance. Two critical considerations are voltage drop and electrical noise.</p>
+                <h3>3. Voltage Drop & System Performance</h3>
+                <p>Over long distances, a cable's resistance causes a loss of voltage between the source and the load. While this drop might not destroy the cable itself, it can be a major problem. A motor receiving low voltage may draw excessive current to compensate, which could then lead to the thermal (current) failure we just discussed. It’s a classic case of one issue creating another.</p>
+                <h3>4. Noise & Reactive Power</h3>
+                <p>In AC systems, the cable’s physical layout creates unintended capacitance and inductance. This introduces “noise” and reactive power (VARs) into the system, which reduces real efficiency by drawing more current just to do the same work. In digital systems, these parasitic effects can even cause large voltage spikes that trigger cryptic errors like “LINK OVERVOLTAGE”—a frustrating problem that’s notoriously difficult to diagnose but often roots back to cable design and selection.</p>
+            </section>
+
+            <section id="part2">
+                <h2>Part 2: The Design Process</h2>
+                <p>The most effective design principle is to minimize the distance between source and load. After optimizing layout, cable selection involves:</p>
+                <h3>Load Analysis</h3>
+                <p>Understand the load's operating conditions:</p>
+
+                <ul>
+                    <li>Operating Voltage (e.g., 480V AC, 24V DC)</li>
+                    <li>Supply Phase (Single phase or 3 phase systems)</li>
+                    <li>Full-Load Current (Amps)</li>
+                    <li>Power Factor (for AC loads)- This is crucial as it determines the amount of reactive power, which is the power that oscillates back and forth in the system without being consumed this can increase line current by 10–30% with no additional real power delivered</li>
+                </ul>
+
+                <p>To ensure reliability, you never design to the exact calculated load. A safety factor (often 1.25 to 1.3 times the calculated current) is applied to the final current requirement. This provides headroom for startup surges, minor overloads, and future expansion.</p>
+                <ul>
+                    <li>Real Power: <span class="equation">P = V × I × pf</span></li>
+                    <li>Current: <span class="equation">I = P / (V × pf)</span></li>
+                </ul>
+
+                <h3>Step 2: Choosing a Conductor</h3>
+                <p>
+                    With your final current requirement known, you can select a conductor. The choice involves a balance of:
+                </p>
+                <ul>
+                    <li>
+                        <strong>Conductivity:</strong> Copper has lower resistivity than aluminum, meaning a smaller cross-section for the same current, but it's heavier and more expensive.
+                    </li>
+                    <li>
+                        <strong>Mechanical Strength:</strong> Does the application require flexibility (stranded cable) or rigidity (solid core)? Is the cable exposed to physical stress?
+                    </li>
+                    <li>
+                        <strong>Current-Carrying Capacity (Ampacity):</strong> This determines the minimum cross-sectional area (or wire gauge, like AWG or mm²) needed to carry the current without overheating. Ampacity is not a fixed number; it is drastically affected by:
+                        <ul>
+                            <li><strong>Ambient Temperature:</strong> A cable's ability to dissipate heat is reduced in hot environments, forcing you to derate its ampacity (use a larger wire).</li>
+                            <li><strong>Installation Method:</strong> Is it in a cool, open conduit? Bundled tightly with other cables in a tray? Buried directly in the ground? Each method has a different thermal derating factor. For example, a cable buried underground may have a higher ampacity than one in a sun-exposed conduit, depending on the soil conditions and depth.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Economics:</strong> Copper cables offer better performance but are significantly more expensive than aluminum. For large projects, material cost and availability can drive the choice, especially for long runs or high-current applications.
+                    </li>
+                </ul>
+
+                <h3>Verifying Voltage Drop</h3>
+                <p>The final check is to ensure the voltage at the load is within acceptable limits. Even a properly sized cable (from a heating perspective) can cause too much voltage drop over a long distance. You must calculate the voltage drop and ensure it is less than the maximum allowed by your design standards (e.g., 3% for branch circuits, 5% for feeder circuits is a common benchmark, though always consult your local code, like the SANS 10142-1 wiring code in South Africa).</p>
+                <p><span class="equation">V_drop = I × R × √3 × Length</span> (for AC three-phase)</p>
+            </section>
+            <div class="case-study">
+                <section id="case-study">
+                    <h2>Case Study: Designing for a Crusher and Conveyor System</h2>
+                    <p>This case study examines the cabling design for a Horizontal Shaft Impactor (HSI) crusher and three conveyors, providing a practical application of cable failure modes and design principles.</p>
+
+                    <h3>Load Analysis & Current Calculation</h3>
+                    <p>The initial step involved calculating the full-load currents (FLC) and applying appropriate safety factors:</p>
+                    <ul>
+                        <li>HSI Crusher (180 kW): FLC ≈ 260 A; with a 1.25 safety factor and nameplate power factor, design current ≈ 380 A</li>
+                        <li>Conveyor 1 (22 kW): FLC ≈ 32 A; design current ≈ 50 A</li>
+                        <li>Conveyor 2 (18.5 kW): FLC ≈ 27 A; design current ≈ 40 A</li>
+                        <li>Conveyor 3 (15 kW): FLC ≈ 22 A; design current ≈ 32 A</li>
+                        <li>Infeed Cable: 300 kVA, current ≈ 502 A</li>
+                    </ul>
+                    <p>The Direct-On-Line (DOL) starting method for the conveyors resulted in inrush currents of 6–7 times the FLC, making this a critical consideration.</p>
+
+                    <h3>The Dominant Design Factor: Voltage Drop</h3>
+                    <p>The 210-meter distance from the substation to the HSI crusher made voltage drop the primary concern. Using the formula <span class="equation">V_drop = √3 × I × R × Length</span>, it was evident that for a given cable size (R), the voltage drop over 210 meters would be significant. A cable sized only for ampacity (~600 A) would have resulted in excessive voltage drop. Modeling the voltage drop during soft-start ramp-up was also necessary to ensure proper motor operation and control.</p>
+                    <p>For the conveyors and crusher, shorter cable lengths (60–90 m) reduced voltage drop concerns, but verification was needed to ensure that DOL inrush currents would not cause voltage dips affecting other equipment on the same circuit.</p>
+
+                    <h3>Cable Selection</h3>
+                    <ul>
+                        <li>Feeder (210 m): 2-Core 300 mm² XLPE/SWA/PVC cable was selected, primarily to minimize resistance and control voltage drop within strict limits (&lt;2.5% at full load), rather than for ampacity alone.</li>
+                        <li>Conveyor 1 (22 kW, 90 m): 2-Core 16 mm² XLPE/SWA/PVC cable was specified based on ampacity and the need to limit voltage drop during DOL starting.</li>
+                        <li>Conveyor 2 (18.5 kW, 70 m): 2-Core 16 mm² XLPE/SWA/PVC cable was specified.</li>
+                        <li>Conveyor 3 (15 kW, 60 m): 2-Core 10 mm² XLPE/SWA/PVC cable was sufficient for the current and inrush requirements.</li>
+                    </ul>
+
+                    <p>This project demonstrates that cable design is a negotiation between constraints. For the long run to the crusher, voltage drop was the dominant factor. For the shorter conveyor runs, ampacity and inrush current handling were decisive. Applying theoretical principles ensured a reliable and efficient system that operated correctly under all conditions.</p>
+                </section>
+            </div>
+
+            <section id="project-gallery">
+                <h2>Project Gallery</h2>
+                <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center;">
+                    <figure style="flex: 1 1 250px; max-width: 300px; text-align: center;">
+                        <img src="Images/HSI_Machine.jpg" alt="HSI Crusher Machine" style="width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+                        <figcaption>HSI Crusher Machine</figcaption>
+                    </figure>
+                    <figure style="flex: 1 1 250px; max-width: 300px; text-align: center;">
+                        <video controls style="width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+                            <source src="Images/comm.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <figcaption>Conveyor System in Operation</figcaption>
+                    </figure>
+                    <figure style="flex: 1 1 250px; max-width: 300px; text-align: center;">
+                        <img src="Images/Cable_distance.jpg" alt="Cable Distance Layout" style="width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+                        <figcaption>Cable Distance Layout</figcaption>
+                    </figure>
+                </div>
+            </section>
+            <section id="conclusion">
+                <h2>Conclusion</h2>
+                <p>
+                    Now, you're probably wondering: if current dictates the size, how are power lines for entire cities not impossibly thick? We've established that the cross-sectional area of a cable depends on the current it must carry. The key to managing this is to make that current as small as possible. This is where transformers come in—they're the genius behind the entire grid.
+                </p>
+                <p>
+                    At the generator station, voltage is stepped up by massive transformers to incredibly high levels—as high as <span class="equation">765,000 V (765 kV)</span> or more for long-distance transmission. Remember our power equation: <span class="equation">P = VI</span>. For a given amount of power (P), increasing voltage (V) drastically decreases current (I). By stepping up the voltage, we reduce the current flowing through those long-distance lines to surprisingly low values—often just a few hundred amperes even for powering entire regions. This allows engineers to use conductors only a few centimeters in diameter, rather than the meters-thick cables that would otherwise be required.
+                </p>
+                <p>
+                    Additionally, this high-voltage, low-current approach is incredibly efficient because it minimizes the dominant loss in transmission lines: <span class="equation">I²R</span> losses. The power lost as heat is proportional to the square of the current. Halving the current reduces these losses to a quarter.
+                </p>
+                <p>
+                    Therefore, the entire power grid is a carefully orchestrated dance of voltage:
+                </p>
+                <ul>
+                    <li>Step up to ultra-high voltage for efficient long-distance travel.</li>
+                    <li>Step down at regional substations for distribution (e.g., to 11kV or 33kV).</li>
+                    <li>Step down again by a transformer on a pole near your home to the safe voltage we use (230V or 120V).</li>
+                </ul>
+                <p>
+                    So, the humble cable's design is ultimately what shaped the architecture of our entire electrical world, forcing the invention of a high-voltage transmission system to make it all feasible.
+                </p>
+            </section>
+        </article>
+    </div>
+
+    <nav style="background: none; box-shadow: none; text-align: left; margin: 2rem 0 0 0;">
+        <a href="blog.html" style="color: #00aaff; font-weight: 600; text-decoration: none; font-size: 1.1rem; display: inline-flex; align-items: center;">
+            &#8592; Home
+        </a>
+    </nav>
+    <footer>
+        <p>&copy; 2025 Fanny Fushayi</p>
+    </footer>
+</body>
+</html>
