@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crusher Electrical Installations - RBM Electricals</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #1a1a1a;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(255, 102, 0, 0.3);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .company-info h1 {
+            color: #FF6600;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .company-info p {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .author-info {
+            text-align: right;
+        }
+
+        .author-info h3 {
+            color: #FF6600;
+        }
+
+        .author-info p {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), #2c2c2c;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .project-collage {
+            background: #333;
+            height: 300px;
+            margin: 2rem 0;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #FF6600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .collage-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .collage-item {
+            background: linear-gradient(45deg, #FF6600, #ff8533);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .collage-item:hover {
+            transform: scale(1.05);
+            z-index: 2;
+        }
+
+        .project-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #FF6600;
+        }
+
+        .project-subtitle {
+            font-size: 1.2rem;
+            color: #ccc;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: white;
+            color: #333;
+        }
+
+        .section {
+            padding: 3rem 0;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #FF6600;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mining-icon {
+            width: 30px;
+            height: 30px;
+            background: #FF6600;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .highlight-box {
+            background: #f8f8f8;
+            border-left: 5px solid #FF6600;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .technical-specs {
+            background: #1a1a1a;
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .technical-specs h4 {
+            color: #FF6600;
+            margin-bottom: 1rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .spec-item {
+            background: #2c2c2c;
+            padding: 1rem;
+            border-radius: 5px;
+            border: 1px solid #FF6600;
+        }
+
+        .standards-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .standard-item {
+            background: #f0f0f0;
+            padding: 1rem;
+            border-radius: 5px;
+            border-left: 4px solid #FF6600;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #FF6600, #ff8533);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(255, 102, 0, 0.3);
+        }
+
+        .result-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            background: #FF6600;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .footer-link:hover {
+            background: #e55a00;
+            transform: translateY(-2px);
+        }
+
+        .location-info {
+            color: #ccc;
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .author-info {
+                text-align: center;
+            }
+
+            .project-title {
+                font-size: 2rem;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .collage-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="company-info">
+                    <h1>RBM ELECTRICALS</h1>
+                    <p>Professional Electrical Engineering Solutions</p>
+                </div>
+                <div class="author-info">
+                    <h3>Fanny Fushayi</h3>
+                    <p>Project Engineer</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" style="position: relative; min-height: 500px; background: none;">
+        <div style="
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        ">
+            <div style="
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+                width: 100%;
+                height: 100%;
+            ">
+                <img src="Images/PROJECT_MAJ/IMG_0018.JPEG" style="width:100%;height:100%;object-fit:cover;opacity:0.55;">
+                <img src="Images/PROJECT_MAJ/IMG_0031.JPEG" style="width:100%;height:100%;object-fit:cover;opacity:0.55;">
+                <img src="Images/PROJECT_MAJ/IMG_0042.JPEG" style="width:100%;height:100%;object-fit:cover;opacity:0.55;">
+                <img src="Images/PROJECT_MAJ/IMG_0048.JPEG" style="width:100%;height:100%;object-fit:cover;opacity:0.55;">
+                <img src="Images/PROJECT_MAJ/IMG_0211.JPEG" style="width:100%;height:100%;object-fit:cover;opacity:0.55;">
+                <img src="Images/PROJECT_MAJ/IMG_0215.JPEG" style="width:100%;height:100%;object-fit:cover;opacity:0.55;">
+                <img src="Images\Cable_distance.jpg" style="width:100%;height:100%;object-fit:cover;opacity:0.55;">
+            </div>
+            <div style="
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+                z-index: 1;
+            "></div>
+        </div>
+        <div class="container" style="position: relative; z-index: 2;">
+            <h1 class="project-title">Crusher Electrical Installations & Long-Distance Cable Project</h1>
+            <p class="project-subtitle">Design and implementation of two crusher installations and a long-distance feeder cable under South African design standards at Mooinooi Mining Plant</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Project Overview -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="mining-icon">⚡</span>
+                    Project Overview
+                </h2>
+                <div class="two-column">
+                    <div>
+                        <h3>Scope of Work</h3>
+                        <ul style="margin-top: 1rem; line-height: 2;">
+                            <li><strong>VSI Crusher:</strong> 180kW motor with soft starter integration</li>
+                            <li><strong>HSI Crusher:</strong> High-capacity motor with DOL start method</li>
+                            <li><strong>Long-distance Cable:</strong> 800+ meter installation with optimized sizing</li>
+                            <li><strong>Site Lighting:</strong> Apollo fittings with load diversity considerations</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="highlight-box">
+                            <h4>Project Context</h4>
+                            <p><strong>Industry:</strong> Mining Operations</p>
+                            <p><strong>Location:</strong> Mooinooi, South Africa</p>
+                            <p><strong>Environment:</strong> Heavy-duty mining plant operations</p>
+                            <br>
+                            <p><strong>Role:</strong> Responsible for complete electrical design, calculations, integration, and technical documentation compliance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Objectives -->
+        <section class="section" style="background: #f8f8f8;">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="mining-icon">🎯</span>
+                    Project Objectives
+                </h2>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h4>Reliable Operation</h4>
+                        <p>Ensure dependable motor operation and comprehensive protection systems</p>
+                    </div>
+                    <div class="result-card">
+                        <h4>Voltage Optimization</h4>
+                        <p>Minimize voltage drop on long feeder runs for optimal performance</p>
+                    </div>
+                    <div class="result-card">
+                        <h4>Standards Compliance</h4>
+                        <p>Full adherence to South African electrical design standards</p>
+                    </div>
+                    <div class="result-card">
+                        <h4>Cost Efficiency</h4>
+                        <p>Optimize technical and economic balance in cable sizing decisions</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Design Standards -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="mining-icon">📋</span>
+                    Applicable Design Standards (South Africa)
+                </h2>
+                <p style="margin-bottom: 2rem;">All design work conducted in strict compliance with South African National Standards:</p>
+                <div class="standards-list">
+                    <div class="standard-item">
+                        <strong>SANS 10142-1:</strong> Wiring of Premises (low voltage installations)
+                    </div>
+                    <div class="standard-item">
+                        <strong>SANS 10198:</strong> Power cables with extruded insulation systems
+                    </div>
+                    <div class="standard-item">
+                        <strong>SANS 60034 / IEC 60034:</strong> Rotating electrical machines (motors)
+                    </div>
+                    <div class="standard-item">
+                        <strong>SANS 60947:</strong> Low-voltage switchgear and control gear
+                    </div>
+                    <div class="standard-item">
+                        <strong>SANS 10292:</strong> Earthing of low-voltage electrical installations
+                    </div>
+                    <div class="standard-item">
+                        <strong>SANS 1029:</strong> Lighting installation standards
+                    </div>
+                    <div class="standard-item">
+                        <strong>NRS 048:</strong> Power quality and supply standards
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Challenges -->
+        <section class="section" style="background: #f8f8f8;">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="mining-icon">⚠️</span>
+                    Engineering Challenges
+                </h2>
+                <div class="two-column">
+                    <div>
+                        <h3>Technical Challenges</h3>
+                        <ul style="line-height: 2; margin-top: 1rem;">
+                            <li>Long feeder cable runs with high current loads</li>
+                            <li>Voltage drop concerns affecting crusher startup torque</li>
+                            <li>Large motor inrush current management</li>
+                            <li>Integration with legacy undersized infrastructure</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="highlight-box">
+                            <h4>Key Challenge: Cost vs. Performance Balance</h4>
+                            <p>Optimizing cable selection to achieve acceptable voltage drop while maintaining project economic viability. Required careful analysis of conductor sizing, installation methods, and long-term operational costs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Approach -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="mining-icon">⚙️</span>
+                    Design & Technical Approach
+                </h2>
+                
+                <div class="technical-specs">
+                    <h4>VSI Crusher Installation</h4>
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <strong>Motor Rating:</strong> 180 kW<br>
+                            <strong>Start Method:</strong> Soft Starter<br>
+                            <strong>Rationale:</strong> Reduced inrush current and mechanical stress
+                        </div>
+                        <div class="spec-item">
+                            <strong>Protection:</strong> Thermal overload protection<br>
+                            <strong>Control:</strong> Local and remote operation<br>
+                            <strong>Monitoring:</strong> Current and voltage feedback
+                        </div>
+                    </div>
+                </div>
+
+                <div class="technical-specs">
+                    <h4>HSI Crusher Installation</h4>
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <strong>Motor Rating:</strong> High-capacity industrial motor<br>
+                            <strong>Start Method:</strong> Direct-On-Line (DOL)<br>
+                            <strong>Rationale:</strong> Suitable for application requirements and cost efficiency
+                        </div>
+                        <div class="spec-item">
+                            <strong>Protection:</strong> Circuit breaker coordination<br>
+                            <strong>Safety:</strong> Emergency stop integration<br>
+                            <strong>Maintenance:</strong> Accessible control panels
+                        </div>
+                    </div>
+                </div>
+
+                <div class="technical-specs">
+                    <h4>Cable Design & Installation</h4>
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <strong>Cable Sizes:</strong> 35mm², 70mm² optimized selection<br>
+                            <strong>Total Length:</strong> 800+ meter runs<br>
+                            <strong>Installation:</strong> Buried and tray methods
+                        </div>
+                        <div class="spec-item">
+                            <strong>Voltage Drop:</strong> <5% per SANS requirements<br>
+                            <strong>Ambient Conditions:</strong> Mining environment rated<br>
+                            <strong>Protection:</strong> Mechanical and electrical protection
+                        </div>
+                        <div class="spec-item">
+                            <strong>Lighting Integration:</strong> 3x Apollo fittings<br>
+                            <strong>Load Diversity:</strong> Optimized for operational patterns<br>
+                            <strong>Earthing:</strong> SANS 10292 compliant system
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Implementation -->
+        <section class="section" style="background: #f8f8f8;">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="mining-icon">🔧</span>
+                    Implementation Process
+                </h2>
+                <div class="two-column">
+                    <div>
+                        <h3>Project Phases</h3>
+                        <ol style="line-height: 2.5; margin-top: 1rem;">
+                            <li><strong>Design Phase:</strong> Load calculations, cable sizing, and standards compliance verification</li>
+                            <li><strong>Procurement:</strong> Equipment specification and supplier coordination</li>
+                            <li><strong>Installation:</strong> Systematic installation with safety protocols</li>
+                            <li><strong>Commissioning:</strong> Testing, calibration, and performance verification</li>
+                        </ol>
+                    </div>
+                    <div>
+                        <div class="highlight-box">
+                            <h4>Coordination Excellence</h4>
+                            <p><strong>Civil Team:</strong> Infrastructure preparation and cable routing</p>
+                            <p><strong>Mechanical Team:</strong> Crusher installation coordination</p>
+                            <p><strong>Client Integration:</strong> Operational requirements and feedback</p>
+                            <br>
+                            <p><strong>Site Issues Resolved:</strong> Corrected previous undersized cable installations, improving system reliability and performance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="mining-icon">✅</span>
+                    Project Results & Achievements
+                </h2>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h4>Standards Compliance</h4>
+                        <p>100% compliance with SANS electrical standards and voltage drop requirements (<5%)</p>
+                    </div>
+                    <div class="result-card">
+                        <h4>Operational Stability</h4>
+                        <p>Stable crusher operation achieved with both soft start and DOL configurations</p>
+                    </div>
+                    <div class="result-card">
+                        <h4>System Reliability</h4>
+                        <p>Dramatically improved system reliability through proper cable sizing and protection</p>
+                    </div>
+                    <div class="result-card">
+                        <h4>Performance Optimization</h4>
+                        <p>Optimal balance between technical performance and project cost efficiency</p>
+                    </div>
+                </div>
+                
+                <div class="highlight-box" style="margin-top: 3rem;">
+                    <h4>Key Lesson Learned</h4>
+                    <p>The critical importance of comprehensive upfront cable design for both electrical performance and long-term cost efficiency. Proper infrastructure planning prevents costly retrofits and ensures reliable mining operations.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reflection -->
+        <section class="section" style="background: #f8f8f8;">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="mining-icon">💡</span>
+                    Professional Reflection & Takeaways
+                </h2>
+                <div class="two-column">
+                    <div>
+                        <h3>Engineering Excellence</h3>
+                        <p style="line-height: 1.8;">This project reinforced that electrical engineering extends far beyond equipment selection. The critical importance of infrastructure design—cables, protection systems, and integration planning—cannot be overstated in mining environments.</p>
+                        
+                        <h3 style="margin-top: 2rem;">Problem-Solving Approach</h3>
+                        <p style="line-height: 1.8;">Successfully demonstrated adaptive engineering problem-solving when working with existing infrastructure limitations, turning challenges into opportunities for system improvement.</p>
+                    </div>
+                    <div>
+                        <h3>Technical Judgment</h3>
+                        <p style="line-height: 1.8;">The project showcased the importance of balancing technical requirements with economic constraints, particularly in cable sizing decisions that impact both performance and project viability.</p>
+                        
+                        <h3 style="margin-top: 2rem;">Standards Mastery</h3>
+                        <p style="line-height: 1.8;">Deepened expertise in South African electrical standards application, ensuring all installations meet rigorous safety and performance requirements for mining operations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#" class="footer-link">← Back to Projects</a>
+                <a href="#" class="footer-link">Download CV/Resume PDF</a>
+                <a href="#" class="footer-link">Detailed Case Study →</a>
+            </div>
+            <div class="location-info">
+                <p><strong>RBM Electricals</strong> | Professional Electrical Engineering Solutions</p>
+                <p>Mooinooi Mining Project | South Africa</p>
+                <p>Project Engineer: <strong>Fanny Fushayi</strong></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling and fade-in animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Animate elements on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeIn 1s ease-in forwards';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.section').forEach(section => {
+                observer.observe(section);
+            });
+
+            // Add hover effects to collage items
+            document.querySelectorAll('.collage-item').forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05)';
+                    this.style.zIndex = '10';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                    this.style.zIndex = '1';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
