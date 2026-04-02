@@ -1,452 +1,920 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Fanny Fushayi — Electrical engineer, machine learning practitioner, and writer. Portfolio of projects, blog and contact." />
-    <meta name="keywords" content="Fanny Fushayi, Electrical Engineer, Machine Learning, AI, Power Systems, Energy Systems, Control Systems, Writing, Technology Blog, Engineering Portfolio" />
-    <title>Fanny Fushayi — Engineer · Writer · Maker</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Industrial Automation Engineer specializing in PLC platforms and control systems for industrial applications. Experienced in designing, integrating, and optimizing control logic." />
+<title>Fanny Fushayi - Industrial Automation Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Handlee&display=swap" rel="stylesheet">
+html{
+  scroll-behavior:smooth;
+}
 
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+:root{
+  --bg:#0a0a09;
+  --surface:#121210;
+  --surface-elevated:#1a1a17;
+  --border:#2a2a26;
+  --border-light:#3a3a34;
+  --text:#ece8df;
+  --muted:#8a877e;
+  --accent:#d4bd97;
+  --accent-glow:rgba(212,189,151,0.12);
+  --accent-dim:#5e5542;
+  --gradient-1:linear-gradient(145deg, #d4bd97 0%, #b89f7a 100%);
+}
 
-    <style>
-        /* Reset & base */
-        *{box-sizing:border-box;margin:0;padding:0}
-        html,body{height:100%}
-        body{
-            font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-            background:#06060a;color:#eef2f6;line-height:1.55;
-            -webkit-font-smoothing:antialiased;overflow-x:hidden;
-        }
+body{
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
 
-        /* Animated gradient background (subtle, accessible) */
-        .bg-animation{position:fixed;inset:0;background:linear-gradient(135deg,#071029 0%,#071a2a 50%,#08101d 100%);z-index:-2;}
-        .bg-noise{position:fixed;inset:0;opacity:0.03;background-image:radial-gradient(circle at 10% 10%, rgba(255,255,255,0.02) 0, transparent 20%), radial-gradient(circle at 90% 90%, rgba(255,255,255,0.02) 0, transparent 20%);z-index:-1}
+/* custom scroll */
+::-webkit-scrollbar{
+  width:6px;
+}
+::-webkit-scrollbar-track{
+  background:var(--surface);
+}
+::-webkit-scrollbar-thumb{
+  background:var(--accent-dim);
+  border-radius:3px;
+}
 
-        /* Layout */
-        nav{position:fixed;top:0;left:0;right:0;padding:0.7rem 1rem;background:rgba(6,6,10,0.55);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.03);z-index:999}
-        .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-        .logo{font-weight:800;font-size:1.1rem;background:linear-gradient(90deg,#ff6b6b,#4ecdc4);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* NAVIGATION */
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  padding:1.6rem 2.5rem;
+  z-index:1000;
+  transition:all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+nav.scrolled{
+  padding:0.9rem 2.5rem;
+  background:rgba(10,10,9,0.92);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  box-shadow:0 2px 20px rgba(0,0,0,0.3);
+}
+.nav-inner{
+  max-width:1200px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo{
+  font-family:'DM Serif Display',serif;
+  font-size:1.3rem;
+  letter-spacing:-0.01em;
+  background:var(--gradient-1);
+  background-clip:text;
+  -webkit-background-clip:text;
+  color:transparent;
+  font-weight:400;
+}
+.nav-links{
+  display:flex;
+  gap:2.2rem;
+}
+.nav-links a{
+  color:var(--muted);
+  text-decoration:none;
+  font-size:0.85rem;
+  font-weight:450;
+  letter-spacing:0.02em;
+  transition:color 0.25s ease;
+  position:relative;
+}
+.nav-links a::after{
+  content:'';
+  position:absolute;
+  bottom:-6px;
+  left:0;
+  width:0;
+  height:1.5px;
+  background:var(--accent);
+  transition:width 0.25s ease;
+}
+.nav-links a:hover{
+  color:var(--text);
+}
+.nav-links a:hover::after{
+  width:100%;
+}
+.hamburger{
+  display:none;
+  background:var(--surface);
+  border:1px solid var(--border);
+  color:var(--accent);
+  padding:0.45rem 0.85rem;
+  border-radius:12px;
+  cursor:pointer;
+  font-size:1.2rem;
+  transition:background 0.2s;
+}
+.hamburger:hover{
+  background:var(--border);
+}
+.mobile-menu{
+  display:none;
+  position:absolute;
+  top:calc(100% + 0.8rem);
+  right:1.5rem;
+  background:var(--surface-elevated);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:0.8rem;
+  min-width:180px;
+  backdrop-filter:blur(12px);
+  box-shadow:0 12px 28px rgba(0,0,0,0.4);
+}
+.mobile-menu a{
+  display:block;
+  padding:0.7rem 1rem;
+  color:var(--muted);
+  text-decoration:none;
+  font-size:0.85rem;
+  border-radius:12px;
+  transition:all 0.2s;
+}
+.mobile-menu a:hover{
+  background:var(--accent-glow);
+  color:var(--accent);
+}
+.mobile-menu.open{
+  display:block;
+}
 
-        /* Desktop nav links */
-        .nav-links{display:flex;gap:1rem;align-items:center}
-        .nav-links a{color:var(--muted,#dbe8ee);text-decoration:none;padding:0.45rem 0.6rem;border-radius:6px;font-weight:600}
-        .nav-links a:hover{color:white;background:rgba(255,255,255,0.02)}
-        .resume-btn{background:linear-gradient(90deg,#4ecdc4,#ff6b6b);padding:0.45rem 0.9rem;border-radius:999px;color:#061017;font-weight:700;text-decoration:none}
+/* HERO SECTION — enhanced rhythm */
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding:8rem 2.5rem 5rem;
+  position:relative;
+  isolation:isolate;
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 80% 20%, rgba(212,189,151,0.03), transparent 70%);
+  pointer-events:none;
+}
+.ascent-line{
+  position:absolute;
+  right:7%;
+  bottom:0;
+  width:2px;
+  height:65%;
+  background:linear-gradient(to top, var(--accent), transparent);
+  opacity:0.35;
+  border-radius:2px;
+}
+.ascent-dot{
+  position:absolute;
+  right:calc(7% - 5px);
+  bottom:65%;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:var(--accent);
+  opacity:0.9;
+  box-shadow:0 0 8px var(--accent);
+  animation:pulseGlow 2.5s infinite;
+}
+@keyframes pulseGlow{
+  0%{opacity:0.5; transform:scale(0.9);}
+  50%{opacity:1; transform:scale(1.2);}
+  100%{opacity:0.5; transform:scale(0.9);}
+}
+.hero-inner{
+  max-width:1200px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 340px;
+  gap:4rem;
+  align-items:center;
+}
+.eyebrow{
+  font-size:0.75rem;
+  letter-spacing:0.25em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:1.8rem;
+  font-weight:500;
+  background:var(--accent-glow);
+  display:inline-block;
+  padding:0.2rem 0.8rem;
+  border-radius:40px;
+  backdrop-filter:blur(2px);
+}
+.hero-copy h1{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(2.8rem,5.5vw,4.6rem);
+  line-height:1.08;
+  font-weight:400;
+  margin-bottom:1.6rem;
+}
+.hero-copy h1 em{
+  color:var(--accent);
+  font-style:italic;
+  text-shadow:0 0 8px rgba(212,189,151,0.2);
+}
+.lead{
+  font-size:1.08rem;
+  color:var(--muted);
+  max-width:540px;
+  line-height:1.75;
+  margin-bottom:2.8rem;
+  font-weight:350;
+}
+.cta-row{
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:0.6rem;
+  padding:0.7rem 1.5rem;
+  font-size:0.85rem;
+  font-weight:500;
+  border-radius:60px;
+  text-decoration:none;
+  transition:all 0.25s cubic-bezier(0.2,0.9,0.4,1.1);
+  letter-spacing:0.02em;
+  backdrop-filter:blur(4px);
+}
+.btn-primary{
+  background:var(--gradient-1);
+  color:var(--bg);
+  box-shadow:0 2px 8px rgba(0,0,0,0.2);
+}
+.btn-primary:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.05);
+  box-shadow:0 8px 20px rgba(212,189,151,0.2);
+}
+.btn-ghost{
+  border:1px solid var(--border);
+  color:var(--muted);
+  background:rgba(18,18,16,0.6);
+}
+.btn-ghost:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+  background:var(--accent-glow);
+  transform:translateY(-2px);
+}
 
-        /* Hamburger (mobile) */
-        .hamburger{display:none;background:transparent;border:0;color:inherit;font-size:1.25rem;cursor:pointer}
-        .mobile-menu{display:none;position:absolute;top:100%;right:1rem;background:rgba(6,6,10,0.95);border-radius:10px;padding:0.75rem;box-shadow:0 8px 30px rgba(2,6,23,0.6)}
-        .mobile-menu a{display:block;padding:0.5rem 0.75rem;color:#dbe8ee;text-decoration:none}
+/* PROFILE CARD — refined */
+.profile-card{
+  text-align:center;
+  background:var(--surface-elevated);
+  border-radius:32px;
+  padding:1.8rem 1.5rem;
+  border:1px solid var(--border);
+  backdrop-filter:blur(4px);
+  transition:transform 0.3s, border-color 0.2s;
+}
+.profile-card:hover{
+  border-color:var(--accent-dim);
+  transform:translateY(-5px);
+}
+.profile-pic{
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  overflow:hidden;
+  margin:0 auto 1.3rem;
+  border:2px solid var(--accent-dim);
+  background:var(--surface);
+  box-shadow:0 10px 25px -5px rgba(0,0,0,0.5);
+}
+.profile-pic img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:scale 0.4s;
+}
+.profile-card:hover .profile-pic img{
+  scale:1.02;
+}
+.profile-name{
+  font-family:'DM Serif Display',serif;
+  font-size:1.45rem;
+  letter-spacing:-0.01em;
+  margin-bottom:0.4rem;
+}
+.profile-role{
+  font-size:0.78rem;
+  color:var(--muted);
+  letter-spacing:0.03em;
+  line-height:1.5;
+}
+.social-row{
+  display:flex;
+  justify-content:center;
+  gap:1.5rem;
+  margin-top:1.3rem;
+}
+.social-row a{
+  color:var(--muted);
+  font-size:0.75rem;
+  text-decoration:none;
+  text-transform:uppercase;
+  font-weight:500;
+  transition:color 0.2s;
+}
+.social-row a:hover{
+  color:var(--accent);
+}
 
-        /* Hero */
-        .hero{min-height:85vh;display:flex;align-items:center;justify-content:center;padding:6rem 1rem 4rem}
-        .hero-inner{max-width:1100px;text-align:left;display:grid;grid-template-columns:1fr 380px;gap:2rem;align-items:center}
-        .hero-copy h1{font-size:2.6rem;margin-bottom:0.6rem;line-height:1.05}
-        .hero-copy p.lead{font-size:1.05rem;color:#cfdce6;margin-bottom:1rem}
-        .hero-actions{display:flex;gap:0.8rem;flex-wrap:wrap}
-        .btn{display:inline-block;padding:0.8rem 1rem;border-radius:12px;text-decoration:none;font-weight:700}
-        .btn-primary{background:linear-gradient(90deg,#4ecdc4,#ff6b6b);color:#041018}
-        .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#dbe8ee}
-        .hero-meta{font-size:0.9rem;color:#9fb0bd;margin-top:0.6rem}
+/* MAIN LAYOUT */
+main{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 2.5rem 5rem;
+}
+section{
+  padding:6rem 0;
+  border-top:1px solid var(--border);
+}
+.section-label{
+  font-size:0.7rem;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:3rem;
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  font-weight:500;
+}
+.section-label::after{
+  content:'';
+  flex:1;
+  height:1px;
+  background:linear-gradient(90deg, var(--border), transparent);
+}
+.section-title{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(1.9rem,3.2vw,2.8rem);
+  font-weight:400;
+  margin-bottom:2.8rem;
+  line-height:1.2;
+}
 
-        /* Profile card */
-        .profile-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border-radius:16px;padding:1rem;border:1px solid rgba(255,255,255,0.04);text-align:center}
-        .profile-pic{width:140px;height:140px;border-radius:50%;overflow:hidden;margin:0 auto 0.75rem;border:4px solid rgba(78,205,196,0.12)}
-        .profile-pic img{width:100%;height:100%;object-fit:cover;display:block}
-        .profile-name{font-weight:800}
-        .profile-role{font-size:0.95rem;color:#9fb0bd}
+/* ABOUT enhanced */
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 320px;
+  gap:4rem;
+  align-items:start;
+}
+.about-text p{
+  color:var(--muted);
+  margin-bottom:1.2rem;
+  font-size:0.98rem;
+  line-height:1.85;
+}
+.about-text p strong{
+  color:var(--text);
+  font-weight:500;
+}
+.fact-list{
+  list-style:none;
+  margin-top:2rem;
+}
+.fact-list li{
+  padding:0.85rem 0;
+  border-bottom:1px dashed var(--border);
+  display:flex;
+  gap:1rem;
+  font-size:0.85rem;
+}
+.fact-key{
+  color:var(--muted);
+  min-width:100px;
+  font-weight:500;
+}
+.fact-val{
+  color:var(--text);
+}
+.outcomes-card{
+  background:var(--surface-elevated);
+  border:1px solid var(--border);
+  border-radius:28px;
+  padding:1.8rem;
+  transition:all 0.2s;
+}
+.outcomes-card h4{
+  font-size:0.7rem;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:1.5rem;
+}
+.outcome{
+  display:flex;
+  gap:0.9rem;
+  margin-bottom:1.2rem;
+  font-size:0.85rem;
+  color:var(--text);
+  align-items:baseline;
+}
+.outcome-tick{
+  color:var(--accent);
+  font-size:1rem;
+}
+.avail-badge{
+  display:inline-block;
+  margin-top:1.8rem;
+  padding:0.45rem 1.1rem;
+  border-radius:40px;
+  background:var(--accent-glow);
+  border:1px solid var(--accent-dim);
+  font-size:0.75rem;
+  font-weight:500;
+  color:var(--accent);
+}
 
-        /* Sections */
-        main{max-width:1200px;margin:0 auto;padding:2rem 1rem}
-        section{padding:3.25rem 0;border-top:1px solid rgba(255,255,255,0.02)}
-        .section-title{font-size:1.8rem;margin-bottom:1rem;background:linear-gradient(90deg,#ff6b6b,#4ecdc4);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* SKILLS — refined bars and visual */
+.skills-list{
+  display:flex;
+  flex-direction:column;
+  gap:0.2rem;
+}
+.skill-row{
+  display:grid;
+  grid-template-columns:210px 1fr 50px;
+  align-items:center;
+  gap:2rem;
+  padding:1.4rem 0;
+  border-bottom:1px solid var(--border);
+  transition:background 0.2s;
+}
+.skill-row:first-child{
+  border-top:1px solid var(--border);
+}
+.skill-name-s{
+  font-size:0.95rem;
+  font-weight:550;
+  color:var(--text);
+}
+.skill-sub-s{
+  font-size:0.72rem;
+  color:var(--muted);
+  margin-top:0.2rem;
+}
+.bar-track{
+  height:3px;
+  background:var(--border);
+  border-radius:6px;
+  overflow:hidden;
+}
+.bar-fill{
+  height:100%;
+  background:var(--gradient-1);
+  width:0;
+  transition:width 1.1s cubic-bezier(0.22, 0.97, 0.36, 1);
+  border-radius:6px;
+}
+.pct{
+  font-size:0.75rem;
+  color:var(--muted);
+  text-align:right;
+  font-weight:500;
+}
 
-        /* About grid */
-        .about-grid{display:grid;grid-template-columns:1fr 360px;gap:2rem;align-items:start}
-        .about-text p{margin-bottom:0.9rem;color:#d7e6ef}
-        .about-bullets{margin-top:0.8rem;display:flex;flex-direction:column;gap:0.45rem}
-        .bullet{display:flex;gap:0.6rem;align-items:flex-start}
-        .bullet strong{min-width:110px;display:inline-block;color:#cfeef8}
+/* PROJECTS — modern cards */
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(310px,1fr));
+  gap:2rem;
+}
+.project-card{
+  border:1px solid var(--border);
+  border-radius:28px;
+  overflow:hidden;
+  transition:all 0.35s cubic-bezier(0.2,0.9,0.4,1.1);
+  background:var(--surface);
+}
+.project-card:hover{
+  border-color:var(--accent);
+  transform:translateY(-6px);
+  box-shadow:0 20px 35px -12px rgba(0,0,0,0.5);
+}
+.project-thumb{
+  height:180px;
+  background:#1e1e1a;
+  overflow:hidden;
+}
+.project-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform 0.55s ease;
+  opacity:0.9;
+}
+.project-card:hover .project-thumb img{
+  transform:scale(1.05);
+  opacity:1;
+}
+.project-body{
+  padding:1.5rem;
+}
+.project-card h3{
+  font-family:'DM Serif Display',serif;
+  font-size:1.2rem;
+  font-weight:400;
+  margin-bottom:0.6rem;
+}
+.project-card p{
+  font-size:0.82rem;
+  color:var(--muted);
+  line-height:1.7;
+  margin-bottom:1.2rem;
+}
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.5rem;
+  margin-bottom:1.3rem;
+}
+.tag{
+  font-size:0.65rem;
+  padding:0.2rem 0.75rem;
+  border-radius:40px;
+  background:var(--surface-elevated);
+  border:1px solid var(--border-light);
+  color:var(--muted);
+  letter-spacing:0.01em;
+}
+.project-links{
+  display:flex;
+  gap:0.75rem;
+  flex-wrap:wrap;
+}
 
-        /* Skills */
-        .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
-        .skill-card{padding:1rem;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03)}
-        .skill-name{font-weight:700;margin-bottom:0.4rem}
-        .skill-meta{font-size:0.85rem;color:#9fb0bd}
-        .skill-bar{height:10px;background:rgba(255,255,255,0.04);border-radius:999px;overflow:hidden;margin-top:0.6rem}
-        .skill-progress{height:100%;background:linear-gradient(90deg,#4ecdc4,#ff6b6b);width:0%;transition:width 900ms cubic-bezier(.2,.9,.2,1)}
-        .skill-foot{font-size:0.8rem;color:#8ea7b2;margin-top:0.5rem}
+/* CONTACT */
+.contact-inner{
+  display:grid;
+  grid-template-columns:1fr 270px;
+  gap:4rem;
+}
+.contact-text p{
+  font-size:0.97rem;
+  color:var(--muted);
+  line-height:1.85;
+  max-width:500px;
+  margin-bottom:1.8rem;
+}
+.contact-links{
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;
+  margin-top:0.5rem;
+}
+.contact-info{
+  font-size:0.8rem;
+  color:var(--muted);
+  margin-top:1.4rem;
+}
+.contact-info a{
+  color:var(--accent);
+  text-decoration:none;
+  border-bottom:1px dotted var(--accent-dim);
+}
+.aside-card{
+  background:var(--surface-elevated);
+  border:1px solid var(--border);
+  border-radius:28px;
+  padding:1.8rem;
+}
+.aside-card h4{
+  font-size:0.7rem;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:1rem;
+}
+.aside-card p{
+  color:var(--text);
+  line-height:1.7;
+  font-size:0.85rem;
+}
+.aside-card a{
+  color:var(--accent);
+  text-decoration:none;
+  font-weight:500;
+}
+/* FOOTER */
+footer{
+  max-width:1200px;
+  margin:0 auto;
+  padding:2rem 2.5rem 2.5rem;
+  border-top:1px solid var(--border);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:0.75rem;
+  color:var(--muted);
+}
 
-        /* Projects */
-        .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
-        .project-card{padding:1rem;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);display:flex;flex-direction:column;gap:0.6rem}
-        .project-thumb{height:140px;border-radius:8px;overflow:hidden;background:#0b1220}
-        .project-thumb img{width:100%;height:100%;object-fit:cover}
-        .tech-tags{display:flex;flex-wrap:wrap;gap:0.4rem}
-        .tech-tag{font-size:0.8rem;padding:0.2rem 0.5rem;border-radius:999px;background:rgba(78,205,196,0.08);color:#9fe9e0}
-        .project-links{display:flex;gap:0.6rem;margin-top:auto}
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-inner,.about-grid,.contact-inner{
+    grid-template-columns:1fr;
+    gap:2.5rem;
+  }
+  .profile-card{
+    max-width:340px;
+    margin:0 auto;
+  }
+  .hero-copy{
+    text-align:center;
+  }
+  .lead{
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .cta-row{
+    justify-content:center;
+  }
+  .skill-row{
+    grid-template-columns:1fr 1fr 45px;
+    gap:1rem;
+  }
+}
+@media(max-width:700px){
+  .skill-row{
+    grid-template-columns:1fr;
+    gap:0.8rem;
+  }
+  .bar-track{
+    width:100%;
+  }
+  .pct{
+    text-align:left;
+  }
+}
+@media(max-width:640px){
+  nav,.hero,main{
+    padding-left:1.25rem;
+    padding-right:1.25rem;
+  }
+  .nav-links{
+    display:none;
+  }
+  .hamburger{
+    display:inline-block;
+  }
+  footer{
+    flex-direction:column;
+    gap:0.6rem;
+    text-align:center;
+    padding:1.8rem 1.25rem;
+  }
+  section{
+    padding:3.5rem 0;
+  }
+}
 
-        /* Contact & CTAs */
-        .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:1rem}
-        .contact-methods{display:flex;flex-direction:column;gap:0.6rem}
-        .contact-card{padding:0.8rem;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03)}
-
-        /* AI assistant (demo) */
-        .ai-assistant{position:fixed;right:1rem;bottom:1rem;z-index:999}
-        .ai-button{width:56px;height:56px;border-radius:999px;border:0;cursor:pointer;font-weight:700;background:linear-gradient(90deg,#4ecdc4,#ff6b6b);color:#041018;box-shadow:0 10px 30px rgba(2,6,23,0.6)}
-        .ai-panel{width:320px;max-height:420px;background:rgba(6,6,10,0.98);border-radius:12px;padding:0.6rem;border:1px solid rgba(255,255,255,0.03);display:none;flex-direction:column}
-        .ai-panel.active{display:flex}
-        .ai-tts{font-size:0.85rem;color:#9fb0bd;padding:0.45rem;border-bottom:1px solid rgba(255,255,255,0.02)}
-        .ai-messages{padding:0.6rem;overflow:auto;flex:1;display:flex;flex-direction:column;gap:0.45rem}
-        .ai-msg{padding:0.5rem;border-radius:8px;background:rgba(78,205,196,0.06);color:#bff6ef;font-size:0.85rem}
-        .ai-controls{display:flex;gap:0.4rem;margin-top:0.5rem}
-        .ai-controls button{flex:1;padding:0.5rem;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:#dbe8ee}
-
-        /* Footer */
-        footer{padding:2rem 1rem;text-align:center;color:#93a9b6}
-
-        /* Responsive */
-        @media (max-width:980px){
-            .hero-inner{grid-template-columns:1fr}
-            .about-grid{grid-template-columns:1fr}
-            .contact-grid{grid-template-columns:1fr}
-        }
-        @media (max-width:720px){
-            .nav-links{display:none}
-            .hamburger{display:inline-block}
-            .mobile-menu{display:none}
-            .mobile-menu.active{display:block}
-        }
-
-        /* small accessibility tweak: focus outlines */
-        a:focus,button:focus{outline:3px solid rgba(78,205,196,0.14);outline-offset:3px}
-    </style>
+/* micro animations */
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(18px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+.hero-copy,.profile-card{
+  animation:fadeUp 0.7s ease-out forwards;
+}
+.profile-card{
+  animation-delay:0.1s;
+}
+</style>
 </head>
 <body>
-    <div class="bg-animation" aria-hidden="true"></div>
-    <div class="bg-noise" aria-hidden="true"></div>
 
-    <!-- NAV -->
-    <nav role="navigation" aria-label="Main navigation">
-        <div class="nav-inner">
-            <div class="logo">Fanny</div>
-
-            <div class="nav-links" id="desktopNav">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-                <!-- <a class="resume-btn" href="Fanny_CV.pdf" target="_blank" rel="noopener">Resume</a>-->
-            </div>
-
-            <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">☰</button>
-            <div class="mobile-menu" id="mobileMenu" role="menu" aria-hidden="true">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-                <!--  <a href="Fanny_CV.pdf" target="_blank" rel="noopener">Resume</a>-->
-            </div>
-        </div>
-    </nav>
-
-    <!-- HERO -->
-    <section id="home" class="hero" aria-labelledby="home-heading">
-        <div class="hero-inner">
-            <div class="hero-copy">
-                <h1 id="home-heading">Hi — I'm Fanny.</h1>
-                <p class="lead">Electrical engineer, ML practitioner, and writer. I design power systems, build data-driven models, and write about all my experiences, technical and none.</p>
-
-                <div class="hero-actions" role="region" aria-label="Primary actions">
-                    <a class="btn btn-primary" href="#projects">See Engineering Work</a>
-                    <a class="btn btn-ghost" href="#contact">Let's Collaborate</a>
-                    <a class="btn btn-ghost" href="blog.html">Read the Blog</a>
-                </div>
-  <!--
-                <div class="hero-meta">
-                    Based in South Africa • Open to roles in power systems, controls, & ML research • <strong>Available for interviews</strong>
-                </div>   -->
-            </div>
-
-            <aside class="profile-card" aria-label="Profile snapshot">
-                <div class="profile-pic">
-                    <img src="Images/MY_PHOTO.jpeg" alt="Portrait of Fanny Fushayi" width="280" height="280" loading="lazy">
-                </div>
-                <div class="profile-name">Fanny Fushayi</div>
-                <div class="profile-role">Electrical Engineer · ML & Systems · Writer</div>
-                <div style="margin-top:0.8rem;font-size:0.9rem;color:#9fb0bd">Projects across energy systems, sontrol systems , and power systems.</div>
-                <div style="margin-top:0.75rem;display:flex;gap:0.5rem;justify-content:center">
-                    <a class="btn btn-ghost" href="mailto:fannyfushayi75@gmail.com">Email</a>
-                    <a class="btn btn-ghost" href="https://www.linkedin.com/in/fanny-fushayi-529880235" target="_blank" rel="noopener">LinkedIn</a>
-                </div>
-            </aside>
-        </div>
-    </section>
-
-    <main>
-        <!-- ABOUT -->
-        <section id="about" aria-labelledby="about-title">
-            <h2 id="about-title" class="section-title">About</h2>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p>Engineer by training, writer by habit. I solve practical engineering problems with a taste for theory and a tendency to ask inconvenient questions.</p>
-                    <p>My sweet spot: systems where electronics, control logic, and data meet — battery diagnostics, power converters, energy management, and ML applied to physical systems.</p>
-
-                    <div class="about-bullets" aria-hidden="false">
-                        <div class="bullet"><strong>Qualification</strong><span>B.Eng (Electrical) — University of Pretoria</span></div>
-                        <div class="bullet"><strong>Current focus</strong><span>Battery RUL prediction, embedded power electronics, ML model deployment</span></div>
-                        <div class="bullet"><strong>Tools</strong><span>Python, NumPy, scikit-learn, PyTorch, MATLAB, LTspice, Git</span></div>
-                        <div class="bullet"><strong>Interest</strong><span>Philosophy of AI, systems design, technical storytelling</span></div>
-                    </div>
-
-                    <p style="margin-top:0.8rem;color:#cfeef8">If you want the short version: I build things that measure, predict, and control. If you want the long version: follow my blog or message me.</p>
-
-                    <div style="margin-top:0.9rem;display:flex;gap:0.6rem;flex-wrap:wrap">
-                        <!--<a class="btn btn-primary" href="Fanny_CV.pdf">Download CV</a>-->
-                        <a class="btn btn-ghost" href="blog.html">Recent Posts</a>
-                        <a class="btn btn-ghost" href="#projects">Projects</a>
-                    </div>
-                </div>
-
-                <!-- Snapshot / social proof -->
-                <aside aria-label="Snapshot" style="padding:0 0.5rem">
-                    <div style="margin-bottom:0.8rem;color:#9fb0bd;font-weight:700">Snapshot</div>
-                    <div style="padding:0.7rem;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03)">
-                        <div style="font-size:1rem;color:#dff7f2;margin-bottom:0.4rem">Selected outcomes</div>
-                        <ul style="color:#cfeef8;list-style:disc;margin-left:1.1rem">
-                            <li>Battery RUL pipeline — dataset -> features -> model -> deploy (improved early-warning detection).</li>
-                            <li>Go-kart energy manager — custom BMS + power distribution for reduced losses in race conditions.</li>
-                        </ul>
-                    </div>
-
-                    <div style="margin-top:0.9rem;padding:0.7rem;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03)">
-                        <div style="font-weight:700;color:#dff7f2;margin-bottom:0.4rem">Availability</div>
-                        <div style="color:#cfeef8">Open to collaborations, consulting, and research roles. <a href="#contact" style="color:#9fe9e0">Get in touch</a>.</div>
-                    </div>
-                </aside>
-            </div>
-        </section>
-
-        <!-- SKILLS -->
-        <section id="skills" aria-labelledby="skills-title">
-            <h2 id="skills-title" class="section-title">Skills & Expertise</h2>
-            <div class="skills-grid">
-                <div class="skill-card" data-percent="85">
-                    <div class="skill-name">Electrical Engineering</div>
-                    <div class="skill-meta">Power systems, converters, protection, energy storage</div>
-                    <div class="skill-bar" aria-hidden="true"><div class="skill-progress" style="width:0%"></div></div>
-                    <div class="skill-foot">80% university degree ; used in 7+ projects</div>
-                </div>
-
-                <div class="skill-card" data-percent="75">
-                    <div class="skill-name">Writing & Communication</div>
-                    <div class="skill-meta">Technical reports, blogs, storytelling</div>
-                    <div class="skill-bar" aria-hidden="true"><div class="skill-progress" style="width:0%"></div></div>
-                    <div class="skill-foot">75% — regular weekly writing, teaching experience</div>
-                </div>
-
-                <div class="skill-card" data-percent="80">
-                    <div class="skill-name">Systems & Analysis</div>
-                    <div class="skill-meta">Diagnostics, systems design, project management</div>
-                    <div class="skill-bar" aria-hidden="true"><div class="skill-progress" style="width:0%"></div></div>
-                    <div class="skill-foot">80% — cross-disciplinary systems work</div>
-                </div>
-
-                <div class="skill-card" data-percent="55">
-                    <div class="skill-name">Machine Learning & AI</div>
-                    <div class="skill-meta">Modeling, deployment, signal & data processing</div>
-                    <div class="skill-bar" aria-hidden="true"><div class="skill-progress" style="width:0%"></div></div>
-                    <div class="skill-foot">50% — actively learning deep learning & deployment</div>
-                </div>
-            </div>
-        </section>
-
-        <!--FEATURED PROJECTS -->
-        <section id="projects" aria-labelledby="projects-title">
-            <h2 id="projects-title" class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <article class="project-card" aria-labelledby="p1-title">
-                    <div class="project-thumb">
-                        <img src="Images/battery_pack.png" alt="Battery pack and diagnostic plots" loading="lazy">
-                    </div>
-                    <h3 id="p1-title">Battery RUL Prediction</h3>
-                    <p style="color:#cfeef8">Data-driven Remaining Useful Life (RUL) model for lithium-ion packs. Pipeline from raw signals → features → model → deployment.</p>
-                    <div class="tech-tags"><span class="tech-tag">Python</span><span class="tech-tag">PyTorch</span><span class="tech-tag">Feature Engineering</span></div>
-                    <div class="project-links">
-                        <a class="btn btn-ghost" href="battery_data_driven.html">View Project</a>
-                        <a class="btn btn-ghost" href="https://github.com/FannyFushayi">Source</a>
-                    </div>
-                </article>
-
-                <article class="project-card" aria-labelledby="p2-title">
-                    <div class="project-thumb"><img src="Images/go_kart.png" alt="Electric go-kart power system" loading="lazy"></div>
-                    <h3 id="p2-title">Go-kart Energy System</h3>
-                    <p style="color:#cfeef8">Power electronics, custom BMS and energy distribution to improve efficiency and endurance in racing conditions.</p>
-                    <div class="tech-tags"><span class="tech-tag">Power Electronics</span><span class="tech-tag">Embedded</span><span class="tech-tag">BMS</span></div>
-                    <div class="project-links">
-                        <a class="btn btn-ghost" href="project-hess.html">Case Study</a>
-                        <a class="btn btn-ghost" href="https://drive.google.com/file/d/1EAsNxIesiDmJv1T9Fixs7b_9sh_oN9ul/view?usp=drive_web">Technical Report</a>
-                    </div>
-                </article>
-
-                <article class="project-card" aria-labelledby="p3-title">
-                    <div class="project-thumb"><img src="Images/bblog.png" alt="Freedom" loading="lazy"></div>
-                    <h3 id="p3-title">Weekly Tech & Philosophy Blog</h3>
-                    <p style="color:#cfeef8">A hybrid feed alternating technical deep dives and philosophical reflections on tech and society.</p>
-                    <div class="tech-tags"><span class="tech-tag">Writing</span><span class="tech-tag">Communication</span></div>
-                    <div class="project-links">
-                        <a class="btn btn-ghost" href="blog.html">Read</a>
-                    </div>
-                </article>
-            </div>
-
-            <div style="margin-top:1rem;display:flex;gap:0.6rem;justify-content:center">
-                <a class="btn btn-primary" href="Projects.html">Full portfolio</a>
-                <a class="btn btn-ghost" href="fun_projects.html">Fun projects</a>
-            </div>
-        </section>
-
-        <!-- CONTACT -->
-        <section id="contact" aria-labelledby="contact-title">
-            <h2 id="contact-title" class="section-title">Let's Connect</h2>
-            <div class="contact-grid">
-                <div>
-                    <p style="color:#d7e6ef">Interested in collaborating or hiring? I prefer concise messages that state scope, timeline and the key deliverable. If you want a fast response include a few bullet points about the project.</p>
-
-                    <div style="margin-top:0.8rem;display:flex;gap:0.6rem;flex-wrap:wrap">
-                        <a class="btn btn-primary" href="mailto:fannyfushayi75@gmail.com">Email Me</a>
-                        <a class="btn btn-ghost" href="https://calendly.com/fannyfushayi" target="_blank" rel="noopener">Schedule a Call</a>
-                        <a class="btn btn-ghost" href="https://github.com/FannyFushayi" target="_blank" rel="noopener">GitHub</a>
-                    </div>
-
-                    <div style="margin-top:1rem;color:#9fb0bd">Or drop a quick note: <a href="mailto:fannyfushayi75@gmail.com" style="color:#9fe9e0">fannyfushayi75@gmail.com</a></div>
-                </div>
-
-                <aside>
-                    <div class="contact-card">
-                        <div style="font-weight:700;color:#dff7f2;margin-bottom:0.4rem">Book club & reading</div>
-                        <div style="color:#cfeef8">Monthly discussions — <a href="books.html" style="color:#9fe9e0">Join the list</a>.</div>
-                    </div>
-
-
-                </aside>
-            </div>
-        </section>
-    </main>
-
-    <!-- AI Assistant (DEMO) -->
-    <div class="ai-assistant" aria-hidden="false">
-        <button id="aiBtn" class="ai-button" aria-expanded="false" aria-controls="aiPanel" aria-label="Open assistant">AI</button>
-        <div id="aiPanel" class="ai-panel" role="dialog" aria-label="Assistant (demo)">
-            <div class="ai-tts">Demo assistant — sample answers. This panel is a demonstration and not a live chatbot.</div>
-            <div id="aiMessages" class="ai-messages" aria-live="polite">
-                <div class="ai-msg">Tip: Try "skills", "projects", or "contact".</div>
-            </div>
-            <div class="ai-controls">
-                <button onclick="demoAsk('skills')">skills</button>
-                <button onclick="demoAsk('projects')">projects</button>
-                <button onclick="demoAsk('contact')">contact</button>
-            </div>
-        </div>
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="logo">Fanny Fushayi</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
     </div>
+    <button class="hamburger" id="hamburger">☰</button>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
 
-    <footer>
-        <div>© <strong>Fanny Fushayi</strong> — Built with pragmatism and curiosity.</div>
-    </footer>
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="ascent-line"></div>
+  <div class="ascent-dot"></div>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow">Industrial Automation Engineer</p>
+      <h1>Designing Control Systems<br>for <em>Industrial<br>Applications</em></h1>
+      <p class="lead">Industrial Automation Engineer specializing in PLC platforms and control systems for industrial applications. Experienced in designing, integrating, and optimizing control logic to improve system reliability, performance, and usability.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#projects">View work</a>
+        <a class="btn btn-ghost" href="#contact">Collaborate</a>
+        <a class="btn btn-ghost" href="blog.html">Blog</a>
+      </div>
+    </div>
+    <aside class="profile-card">
+      <div class="profile-pic">
+        <img src="Images/MY_PHOTO.jpeg" alt="Fanny Fushayi" onerror="this.style.display='none'">
+      </div>
+      <div class="profile-name">Fanny Fushayi</div>
+      <div class="profile-role">Industrial Automation Engineer<br>PLC · Control Systems · Power</div>
+      <div class="social-row">
+        <a href="mailto:fannyfushayi75@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/fanny-fushayi-529880235" target="_blank">LinkedIn</a>
+        <a href="https://github.com/FannyFushayi" target="_blank">GitHub</a>
+      </div>
+    </aside>
+  </div>
+</section>
 
-    <script>
-        // Mobile menu toggle
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        hamburger && hamburger.addEventListener('click', () => {
-            const expanded = hamburger.getAttribute('aria-expanded') === 'true';
-            hamburger.setAttribute('aria-expanded', String(!expanded));
-            mobileMenu.classList.toggle('active', !expanded);
-            mobileMenu.setAttribute('aria-hidden', String(expanded));
-        });
+<main>
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">About</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Industrial Automation Engineer specializing in PLC platforms and control systems for industrial applications. Experienced in designing, integrating, and optimizing control logic to improve system reliability, performance, and usability. Background in power systems engineering, including transformer and cable sizing, load analysis, and generator specification for medium-voltage equipment. Applies data-driven techniques such as predictive modelling and degradation analysis to enhance system performance and support proactive maintenance strategies.</p>
+        <ul class="fact-list">
+          <li><span class="fact-key">Qualification</span><span class="fact-val">B.Eng (Electrical) — University of Pretoria</span></li>
+          <li><span class="fact-key">Current focus</span><span class="fact-val">PLC control systems, industrial automation, predictive maintenance</span></li>
+          <li><span class="fact-key">Tools</span><span class="fact-val">TIA Portal · MATLAB/Simulink · AutoCAD Electrical · Python · Excel</span></li>
+          <li><span class="fact-key">Interests</span><span class="fact-val">Philosophy of AI · systems design · technical storytelling</span></li>
+        </ul>
+      </div>
+      <aside>
+        <div class="outcomes-card">
+          <h4>Selected outcomes</h4>
+          <div class="outcome"><span class="outcome-tick">↗</span><span>PLC-controlled rejection system with synchronized tracking logic</span></div>
+          <div class="outcome"><span class="outcome-tick">↗</span><span>Load analysis and transformer sizing for industrial crushers</span></div>
+          <div class="avail-badge">Open to collaborations</div>
+        </div>
+      </aside>
+    </div>
+  </section>
 
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (mobileMenu.classList.contains('active') && 
-                !e.target.closest('.mobile-menu') && 
-                !e.target.closest('.hamburger')) {
-                mobileMenu.classList.remove('active');
-                hamburger.setAttribute('aria-expanded', 'false');
-                mobileMenu.setAttribute('aria-hidden', 'true');
-            }
-        });
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label">Skills & Expertise</p>
+    <div class="skills-list">
+      <div class="skill-row" data-pct="85">
+        <div><div class="skill-name-s">Industrial Automation</div><div class="skill-sub-s">PLC Programming (Siemens), HMI & SCADA</div></div>
+        <div class="bar-track"><div class="bar-fill"></div></div>
+        <div class="pct">85%</div>
+      </div>
+      <div class="skill-row" data-pct="82">
+        <div><div class="skill-name-s">Power Systems</div><div class="skill-sub-s">Transmission Systems, Load Analysis</div></div>
+        <div class="bar-track"><div class="bar-fill"></div></div>
+        <div class="pct">82%</div>
+      </div>
+      <div class="skill-row" data-pct="80">
+        <div><div class="skill-name-s">Circuit Design</div><div class="skill-sub-s">PCB design, Panel Design, motor control</div></div>
+        <div class="bar-track"><div class="bar-fill"></div></div>
+        <div class="pct">80%</div>
+      </div>
+      <div class="skill-row" data-pct="65">
+        <div><div class="skill-name-s">Data Analysis</div><div class="skill-sub-s">Predictive Maintenance, Degradation Modelling</div></div>
+        <div class="bar-track"><div class="bar-fill"></div></div>
+        <div class="pct">65%</div>
+      </div>
+    </div>
+  </section>
 
-        // Smooth scroll for anchors (works for both desktop and mobile)
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', function(e){
-                const href = this.getAttribute('href');
-                if(!href.startsWith('#')) return;
-                e.preventDefault();
-                const el = document.querySelector(href);
-                if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
-                // close mobile menu after click
-                if(window.innerWidth <= 720 && mobileMenu.classList.contains('active')){
-                    mobileMenu.classList.remove('active');
-                    hamburger.setAttribute('aria-expanded','false');
-                    mobileMenu.setAttribute('aria-hidden','true');
-                }
-            });
-        });
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label">Featured Projects</p>
+    <div class="projects-grid">
+      <article class="project-card">
+        <div class="project-thumb"><img src="Images/battery_pack.png" alt="Battery pack"></div>
+        <div class="project-body">
+          <h3>Battery RUL Prediction</h3>
+          <p>Data-driven Remaining Useful Life model for lithium-ion packs. Pipeline from raw signals → features → model → deployment.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">Feature Engineering</span></div>
+          <div class="project-links">
+            <a class="btn btn-ghost" href="battery_data_driven.html">View project</a>
+            <a class="btn btn-ghost" href="https://github.com/FannyFushayi">Source</a>
+          </div>
+        </div>
+      </article>
+      <article class="project-card">
+        <div class="project-thumb"><img src="Images/go_kart.png" alt="Go-kart"></div>
+        <div class="project-body">
+          <h3>PV–Generator–Battery Microgrid</h3>
+          <p>Developed a rule-based energy management system prioritizing solar PV to reduce diesel generator runtime by 22%. Built a cost-optimization model for multiple configurations.</p>
+          <div class="tags"><span class="tag">MATLAB</span><span class="tag">Excel</span><span class="tag">Energy Modeling</span></div>
+          <div class="project-links">
+            <a class="btn btn-ghost" href="Project-PV.html">View project</a>
+            <a class="btn btn-ghost" href="https://github.com/FannyFushayi">Source</a>
+          </div>
+        </div>
+      </article>
+      <article class="project-card">
+        <div class="project-thumb"><img src="Images/bblog.png" alt="Blog"></div>
+        <div class="project-body">
+          <h3>Engineering Data Analysis – Battery RUL</h3>
+          <p>Developed regression models predicting battery degradation with 89% accuracy using NASA datasets. Participated in Kaggle and Zindi ML competitions.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">TensorFlow</span></div>
+          <div class="project-links">
+            <a class="btn btn-ghost" href="battery_data_driven.html">View project</a>
+            <a class="btn btn-ghost" href="https://github.com/FannyFushayi">Source</a>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div style="margin-top:2rem">
+      <a class="btn btn-ghost" href="Projects.html">Full portfolio →</a>
+    </div>
+  </section>
 
-        // Animate skill bars when visible
-        const skills = document.querySelectorAll('.skill-card');
-        const skillObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting){
-                    const percent = entry.target.getAttribute('data-percent') || '60';
-                    const bar = entry.target.querySelector('.skill-progress');
-                    setTimeout(()=> bar.style.width = percent + '%', 120);
-                }
-            });
-        },{threshold:0.25});
-        skills.forEach(s => skillObserver.observe(s));
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label">Let's Connect</p>
+    <div class="contact-inner">
+      <div class="contact-text">
+        <p>Interested in collaborating or hiring? I prefer concise messages that state scope, timeline, and the key deliverable. A few bullet points goes a long way toward a fast response.</p>
+        <div class="contact-links">
+          <a class="btn btn-primary" href="mailto:fannyfushayi75@gmail.com">Email me</a>
+          <a class="btn btn-ghost" href="https://calendly.com/fannyfushayi" target="_blank">Schedule a call</a>
+          <a class="btn btn-ghost" href="https://github.com/FannyFushayi" target="_blank">GitHub</a>
+        </div>
+        <p class="contact-info">Direct: <a href="mailto:fannyfushayi75@gmail.com">fannyfushayi75@gmail.com</a></p>
+      </div>
+      <aside class="aside-card">
+        <h4>Book club & reading</h4>
+        <p>Monthly discussions on books at the edge of technology and thought.<br><br><a href="books.html">Join the list →</a></p>
+      </aside>
+    </div>
+  </section>
+</main>
 
-        // AI demo responses (static)
-        const demoResponses = {
-            skills: "Fanny: Electrical systems (power, converters), systems analysis, and growing expertise in ML & deployment. Relevant tools: Python, PyTorch, MATLAB.",
-            projects: "Battery RUL prediction (data pipeline + model + deploy), go-kart energy system (custom BMS & energy distribution), weekly blog on tech & philosophy.",
-            contact: "Email: fannyfushayi75@gmail.com — include a 2-sentence brief + timeline for fastest response. Schedule a call via the link on the contact section."
-        };
+<footer>
+  <span>© Fanny Fushayi</span>
+  <span>Built with pragmatism and curiosity.</span>
+</footer>
 
-        function demoAsk(topic){
-            const box = document.getElementById('aiMessages');
-            const msg = document.createElement('div');
-            msg.className = 'ai-msg';
-            msg.textContent = demoResponses[topic] || 'No data for this topic.';
-            box.appendChild(msg);
-            box.scrollTop = box.scrollHeight;
-        }
+<script>
+const hamburger=document.getElementById('hamburger');
+const mobileMenu=document.getElementById('mobileMenu');
+if(hamburger){
+  hamburger.addEventListener('click',()=>mobileMenu.classList.toggle('open'));
+}
+document.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>mobileMenu.classList.remove('open')));
 
-        // Accessibility: reduce motion if user prefers
-        if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-            document.querySelectorAll('.skill-progress').forEach(el=>el.style.transition='none');
-        }
+window.addEventListener('scroll',()=>{
+  const nav = document.getElementById('navbar');
+  if(window.scrollY>40) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
 
-        // Basic client-side image fallback: if profile image fails, show initials
-        const profImg = document.querySelector('.profile-pic img');
-        profImg && profImg.addEventListener('error', () => {
-            const parent = profImg.parentElement;
-            parent.innerHTML = '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(90deg,#4ecdc4,#ff6b6b);color:#041018;font-weight:800;font-size:2rem">FF</div>';
-        });
-
-        // Small UX: reveal AI panel
-        const aiBtn = document.getElementById('aiBtn');
-        const aiPanel = document.getElementById('aiPanel');
-        aiBtn && aiBtn.addEventListener('click', () => {
-            const open = aiPanel.classList.toggle('active');
-            aiBtn.setAttribute('aria-expanded', String(open));
-        });
-    </script>
+const skillObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const pct=entry.target.getAttribute('data-pct');
+      const fill=entry.target.querySelector('.bar-fill');
+      if(fill) fill.style.width=pct+'%';
+    }
+  });
+},{threshold:0.4, rootMargin:"0px 0px -40px 0px"});
+document.querySelectorAll('.skill-row').forEach(row=>skillObserver.observe(row));
+</script>
 </body>
 </html>
