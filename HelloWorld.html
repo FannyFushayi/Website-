@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hello World,again</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=IM+Fell+English:ital@0;1&family=Pinyon+Script&display=swap');
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    min-height: 100vh;
+    background: #0d0905;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 3rem 1.5rem 5rem;
+    font-family: 'Special Elite', 'Courier New', monospace;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse 60% 55% at 50% 30%,
+      rgba(180,100,20,0.13) 0%,
+      rgba(120,60,10,0.07) 45%,
+      transparent 75%);
+    animation: candleFlicker 4s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @keyframes candleFlicker {
+    0%   { opacity: 0.7; transform: scale(1) translateY(0px); }
+    20%  { opacity: 1;   transform: scale(1.02) translateY(-2px); }
+    45%  { opacity: 0.8; transform: scale(0.99) translateY(1px); }
+    65%  { opacity: 1;   transform: scale(1.01) translateY(-1px); }
+    80%  { opacity: 0.75;transform: scale(1) translateY(2px); }
+    100% { opacity: 0.9; transform: scale(1.015) translateY(-1px); }
+  }
+
+  .desk {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+    width: 100%;
+  }
+
+  .letter {
+    position: relative;
+    background:
+      radial-gradient(ellipse 80% 60% at 25% 20%, rgba(210,170,100,0.35) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 80% at 75% 80%, rgba(185,140,75,0.25) 0%, transparent 55%),
+      radial-gradient(ellipse 100% 100% at 50% 50%, #e8d09a 0%, #d4b87a 60%, #c5a463 100%);
+    padding: 4rem 3.5rem 3.5rem;
+    box-shadow:
+      0 2px 4px rgba(0,0,0,0.3),
+      0 8px 20px rgba(0,0,0,0.5),
+      0 35px 70px rgba(0,0,0,0.7),
+      inset 0 0 0 1px rgba(180,130,60,0.4),
+      inset 0 0 60px rgba(100,60,10,0.12);
+    transform: rotate(-0.4deg);
+    animation: paperBreath 6s ease-in-out infinite alternate;
+    filter: url(#paperFilter);
+  }
+
+  @keyframes paperBreath {
+    0%   { box-shadow: 0 2px 4px rgba(0,0,0,0.3), 0 8px 20px rgba(0,0,0,0.5), 0 35px 70px rgba(0,0,0,0.7), inset 0 0 0 1px rgba(180,130,60,0.4), inset 0 0 60px rgba(100,60,10,0.12); }
+    100% { box-shadow: 0 2px 4px rgba(0,0,0,0.3), 0 10px 25px rgba(0,0,0,0.55), 0 40px 80px rgba(0,0,0,0.75), inset 0 0 0 1px rgba(180,130,60,0.4), inset 0 0 80px rgba(100,60,10,0.18); }
+  }
+
+  .letter::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 90% 85% at 50% 50%,
+      transparent 50%,
+      rgba(60,30,5,0.18) 75%,
+      rgba(40,18,3,0.45) 100%);
+    pointer-events: none;
+    z-index: 30;
+  }
+
+  .letter::after {
+    content: '';
+    position: absolute;
+    top: 8%; left: 34%;
+    width: 1px; height: 84%;
+    background: linear-gradient(to bottom,
+      transparent 0%,
+      rgba(80,45,10,0.25) 15%,
+      rgba(90,50,15,0.3) 50%,
+      rgba(80,45,10,0.2) 85%,
+      transparent 100%);
+    filter: blur(0.8px);
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .svg-filters { position: absolute; width: 0; height: 0; }
+
+  .stains { position: absolute; inset: 0; pointer-events: none; z-index: 2; overflow: hidden; }
+
+  .foxing {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(120,70,25,0.35) 0%, rgba(100,55,18,0.15) 50%, transparent 80%);
+    filter: blur(1.5px);
+  }
+  .tea-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 6px solid rgba(110,65,20,0.18);
+    filter: blur(3px);
+  }
+  .tide {
+    position: absolute;
+    border-radius: 60%;
+    border: 2px solid rgba(140,90,35,0.12);
+    filter: blur(5px);
+  }
+  .wash {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(28px);
+  }
+  .curl { position: absolute; pointer-events: none; z-index: 40; }
+  .curl-br {
+    bottom: -2px; right: -2px;
+    width: 70px; height: 70px;
+    background: radial-gradient(ellipse at 100% 100%, rgba(20,10,3,0.7) 0%, rgba(40,20,5,0.4) 30%, transparent 65%);
+    filter: blur(4px);
+  }
+  .curl-tl {
+    top: -2px; left: -2px;
+    width: 50px; height: 50px;
+    background: radial-gradient(ellipse at 0% 0%, rgba(20,10,3,0.5) 0%, rgba(40,22,6,0.25) 35%, transparent 65%);
+    filter: blur(5px);
+  }
+  .grain {
+    position: absolute; inset: 0;
+    opacity: 0.25; pointer-events: none; z-index: 25;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 300px 300px;
+  }
+
+  /* ── TYPOGRAPHY ── */
+  .letter-content {
+    position: relative;
+    z-index: 10;
+    color: #1e1508;
+  }
+
+  p, .poem-block, .closing {
+    margin-bottom: 1.4rem;
+    font-size: 1rem;
+    line-height: 1.8;
+    letter-spacing: 0.015em;
+  }
+
+  /* no dropcap capitalisation — remove first-letter styling */
+  .first-para { }
+
+  em { font-family: 'IM Fell English', Georgia, serif; font-style: italic; }
+
+  .poem-block {
+    font-family: 'IM Fell English', Georgia, serif;
+    font-style: italic;
+    margin: 2rem 0 2.2rem 2rem;
+    padding: 1rem 1.4rem 1rem 1.6rem;
+    border-left: 2px solid rgba(130,85,30,0.5);
+    background: rgba(170,120,55,0.06);
+    font-size: 1.02rem;
+    line-height: 1.85;
+    position: relative;
+  }
+  .poem-block::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(160,110,45,0.05) 0%, transparent 60%);
+  }
+  .poem-block p { margin-bottom: 0.3rem; }
+  .poem-block .stanza { margin-bottom: 1rem; }
+
+  .closing {
+    margin-top: 2.5rem;
+    text-align: right;
+    border-top: 1px solid rgba(160,110,50,0.4);
+    padding-top: 1.4rem;
+    font-family: 'IM Fell English', Georgia, serif;
+    font-style: italic;
+    font-size: 0.92rem;
+    color: #2e1e0a;
+  }
+  .signature {
+    font-family: 'Pinyon Script', 'Brush Script MT', cursive;
+    font-size: 1.9rem;
+    margin-top: 8px;
+    letter-spacing: 1px;
+    color: #2a1a08;
+    line-height: 1.3;
+  }
+  .date-note {
+    font-size: 0.68rem;
+    margin-top: 6px;
+    opacity: 0.6;
+    font-family: 'Special Elite', monospace;
+    letter-spacing: 0.5px;
+  }
+  .postscript {
+    margin-top: 1.8rem;
+    font-size: 0.82rem;
+    color: #3a260e;
+    border-left: 2px solid rgba(170,115,45,0.55);
+    padding: 0.7rem 1rem;
+    background: rgba(190,145,65,0.07);
+    font-family: 'Special Elite', monospace;
+    line-height: 1.6;
+  }
+  hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(150,100,40,0.45), transparent);
+    margin: 1.2rem 0;
+  }
+  .found-note {
+    font-size: 0.6rem;
+    text-align: center;
+    opacity: 0.45;
+    margin-top: 1rem;
+    font-family: 'Special Elite', monospace;
+    letter-spacing: 1px;
+  }
+  .candle-overlay {
+    position: absolute; inset: 0;
+    pointer-events: none; z-index: 28;
+    background: radial-gradient(ellipse 55% 45% at 72% 12%, rgba(255,180,60,0.09) 0%, transparent 65%);
+    animation: candleWarm 3.5s ease-in-out infinite alternate;
+  }
+  @keyframes candleWarm {
+    0%   { opacity: 0.5; }
+    30%  { opacity: 1; }
+    55%  { opacity: 0.6; }
+    80%  { opacity: 0.9; }
+    100% { opacity: 0.55; }
+  }
+
+  @media (max-width: 600px) {
+    .letter { padding: 2.5rem 1.6rem 2.5rem; }
+    .poem-block { margin-left: 0.5rem; }
+    p { font-size: 0.95rem; }
+  }
+</style>
+</head>
+<body>
+
+<svg class="svg-filters" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="paperFilter" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04 0.06" numOctaves="4" seed="3" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
+<div class="desk">
+<div class="letter">
+
+  <div class="stains">
+    <div class="wash" style="width:320px;height:260px;top:-60px;left:-80px;background:radial-gradient(ellipse,rgba(140,85,30,0.22) 0%,rgba(110,65,20,0.1) 55%,transparent 80%);transform:rotate(-10deg);"></div>
+    <div class="wash" style="width:380px;height:300px;bottom:-60px;right:-90px;background:radial-gradient(ellipse,rgba(130,78,25,0.2) 0%,rgba(100,58,18,0.09) 55%,transparent 80%);transform:rotate(8deg);"></div>
+    <div class="wash" style="width:240px;height:180px;top:40%;left:55%;background:radial-gradient(ellipse,rgba(170,120,55,0.13) 0%,transparent 70%);transform:rotate(20deg);"></div>
+    <div class="tea-ring" style="width:95px;height:88px;top:18px;right:80px;"></div>
+    <div class="tea-ring" style="width:60px;height:57px;top:28px;right:96px;border-width:4px;opacity:0.7;"></div>
+    <div class="tea-ring" style="width:72px;height:68px;bottom:120px;left:40px;border-color:rgba(100,58,20,0.14);"></div>
+    <div class="tide" style="width:200px;height:130px;top:32%;left:10%;transform:rotate(-5deg);"></div>
+    <div class="tide" style="width:160px;height:100px;bottom:22%;right:15%;transform:rotate(12deg);"></div>
+    <div class="foxing" style="width:18px;height:16px;top:12%;left:8%;"></div>
+    <div class="foxing" style="width:11px;height:10px;top:14%;left:11%;"></div>
+    <div class="foxing" style="width:22px;height:19px;top:55%;right:9%;"></div>
+    <div class="foxing" style="width:14px;height:12px;top:58%;right:13%;"></div>
+    <div class="foxing" style="width:9px;height:8px;bottom:25%;left:22%;"></div>
+    <div class="foxing" style="width:16px;height:15px;bottom:18%;right:28%;"></div>
+    <div class="foxing" style="width:8px;height:7px;top:38%;left:48%;"></div>
+    <div class="foxing" style="width:13px;height:11px;top:72%;left:6%;"></div>
+    <div class="foxing" style="width:19px;height:17px;top:25%;right:6%;"></div>
+    <div style="position:absolute;width:65px;height:50px;bottom:36%;left:13%;background:radial-gradient(ellipse,rgba(30,15,3,0.32) 0%,rgba(18,8,1,0.15) 60%,transparent 90%);filter:blur(4px);transform:rotate(14deg);border-radius:50%;"></div>
+    <div style="position:absolute;width:80px;height:65px;top:60%;right:10%;background:radial-gradient(ellipse,rgba(40,22,5,0.28) 0%,rgba(25,12,2,0.12) 65%,transparent 92%);filter:blur(6px);transform:rotate(-18deg);border-radius:50%;"></div>
+    <div style="position:absolute;width:8px;height:28px;bottom:14%;right:22%;background:linear-gradient(to bottom,rgba(20,10,2,0.35),transparent);filter:blur(1.5px);border-radius:4px;transform:rotate(5deg);"></div>
+  </div>
+
+  <div class="curl curl-br"></div>
+  <div class="curl curl-tl"></div>
+  <div class="grain"></div>
+  <div class="candle-overlay"></div>
+
+  <div class="letter-content">
+
+    <p class="first-para">there are often times when i find beauty to be difficult, just because of how easy it can be for everything to be ugly. and as you can imagine, sometimes i find ugliness to be impossible due to an overwhelming amount of beauty.</p>
+    
+    <P>Hello!</head></P>
+    <p>i have not been writing for a while. well, that's not true. i have been writing and trying very successfully (more or less) to forget every little line i've come up with in the past few months. (like our entire existence) every essay i try to write seems to lack a clear beginning. there is only a distant, vague sense of an impending end (because one cannot write forever, or live that long).</p>
+
+    <p>and so i find myself unable to produce something that even i won't later dismiss as utterly confusing to dearly readers. i sometimes start at the end, plant multiple beginnings in the middle of endings, and chase tangents upon tangents. (artistically, not theoretically. because lines don't have tangents, and tangents themselves are lines).</p>
+
+    <p>i don't mind being misunderstood. in fact, the day i am understood completely (by my entire audience, me included)is the day i lay down the pen. what i want is an artistic identity. to explain that, i present a poem's beginning in the middle of this letter (because i have decided this is a letter):</p>
+
+    <div class="poem-block">
+      <p><em>to what, what as?</em></p>
+      <br>
+      <div class="stanza">
+        <p>i want to write to something,</p>
+        <p>as something.</p>
+      </div>
+      <div class="stanza">
+        <p>to the ocean, perhaps</p>
+        <p>as fish,</p>
+        <p>or as the man who's desperately out of breath.</p>
+      </div>
+      <div class="stanza">
+        <p>to you, certainly</p>
+        <p>as you,</p>
+        <p>or as the echo of your being in my soul.</p>
+      </div>
+      <div class="stanza">
+        <p>and maybe i write to myself,</p>
+        <p>as me,</p>
+        <p>or as the darkness in the shadow cast by your light.</p>
+      </div>
+      <div class="stanza" style="margin-bottom:0;">
+        <p>perhaps i write to humanity,</p>
+        <p>as god,</p>
+        <p>or as nothing at all.</p>
+      </div>
+    </div>
+
+    <p>i suppose i should leave the interpretation to the reader, and fight against the urge to over-represent myself. perhaps i will let myself be influenced by dostoevsky, or  marechera. i will let my reluctance to be influenced by greene influence me. i will be brave enough to be a coward, good enough to deserve hell, and evil enough to always be in heaven. are any of these choices mine?</p>
+
+    <p>there's so much to write about and to interpret, and i may be biased at times, because (and now i am repeating the beginning of this letter as the end) there are often times when i find beauty to be difficult, just because of how easy it can be for everything to be ugly. and as you can imagine, sometimes i find ugliness to be impossible due to an overwhelming amount of beauty.</p>
+
+    <div class="closing">
+      <div class="signature"><a href="blog.html">Undefined</a></div>
+    </div>
+
+    <hr>
+  </div>
+</div>
+</div>
+
+</body>
+</html>
