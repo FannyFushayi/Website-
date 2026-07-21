@@ -1,710 +1,1422 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crusher Electrical Installations - RBM Electricals</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Writing by Fanny Fushayi on engineering, artificial intelligence, philosophy, and life.">
+  <meta name="theme-color" content="#242923">
+  <title>The Undefined Blog | Fanny Fushayi</title>
 
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #1a1a1a;
-        }
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;1,600&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+  <!-- Font Awesome 6 (Free) for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(255, 102, 0, 0.3);
-        }
+  <style>
+    /* ===== Custom Properties ===== */
+    :root {
+      --ink: #242923;
+      --ink-soft: #3b4039;
+      --paper: #e4dfd2;
+      --paper-deep: #d0c8b8;
+      --oxide: #a45e35;
+      --olive: #68705a;
+      --rule: rgba(36, 41, 35, .22);
+      --max: 1400px;
+      --shadow: 0 12px 30px rgba(36, 41, 35, .12);
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
+    /* ===== Reset & Base ===== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
 
-        .company-info h1 {
-            color: #FF6600;
-            font-size: 1.8rem;
-            font-weight: bold;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        .company-info p {
-            color: #ccc;
-            font-size: 0.9rem;
-        }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 400 16px / 1.5 Manrope, Arial, sans-serif;
+      transition: background var(--transition), color var(--transition);
+    }
 
-        .author-info {
-            text-align: right;
-        }
+    img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
 
-        .author-info h3 {
-            color: #FF6600;
-        }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-        .author-info p {
-            color: #ccc;
-            font-size: 0.9rem;
-        }
+    ::selection {
+      background: var(--oxide);
+      color: #fff;
+    }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), #2c2c2c;
-            color: white;
-            padding: 4rem 0;
-            text-align: center;
-        }
+    /* ===== Utility ===== */
+    .shell {
+      max-width: var(--max);
+      margin: auto;
+      padding-inline: 38px;
+    }
 
-        .project-collage {
-            background: #333;
-            height: 300px;
-            margin: 2rem 0;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 3px solid #FF6600;
-            position: relative;
-            overflow: hidden;
-        }
+    .skip {
+      position: absolute;
+      top: -5rem;
+      left: 1rem;
+      z-index: 10;
+      background: var(--paper);
+      padding: .7rem 1rem;
+      border-radius: 4px;
+    }
 
-        .collage-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2px;
-            width: 100%;
-            height: 100%;
-        }
+    .skip:focus {
+      top: 1rem;
+    }
 
-        .collage-item {
-            background: linear-gradient(45deg, #FF6600, #ff8533);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 0.9rem;
-            text-align: center;
-            padding: 10px;
-            transition: transform 0.3s ease;
-        }
+    .overline {
+      margin: 0;
+      font: 500 10px / 1.2 "DM Mono", monospace;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
 
-        .collage-item:hover {
-            transform: scale(1.05);
-            z-index: 2;
-        }
+    .overline::before {
+      content: "";
+      display: inline-block;
+      width: 21px;
+      height: 1px;
+      margin: -2px 9px 0 0;
+      vertical-align: middle;
+      background: currentColor;
+    }
 
-        .project-title {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #FF6600;
-        }
+    .display,
+    .title {
+      margin: 15px 0;
+      font-family: "Barlow Condensed", Impact, sans-serif;
+      font-weight: 600;
+      line-height: .84;
+      letter-spacing: -.045em;
+      text-transform: uppercase;
+    }
 
-        .project-subtitle {
-            font-size: 1.2rem;
-            color: #ccc;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+    .display {
+      font-size: clamp(4.3rem, 10vw, 10.5rem);
+    }
 
-        /* Main Content */
-        .main-content {
-            background: white;
-            color: #333;
-        }
+    .title {
+      font-size: clamp(3.1rem, 6vw, 6.6rem);
+    }
 
-        .section {
-            padding: 3rem 0;
-            border-bottom: 2px solid #f0f0f0;
-        }
+    /* ===== Navigation ===== */
+    .nav {
+      position: absolute;
+      inset: 0 0 auto;
+      z-index: 5;
+      color: #f3f0e9;
+      transition: background var(--transition), backdrop-filter var(--transition);
+    }
 
-        .section:last-child {
-            border-bottom: none;
-        }
+    .nav.is-scrolled {
+      position: fixed;
+      background: rgba(36, 41, 35, .92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, .15);
+    }
 
-        .section-title {
-            font-size: 2rem;
-            color: #FF6600;
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+    .nav-inner {
+      max-width: var(--max);
+      padding: 20px 38px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-        .mining-icon {
-            width: 30px;
-            height: 30px;
-            background: #FF6600;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
+    .brand {
+      font: 600 15px "DM Mono", monospace;
+      letter-spacing: .03em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-        .two-column {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 2rem;
-        }
+    .brand::before {
+      content: "";
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      background: var(--oxide);
+      border-radius: 2px;
+    }
 
-        .highlight-box {
-            background: #f8f8f8;
-            border-left: 5px solid #FF6600;
-            padding: 1.5rem;
-            margin: 1rem 0;
-        }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
 
-        .technical-specs {
-            background: #1a1a1a;
-            color: white;
-            padding: 2rem;
-            border-radius: 8px;
-            margin: 2rem 0;
-        }
+    .nav-links a {
+      font: 500 12px "DM Mono", monospace;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      opacity: .8;
+      transition: opacity var(--transition), transform var(--transition);
+      position: relative;
+    }
 
-        .technical-specs h4 {
-            color: #FF6600;
-            margin-bottom: 1rem;
-        }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--oxide);
+      transition: width var(--transition);
+    }
 
-        .specs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
+    .nav-links a:hover {
+      opacity: 1;
+    }
 
-        .spec-item {
-            background: #2c2c2c;
-            padding: 1rem;
-            border-radius: 5px;
-            border: 1px solid #FF6600;
-        }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
 
-        .standards-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
+    .menu {
+      display: none;
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 255, 255, .4);
+      background: none;
+      color: #fff;
+      font: 500 11px "DM Mono", monospace;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
 
-        .standard-item {
-            background: #f0f0f0;
-            padding: 1rem;
-            border-radius: 5px;
-            border-left: 4px solid #FF6600;
-        }
+    .menu:hover {
+      background: rgba(255, 255, 255, .1);
+    }
 
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
+    /* ===== Hero ===== */
+    .hero {
+      position: relative;
+      min-height: 90svh;
+      overflow: hidden;
+      color: #f7f4eb;
+      background: var(--ink);
+      display: flex;
+      align-items: end;
+    }
 
-        .result-card {
-            background: linear-gradient(135deg, #FF6600, #ff8533);
-            color: white;
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(255, 102, 0, 0.3);
-        }
+    .hero-images {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr 1fr;
+    }
 
-        .result-card h4 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
+    .hero-images img {
+      height: 100%;
+      filter: saturate(.55) contrast(1.05) brightness(.61);
+      transition: transform 8s ease;
+    }
 
-        /* Footer */
-        footer {
-            background: #1a1a1a;
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
-        }
+    .hero:hover .hero-images img {
+      transform: scale(1.02);
+    }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
+    .hero-images img:nth-child(1) {
+      object-position: center 25%;
+    }
+    .hero-images img:nth-child(2) {
+      object-position: center;
+    }
+    .hero-images img:nth-child(3) {
+      object-position: center 30%;
+    }
 
-        .footer-link {
-            background: #FF6600;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s ease;
-        }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(16, 19, 16, .84), rgba(16, 19, 16, .48) 54%, rgba(16, 19, 16, .18)),
+        linear-gradient(0deg, rgba(16, 19, 16, .7), transparent 52%);
+    }
 
-        .footer-link:hover {
-            background: #e55a00;
-            transform: translateY(-2px);
-        }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding-bottom: 43px;
+    }
 
-        .location-info {
-            color: #ccc;
-            margin-top: 2rem;
-        }
+    .hero-copy {
+      max-width: 850px;
+    }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-            }
+    .hero-copy .overline {
+      color: #d9c799;
+    }
 
-            .author-info {
-                text-align: center;
-            }
+    .hero-copy>p:not(.overline) {
+      max-width: 520px;
+      margin: 22px 0 0;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      opacity: .9;
+    }
 
-            .project-title {
-                font-size: 2rem;
-            }
+    .hero-foot {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 72px;
+      font: 400 10px "DM Mono", monospace;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      opacity: .7;
+    }
 
-            .two-column {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
+    .hero-foot span:last-child {
+      animation: bob 2.4s infinite ease-in-out;
+    }
 
-            .collage-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+    @keyframes bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(4px); }
+    }
 
-            .footer-links {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
+    /* ===== Main ===== */
+    main {
+      padding: 120px 0 0;
+    }
 
-        /* Animations */
-        .fade-in {
-            animation: fadeIn 1s ease-in;
-        }
+    /* ===== Intro ===== */
+    .intro {
+      display: grid;
+      grid-template-columns: minmax(200px, .66fr) 1.34fr;
+      gap: 50px;
+      margin-bottom: 120px;
+      align-items: center;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+    .intro p:last-child {
+      max-width: 750px;
+      margin: 0;
+      font-size: clamp(1.3rem, 2.6vw, 2.25rem);
+      line-height: 1.23;
+      letter-spacing: -.035em;
+      font-weight: 500;
+    }
+
+    /* ===== Featured ===== */
+    .featured {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-inline: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      min-height: 570px;
+    }
+
+    .featured-image {
+      min-height: 400px;
+      overflow: hidden;
+    }
+
+    .featured-image img {
+      height: 100%;
+      filter: saturate(.6) contrast(1.05);
+      transition: transform 1.2s ease;
+    }
+
+    .featured:hover .featured-image img {
+      transform: scale(1.03);
+    }
+
+    .featured-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
+      padding: 70px clamp(35px, 7vw, 120px);
+    }
+
+    .featured-copy .overline {
+      color: #d9c799;
+    }
+
+    .featured-copy h2 {
+      font-size: clamp(3.2rem, 6vw, 6.7rem);
+    }
+
+    .featured-copy>p:not(.overline) {
+      max-width: 460px;
+      color: #d6d2c9;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 16px;
+      border: 1.5px solid currentColor;
+      padding: 12px 22px;
+      color: inherit;
+      font: 600 11px "DM Mono", monospace;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      transition: all var(--transition);
+      border-radius: 4px;
+      background: transparent;
+    }
+
+    .button:hover {
+      background: var(--paper);
+      color: var(--ink);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,.25);
+    }
+
+    .button i {
+      font-size: 14px;
+      transition: transform var(--transition);
+    }
+
+    .button:hover i {
+      transform: translateX(4px);
+    }
+
+    /* ===== Visual Journal ===== */
+    .visual-journal {
+      padding: 130px 0 118px;
+      overflow: hidden;
+    }
+
+    .journal-head {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 35px;
+      align-items: end;
+      margin-bottom: 45px;
+    }
+
+    .journal-head p:last-child {
+      max-width: 530px;
+      margin: 0;
+      font-size: 1.06rem;
+      color: var(--ink-soft);
+    }
+
+    .art-collage {
+      display: grid;
+      grid-template-columns: 1.05fr .72fr 1.18fr .8fr;
+      grid-template-rows: 230px 185px;
+      gap: 14px;
+    }
+
+    .art-collage figure {
+      position: relative;
+      min-width: 0;
+      margin: 0;
+      overflow: hidden;
+      background: var(--ink);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .art-collage figure:nth-child(1) {
+      grid-row: span 2;
+    }
+    .art-collage figure:nth-child(3) {
+      grid-column: span 2;
+    }
+    .art-collage figure:nth-child(5) {
+      grid-column: span 2;
+    }
+
+    .art-collage img {
+      height: 100%;
+      filter: saturate(.68) contrast(1.04);
+      transition: transform .6s ease, filter .6s ease;
+    }
+
+    .art-collage figure:hover img {
+      transform: scale(1.06);
+      filter: saturate(.86) contrast(1.06);
+    }
+
+    .art-collage figcaption {
+      position: absolute;
+      right: 12px;
+      bottom: 10px;
+      color: #fff;
+      font: 400 9px "DM Mono", monospace;
+      letter-spacing: .08em;
+      text-shadow: 0 2px 10px rgba(0,0,0,.7);
+      text-transform: uppercase;
+      background: rgba(0,0,0,.3);
+      padding: 4px 10px;
+      border-radius: 20px;
+      backdrop-filter: blur(4px);
+    }
+
+    /* ===== Index / Archive Listing ===== */
+    .index {
+      padding-block: 130px;
+    }
+
+    .index-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 35px;
+      margin-bottom: 55px;
+    }
+
+    .index-head p:last-child {
+      max-width: 350px;
+      margin: 0;
+      color: var(--ink-soft);
+    }
+
+    /* ===== Categories ===== */
+    .category {
+      margin-top: 125px;
+      scroll-margin-top: 85px;
+    }
+
+    .category:first-of-type {
+      margin-top: 0;
+    }
+
+    /* Category header with collage integrated */
+    .category-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      background: var(--ink);
+      color: var(--paper);
+      border-radius: 12px 12px 0 0;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .category-header-content {
+      padding: 42px 0 38px 46px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .category-header-content .category-number {
+      color: #d9c799;
+      font: 500 14px "DM Mono", monospace;
+      margin-bottom: 8px;
+    }
+
+    .category-header-content h3 {
+      margin: 0;
+      color: #fff;
+      font: 600 clamp(3.8rem, 6.6vw, 7.2rem) / .78 "Barlow Condensed", Impact, sans-serif;
+      letter-spacing: -.055em;
+      text-transform: uppercase;
+    }
+
+    .category-header-content .category-description {
+      max-width: 310px;
+      margin: 8px 0 0;
+      color: #d6d2c9;
+      font-size: .92rem;
+    }
+
+    .category-header-collage {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 6px;
+      padding: 6px;
+      background: rgba(0,0,0,.2);
+    }
+
+    .category-header-collage figure {
+      position: relative;
+      min-width: 0;
+      margin: 0;
+      overflow: hidden;
+      background: var(--ink);
+      border-radius: 6px;
+      aspect-ratio: 4/3;
+    }
+
+    .category-header-collage figure:first-child {
+      grid-row: span 2;
+      aspect-ratio: auto;
+    }
+
+    .category-header-collage figure:nth-child(3) {
+      grid-column: 2 / span 2;
+    }
+
+    .category-header-collage img {
+      height: 100%;
+      width: 100%;
+      filter: saturate(.65) contrast(1.05);
+      transition: transform .6s ease, filter .6s ease;
+    }
+
+    .category-header-collage figure:hover img {
+      transform: scale(1.06);
+      filter: saturate(.85) contrast(1.05);
+    }
+
+    .category-header-collage figcaption {
+      position: absolute;
+      right: 8px;
+      bottom: 6px;
+      color: #fff;
+      font: 400 8px "DM Mono", monospace;
+      letter-spacing: .06em;
+      text-shadow: 0 2px 10px rgba(0,0,0,.7);
+      text-transform: uppercase;
+      background: rgba(0,0,0,.3);
+      padding: 3px 8px;
+      border-radius: 12px;
+      backdrop-filter: blur(4px);
+      font-size: 7px;
+    }
+
+    /* ===== Post List ===== */
+    .post-list {
+      margin: 0;
+      padding: 0 46px;
+      list-style: none;
+      border: 1px solid var(--rule);
+      border-top: 0;
+      background: rgba(255, 255, 255, .13);
+      border-radius: 0 0 12px 12px;
+    }
+
+    .post-list li {
+      border-top: 1px solid var(--rule);
+    }
+
+    .post-list li:first-child {
+      border-top: 0;
+    }
+
+    .post-list a {
+      display: grid;
+      grid-template-columns: 90px minmax(250px, 1fr) 1.3fr auto;
+      gap: 22px;
+      align-items: center;
+      padding: 22px 0;
+      transition: color var(--transition), padding var(--transition), background var(--transition);
+      border-radius: 6px;
+      padding-inline: 8px;
+    }
+
+    .post-list a:hover {
+      color: var(--oxide);
+      padding-left: 16px;
+      background: rgba(164, 94, 53, .06);
+    }
+
+    .post-list .count {
+      font: 400 10px "DM Mono", monospace;
+      color: var(--olive);
+    }
+
+    .post-list strong {
+      font: 600 clamp(1.4rem, 2.4vw, 2.15rem) / 1 "Barlow Condensed", Impact, sans-serif;
+      letter-spacing: -.02em;
+      text-transform: uppercase;
+    }
+
+    .post-list span {
+      color: var(--ink-soft);
+      font-size: .88rem;
+    }
+
+    .post-list b {
+      font: 400 20px Manrope, sans-serif;
+      transition: transform var(--transition);
+    }
+
+    .post-list a:hover b {
+      transform: translateX(4px);
+    }
+
+    /* ===== Archive / Search ===== */
+    .archive {
+      background: var(--paper-deep);
+      padding: 95px 0;
+      border-radius: 12px;
+      margin-inline: 20px;
+    }
+
+    .archive-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .archive p:last-child {
+      margin: 0;
+      max-width: 570px;
+      font-size: 1.1rem;
+    }
+
+    .search-wrap {
+      position: relative;
+      max-width: 570px;
+      margin-top: 28px;
+    }
+
+    .search-bar {
+      width: 100%;
+      border: 0;
+      border-bottom: 2px solid var(--ink);
+      border-radius: 0;
+      padding: 13px 40px 13px 0;
+      background: transparent;
+      color: var(--ink);
+      font: 500 14px "DM Mono", monospace;
+      transition: border-color var(--transition);
+    }
+
+    .search-bar:focus {
+      outline: none;
+      border-color: var(--oxide);
+    }
+
+    .search-btn {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      border: 0;
+      background: none;
+      cursor: pointer;
+      color: var(--ink);
+      font-size: 20px;
+      transition: color var(--transition), transform var(--transition);
+    }
+
+    .search-btn:hover {
+      color: var(--oxide);
+      transform: translateX(3px);
+    }
+
+    .search-results {
+      display: none;
+      position: absolute;
+      z-index: 2;
+      top: calc(100% + 10px);
+      width: 100%;
+      max-height: 280px;
+      overflow-y: auto;
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      box-shadow: var(--shadow);
+      border-radius: 8px;
+    }
+
+    .search-result-item {
+      padding: 13px 16px;
+      cursor: pointer;
+      border-bottom: 1px solid var(--rule);
+      transition: background var(--transition);
+    }
+
+    .search-result-item:hover {
+      background: #eee9dc;
+    }
+
+    .search-result-title {
+      font-weight: 700;
+    }
+
+    .search-result-excerpt {
+      color: var(--ink-soft);
+      font-size: .83rem;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background: var(--ink);
+      color: var(--paper);
+      margin-top: 60px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      font: 400 10px "DM Mono", monospace;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      opacity: .7;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 760px) {
+      .shell,
+      .nav-inner {
+        padding-inline: 20px;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        padding: 24px 20px;
+        background: rgba(36, 41, 35, .98);
+        flex-direction: column;
+        align-items: start;
+        gap: 16px;
+        border-radius: 0 0 12px 12px;
+        backdrop-filter: blur(12px);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .menu {
+        display: block;
+      }
+
+      .hero {
+        min-height: 760px;
+      }
+
+      .hero-images {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-images img:nth-child(3) {
+        display: none;
+      }
+
+      .hero-foot {
+        margin-top: 48px;
+      }
+
+      .intro,
+      .archive-inner,
+      .journal-head {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .intro {
+        margin-bottom: 80px;
+      }
+
+      .featured {
+        margin-inline: 0;
+        border-radius: 0;
+      }
+
+      .featured-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-image {
+        height: 330px;
+        min-height: 0;
+      }
+
+      .featured-copy {
+        padding: 55px 20px;
+      }
+
+      .visual-journal {
+        padding: 80px 0;
+      }
+
+      .journal-head {
+        margin-bottom: 30px;
+      }
+
+      .art-collage {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 210px 145px 180px;
+        gap: 9px;
+      }
+
+      .art-collage figure:nth-child(1) {
+        grid-row: span 2;
+      }
+
+      .art-collage figure:nth-child(3) {
+        grid-column: auto;
+      }
+
+      .art-collage figure:nth-child(5) {
+        grid-column: span 2;
+      }
+
+      .index {
+        padding-block: 80px;
+      }
+
+      .index-head {
+        display: block;
+        margin-bottom: 38px;
+      }
+
+      .index-head p:last-child {
+        margin-top: 18px;
+      }
+
+      .category {
+        margin-top: 78px;
+      }
+
+      .category-header {
+        grid-template-columns: 1fr;
+        border-radius: 8px 8px 0 0;
+      }
+
+      .category-header-content {
+        padding: 30px 22px 20px;
+      }
+
+      .category-header-content h3 {
+        font-size: clamp(3.5rem, 15vw, 5.5rem);
+      }
+
+      .category-header-collage {
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 6px;
+        gap: 4px;
+      }
+
+      .category-header-collage figure:first-child {
+        grid-row: span 2;
+      }
+
+      .category-header-collage figure:nth-child(3) {
+        grid-column: 2 / span 2;
+      }
+
+      .post-list {
+        padding: 0 16px;
+        border-radius: 0 0 8px 8px;
+      }
+
+      .post-list a {
+        grid-template-columns: 30px 1fr auto;
+        gap: 11px;
+        padding: 18px 0;
+      }
+
+      .post-list span {
+        grid-column: 2;
+        grid-row: 2;
+      }
+
+      .post-list b {
+        grid-column: 3;
+        grid-row: 1 / span 2;
+      }
+
+      .archive {
+        padding: 70px 0;
+        margin-inline: 0;
+        border-radius: 0;
+      }
+
+      .footer-inner {
+        display: block;
+        line-height: 2;
+      }
+
+      .footer-inner span {
+        display: block;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-copy .display {
+        font-size: clamp(3.2rem, 14vw, 4.5rem);
+      }
+
+      .category-header-collage {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+
+      .category-header-collage figure:first-child {
+        grid-row: span 2;
+      }
+
+      .category-header-collage figure:nth-child(3) {
+        grid-column: span 1;
+      }
+    }
+  </style>
 </head>
-<body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="company-info">
-                    <h1>RBM ELECTRICALS</h1>
-                    <p>Professional Electrical Engineering Solutions</p>
-                </div>
-                <div class="author-info">
-                    <h3>Fanny Fushayi</h3>
-                    <p>Project Engineer</p>
-                </div>
-            </div>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero" style="position: relative; min-height: 500px; background: none;">
-        <div style="
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        ">
-            <div style="
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                grid-template-rows: repeat(2, 1fr);
-                width: 100%;
-                height: 100%;
-            ">
-                <img src="Images/PROJECT_MAJ/IMG_0018.JPEG" style="width:100%;height:100%;object-fit:cover;opacity:0.55;">
-                <img src="Images/PROJECT_MAJ/IMG_0031.JPEG" style="width:100%;height:100%;object-fit:cover;opacity:0.55;">
-                <img src="Images/PROJECT_MAJ/IMG_0042.JPEG" style="width:100%;height:100%;object-fit:cover;opacity:0.55;">
-                <img src="Images/PROJECT_MAJ/IMG_0048.JPEG" style="width:100%;height:100%;object-fit:cover;opacity:0.55;">
-                <img src="Images/PROJECT_MAJ/IMG_0211.JPEG" style="width:100%;height:100%;object-fit:cover;opacity:0.55;">
-                <img src="Images/PROJECT_MAJ/IMG_0215.JPEG" style="width:100%;height:100%;object-fit:cover;opacity:0.55;">
-                <img src="Images\Cable_distance.jpg" style="width:100%;height:100%;object-fit:cover;opacity:0.55;">
-                <img src="Images\PROJECT_MAJ\IMG_0174.JPEG" style="width:100%;height:100%;object-fit:cover;opacity:0.55;">
-                <img src="Images\PROJECT_MAJ\IMG_0174.JPEG" style="width:100%;height:100%;object-fit:cover;opacity:0.55;">
-            </div>
-            <div style="
-                position: absolute;
-                inset: 0;
-                background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
-                z-index: 1;
-            "></div>
-        </div>
-        <div class="container" style="position: relative; z-index: 2;">
-            <h1 class="project-title">MOOINOOI PROJECT</h1>
-            <p class="project-subtitle">Electrical Design and implementation under South African design standards at Mooinooi Mining Plant</p>
-        </div>
+<body>
+  <!-- ===== Skip Link ===== -->
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- ===== Navigation ===== -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">FANNY FUSHAYI</a>
+
+      <button class="menu" type="button" aria-expanded="false" aria-controls="nav-links">
+        <i class="fas fa-bars"></i> Menu
+      </button>
+
+      <div class="nav-links" id="nav-links">
+        <a href="index.html#story">About me</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="#engineering">Engineering</a>
+        <a href="#ai">AI</a>
+        <a href="Contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== Hero ===== -->
+  <header class="hero">
+    <div class="hero-images" aria-hidden="true">
+      <img src="Images/ARTIDECLARE/Engineering/IMG_0530.JPEG" alt="">
+      <img src="Images/ARTIDECLARE/Short%20Stories/IMG_1766.JPEG" alt="">
+      <img src="Images/ARTIDECLARE/Short%20Stories/IMG_1443.JPEG" alt="">
+    </div>
+
+    <div class="hero-content shell">
+      <div class="hero-copy">
+        <p class="overline"><i class="fas fa-pen-fancy" style="margin-right:6px;"></i> Field notes / 2019—now</p>
+        <h1 class="display">The<br><em>Undefined</em><br>Blog.</h1>
+        <p>Engineering, intelligence, ideas, and the untidy questions that make them worth pursuing.</p>
+      </div>
+
+      <div class="hero-foot">
+        <span><i class="fas fa-user-astronaut"></i> Fanny Fushayi / Writing archive</span>
+        <span>Scroll to explore <i class="fas fa-arrow-down"></i></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Main Content ===== -->
+  <main id="main">
+
+    <!-- Intro -->
+    <section class="shell intro">
+      <p class="overline"><i class="fas fa-book-open"></i> A working notebook</p>
+      <p>The undefined is not the absence of definition. It is the space where a system, a story, or an idea is still becoming.</p>
     </section>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Project Overview -->
-        <section class="section">
-            <div class="container">
-                <h2 class="section-title">
-                    <span class="mining-icon">⚡</span>
-                    Project Overview
-                </h2>
-                <div class="two-column">
-                    <div>
-                        <h3>Scope of Work</h3>
-                        <ul style="margin-top: 1rem; line-height: 2;">
-                            <li><strong>VSI Crusher:</strong> 180kW motor with soft starter integration</li>
-                            <li><strong>HSI Crusher:</strong> High-capacity motor with DOL start method</li>
-                            <li><strong>Long-distance Cable:</strong> 800+ meter installation with optimized sizing</li>
-                            <li><strong>Site Lighting:</strong> Apollo fittings with load diversity considerations</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="highlight-box">
-                            <h4>Project Context</h4>
-                            <p><strong>Industry:</strong> Mining Operations</p>
-                            <p><strong>Location:</strong> Mooinooi, South Africa</p>
-                            <p><strong>Environment:</strong> Heavy-duty mining plant operations</p>
-                            <br>
-                            <p><strong>Role:</strong> Responsible for complete electrical design, calculations, integration, and technical documentation compliance.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Objectives -->
-        <section class="section" style="background: #f8f8f8;">
-            <div class="container">
-                <h2 class="section-title">
-                    <span class="mining-icon">🎯</span>
-                    Project Objectives
-                </h2>
-                <div class="results-grid">
-                    <div class="result-card">
-                        <h4>Reliable Operation</h4>
-                        <p>Ensure dependable motor operation and comprehensive protection systems</p>
-                    </div>
-                    <div class="result-card">
-                        <h4>Voltage Optimization</h4>
-                        <p>Minimize voltage drop on long feeder runs for optimal performance</p>
-                    </div>
-                    <div class="result-card">
-                        <h4>Standards Compliance</h4>
-                        <p>Full adherence to South African electrical design standards</p>
-                    </div>
-                    <div class="result-card">
-                        <h4>Cost Efficiency</h4>
-                        <p>Optimize technical and economic balance in cable sizing decisions</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Design Standards -->
-        <section class="section">
-            <div class="container">
-                <h2 class="section-title">
-                    <span class="mining-icon">📋</span>
-                    Applicable Design Standards (South Africa)
-                </h2>
-                <p style="margin-bottom: 2rem;">All design work conducted in strict compliance with South African National Standards:</p>
-                <div class="standards-list">
-                    <div class="standard-item">
-                        <strong>SANS 10142-1:</strong> Wiring of Premises (low voltage installations)
-                    </div>
-                    <div class="standard-item">
-                        <strong>SANS 10198:</strong> Power cables with extruded insulation systems
-                    </div>
-                    <div class="standard-item">
-                        <strong>SANS 60034 / IEC 60034:</strong> Rotating electrical machines (motors)
-                    </div>
-                    <div class="standard-item">
-                        <strong>SANS 60947:</strong> Low-voltage switchgear and control gear
-                    </div>
-                    <div class="standard-item">
-                        <strong>SANS 10292:</strong> Earthing of low-voltage electrical installations
-                    </div>
-                    <div class="standard-item">
-                        <strong>SANS 1029:</strong> Lighting installation standards
-                    </div>
-                    <div class="standard-item">
-                        <strong>NRS 048:</strong> Power quality and supply standards
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Challenges -->
-        <section class="section" style="background: #f8f8f8;">
-            <div class="container">
-                <h2 class="section-title">
-                    <span class="mining-icon">⚠️</span>
-                    Engineering Challenges
-                </h2>
-                <div class="two-column">
-                    <div>
-                        <h3>Technical Challenges</h3>
-                        <ul style="line-height: 2; margin-top: 1rem;">
-                            <li>Long feeder cable runs with high current loads</li>
-                            <li>Voltage drop concerns affecting crusher startup torque</li>
-                            <li>Large motor inrush current management</li>
-                            <li>Integration with legacy undersized infrastructure</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="highlight-box">
-                            <h4>Key Challenge: Cost vs. Performance Balance</h4>
-                            <p>Optimizing cable selection to achieve acceptable voltage drop while maintaining project economic viability. Required careful analysis of conductor sizing, installation methods, and long-term operational costs.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Technical Approach -->
-        <section class="section">
-            <div class="container">
-                <h2 class="section-title">
-                    <span class="mining-icon">⚙️</span>
-                    Design & Technical Approach
-                </h2>
-                
-                <div class="technical-specs">
-                    <h4>VSI Crusher Installation</h4>
-                    <div class="specs-grid">
-                        <div class="spec-item">
-                            <strong>Motor Rating:</strong> 180 kW<br>
-                            <strong>Start Method:</strong> Soft Starter<br>
-                            <strong>Rationale:</strong> Reduced inrush current and mechanical stress
-                        </div>
-                        <div class="spec-item">
-                            <strong>Protection:</strong> Thermal overload protection<br>
-                            <strong>Control:</strong> Local and remote operation<br>
-                            <strong>Monitoring:</strong> Current and voltage feedback
-                        </div>
-                    </div>
-                </div>
-
-                <div class="technical-specs">
-                    <h4>HSI Crusher Installation</h4>
-                    <div class="specs-grid">
-                        <div class="spec-item">
-                            <strong>Motor Rating:</strong> 2 X 260 kW motors <br>
-                            <strong>Start Method:</strong> Mechanical soft start <br>
-                            <strong>Rationale:</strong> Suitable for application requirements and cost efficiency
-                        </div>
-                        <div class="spec-item">
-                            <strong>Protection:</strong> Circuit breaker coordination<br>
-                            <strong>Safety:</strong> Emergency stop integration<br>
-                            <strong>Maintenance:</strong> Accessible control panels
-                        </div>
-                    </div>
-                </div>
-
-                <div class="technical-specs">
-                    <h4>Cable Design & Installation</h4>
-                    <div class="specs-grid">
-                        <div class="spec-item">
-                            <strong>Cable Sizes:</strong> 35mm², 70mm² optimized selection<br>
-                            <strong>Total Length:</strong> 800+ meter runs<br>
-                            <strong>Installation:</strong> Buried and tray methods
-                        </div>
-                        <div class="spec-item">
-                            <strong>Voltage Drop:</strong> <5% per SANS requirements<br>
-                            <strong>Ambient Conditions:</strong> Mining environment rated<br>
-                            <strong>Protection:</strong> Mechanical and electrical protection
-                        </div>
-                        <div class="spec-item">
-                            <strong>Lighting Integration:</strong> 3x Apollo fittings<br>
-                            <strong>Load Diversity:</strong> Optimized for operational patterns<br>
-                            <strong>Earthing:</strong> SANS 10292 compliant system
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Implementation -->
-        <section class="section" style="background: #f8f8f8;">
-            <div class="container">
-                <h2 class="section-title">
-                    <span class="mining-icon">🔧</span>
-                    Implementation Process
-                </h2>
-                <div class="two-column">
-                    <div>
-                        <h3>Project Phases</h3>
-                        <ol style="line-height: 2.5; margin-top: 1rem;">
-                            <li><strong>Design Phase:</strong> Load calculations, cable sizing, and standards compliance verification</li>
-                            <li><strong>Procurement:</strong> Equipment specification and supplier coordination</li>
-                            <li><strong>Installation:</strong> Systematic installation with safety protocols</li>
-                            <li><strong>Commissioning:</strong> Testing, calibration, and performance verification</li>
-                        </ol>
-                    </div>
-                    <div>
-                        <div class="highlight-box">
-                            <h4>Coordination Excellence</h4>
-                            <p><strong>Civil Team:</strong> Infrastructure preparation and cable routing</p>
-                            <p><strong>Mechanical Team:</strong> Crusher installation coordination</p>
-                            <p><strong>Client Integration:</strong> Operational requirements and feedback</p>
-                            <br>
-                            <p><strong>Site Issues Resolved:</strong> Corrected previous undersized cable installations, improving system reliability and performance.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Results -->
-        <section class="section">
-            <div class="container">
-                <h2 class="section-title">
-                    <span class="mining-icon">✅</span>
-                    Project Results & Achievements
-                </h2>
-                <div class="results-grid">
-                    <div class="result-card">
-                        <h4>Standards Compliance</h4>
-                        <p>100% compliance with SANS electrical standards and voltage drop requirements (<5%)</p>
-                    </div>
-                    <div class="result-card">
-                        <h4>Operational Stability</h4>
-                        <p>Stable crusher operation achieved with both soft start and DOL configurations</p>
-                    </div>
-                    <div class="result-card">
-                        <h4>System Reliability</h4>
-                        <p>Dramatically improved system reliability through proper cable sizing and protection</p>
-                    </div>
-                    <div class="result-card">
-                        <h4>Performance Optimization</h4>
-                        <p>Optimal balance between technical performance and project cost efficiency</p>
-                    </div>
-                </div>
-                
-                <div class="highlight-box" style="margin-top: 3rem;">
-                    <h4>Key Lesson Learned</h4>
-                    <p>The critical importance of comprehensive upfront cable design for both electrical performance and long-term cost efficiency. Proper infrastructure planning prevents costly retrofits and ensures reliable mining operations.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Reflection -->
-        <section class="section" style="background: #f8f8f8;">
-            <div class="container">
-                <h2 class="section-title">
-                    <span class="mining-icon">💡</span>
-                    Professional Reflection & Takeaways
-                </h2>
-                <div class="two-column">
-                    <div>
-                        <h3>Engineering Excellence</h3>
-                        <p style="line-height: 1.8;">This project reinforced that electrical engineering extends far beyond equipment selection. The critical importance of infrastructure design—cables, protection systems, and integration planning—cannot be overstated in mining environments.</p>
-                        
-                        <h3 style="margin-top: 2rem;">Problem-Solving Approach</h3>
-                        <p style="line-height: 1.8;">Successfully demonstrated adaptive engineering problem-solving when working with existing infrastructure limitations, turning challenges into opportunities for system improvement.</p>
-                    </div>
-                    <div>
-                        <h3>Technical Judgment</h3>
-                        <p style="line-height: 1.8;">The project showcased the importance of balancing technical requirements with economic constraints, particularly in cable sizing decisions that impact both performance and project viability.</p>
-                        
-                        <h3 style="margin-top: 2rem;">Standards Mastery</h3>
-                        <p style="line-height: 1.8;">Deepened expertise in South African electrical standards application, ensuring all installations meet rigorous safety and performance requirements for mining operations.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-links">
-                <a href="#" class="footer-link">← Back to Projects</a>
-                <a href="#" class="footer-link">Download CV/Resume PDF</a>
-                <a href="#" class="footer-link">Detailed Case Study →</a>
-            </div>
-            <div class="location-info">
-                <p><strong>RBM Electricals</strong> | Professional Electrical Engineering Solutions</p>
-                <p>Mooinooi Mining Project | South Africa</p>
-                <p>Project Engineer: <strong>Fanny Fushayi</strong></p>
-            </div>
+    <!-- Featured -->
+    <section class="featured">
+      <div class="featured-grid">
+        <div class="featured-image">
+          <img src="Images/ARTIDECLARE/Landscapes/IMG_1081.JPEG" alt="Abstract detail from Artideclare">
         </div>
-    </footer>
 
-    <script>
-        // Add smooth scrolling and fade-in animations
-        document.addEventListener('DOMContentLoaded', function() {
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
+        <div class="featured-copy">
+          <p class="overline"><i class="fas fa-star"></i> Latest post / Artificial intelligence</p>
+          <h2 class="title">Just above<br>zero.</h2>
+          <p>A 24-hour journey through data and iteration—from complete bewilderment to a leaderboard position by starting small and improving relentlessly.</p>
+          <a class="button" href="just_above_zero.html">Read the article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
 
-            // Animate elements on scroll
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
+    <!-- Visual Journal -->
+    <section class="shell visual-journal" aria-labelledby="journal-title">
+      <div class="journal-head">
+        <div>
+          <p class="overline"><i class="fas fa-images"></i> Visual journal</p>
+          <h2 class="title" id="journal-title">Fragments<br>in the field.</h2>
+        </div>
+        <p>A small collection of observations from Artideclare—placed here as a pause between the newest note and the full archive.</p>
+      </div>
 
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.animation = 'fadeIn 1s ease-in forwards';
-                    }
-                });
-            }, observerOptions);
+      <div class="art-collage">
+        <figure>
+          <img src="Images/ARTIDECLARE/Short%20Stories/IMG_0156.JPEG" loading="lazy" alt="Artideclare visual journal image">
+          <figcaption><i class="fas fa-eye"></i> 01 / observation</figcaption>
+        </figure>
+        <figure>
+          <img src="Images/ARTIDECLARE/life%20Perhaps/IMG_0442.JPEG" loading="lazy" alt="Artideclare visual journal image">
+          <figcaption><i class="fas fa-hand-peace"></i> 02 / texture</figcaption>
+        </figure>
+        <figure>
+          <img src="Images/ARTIDECLARE/Landscapes/IMG_0525.JPEG" loading="lazy" alt="Artideclare visual journal image">
+          <figcaption><i class="fas fa-layer-group"></i> 03 / composition</figcaption>
+        </figure>
+        <figure>
+          <img src="Images/ARTIDECLARE/Engineering/IMG_0768.JPEG" loading="lazy" alt="Artideclare visual journal image">
+          <figcaption><i class="fas fa-sun"></i> 04 / light</figcaption>
+        </figure>
+        <figure>
+          <img src="Images/ARTIDECLARE/Landscapes/IMG_1839.JPEG" loading="lazy" alt="Artideclare visual journal image">
+          <figcaption><i class="fas fa-cube"></i> 05 / material</figcaption>
+        </figure>
+      </div>
+    </section>
 
-            document.querySelectorAll('.section').forEach(section => {
-                observer.observe(section);
-            });
+    <!-- Archive Index -->
+    <section class="shell index">
+      <div class="index-head">
+        <div>
+          <p class="overline"><i class="fas fa-archive"></i> The archive</p>
+          <h2 class="title">Choose a<br>thread.</h2>
+        </div>
+        <p>Essays and experiments organised by the questions they return to: how things work, what they mean, and where we are going.</p>
+      </div>
 
-            // Add hover effects to collage items
-            document.querySelectorAll('.collage-item').forEach(item => {
-                item.addEventListener('mouseenter', function() {
-                    this.style.transform = 'scale(1.05)';
-                    this.style.zIndex = '10';
-                });
-                
-                item.addEventListener('mouseleave', function() {
-                    this.style.transform = 'scale(1)';
-                    this.style.zIndex = '1';
-                });
-            });
-        });
-    </script>
+      <!-- Category: Engineering -->
+      <section class="category" id="engineering">
+        <div class="category-header">
+          <div class="category-header-content">
+            <span class="category-number"><i class="fas fa-microchip"></i> 01</span>
+            <h3>Engineering</h3>
+            <p class="category-description">Power, control, energy systems, and the physical world.</p>
+          </div>
+          <div class="category-header-collage">
+            <figure>
+              <img src="Images/ARTIDECLARE/Engineering/IMG_0530.JPEG" loading="lazy" alt="Engineering collage">
+              <figcaption>field work</figcaption>
+            </figure>
+            <figure>
+              <img src="Images/ARTIDECLARE/Engineering/IMG_0768.JPEG" loading="lazy" alt="Engineering collage">
+              <figcaption>systems</figcaption>
+            </figure>
+            <figure>
+              <img src="Images/ARTIDECLARE/Engineering/IMG_1288.JPEG" loading="lazy" alt="Engineering collage">
+              <figcaption>detail</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <ul class="post-list">
+          <li><a href="theenergyrevolution.html"><i class="count">01</i><strong>The Energy Revolution</strong><span>A battery that spins</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="currentaffairs.html"><i class="count">02</i><strong>Current Affairs</strong><span>HVAC or HVDC</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="PowerSystemProt.html"><i class="count">03</i><strong>Power System Protection</strong><span>HVAC faults</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="control_animation.html"><i class="count">04</i><strong>Control Systems</strong><span>An introduction</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="Digitwin.html"><i class="count">05</i><strong>Digital Twins</strong><span>The future of system analysis</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="solar_system_guide.html"><i class="count">06</i><strong>PV System Design</strong><span>A case study</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="Battery_Data_driven.html"><i class="count">07</i><strong>RUL Estimation</strong><span>Machine learning techniques</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="HNEI_and_ML_BD2.html"><i class="count">08</i><strong>Battery Life Prediction</strong><span>Navigating the non-linear path</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="RUL_Part_3.html"><i class="count">09</i><strong>The LSTM Strikes Again</strong><span>Lessons from sequence modelling on battery data</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+        </ul>
+      </section>
+
+      <!-- Category: Philosophy -->
+      <section class="category" id="philosophy">
+        <div class="category-header">
+          <div class="category-header-content">
+            <span class="category-number"><i class="fas fa-brain"></i> 02</span>
+            <h3>Philosophy</h3>
+            <p class="category-description">Memory, identity, myth, history, and meaning.</p>
+          </div>
+          <div class="category-header-collage">
+            <figure>
+              <img src="Images/ARTIDECLARE/Philosophy/IMG_0159.JPEG" loading="lazy" alt="Philosophy collage">
+              <figcaption>memory</figcaption>
+            </figure>
+            <figure>
+              <img src="Images/ARTIDECLARE/Philosophy/IMG_0556.JPEG" loading="lazy" alt="Philosophy collage">
+              <figcaption>question</figcaption>
+            </figure>
+            <figure>
+              <img src="Images/ARTIDECLARE/Philosophy/IMG_1758.JPEG" loading="lazy" alt="Philosophy collage">
+              <figcaption>reflection</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <ul class="post-list">
+          <li><a href="Pandora_box.html"><i class="count">01</i><strong>Pandora's Box</strong><span>Hope amidst chaos</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="CAP_review.html"><i class="count">02</i><strong>Crime and Punishment</strong><span>A philosophical review</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="ATTIHD.html"><i class="count">03</i><strong>A Thousand Times, I've Died</strong><span>On memory, identity and consciousness</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="dzichava_nhoroondo_blog.html"><i class="count">04</i><strong>Dzichava Nhoroondo</strong><span>Exploring personal history</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+        </ul>
+      </section>
+
+      <!-- Category: Artificial Intelligence -->
+      <section class="category" id="ai">
+        <div class="category-header">
+          <div class="category-header-content">
+            <span class="category-number"><i class="fas fa-robot"></i> 03</span>
+            <h3>Artificial Intelligence</h3>
+            <p class="category-description">Learning systems, data, models, and their limits.</p>
+          </div>
+          <div class="category-header-collage">
+            <figure>
+              <img src="Images/ARTIDECLARE/Artificial Intelligence/17FDA1B0-EFD1-45A3-BAF7-CFD27CB3B25D (1).JPEG" loading="lazy" alt="AI collage">
+              <figcaption>process</figcaption>
+            </figure>
+            <figure>
+              <img src="Images/ARTIDECLARE/Artificial Intelligence/being.png" loading="lazy" alt="AI collage">
+              <figcaption>signal</figcaption>
+            </figure>
+            <figure>
+              <img src="Images/ARTIDECLARE/Artificial Intelligence/F905AC83-BB4E-4490-94D4-2818CAC17FFC.PNG" loading="lazy" alt="AI collage">
+              <figcaption>pattern</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <ul class="post-list">
+          <li><a href="just_above_zero.html"><i class="count">01</i><strong>Just Above Zero</strong><span>A 24-hour data competition sprint</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="Intro_to_AI.html"><i class="count">02</i><strong>AI Summer</strong><span>An introduction to AI</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="BuildingAI.html"><i class="count">03</i><strong>Building a Digit Recognizer</strong><span>Neural networks from scratch with MNIST</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="Data_science.html"><i class="count">04</i><strong>Part 1: Data Analysis</strong><span>A step back</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="ML.html"><i class="count">05</i><strong>Part 2: Machine Learning</strong><span>Classical algorithms</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="deep_learning.html"><i class="count">06</i><strong>Part 3(A): Deep Learning</strong><span>Supervised neural networks</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="How_to_Deploy.html"><i class="count">07</i><strong>How to Deploy ML</strong><span>Everything but a guide</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="SGPT.html"><i class="count">08</i><strong>Shona Tiny Language Model</strong><span>Learning about LLMs</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="losing.html"><i class="count">09</i><strong>Losing My First ML Competition</strong><span>Competitive regression</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+        </ul>
+      </section>
+
+      <!-- Category: Short Stories -->
+      <section class="category" id="stories">
+        <div class="category-header">
+          <div class="category-header-content">
+            <span class="category-number"><i class="fas fa-feather-alt"></i> 04</span>
+            <h3>Short Stories</h3>
+            <p class="category-description">Time travel, milestones, and moments of becoming.</p>
+          </div>
+          <div class="category-header-collage">
+            <figure>
+              <img src="Images/ARTIDECLARE/Short%20Stories/IMG_0156.JPEG" loading="lazy" alt="Stories collage">
+              <figcaption>scene</figcaption>
+            </figure>
+            <figure>
+              <img src="Images/ARTIDECLARE/Short%20Stories/IMG_1301.JPEG" loading="lazy" alt="Stories collage">
+              <figcaption>interval</figcaption>
+            </figure>
+            <figure>
+              <img src="Images/ARTIDECLARE/Short%20Stories/IMG_1443.JPEG" loading="lazy" alt="Stories collage">
+              <figcaption>passage</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <ul class="post-list">
+          <li><a href="time_extrapolation.html"><i class="count">01</i><strong>The Time Extrapolation</strong><span>A pessimist's guide to time travel</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="graduation_blog.html"><i class="count">02</i><strong>Graduation</strong><span>The weight of applause</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="pulse.html"><i class="count">03</i><strong>The Pulse of Being</strong><span>A short poem</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+        </ul>
+      </section>
+
+      <!-- Category: Life, perhaps -->
+      <section class="category" id="life">
+        <div class="category-header">
+          <div class="category-header-content">
+            <span class="category-number"><i class="fas fa-leaf"></i> 05</span>
+            <h3>Life, perhaps</h3>
+            <p class="category-description">Literature, creativity, faith, absurdity, and everyday survival.</p>
+          </div>
+          <div class="category-header-collage">
+            <figure>
+              <img src="Images/ARTIDECLARE/life%20Perhaps/IMG_0442.JPEG" loading="lazy" alt="Life collage">
+              <figcaption>ordinary</figcaption>
+            </figure>
+            <figure>
+              <img src="Images/ARTIDECLARE/life%20Perhaps/IMG_0474.JPEG" loading="lazy" alt="Life collage">
+              <figcaption>notes</figcaption>
+            </figure>
+            <figure>
+              <img src="Images/ARTIDECLARE/life%20Perhaps/IMG_0560.JPEG" loading="lazy" alt="Life collage">
+              <figcaption>becoming</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <ul class="post-list">
+          <li><a href="How_to_survive.html"><i class="count">01</i><strong>How to Survive an Alien Abduction</strong><span>And other advice</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="Uninspired1.html"><i class="count">02</i><strong>Uninspired: One</strong><span>A reflection on creativity</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="brothers_karamazov.html"><i class="count">03</i><strong>Marginalia of a Mental Meltdown</strong><span>The Brothers Karamazov, books 1–3</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="AprilsChristmas.html"><i class="count">04</i><strong>A Cube for April Christmas</strong><span>Scarcity, abundance, and worthwhile struggles</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="metamorph.html"><i class="count">05</i><strong>Do You Wanna Know?</strong><span>Kafka, metamorphosis, and dancing</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="alyosha_blog_post.html"><i class="count">06</i><strong>Alyosha the Absurdly Good</strong><span>Faith in a world on fire</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="TLEN.html"><i class="count">07</i><strong>Think Like an Engineer</strong><span>Habits from the lab to life</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="Tsumo.html"><i class="count">08</i><strong>Freshly Grown Ancient Knowledge</strong><span>On uttering new words</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+        </ul>
+      </section>
+    </section>
+
+    <!-- Archive / Search -->
+    <section class="archive">
+      <div class="shell archive-inner">
+        <div>
+          <p class="overline"><i class="fas fa-search"></i> Find a post</p>
+          <h2 class="title">Search the<br>notebook.</h2>
+        </div>
+
+        <div>
+          <p>Search by title, topic, or a few remembered words. The archive is still growing, but the threads are already here.</p>
+
+          <div class="search-wrap">
+            <input type="search" class="search-bar" placeholder="Search posts…" aria-label="Search posts">
+            <button class="search-btn" aria-label="Search"><i class="fas fa-arrow-right"></i></button>
+            <div class="search-results"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="footer-inner shell">
+      <span><i class="far fa-copyright"></i> <span id="year"></span> Fanny Fushayi</span>
+      <span><i class="fas fa-cogs"></i> Engineering for the physical world.</span>
+    </div>
+  </footer>
+
+  <!-- ===== JavaScript ===== -->
+  <script>
+    // ============================================================
+    // 1. Search functionality
+    // ============================================================
+    const posts = Array.from(document.querySelectorAll('.post-list a')).map(a => ({
+      title: a.querySelector('strong').textContent,
+      excerpt: a.querySelector('span').textContent,
+      url: a.href
+    }));
+
+    const input = document.querySelector('.search-bar');
+    const button = document.querySelector('.search-btn');
+    const results = document.querySelector('.search-results');
+
+    function search() {
+      const q = input.value.trim().toLowerCase();
+
+      if (q.length < 2) {
+        results.style.display = 'none';
+        return;
+      }
+
+      const found = posts.filter(p =>
+        (p.title + ' ' + p.excerpt).toLowerCase().includes(q)
+      );
+
+      results.innerHTML = found.length
+        ? found.map(p => `
+            <div class="search-result-item" data-url="${p.url}">
+              <div class="search-result-title"><i class="fas fa-file-alt" style="margin-right:8px;opacity:.5;"></i>${p.title}</div>
+              <div class="search-result-excerpt">${p.excerpt}</div>
+            </div>
+          `).join('')
+        : '<div class="search-result-item"><i class="fas fa-exclamation-circle" style="margin-right:8px;"></i>No matching posts found.</div>';
+
+      results.style.display = 'block';
+    }
+
+    input.addEventListener('input', search);
+    button.addEventListener('click', search);
+
+    results.addEventListener('click', e => {
+      const item = e.target.closest('[data-url]');
+      if (item) window.location.href = item.dataset.url;
+    });
+
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.search-wrap')) results.style.display = 'none';
+    });
+
+    // ============================================================
+    // 2. Nav: scroll behaviour
+    // ============================================================
+    const nav = document.querySelector('.nav');
+
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('is-scrolled', window.scrollY > 36);
+    }, { passive: true });
+
+    // ============================================================
+    // 3. Nav: mobile menu toggle
+    // ============================================================
+    const menu = document.querySelector('.menu');
+    const links = document.querySelector('.nav-links');
+
+    menu.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      menu.setAttribute('aria-expanded', open);
+      menu.innerHTML = open ? '<i class="fas fa-times"></i> Close' : '<i class="fas fa-bars"></i> Menu';
+    });
+
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        links.classList.remove('open');
+        menu.setAttribute('aria-expanded', 'false');
+        menu.innerHTML = '<i class="fas fa-bars"></i> Menu';
+      });
+    });
+
+    // ============================================================
+    // 4. Footer: current year
+    // ============================================================
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ============================================================
+    // 5. Intersection Observer for fade-in sections
+    // ============================================================
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.category, .visual-journal, .intro').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      observer.observe(el);
+    });
+
+    // trigger initial visibility for items already in view
+    setTimeout(() => {
+      document.querySelectorAll('.category, .visual-journal, .intro').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }
+      });
+    }, 200);
+  </script>
 </body>
 </html>

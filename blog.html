@@ -1,1124 +1,1444 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Undefined Blog</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="icon" href="Images/favicon.ico" type="image/x-icon" />
-    <style>
-        :root {
-            --black: #000000;
-            --white: #ffffff;
-            --light-gray: #f5f5f5;
-            --medium-gray: #e0e0e0;
-            --dark-gray: #333333;
-            --navy-blue: #001f3f;
-            --highlight-color: #003366;
-            --accent-color: #4a90e2;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.8;
-            background: var(--white);
-            color: var(--black);
-            transition: background-color 0.5s ease;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        header {
-            text-align: center;
-            padding: 100px 0 80px;
-            border-bottom: 1px solid var(--medium-gray);
-            background: var(--navy-blue);
-            color: var(--white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, var(--accent-color), var(--highlight-color), var(--accent-color));
-            animation: rainbow 8s linear infinite;
-            background-size: 200% auto;
-        }
-
-        @keyframes rainbow {
-            0% { background-position: 0% center; }
-            100% { background-position: 200% center; }
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 3em;
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            position: relative;
-            display: inline-block;
-        }
-
-        header h1::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--accent-color);
-            border-radius: 3px;
-        }
-
-        header p {
-            font-size: 1.1em;
-            margin: 20px auto 0;
-            max-width: 600px;
-            font-weight: 300;
-            letter-spacing: 0.5px;
-            opacity: 0.9;
-        }
-
-        .home-link {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            color: var(--white);
-            text-decoration: none;
-            font-size: 1.2em;
-            transition: all 0.3s ease;
-            padding: 5px 10px;
-            border-radius: 4px;
-            background: rgba(255,255,255,0.1);
-        }
-
-        .home-link:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-2px);
-        }
-
-        nav {
-            padding: 30px 0;
-            text-align: center;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            background: var(--navy-blue);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        nav a {
-            color: var(--white);
-            text-decoration: none;
-            margin: 0 20px;
-            font-size: 0.9em;
-            transition: all 0.3s ease;
-            padding: 5px 10px;
-            border-radius: 4px;
-            position: relative;
-        }
-
-        nav a:hover {
-            color: var(--accent-color);
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 2px;
-            background: var(--accent-color);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        section {
-            margin-bottom: 60px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        section h2 {
-            color: var(--navy-blue);
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8em;
-            margin-bottom: 30px;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 10px;
-        }
-
-        section h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--accent-color);
-            border-radius: 3px;
-        }
-
-        .post-item {
-            margin-bottom: 15px;
-            padding-left: 20px;
-            border-left: 2px solid var(--medium-gray);
-            transition: all 0.3s ease;
-        }
-
-        .post-item:hover {
-            border-left: 2px solid var(--accent-color);
-            transform: translateX(5px);
-        }
-
-        .post-item a {
-            color: var(--navy-blue);
-            text-decoration: none;
-            font-size: 1.1em;
-            transition: all 0.3s ease;
-            display: block;
-        }
-
-        .post-item a:hover {
-            color: var(--accent-color);
-        }
-
-        .post-item p {
-            margin: 5px 0 0 0;
-            font-size: 0.9em;
-            color: var(--dark-gray);
-        }
-
-        footer {
-            text-align: center;
-            padding: 80px 0 40px;
-            margin-top: 100px;
-            border-top: 1px solid var(--medium-gray);
-            background: var(--navy-blue);
-            color: var(--white);
-            position: relative;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .social-links a {
-            color: var(--white);
-            font-size: 1.5em;
-            transition: all 0.3s ease;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-        }
-
-        .social-links a:hover {
-            background: var(--accent-color);
-            transform: translateY(-5px) scale(1.1);
-        }
-
-        .footer-text {
-            font-size: 0.9em;
-            color: var(--light-gray);
-            font-weight: 300;
-        }
-
-        .footer-text a {
-            color: var(--white);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-text a:hover {
-            color: var(--accent-color);
-        }
-
-        /* Latest Post Highlight */
-        .latest-post {
-            background: var(--light-gray);
-            border-left: 4px solid var(--accent-color);
-            padding: 30px;
-            margin: 40px 0;
-            border-radius: 0 5px 5px 0;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            position: relative;
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-
-        .latest-post:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .latest-post::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(74, 144, 226, 0.05) 0%, rgba(0, 0, 0, 0) 100%);
-            z-index: 0;
-        }
-
-        .latest-post h3 {
-            margin-top: 0;
-            color: var(--navy-blue);
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5em;
-            position: relative;
-        }
-
-        .latest-badge {
-            position: absolute;
-            top: -12px;
-            right: 20px;
-            background: var(--accent-color);
-            color: var(--white);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 500;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            z-index: 1;
-        }
-
-        .latest-post p {
-            margin-bottom: 15px;
-            position: relative;
-        }
-
-        .read-more {
-            display: inline-block;
-            background: var(--accent-color);
-            color: var(--white);
-            padding: 10px 20px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 0.9em;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .read-more:hover {
-            background: var(--highlight-color);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-        }
-
-        .read-more::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 5px;
-            height: 5px;
-            background: rgba(255, 255, 255, 0.5);
-            opacity: 0;
-            border-radius: 100%;
-            transform: scale(1, 1) translate(-50%);
-            transform-origin: 50% 50%;
-        }
-
-        .read-more:hover::after {
-            animation: ripple 1s ease-out;
-        }
-
-        @keyframes ripple {
-            0% {
-                transform: scale(0, 0);
-                opacity: 0.5;
-            }
-            100% {
-                transform: scale(20, 20);
-                opacity: 0;
-            }
-        }
-
-        /* Fun Elements */
-        .quote-container {
-            text-align: center;
-            margin: 60px 0;
-            padding: 40px 20px;
-            position: relative;
-            background: var(--light-gray);
-            border-radius: 5px;
-        }
-
-        .quote {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3em;
-            font-style: italic;
-            color: var(--dark-gray);
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            line-height: 1.6;
-        }
-
-        .quote::before, .quote::after {
-            content: '"';
-            font-size: 3em;
-            color: var(--accent-color);
-            opacity: 0.2;
-            position: absolute;
-            line-height: 1;
-        }
-
-        .quote::before {
-            top: -10px;
-            left: -15px;
-        }
-
-        .quote::after {
-            bottom: -40px;
-            right: -15px;
-        }
-
-        .author {
-            margin-top: 20px;
-            font-size: 0.9em;
-            color: var(--dark-gray);
-            font-weight: 500;
-        }
-
-        .fun-fact {
-            background: var(--navy-blue);
-            color: var(--white);
-            padding: 30px;
-            border-radius: 5px;
-            margin: 40px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .fun-fact:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .fun-fact h3 {
-            margin-top: 0;
-            font-family: 'Playfair Display', serif;
-            position: relative;
-        }
-
-        .fun-fact p {
-            margin-bottom: 0;
-            position: relative;
-        }
-
-        .bubble {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: all 0.5s ease;
-        }
-
-        .bubble-1 {
-            width: 80px;
-            height: 80px;
-            bottom: -40px;
-            left: 10%;
-        }
-
-        .bubble-2 {
-            width: 40px;
-            height: 40px;
-            top: 20px;
-            right: 20%;
-        }
-
-        .bubble-3 {
-            width: 60px;
-            height: 60px;
-            bottom: 10px;
-            right: 10%;
-        }
-
-        .fun-fact:hover .bubble-1 {
-            transform: translate(-10px, -10px) scale(1.1);
-        }
-
-        .fun-fact:hover .bubble-2 {
-            transform: translate(10px, 5px) scale(1.2);
-        }
-
-        .fun-fact:hover .bubble-3 {
-            transform: translate(5px, -5px) scale(1.1);
-        }
-
-        .topic-icon {
-            font-size: 2em;
-            margin-right: 10px;
-            color: var(--accent-color);
-            vertical-align: middle;
-            transition: transform 0.3s ease;
-        }
-
-        section:hover .topic-icon {
-            transform: rotate(15deg) scale(1.1);
-        }
-
-        /* Slideshow */
-        .slideshow-container {
-            position: relative;
-            max-width: 100%;
-            margin: 40px auto;
-            overflow: hidden;
-            border-radius: 5px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .slide {
-            display: none;
-            padding: 40px;
-            text-align: center;
-            background: var(--light-gray);
-        }
-
-        .slide.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .slide h3 {
-            color: var(--navy-blue);
-            font-family: 'Playfair Display', serif;
-            margin-top: 0;
-        }
-
-        .slide p {
-            max-width: 700px;
-            margin: 0 auto 20px;
-        }
-
-        .slide-link {
-            display: inline-block;
-            padding: 8px 16px;
-            background: var(--accent-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .slide-link:hover {
-            background: var(--highlight-color);
-            transform: translateY(-2px);
-        }
-
-        .slide-nav {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .slide-dot {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            margin: 0 5px;
-            background-color: var(--medium-gray);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .slide-dot.active {
-            background-color: var(--accent-color);
-        }
-
-        /* Theme toggle */
-        .theme-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background: var(--navy-blue);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        /* Dark mode styles */
-        body.dark-mode {
-            background: var(--dark-gray);
-            color: var(--light-gray);
-        }
-
-        body.dark-mode section h2 {
-            color: var(--accent-color);
-        }
-
-        body.dark-mode .post-item a {
-            color: var(--accent-color);
-        }
-
-        body.dark-mode .latest-post {
-            background: var(--black);
-        }
-
-        body.dark-mode .quote-container {
-            background: var(--black);
-        }
-
-        body.dark-mode .quote {
-            color: var(--light-gray);
-        }
-
-        /* Search Results */
-        .search-results {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: var(--white);
-            border: 1px solid var(--medium-gray);
-            border-radius: 10px;
-            max-height: 300px;
-            overflow-y: auto;
-            z-index: 1000;
-            display: none;
-            box-shadow: var(--shadow);
-        }
-        
-        .search-bar {
-            width: 200px;
-        }
-
-        .search-result-item {
-            padding: 15px;
-            border-bottom: 1px solid var(--medium-gray);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .search-result-item:hover {
-            background: var(--light-gray);
-        }
-
-        .search-result-item:last-child {
-            border-bottom: none;
-        }
-
-        .search-result-title {
-            font-weight: 600;
-            color: var(--navy-blue);
-            margin-bottom: 5px;
-        }
-
-        .search-result-excerpt {
-            font-size: 0.9em;
-            color: var(--dark-gray);
-        }
-
-        /* Search Bar */
-        .search-container {
-            position: relative;
-        }
-
-        .search-bar {
-            padding: 10px 40px 10px 15px;
-            border: 2px solid var(--medium-gray);
-            border-radius: 25px;
-            font-size: 0.9em;
-            width: 250px;
-            transition: var(--transition);
-            background: var(--white);
-            color: var(--black);
-        }
-
-        .search-bar:focus {
-            outline: none;
-            border-color: var(--navy-blue);
-            box-shadow: 0 0 10px rgba(0, 31, 63, 0.2);
-        }
-
-        .search-btn {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: var(--navy-blue);
-            cursor: pointer;
-            font-size: 1.1em;
-        }
-
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Writing by Fanny Fushayi on engineering, artificial intelligence, philosophy, and life.">
+  <meta name="theme-color" content="#242923">
+  <title>The Undefined Blog | Fanny Fushayi</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;1,600&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 (Free) for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    /* ===== Custom Properties ===== */
+    :root {
+      --ink: #242923;
+      --ink-soft: #3b4039;
+      --paper: #e4dfd2;
+      --paper-deep: #d0c8b8;
+      --oxide: #a45e35;
+      --olive: #68705a;
+      --rule: rgba(36, 41, 35, .22);
+      --max: 1400px;
+      --shadow: 0 12px 30px rgba(36, 41, 35, .12);
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ===== Reset & Base ===== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 400 16px / 1.5 Manrope, Arial, sans-serif;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ::selection {
+      background: var(--oxide);
+      color: #fff;
+    }
+
+    /* ===== Utility ===== */
+    .shell {
+      max-width: var(--max);
+      margin: auto;
+      padding-inline: 38px;
+    }
+
+    .skip {
+      position: absolute;
+      top: -5rem;
+      left: 1rem;
+      z-index: 10;
+      background: var(--paper);
+      padding: .7rem 1rem;
+      border-radius: 4px;
+    }
+
+    .skip:focus {
+      top: 1rem;
+    }
+
+    .overline {
+      margin: 0;
+      font: 500 10px / 1.2 "DM Mono", monospace;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .overline::before {
+      content: "";
+      display: inline-block;
+      width: 21px;
+      height: 1px;
+      margin: -2px 9px 0 0;
+      vertical-align: middle;
+      background: currentColor;
+    }
+
+    .display,
+    .title {
+      margin: 15px 0;
+      font-family: "Barlow Condensed", Impact, sans-serif;
+      font-weight: 600;
+      line-height: .84;
+      letter-spacing: -.045em;
+      text-transform: uppercase;
+    }
+
+    .display {
+      font-size: clamp(4.3rem, 10vw, 10.5rem);
+    }
+
+    .title {
+      font-size: clamp(3.1rem, 6vw, 6.6rem);
+    }
+
+    /* ===== Navigation ===== */
+    .nav {
+      position: absolute;
+      inset: 0 0 auto;
+      z-index: 5;
+      color: #f3f0e9;
+      transition: background var(--transition), backdrop-filter var(--transition);
+    }
+
+    .nav.is-scrolled {
+      position: fixed;
+      background: rgba(36, 41, 35, .92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, .15);
+    }
+
+    .nav-inner {
+      max-width: var(--max);
+      padding: 20px 38px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font: 600 15px "DM Mono", monospace;
+      letter-spacing: .03em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand::before {
+      content: "";
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      background: var(--oxide);
+      border-radius: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font: 500 12px "DM Mono", monospace;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      opacity: .8;
+      transition: opacity var(--transition), transform var(--transition);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--oxide);
+      transition: width var(--transition);
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .menu {
+      display: none;
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 255, 255, .4);
+      background: none;
+      color: #fff;
+      font: 500 11px "DM Mono", monospace;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+
+    .menu:hover {
+      background: rgba(255, 255, 255, .1);
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      position: relative;
+      min-height: 90svh;
+      overflow: hidden;
+      color: #f7f4eb;
+      background: var(--ink);
+      display: flex;
+      align-items: end;
+    }
+
+    .hero-images {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr 1fr;
+    }
+
+    .hero-images img {
+      height: 100%;
+      filter: saturate(.55) contrast(1.05) brightness(.61);
+      transition: transform 8s ease;
+    }
+
+    .hero:hover .hero-images img {
+      transform: scale(1.02);
+    }
+
+    .hero-images img:nth-child(1) {
+      object-position: center 25%;
+    }
+    .hero-images img:nth-child(2) {
+      object-position: center;
+    }
+    .hero-images img:nth-child(3) {
+      object-position: center 30%;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(16, 19, 16, .84), rgba(16, 19, 16, .48) 54%, rgba(16, 19, 16, .18)),
+        linear-gradient(0deg, rgba(16, 19, 16, .7), transparent 52%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding-bottom: 43px;
+    }
+
+    .hero-copy {
+      max-width: 850px;
+    }
+
+    .hero-copy .overline {
+      color: #d9c799;
+    }
+
+    .hero-copy>p:not(.overline) {
+      max-width: 520px;
+      margin: 22px 0 0;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      opacity: .9;
+    }
+
+    .hero-foot {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 72px;
+      font: 400 10px "DM Mono", monospace;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      opacity: .7;
+    }
+
+    .hero-foot span:last-child {
+      animation: bob 2.4s infinite ease-in-out;
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(4px); }
+    }
+
+    /* ===== Main ===== */
+    main {
+      padding: 120px 0 0;
+    }
+
+    /* ===== Intro ===== */
+    .intro {
+      display: grid;
+      grid-template-columns: minmax(200px, .66fr) 1.34fr;
+      gap: 50px;
+      margin-bottom: 120px;
+      align-items: center;
+    }
+
+    .intro p:last-child {
+      max-width: 750px;
+      margin: 0;
+      font-size: clamp(1.3rem, 2.6vw, 2.25rem);
+      line-height: 1.23;
+      letter-spacing: -.035em;
+      font-weight: 500;
+    }
+
+    /* ===== Featured ===== */
+    .featured {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-inline: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      min-height: 570px;
+    }
+
+    .featured-image {
+      min-height: 400px;
+      overflow: hidden;
+    }
+
+    .featured-image img {
+      height: 100%;
+      filter: saturate(.6) contrast(1.05);
+      transition: transform 1.2s ease;
+    }
+
+    .featured:hover .featured-image img {
+      transform: scale(1.03);
+    }
+
+    .featured-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
+      padding: 70px clamp(35px, 7vw, 120px);
+    }
+
+    .featured-copy .overline {
+      color: #d9c799;
+    }
+
+    .featured-copy h2 {
+      font-size: clamp(3.2rem, 6vw, 6.7rem);
+    }
+
+    .featured-copy>p:not(.overline) {
+      max-width: 460px;
+      color: #d6d2c9;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 16px;
+      border: 1.5px solid currentColor;
+      padding: 12px 22px;
+      color: inherit;
+      font: 600 11px "DM Mono", monospace;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      transition: all var(--transition);
+      border-radius: 4px;
+      background: transparent;
+    }
+
+    .button:hover {
+      background: var(--paper);
+      color: var(--ink);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,.25);
+    }
+
+    .button i {
+      font-size: 14px;
+      transition: transform var(--transition);
+    }
+
+    .button:hover i {
+      transform: translateX(4px);
+    }
+
+    /* ===== Visual Journal ===== */
+    .visual-journal {
+      padding: 130px 0 118px;
+      overflow: hidden;
+    }
+
+    .journal-head {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 35px;
+      align-items: end;
+      margin-bottom: 45px;
+    }
+
+    .journal-head p:last-child {
+      max-width: 530px;
+      margin: 0;
+      font-size: 1.06rem;
+      color: var(--ink-soft);
+    }
+
+    .art-collage {
+      display: grid;
+      grid-template-columns: 1.05fr .72fr 1.18fr .8fr;
+      grid-template-rows: 230px 185px;
+      gap: 14px;
+    }
+
+    .art-collage figure {
+      position: relative;
+      min-width: 0;
+      margin: 0;
+      overflow: hidden;
+      background: var(--ink);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .art-collage figure:nth-child(1) {
+      grid-row: span 2;
+    }
+    .art-collage figure:nth-child(3) {
+      grid-column: span 2;
+    }
+    .art-collage figure:nth-child(5) {
+      grid-column: span 2;
+    }
+
+    .art-collage img {
+      height: 100%;
+      filter: saturate(.68) contrast(1.04);
+      transition: transform .6s ease, filter .6s ease;
+    }
+
+    .art-collage figure:hover img {
+      transform: scale(1.06);
+      filter: saturate(.86) contrast(1.06);
+    }
+
+    .art-collage figcaption {
+      position: absolute;
+      right: 12px;
+      bottom: 10px;
+      color: #fff;
+      font: 400 9px "DM Mono", monospace;
+      letter-spacing: .08em;
+      text-shadow: 0 2px 10px rgba(0,0,0,.7);
+      text-transform: uppercase;
+      background: rgba(0,0,0,.3);
+      padding: 4px 10px;
+      border-radius: 20px;
+      backdrop-filter: blur(4px);
+    }
+
+    /* ===== Index / Archive Listing ===== */
+    .index {
+      padding-block: 130px;
+    }
+
+    .index-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 35px;
+      margin-bottom: 55px;
+    }
+
+    .index-head p:last-child {
+      max-width: 350px;
+      margin: 0;
+      color: var(--ink-soft);
+    }
+
+    /* ===== Categories ===== */
+    .category {
+      margin-top: 125px;
+      scroll-margin-top: 85px;
+    }
+
+    .category:first-of-type {
+      margin-top: 0;
+    }
+
+    /* Category header with collage integrated */
+    .category-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      background: var(--ink);
+      color: var(--paper);
+      border-radius: 12px 12px 0 0;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .category-header-content {
+      padding: 42px 0 38px 46px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .category-header-content .category-number {
+      color: #d9c799;
+      font: 500 14px "DM Mono", monospace;
+      margin-bottom: 8px;
+    }
+
+    .category-header-content h3 {
+      margin: 0;
+      color: #fff;
+      font: 600 clamp(3.8rem, 6.6vw, 7.2rem) / .78 "Barlow Condensed", Impact, sans-serif;
+      letter-spacing: -.055em;
+      text-transform: uppercase;
+    }
+
+    .category-header-content .category-description {
+      max-width: 310px;
+      margin: 8px 0 0;
+      color: #d6d2c9;
+      font-size: .92rem;
+    }
+
+    .category-header-collage {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 6px;
+      padding: 6px;
+      background: rgba(0,0,0,.2);
+    }
+
+    .category-header-collage figure {
+      position: relative;
+      min-width: 0;
+      margin: 0;
+      overflow: hidden;
+      background: var(--ink);
+      border-radius: 6px;
+      aspect-ratio: 4/3;
+    }
+
+    .category-header-collage figure:first-child {
+      grid-row: span 2;
+      aspect-ratio: auto;
+    }
+
+    .category-header-collage figure:nth-child(3) {
+      grid-column: 2 / span 2;
+    }
+
+    .category-header-collage img {
+      height: 100%;
+      width: 100%;
+      filter: saturate(.65) contrast(1.05);
+      transition: transform .6s ease, filter .6s ease;
+    }
+
+    .category-header-collage figure:hover img {
+      transform: scale(1.06);
+      filter: saturate(.85) contrast(1.05);
+    }
+
+    .category-header-collage figcaption {
+      position: absolute;
+      right: 8px;
+      bottom: 6px;
+      color: #fff;
+      font: 400 8px "DM Mono", monospace;
+      letter-spacing: .06em;
+      text-shadow: 0 2px 10px rgba(0,0,0,.7);
+      text-transform: uppercase;
+      background: rgba(0,0,0,.3);
+      padding: 3px 8px;
+      border-radius: 12px;
+      backdrop-filter: blur(4px);
+      font-size: 7px;
+    }
+
+    /* ===== Post List ===== */
+    .post-list {
+      margin: 0;
+      padding: 0 46px;
+      list-style: none;
+      border: 1px solid var(--rule);
+      border-top: 0;
+      background: rgba(255, 255, 255, .13);
+      border-radius: 0 0 12px 12px;
+    }
+
+    .post-list li {
+      border-top: 1px solid var(--rule);
+    }
+
+    .post-list li:first-child {
+      border-top: 0;
+    }
+
+    .post-list a {
+      display: grid;
+      grid-template-columns: 90px minmax(250px, 1fr) 1.3fr auto;
+      gap: 22px;
+      align-items: center;
+      padding: 22px 0;
+      transition: color var(--transition), padding var(--transition), background var(--transition);
+      border-radius: 6px;
+      padding-inline: 8px;
+    }
+
+    .post-list a:hover {
+      color: var(--oxide);
+      padding-left: 16px;
+      background: rgba(164, 94, 53, .06);
+    }
+
+    .post-list .count {
+      font: 400 10px "DM Mono", monospace;
+      color: var(--olive);
+    }
+
+    .post-list strong {
+      font: 600 clamp(1.4rem, 2.4vw, 2.15rem) / 1 "Barlow Condensed", Impact, sans-serif;
+      letter-spacing: -.02em;
+      text-transform: uppercase;
+    }
+
+    .post-list span {
+      color: var(--ink-soft);
+      font-size: .88rem;
+    }
+
+    .post-list b {
+      font: 400 20px Manrope, sans-serif;
+      transition: transform var(--transition);
+    }
+
+    .post-list a:hover b {
+      transform: translateX(4px);
+    }
+
+    /* ===== Archive / Search ===== */
+    .archive {
+      background: var(--paper-deep);
+      padding: 95px 0;
+      border-radius: 12px;
+      margin-inline: 20px;
+    }
+
+    .archive-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .archive p:last-child {
+      margin: 0;
+      max-width: 570px;
+      font-size: 1.1rem;
+    }
+
+    .search-wrap {
+      position: relative;
+      max-width: 570px;
+      margin-top: 28px;
+    }
+
+    .search-bar {
+      width: 100%;
+      border: 0;
+      border-bottom: 2px solid var(--ink);
+      border-radius: 0;
+      padding: 13px 40px 13px 0;
+      background: transparent;
+      color: var(--ink);
+      font: 500 14px "DM Mono", monospace;
+      transition: border-color var(--transition);
+    }
+
+    .search-bar:focus {
+      outline: none;
+      border-color: var(--oxide);
+    }
+
+    .search-btn {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      border: 0;
+      background: none;
+      cursor: pointer;
+      color: var(--ink);
+      font-size: 20px;
+      transition: color var(--transition), transform var(--transition);
+    }
+
+    .search-btn:hover {
+      color: var(--oxide);
+      transform: translateX(3px);
+    }
+
+    .search-results {
+      display: none;
+      position: absolute;
+      z-index: 2;
+      top: calc(100% + 10px);
+      width: 100%;
+      max-height: 280px;
+      overflow-y: auto;
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      box-shadow: var(--shadow);
+      border-radius: 8px;
+    }
+
+    .search-result-item {
+      padding: 13px 16px;
+      cursor: pointer;
+      border-bottom: 1px solid var(--rule);
+      transition: background var(--transition);
+    }
+
+    .search-result-item:hover {
+      background: #eee9dc;
+    }
+
+    .search-result-title {
+      font-weight: 700;
+    }
+
+    .search-result-excerpt {
+      color: var(--ink-soft);
+      font-size: .83rem;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background: var(--ink);
+      color: var(--paper);
+      margin-top: 60px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      font: 400 10px "DM Mono", monospace;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      opacity: .7;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: flex-end;
+    }
+
+    .footer-links a {
+      color: var(--paper);
+      text-decoration: none;
+      transition: opacity var(--transition);
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 760px) {
+      .shell,
+      .nav-inner {
+        padding-inline: 20px;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        padding: 24px 20px;
+        background: rgba(36, 41, 35, .98);
+        flex-direction: column;
+        align-items: start;
+        gap: 16px;
+        border-radius: 0 0 12px 12px;
+        backdrop-filter: blur(12px);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .menu {
+        display: block;
+      }
+
+      .hero {
+        min-height: 760px;
+      }
+
+      .hero-images {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-images img:nth-child(3) {
+        display: none;
+      }
+
+      .hero-foot {
+        margin-top: 48px;
+      }
+
+      .intro,
+      .archive-inner,
+      .journal-head {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .intro {
+        margin-bottom: 80px;
+      }
+
+      .featured {
+        margin-inline: 0;
+        border-radius: 0;
+      }
+
+      .featured-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-image {
+        height: 330px;
+        min-height: 0;
+      }
+
+      .featured-copy {
+        padding: 55px 20px;
+      }
+
+      .visual-journal {
+        padding: 80px 0;
+      }
+
+      .journal-head {
+        margin-bottom: 30px;
+      }
+
+      .art-collage {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 210px 145px 180px;
+        gap: 9px;
+      }
+
+      .art-collage figure:nth-child(1) {
+        grid-row: span 2;
+      }
+
+      .art-collage figure:nth-child(3) {
+        grid-column: auto;
+      }
+
+      .art-collage figure:nth-child(5) {
+        grid-column: span 2;
+      }
+
+      .index {
+        padding-block: 80px;
+      }
+
+      .index-head {
+        display: block;
+        margin-bottom: 38px;
+      }
+
+      .index-head p:last-child {
+        margin-top: 18px;
+      }
+
+      .category {
+        margin-top: 78px;
+      }
+
+      .category-header {
+        grid-template-columns: 1fr;
+        border-radius: 8px 8px 0 0;
+      }
+
+      .category-header-content {
+        padding: 30px 22px 20px;
+      }
+
+      .category-header-content h3 {
+        font-size: clamp(3.5rem, 15vw, 5.5rem);
+      }
+
+      .category-header-collage {
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 6px;
+        gap: 4px;
+      }
+
+      .category-header-collage figure:first-child {
+        grid-row: span 2;
+      }
+
+      .category-header-collage figure:nth-child(3) {
+        grid-column: 2 / span 2;
+      }
+
+      .post-list {
+        padding: 0 16px;
+        border-radius: 0 0 8px 8px;
+      }
+
+      .post-list a {
+        grid-template-columns: 30px 1fr auto;
+        gap: 11px;
+        padding: 18px 0;
+      }
+
+      .post-list span {
+        grid-column: 2;
+        grid-row: 2;
+      }
+
+      .post-list b {
+        grid-column: 3;
+        grid-row: 1 / span 2;
+      }
+
+      .archive {
+        padding: 70px 0;
+        margin-inline: 0;
+        border-radius: 0;
+      }
+
+      .footer-inner {
+        display: block;
+        line-height: 2;
+      }
+
+      .footer-inner span {
+        display: block;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-copy .display {
+        font-size: clamp(3.2rem, 14vw, 4.5rem);
+      }
+
+      .category-header-collage {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+
+      .category-header-collage figure:first-child {
+        grid-row: span 2;
+      }
+
+      .category-header-collage figure:nth-child(3) {
+        grid-column: span 1;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <a href="index.html" class="home-link"><i class="fas fa-home"></i> Home</a>
-        <h1>The Undefined Blog</h1>
-        <p>The blog will discuss a wide variety of topics, seemingly random.</p>
-    </header>
+  <!-- ===== Skip Link ===== -->
+  <a class="skip" href="#main">Skip to content</a>
 
-    <nav>
+  <!-- ===== Navigation ===== -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">FANNY FUSHAYI</a>
+
+      <button class="menu" type="button" aria-expanded="false" aria-controls="nav-links">
+        <i class="fas fa-bars"></i> Menu
+      </button>
+
+      <div class="nav-links" id="nav-links">
         <a href="#engineering">Engineering</a>
+        <a href="#ai">AI</a>
         <a href="#philosophy">Philosophy</a>
-        <a href="#ai">Artificial Intelligence</a>
-        <a href="#short-stories">Short Stories</a>
-        <a href="Contact.html">Contact</a>
+        <a href="#life">Life</a>   
+        <a href="#stories">Short Stories</a>
+      </div>
+    </div>
+  </nav>
 
-        <div class="search-container">
-            <input type="text" class="search-bar" placeholder="Search posts..." aria-label="Search posts">
-            <button class="search-btn" aria-label="Search">
-                <i class="fas fa-search"></i>
-            </button>
+  <!-- ===== Hero ===== -->
+  <header class="hero">
+    <div class="hero-images" aria-hidden="true">
+      <img src="Images/ARTIDECLARE/Engineering/IMG_0530.JPEG" alt="">
+      <img src="Images/ARTIDECLARE/Short%20Stories/IMG_1766.JPEG" alt="">
+      <img src="Images/ARTIDECLARE/Short%20Stories/IMG_1443.JPEG" alt="">
+    </div>
+
+    <div class="hero-content shell">
+      <div class="hero-copy">
+        <p class="overline"><i class="fas fa-pen-fancy" style="margin-right:6px;"></i> life notes / 2019—now</p>
+        <h1 class="display">The<br><em>Undefined</em><br>Blog.</h1>
+        <p>Engineering, Curiosity, ideas, and the untidy questions that make them worth pursuing.</p>
+      </div>
+
+      <div class="hero-foot">
+        <span><i class="fas fa-user-astronaut"></i> Fanny Fushayi / Writing archive</span>
+        <span>Scroll to explore <i class="fas fa-arrow-down"></i></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Main Content ===== -->
+  <main id="main">
+
+    <!-- Intro -->
+    <section class="shell intro">
+      <p class="overline"><i class="fas fa-book-open"></i> A working notebook</p>
+      <p>The undefined is not the absence of definition, but the potential for infinite definitions.</p>
+    </section>
+
+    <!-- Featured -->
+    <section class="featured">
+      <div class="featured-grid">
+        <div class="featured-image">
+          <img src="Images/ARTIDECLARE/Landscapes/IMG_1081.JPEG" alt="Abstract detail from Artideclare">
+        </div>
+
+        <div class="featured-copy">
+          <p class="overline"><i class="fas fa-star"></i> Latest post / Artificial intelligence</p>
+          <h2 class="title">Just above<br>zero.</h2>
+          <p>A 24-hour journey through data and iteration—from complete bewilderment to a leaderboard position by starting small and improving relentlessly.</p>
+          <a class="button" href="just_above_zero.html">Read the article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visual Journal -->
+    <section class="shell visual-journal" aria-labelledby="journal-title">
+      <div class="journal-head">
+        <div>
+          <p class="overline"><i class="fas fa-images"></i> Visual journal</p>
+          <h2 class="title" id="journal-title">Fragments<br>And Experience.</h2>
+        </div>
+        <p>Take a moment, smell the air. Be Dramatic. Be Real.</p>
+      </div>
+
+      <div class="art-collage">
+        <figure>
+          <img src="Images/ARTIDECLARE/Short%20Stories/IMG_0156.JPEG" loading="lazy" alt="Artideclare visual journal image">
+          <figcaption><i class="fas fa-eye"></i> 01 / observation</figcaption>
+        </figure>
+        <figure>
+          <img src="Images/ARTIDECLARE/life%20Perhaps/IMG_0442.JPEG" loading="lazy" alt="Artideclare visual journal image">
+          <figcaption><i class="fas fa-hand-peace"></i> 02 / texture</figcaption>
+        </figure>
+        <figure>
+          <img src="Images/ARTIDECLARE/Landscapes/IMG_0525.JPEG" loading="lazy" alt="Artideclare visual journal image">
+          <figcaption><i class="fas fa-layer-group"></i> 03 / composition</figcaption>
+        </figure>
+        <figure>
+          <img src="Images/ARTIDECLARE/Landscapes/The_Shoe.jpg" loading="lazy" alt="Artideclare visual journal image">
+          <figcaption><i class="fas fa-sun"></i> 04 / Futility</figcaption>
+        </figure>
+        <figure>
+          <img src="Images/ARTIDECLARE/Landscapes/PhotographyJPG.JPG" loading="lazy" alt="Artideclare visual journal image">
+          <figcaption><i class="fas fa-cube"></i> 05 / Nature</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Archive Index -->
+    <section class="shell index">
+      <div class="index-head">
+        <div>
+          <p class="overline"><i class="fas fa-archive"></i> The archive</p>
+          <h2 class="title">Choose a<br>thread.</h2>
+        </div>
+        <p>Essays and experiments organised by the questions they return to: how things work, what they mean, and where we are going.</p>
+      </div>
+
+      <!-- Category: Engineering -->
+      <section class="category" id="engineering">
+        <div class="category-header">
+          <div class="category-header-content">
+            <span class="category-number"><i class="fas fa-microchip"></i> 01</span>
+            <h3>Engineering</h3>
+            <p class="category-description">Power, control, energy systems, and the physical world.</p>
+          </div>
+          <div class="category-header-collage">
+            <figure>
+              <img src="Images/ARTIDECLARE/Engineering/IMG_0530.JPEG" loading="lazy" alt="Engineering collage">
+              <figcaption>field work</figcaption>
+            </figure>
+            <figure>
+              <img src="Images/ARTIDECLARE/Engineering/IMG_0768.JPEG" loading="lazy" alt="Engineering collage">
+              <figcaption>systems</figcaption>
+            </figure>
+            <figure>
+              <img src="Images/ARTIDECLARE/Engineering/IMG_1288.JPEG" loading="lazy" alt="Engineering collage">
+              <figcaption>detail</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <ul class="post-list">
+          <li><a href="theenergyrevolution.html"><i class="count">01</i><strong>The Energy Revolution</strong><span>A battery that spins</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="currentaffairs.html"><i class="count">02</i><strong>Current Affairs</strong><span>HVAC or HVDC</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="PowerSystemProt.html"><i class="count">03</i><strong>Power System Protection</strong><span>HVAC faults</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="control_animation.html"><i class="count">04</i><strong>Control Systems</strong><span>An introduction</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="Digitwin.html"><i class="count">05</i><strong>Digital Twins</strong><span>The future of system analysis</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="solar_system_guide.html"><i class="count">06</i><strong>PV System Design</strong><span>A case study</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="Battery_Data_driven.html"><i class="count">07</i><strong>RUL Estimation</strong><span>Machine learning techniques</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="HNEI_and_ML_BD2.html"><i class="count">08</i><strong>Battery Life Prediction</strong><span>Navigating the non-linear path</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="RUL_Part_3.html"><i class="count">09</i><strong>The LSTM Strikes Again</strong><span>Lessons from sequence modelling on battery data</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+        </ul>
+      </section>
+
+      <!-- Category: Philosophy -->
+      <section class="category" id="philosophy">
+        <div class="category-header">
+          <div class="category-header-content">
+            <span class="category-number"><i class="fas fa-brain"></i> 02</span>
+            <h3>Philosophy</h3>
+            <p class="category-description">Memory, identity, myth, history, and meaning.</p>
+          </div>
+          <div class="category-header-collage">
+            <figure>
+              <img src="Images/ARTIDECLARE/Philosophy/IMG_0159.JPEG" loading="lazy" alt="Philosophy collage">
+              <figcaption>memory</figcaption>
+            </figure>
+            <figure>
+              <img src="Images/ARTIDECLARE/Philosophy/IMG_1917.JPEG" loading="lazy" alt="Philosophy collage">
+              <figcaption>question</figcaption>
+            </figure>
+            <figure>
+              <img src="Images/ARTIDECLARE/Philosophy/IMG_1758.JPEG" loading="lazy" alt="Philosophy collage">
+              <figcaption>reflection</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <ul class="post-list">
+          <li><a href="Pandora_box.html"><i class="count">01</i><strong>Pandora's Box</strong><span>Hope amidst chaos</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="CAP_review.html"><i class="count">02</i><strong>Crime and Punishment</strong><span>A philosophical review</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="ATTIHD.html"><i class="count">03</i><strong>A Thousand Times, I've Died</strong><span>On memory, identity and consciousness</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="dzichava_nhoroondo_blog.html"><i class="count">04</i><strong>Dzichava Nhoroondo</strong><span>Exploring personal history</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+        </ul>
+      </section>
+
+      <!-- Category: Artificial Intelligence -->
+      <section class="category" id="ai">
+        <div class="category-header">
+          <div class="category-header-content">
+            <span class="category-number"><i class="fas fa-robot"></i> 03</span>
+            <h3>Artificial Intelligence</h3>
+            <p class="category-description">Learning systems, data, models, and their limits.</p>
+          </div>
+          <div class="category-header-collage">
+            <figure>
+              <img src="Images/ARTIDECLARE/Artificial Intelligence/17FDA1B0-EFD1-45A3-BAF7-CFD27CB3B25D (1).JPEG" loading="lazy" alt="AI collage">
+              <figcaption>process</figcaption>
+            </figure>
+            <figure>
+              <img src="Images/ARTIDECLARE/Artificial Intelligence/being.png" loading="lazy" alt="AI collage">
+              <figcaption>signal</figcaption>
+            </figure>
+            <figure>
+              <img src="Images/ARTIDECLARE/Artificial Intelligence/F905AC83-BB4E-4490-94D4-2818CAC17FFC.PNG" loading="lazy" alt="AI collage">
+              <figcaption>pattern</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <ul class="post-list">
+          <li><a href="just_above_zero.html"><i class="count">01</i><strong>Just Above Zero</strong><span>A 24-hour data competition sprint</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="Intro_to_AI.html"><i class="count">02</i><strong>AI Summer</strong><span>An introduction to AI</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="BuildingAI.html"><i class="count">03</i><strong>Building a Digit Recognizer</strong><span>Neural networks from scratch with MNIST</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="Data_science.html"><i class="count">04</i><strong>Part 1: Data Analysis</strong><span>A step back</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="ML.html"><i class="count">05</i><strong>Part 2: Machine Learning</strong><span>Classical algorithms</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="deep_learning.html"><i class="count">06</i><strong>Part 3(A): Deep Learning</strong><span>Supervised neural networks</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="How_to_Deploy.html"><i class="count">07</i><strong>How to Deploy ML</strong><span>Everything but a guide</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="SGPT.html"><i class="count">08</i><strong>Shona Tiny Language Model</strong><span>Learning about LLMs</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="losing.html"><i class="count">09</i><strong>Losing My First ML Competition</strong><span>Competitive regression</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+        </ul>
+      </section>
+
+      <!-- Category: Short Stories -->
+      <section class="category" id="stories">
+        <div class="category-header">
+          <div class="category-header-content">
+            <span class="category-number"><i class="fas fa-feather-alt"></i> 04</span>
+            <h3>Short Stories</h3>
+            <p class="category-description">Time travel, milestones, and moments of becoming.</p>
+          </div>
+          <div class="category-header-collage">
+            <figure>
+              <img src="Images/ARTIDECLARE/Short%20Stories/IMG_1766.JPEG" loading="lazy" alt="Stories collage">
+              <figcaption>scene</figcaption>
+            </figure>
+            <figure>
+              <img src="Images/ARTIDECLARE/Short%20Stories/IMG_0156.JPEG" loading="lazy" alt="Stories collage">
+              <figcaption>interval</figcaption>
+            </figure>
+            <figure>
+              <img src="Images/ARTIDECLARE/Short%20Stories/IMG_1443.JPEG" loading="lazy" alt="Stories collage">
+              <figcaption>passage</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <ul class="post-list">
+          <li><a href="time_extrapolation.html"><i class="count">01</i><strong>The Time Extrapolation</strong><span>A pessimist's guide to time travel</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="graduation_blog.html"><i class="count">02</i><strong>Graduation</strong><span>The weight of applause</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="pulse.html"><i class="count">03</i><strong>The Pulse of Being</strong><span>A short poem</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+        </ul>
+      </section>
+
+      <!-- Category: Life, perhaps -->
+      <section class="category" id="life">
+        <div class="category-header">
+          <div class="category-header-content">
+            <span class="category-number"><i class="fas fa-leaf"></i> 05</span>
+            <h3>Life, perhaps</h3>
+            <p class="category-description">Literature, creativity, faith, absurdity, and everyday survival.</p>
+          </div>
+          <div class="category-header-collage">
+            <figure>
+              <img src="Images/ARTIDECLARE/life%20Perhaps/IMG_0560.JPEG" loading="lazy" alt="Life collage">
+              <figcaption>ordinary</figcaption>
+            </figure>
+            <figure>
+              <img src="Images/ARTIDECLARE/life%20Perhaps/IMG_1265.JPEG" loading="lazy" alt="Life collage">
+              <figcaption>notes</figcaption>
+            </figure>
+            <figure>
+              <img src="Images/ARTIDECLARE/life%20Perhaps/IMG_1764.JPEG" loading="lazy" alt="Life collage">
+              <figcaption>becoming</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <ul class="post-list">
+          <li><a href="How_to_survive.html"><i class="count">01</i><strong>How to Survive an Alien Abduction</strong><span>And other advice</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="Uninspired1.html"><i class="count">02</i><strong>Uninspired: One</strong><span>A reflection on creativity</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="brothers_karamazov.html"><i class="count">03</i><strong>Marginalia of a Mental Meltdown</strong><span>The Brothers Karamazov, books 1–3</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="AprilsChristmas.html"><i class="count">04</i><strong>A Cube for April Christmas</strong><span>Scarcity, abundance, and worthwhile struggles</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="metamorph.html"><i class="count">05</i><strong>Do You Wanna Know?</strong><span>Kafka, metamorphosis, and dancing</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="alyosha_blog_post.html"><i class="count">06</i><strong>Alyosha the Absurdly Good</strong><span>Faith in a world on fire</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="TLEN.html"><i class="count">07</i><strong>Think Like an Engineer</strong><span>Habits from the lab to life</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+          <li><a href="Tsumo.html"><i class="count">08</i><strong>Freshly Grown Ancient Knowledge</strong><span>On uttering new words</span><b><i class="fas fa-arrow-right"></i></b></a></li>
+        </ul>
+      </section>
+    </section>
+
+    <!-- Archive / Search -->
+    <section class="archive">
+      <div class="shell archive-inner">
+        <div>
+          <p class="overline"><i class="fas fa-search"></i> Find a post</p>
+          <h2 class="title">Search the<br>notebook.</h2>
+        </div>
+
+        <div>
+          <p>Search by title, topic, or a few remembered words. The archive is still growing, but the threads are already here.</p>
+
+          <div class="search-wrap">
+            <input type="search" class="search-bar" placeholder="Search posts…" aria-label="Search posts">
+            <button class="search-btn" aria-label="Search"><i class="fas fa-arrow-right"></i></button>
             <div class="search-results"></div>
+          </div>
         </div>
-    </nav>
+      </div>
+    </section>
+  </main>
 
-    <div class="container">
-        <!-- Latest Post Highlight -->
-        <div class="latest-post">
-            <span class="latest-badge">Latest Post</span>
-            <h3>Just Above Zero</h3>
-            <p>A 24-hour journey through data and iteration. How I went from complete bewilderment to leaderboard position #44 (out of 781) by starting stupid and iterating.</p>
-            <a href="just_above_zero.html" class="read-more">Read Full Post</a>
-        </div>
-
-        <!-- Featured Posts Slideshow -->
-        <div class="slideshow-container">
-            <div class="slide active">
-                <h3>Featured: The Energy Revolution</h3>
-                <p>A deep dive into innovative battery technologies that could change how we store energy.</p>
-                <a href="theenergyrevolution.html" class="slide-link">Read Now</a>
-            </div>
-            <div class="slide">
-                <h3>Featured: Pandora's Box</h3>
-                <p>An exploration of hope amidst chaos through the lens of ancient mythology.</p>
-                <a href="Pandora_box.html" class="slide-link">Read Now</a>
-            </div>
-            <div class="slide">
-                <h3>Featured: AI Summer</h3>
-                <p>Your comprehensive introduction to the world of artificial intelligence.</p>
-                <a href="Intro_to_AI.html" class="slide-link">Read Now</a>
-            </div>
-            <div class="slide-nav">
-                <span class="slide-dot active" data-slide="0"></span>
-                <span class="slide-dot" data-slide="1"></span>
-                <span class="slide-dot" data-slide="2"></span>
-            </div>
-        </div>
-
-        <section id="engineering">
-            <h2><i class="fas fa-cogs topic-icon"></i>Engineering</h2>
-            <div class="post-item">
-                <a href="theenergyrevolution.html">The Energy <i>Revolution</i></a>
-                <p>A battery that spins</p>
-            </div>
-            <div class="post-item">
-                <a href="currentaffairs.html"><i>Current</i> Affairs</a>
-                <p>HVAC or HVDC</p>
-            </div>
-            <div class="post-item">
-                <a href="PowerSystemProt.html">Power System Protection</a>
-                <p>HVAC Faults</p>
-            </div>
-            <div class="post-item">
-                <a href="control_animation.html">Control Systems</a>
-                <p>An Introduction</p>
-            </div>
-            <div class="post-item">
-                <a href="Digitwin.html">Digital Twins</a>
-                <p>The future of system analysis</p>
-            </div>
-            <div class="post-item">
-                <a href="solar_system_guide.html">PV System Design</a>
-                <p>A case Study</p>
-            </div>
-            <div class="post-item">
-                <a href="Battery_Data_driven.html">RUL Estimation Using Machine Learning Techniques</a>
-                <p>Part One: Definition and Considerations</p>
-            </div>
-            <div class="post-item">
-                <a href="HNEI_and_ML_BD2.html">Navigating the Non-Linear Path of Battery Life Prediction</a>
-                <p>Part Two: Benchmark</p>
-            </div>
-
-            <div class="post-item">
-                <a href="RUL_Part_3.htmll">Reflections on a failed model </a>
-                <p>Part Three: Temporal Considerations</p>
-            </div>
-        </section>
-
-        <section id="philosophy">
-            <h2><i class="fas fa-brain topic-icon"></i>Philosophy</h2>
-            <div class="post-item">
-                <a href="Pandora_box.html">Pandora's Box</a>
-                <p>Hope amidst chaos</p>
-            </div>
-            <div class="post-item">
-                <a href="CAP_review.html">Crime and Punishment</a>
-                <p>A philosophical review</p>
-            </div>
-            <div class="post-item">
-                <a href="ATTIHD.html">Does it Float?</a>
-                <p>On Memory, Identity and Consciousness</p>
-            </div>
-            <div class="post-item">
-                <a href="dzichava_nhoroondo_blog.html">Dzichava Nhoroondo</a>
-                <p>Exploring personal history</p>
-            </div>
-        </section>
-
-        <section id="ai">
-            <h2><i class="fas fa-robot topic-icon"></i>Artificial Intelligence</h2>
-            <div class="post-item">
-                <a href="just_above_zero.html">Just Above Zero</a>
-                <p>A 24-hour data competition sprint</p>
-            </div>
-            <div class="post-item">
-                <a href="Intro_to_AI.html">AI Summer</a>
-                <p>An Introduction to AI</p>
-            </div>
-            <div class="post-item">
-                <a href="BuildingAI.html">Neural Networks</a>
-                <p>An introduction to deep learning</p>
-            </div>
-            <div class="post-item">
-                <a href="Data_science.html">Part 1: Data Analysis</a>
-                <p>A step back</p>
-            </div>
-            <div class="post-item">
-                <a href="ML.html">Part 2: Machine Learning</a>
-                <p>Classical algorithms</p>
-            </div>
-            <div class="post-item">
-                <a href="deep_learning.html">Part 3(A): Supervised deep learning</a>
-                <p>Deep dive into neural networks</p>
-            </div>
-            <div class="post-item">
-                <a href="How_to_Deploy.html">How to deploy a Machine Learning Algorithm</a>
-                <p>Everything but a guide</p>
-            </div>
-
-            <div class="post-item">
-                <a href="SGPT.html">Shona Tiny Language Model </a>
-                <p>Learning about LLMs</p>
-            </div>
-
-
-             <div class="post-item">
-                <a href="SGPT.html">Losing my first ML competition  </a>
-                <p>Competitive Regression</p>
-            </div>
-
-        </section>
-
-        <section id="short-stories">
-            <h2><i class="fas fa-book topic-icon"></i>Short Stories</h2>
-            <div class="post-item">
-                <a href="time_extrapolation.html">The time extrapolation</a>
-                <p>A pessimist's guide to time travel</p>
-            </div>
-            <div class="post-item">
-                <a href="graduation_blog.html">Graduation</a>
-                <p>The weight of applause</p>
-            </div>
-
-            <div class="post-item">
-                <a href="pulse.html"> The Pulse of Being</a>
-                <p>A short poem</p>
-            </div>
-        </section>
-
-        <section>
-            <h2><i class="fas fa-heart topic-icon"></i>Life?</h2>
-            <div class="post-item">
-                <a href="How_to_survive.html">How to survive an alien abduction</a>
-                <p>And other advice</p>
-            </div>
-            <div class="post-item">
-                <a href="Uninspired1.html">Uninspired:</a>
-                <p>One (April 7)</p>
-            </div>
-            <div class="post-item">
-                <a href="brothers_karamazov.html">Marginalia of a Mental Meltdown</a>
-                <p>The brothers Karamazov Books 1-3</p>
-            </div>
-            <div class="post-item">
-                <a href="AprilsChristmas.html">A cube for April Christmas</a>
-                <p>On Scarcity, Abundance, and the Struggles Worth Having</p>
-            </div>
-            <div class="post-item">
-                <a href="metamorph.html">Do you wanna know?</a>
-                <p>On Franz Kafka, the Metamorphosis and dancing</p>
-            </div>
-            <div class="post-item">
-                <a href="alyosha_blog_post.html"> Alyosha The Absurdly Good</a>
-                <p> Reflections on faith in a world on fire</p>
-            </div>
-
-            <div class="post-item">
-                <a href="TLEN.html"> Think like an Engineer</a>
-                <p> Mental habits from the lab to lifes</p>
-            </div>
-
-
-
-            
-            <div class="post-item">
-                <a href="Tsumo.html"> Freshly Grown Ancient Knowledge>
-                <p> On uttering new words</p>
-            </div>
-
-
-        </section>
-
-        <!-- Quote Box -->
-        <div class="quote-container">
-            <p class="quote">The undefined is not the absence of definition, but the potential for infinite definitions.</p>
-            <p class="author">— Fanny Fushayi</p>
-        </div>
-
-        <!-- Fun Fact Box -->
-        <div class="fun-fact">
-            <div class="bubble bubble-1"></div>
-            <div class="bubble bubble-2"></div>
-            <div class="bubble bubble-3"></div>
-            <h3>Did You Know?</h3>
-            <p>The term "artificial intelligence" was first coined in 1956 at the Dartmouth Conference, making the field over 65 years old!</p>
-        </div>
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="footer-inner shell">
+      <span><i class="far fa-copyright"></i> <span id="year"></span> Fanny Fushayi</span>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/fanny_fushayi" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://open.substack.com/pub/fannyfushayi" target="_blank" rel="noopener noreferrer">Substack</a>
+      </div>
+      <span><i class="fas fa-cogs"></i> Engineering for the physical world.</span>
     </div>
+  </footer>
 
-    <footer>
-        <div class="social-links">
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.linkedin.com/in/fanny-fushayi-529880235" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        </div>
-        <p class="footer-text">&copy; 2025 Fanny Fushayi | <a href="Contact.html">Contact</a></p>
-    </footer>
+  <!-- ===== JavaScript ===== -->
+  <script>
+    // ============================================================
+    // 1. Search functionality
+    // ============================================================
+    const posts = Array.from(document.querySelectorAll('.post-list a')).map(a => ({
+      title: a.querySelector('strong').textContent,
+      excerpt: a.querySelector('span').textContent,
+      url: a.href
+    }));
 
-    <!-- Theme Toggle Button -->
-    <div class="theme-toggle" title="Toggle Dark Mode">
-        <i class="fas fa-moon"></i>
-    </div>
+    const input = document.querySelector('.search-bar');
+    const button = document.querySelector('.search-btn');
+    const results = document.querySelector('.search-results');
 
-    <script>
+    function search() {
+      const q = input.value.trim().toLowerCase();
 
+      if (q.length < 2) {
+        results.style.display = 'none';
+        return;
+      }
 
-       // Blog post data for search functionality
-        const blogPosts = [
-            { title: "The Energy Revolution", excerpt: "A battery that spins - exploring revolutionary battery technologies", category: "engineering", url: "theenergyrevolution.html" },
-            { title: "Current Affairs", excerpt: "HVAC or HVDC - understanding power transmission systems", category: "engineering", url: "currentaffairs.html" },
-            { title: "Power System Protection", excerpt: "HVAC Faults analysis and protection mechanisms", category: "engineering", url: "PowerSystemProt.html" },
-            { title: "Control Systems", excerpt: "An interactive introduction to control theory", category: "engineering", url: "control_animation.html" },
-            { title: "Digital Twins", excerpt: "The future of system analysis through digital twin technology", category: "engineering", url: "Digitwin.html" },
-            { title: "PV System Design", excerpt: "A comprehensive case study in solar photovoltaic system design", category: "engineering", url: "solar_system_guide.html" },
-            { title: "RUL Estimation Using Machine Learning Techniques", excerpt: "Machine learning approaches to remaining useful life prediction", category: "engineering", url: "Battery_Data_driven.html" },
-            { title: "Navigating the Non-Linear Path of Battery Life Prediction", excerpt: "Navigating the non-linear path of battery life prediction", category: "engineering", url: "HNEI_and_ML_BD2.html" },
-            { title: "Reflections on a failed model", excerpt: "Part Three: Temporal Considerations", category: "engineering", url: "RUL_Part_3.htmll" },
-            { title: "Pandora's Box", excerpt: "Hope amidst chaos - a philosophical exploration", category: "philosophy", url: "Pandora_box.html" },
-            { title: "Crime and Punishment", excerpt: "A philosophical review of Dostoevsky's masterpiece", category: "philosophy", url: "CAP_review.html" },
-            { title: "Does it Float?", excerpt: "On memory, identity and consciousness", category: "philosophy", url: "ATTIHD.html" },
-            { title: "Dzichava Nhoroondo", excerpt: "A reflection on personal history and cultural identity", category: "philosophy", url: "dzichava_nhoroondo_blog.html" },
-            { title: "AI Summer", excerpt: "A comprehensive introduction to artificial intelligence", category: "ai", url: "Intro_to_AI.html" },
-            { title: "Neural Networks", excerpt: "An introduction to deep learning and neural networks", category: "ai", url: "BuildingAI.html" },
-            { title: "Part 1: Data Analysis", excerpt: "Taking a step back to understand data science foundations", category: "ai", url: "Data_science.html" },
-            { title: "Part 2: Machine Learning", excerpt: "Exploring classical machine learning algorithms", category: "ai", url: "ML.html" },
-            { title: "Part 3(A): Supervised deep learning", excerpt: "Deep dive into supervised learning techniques", category: "ai", url: "deep_learning.html" },
-            { title: "How to deploy a Machine Learning Algorithm", excerpt: "Practical insights into ML deployment", category: "ai", url: "How_to_Deploy.html" },
-            { title: "Shona Tiny Language Model", excerpt: "Learning about LLMs", category: "ai", url: "SGPT.html" },
-            { title: "Losing my first ML competition", excerpt: "Competitive Regression", category: "ai", url: "losing.html" },
-            { title: "The time extrapolation", excerpt: "A pessimist's guide to time travel", category: "stories", url: "time_extrapolation.html" },
-            { title: "Graduation", excerpt: "The weight of applause - a story about achievement", category: "stories", url: "graduation_blog.html" },
-            { title: "The Pulse of Being", excerpt: "A short poem", category: "stories", url: "pulse.html" },
-            { title: "How to survive an alien abduction", excerpt: "And other advice - humorous life challenges", category: "life", url: "How_to_survive.html" },
-            { title: "Uninspired: One", excerpt: "A raw reflection on creativity and motivation", category: "life", url: "Uninspired1.html" },
-            { title: "Marginalia of a Mental Meltdown", excerpt: "The Brothers Karamazov - thoughts on literature and life", category: "life", url: "brothers_karamazov.html" },
-            { title: "A cube for April Christmas", excerpt: "On scarcity, abundance, and meaningful struggles", category: "life", url: "AprilsChristmas.html" },
-            { title: "Do you wanna know?", excerpt: "On Franz Kafka, the Metamorphosis, and dancing", category: "life", url: "metamorph.html" },
-            { title: "Alyosha The Absurdly Good", excerpt: "Reflections on faith in a world on fire", category: "life", url: "alyosha_blog_post.html" },
-            { title: "Think like an Engineer", excerpt: "Mental habits from the lab to life", category: "life", url: "TLEN.html" }
-        ];
+      const found = posts.filter(p =>
+        (p.title + ' ' + p.excerpt).toLowerCase().includes(q)
+      );
 
-        // Search functionality
-        const searchBar = document.querySelector('.search-bar');
-        const searchBtn = document.querySelector('.search-btn');
-        const searchResults = document.querySelector('.search-results');
+      results.innerHTML = found.length
+        ? found.map(p => `
+            <div class="search-result-item" data-url="${p.url}">
+              <div class="search-result-title"><i class="fas fa-file-alt" style="margin-right:8px;opacity:.5;"></i>${p.title}</div>
+              <div class="search-result-excerpt">${p.excerpt}</div>
+            </div>
+          `).join('')
+        : '<div class="search-result-item"><i class="fas fa-exclamation-circle" style="margin-right:8px;"></i>No matching posts found.</div>';
 
-        function performSearch(query) {
-            if (query.length < 2) {
-                searchResults.style.display = 'none';
-                return;
-            }
+      results.style.display = 'block';
+    }
 
-            const filteredPosts = blogPosts.filter(post => 
-                post.title.toLowerCase().includes(query.toLowerCase()) ||
-                post.excerpt.toLowerCase().includes(query.toLowerCase()) ||
-                post.category.toLowerCase().includes(query.toLowerCase())
-            );
+    input.addEventListener('input', search);
+    button.addEventListener('click', search);
 
-            if (filteredPosts.length > 0) {
-                searchResults.innerHTML = filteredPosts.map(post => `
-                    <div class="search-result-item" onclick="window.location.href='${post.url}'">
-                        <div class="search-result-title">${post.title}</div>
-                        <div class="search-result-excerpt">${post.excerpt}</div>
-                    </div>
-                `).join('');
-                searchResults.style.display = 'block';
-            } else {
-                searchResults.innerHTML = '<div class="search-result-item">No results found</div>';
-                searchResults.style.display = 'block';
-            }
+    results.addEventListener('click', e => {
+      const item = e.target.closest('[data-url]');
+      if (item) window.location.href = item.dataset.url;
+    });
+
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.search-wrap')) results.style.display = 'none';
+    });
+
+    // ============================================================
+    // 2. Nav: scroll behaviour
+    // ============================================================
+    const nav = document.querySelector('.nav');
+
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('is-scrolled', window.scrollY > 36);
+    }, { passive: true });
+
+    // ============================================================
+    // 3. Nav: mobile menu toggle
+    // ============================================================
+    const menu = document.querySelector('.menu');
+    const links = document.querySelector('.nav-links');
+
+    menu.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      menu.setAttribute('aria-expanded', open);
+      menu.innerHTML = open ? '<i class="fas fa-times"></i> Close' : '<i class="fas fa-bars"></i> Menu';
+    });
+
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        links.classList.remove('open');
+        menu.setAttribute('aria-expanded', 'false');
+        menu.innerHTML = '<i class="fas fa-bars"></i> Menu';
+      });
+    });
+
+    // ============================================================
+    // 4. Footer: current year
+    // ============================================================
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ============================================================
+    // 5. Intersection Observer for fade-in sections
+    // ============================================================
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
         }
+      });
+    }, { threshold: 0.1 });
 
-        searchBar.addEventListener('input', function(e) {
-            performSearch(e.target.value);
-        });
+    document.querySelectorAll('.category, .visual-journal, .intro').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      observer.observe(el);
+    });
 
-        searchBtn.addEventListener('click', function() {
-            performSearch(searchBar.value);
-        });
-
-        // Hide search results when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!searchBar.contains(e.target) && !searchResults.contains(e.target)) {
-                searchResults.style.display = 'none';
-            }
-        });
-
-        // Simple script to rotate fun facts (can be expanded)
-        const funFacts = [
-            "The term 'artificial intelligence' was first coined in 1956 at the Dartmouth Conference, making the field over 65 years old!",
-            "Dostoevsky wrote 'The Brothers Karamazov' as his final novel, completing it just four months before his death.",
-            "The first electric power transmission occurred in 1882, spanning just over a mile from Miesbach to Munich in Germany.",
-            "The concept of digital twins originated at NASA as part of their technology roadmap.",
-            "The word 'philosophy' comes from the Greek words 'philo' (love) and 'sophia' (wisdom), literally meaning 'love of wisdom'.",
-            "Short stories became popular in the 19th century with the rise of literary magazines."
-        ];
-
-        // Change fun fact when clicked
-        document.querySelector('.fun-fact').addEventListener('click', function() {
-            const currentFact = this.querySelector('p').textContent;
-            let newFact;
-            do {
-                newFact = funFacts[Math.floor(Math.random() * funFacts.length)];
-            } while (newFact === currentFact);
-            
-            this.querySelector('p').textContent = newFact;
-        });
-
-        // Slideshow functionality
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.slide-dot');
-
-        function showSlide(n) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            currentSlide = (n + slides.length) % slides.length;
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
+    // trigger initial visibility for items already in view
+    setTimeout(() => {
+      document.querySelectorAll('.category, .visual-journal, .intro').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
         }
-
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => showSlide(index));
-        });
-
-        // Auto-advance slides
-        setInterval(() => {
-            showSlide(currentSlide + 1);
-        }, 5000);
-
-        // Scroll animation
-        function checkVisibility() {
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                const sectionTop = section.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (sectionTop < windowHeight * 0.75) {
-                    section.classList.add('visible');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', checkVisibility);
-        window.addEventListener('load', checkVisibility);
-
-        // Theme toggle functionality
-        const themeToggle = document.querySelector('.theme-toggle');
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            
-            if (document.body.classList.contains('dark-mode')) {
-                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-                themeToggle.title = 'Toggle Light Mode';
-            } else {
-                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-                themeToggle.title = 'Toggle Dark Mode';
-            }
-        });
-    </script>
+      });
+    }, 200);
+  </script>
 </body>
 </html>
