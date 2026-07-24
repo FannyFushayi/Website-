@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🥂 Happy Birthday Mihle 🥂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at 10% 20%, #ffe6ef, #fff5f0 70%);
+      font-family: 'Quicksand', sans-serif;
+      color: #6b3a52;
+      overflow-x: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
+    }
+
+    /* floating glow orbs */
+    body::before, body::after {
+      content: "";
+      position: fixed;
+      inset: -20%;
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(70px);
+      opacity: 0.55;
+      animation: shimmer 10s ease-in-out infinite alternate;
+    }
+    body::before {
+      background: radial-gradient(circle at 30% 20%, #ffcf6b, transparent 50%);
+    }
+    body::after {
+      background: radial-gradient(circle at 70% 80%, #ff8fab, transparent 45%);
+      animation-delay: -4s;
+    }
+    @keyframes shimmer {
+      0% { transform: scale(0.96) translate(-4%, -6%); opacity: 0.5; }
+      100% { transform: scale(1.1) translate(5%, 6%); opacity: 0.8; }
+    }
+
+    /* floating champagne bottles (in background) */
+    .champagne-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .bottle {
+      position: absolute;
+      bottom: -100px;
+      width: 32px;
+      height: 72px;
+      background: #d4a373;
+      border-radius: 40% 40% 20% 20% / 60% 60% 20% 20%;
+      box-shadow: inset -3px 0 8px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.08);
+      opacity: 0.7;
+      animation: floatBottle 12s linear infinite;
+    }
+    .bottle::before {
+      content: "";
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 20px;
+      background: #c99c6b;
+      border-radius: 8px 8px 2px 2px;
+      box-shadow: inset 0 2px 4px rgba(255,255,240,0.5);
+    }
+    .bottle::after {
+      content: "🥂";
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%) scale(0.9);
+      font-size: 22px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    }
+    .bottle-1 { background: #d4a373; animation-duration: 16s; animation-delay: -2s; left: 12%; }
+    .bottle-2 { background: #c9b37c; animation-duration: 19s; animation-delay: -7s; left: 28%; width: 28px; height: 66px; }
+    .bottle-3 { background: #dbb07c; animation-duration: 14s; animation-delay: -11s; left: 58%; }
+    .bottle-4 { background: #cb9e74; animation-duration: 20s; animation-delay: -4s; left: 78%; width: 30px; height: 70px; }
+    .bottle-5 { background: #d4a373; animation-duration: 17s; animation-delay: -9s; left: 88%; width: 26px; height: 60px; }
+
+    @keyframes floatBottle {
+      0% { transform: translateY(0) rotate(-6deg) scale(0.9); }
+      50% { transform: translateY(-55vh) rotate(6deg) scale(1.02); }
+      100% { transform: translateY(-115vh) rotate(-4deg) scale(0.9); }
+    }
+
+    /* main content */
+    .wrap {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      max-width: 600px;
+      width: 100%;
+      padding: 20px;
+    }
+
+    .eyebrow {
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 700;
+      color: #ff5d8f;
+      background: rgba(255,255,255,0.4);
+      backdrop-filter: blur(4px);
+      padding: 6px 20px;
+      border-radius: 60px;
+      margin-bottom: 12px;
+      border: 1px solid rgba(255,255,255,0.7);
+    }
+
+    h1 {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(44px, 10vw, 80px);
+      line-height: 1.1;
+      margin: 0 0 4px;
+      color: #ff5d8f;
+      text-shadow: 3px 3px 0 rgba(255,255,255,0.5);
+    }
+    h1 .name {
+      display: block;
+      font-size: clamp(56px, 14vw, 110px);
+      color: #ff8fab;
+      margin-top: -8px;
+      letter-spacing: -1px;
+    }
+
+    .subtitle {
+      font-size: 17px;
+      color: #9c6b84;
+      font-weight: 600;
+      margin-bottom: 24px;
+      background: rgba(255,255,255,0.3);
+      padding: 6px 22px;
+      border-radius: 60px;
+      backdrop-filter: blur(2px);
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 36px;
+      padding: 34px 28px 28px;
+      width: 100%;
+      box-shadow: 0 30px 60px -20px rgba(255, 93, 143, 0.5), inset 0 1px 0 rgba(255,255,255,0.9);
+      position: relative;
+    }
+    .card::before {
+      content: "🥂";
+      position: absolute;
+      top: -22px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #ffd98d, #ffcf6b);
+      color: #4a2a38;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 8px 20px -8px rgba(216, 156, 37, 0.7);
+      border: 2px solid rgba(255,255,240,0.7);
+    }
+
+    .message {
+      font-size: 17px;
+      line-height: 1.75;
+      color: #6b3a52;
+      margin: 6px 0 18px;
+    }
+    .message strong {
+      color: #ff5d8f;
+      font-weight: 700;
+    }
+    .message p {
+      margin: 6px 0;
+    }
+
+    .gift-btn {
+      background: linear-gradient(145deg, #ffd98d, #ff8fab, #ff5d8f);
+      color: white;
+      border: none;
+      padding: 14px 38px;
+      border-radius: 999px;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 16px 32px -12px rgba(255, 93, 143, 0.7);
+      transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s;
+      letter-spacing: 0.5px;
+    }
+    .gift-btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 22px 40px -12px #ff5d8f;
+      background: linear-gradient(145deg, #ffcf6b, #ff7ca3, #ff3f7a);
+    }
+    .gift-btn:active {
+      transform: scale(0.97);
+    }
+    .gift-btn:focus-visible {
+      outline: 4px solid #e9d9ff;
+      outline-offset: 4px;
+    }
+
+    .surprise {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #ff5d8f;
+      min-height: 24px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      letter-spacing: 1px;
+      background: rgba(255,255,240,0.3);
+      padding: 6px 18px;
+      border-radius: 60px;
+      display: inline-block;
+    }
+    .surprise.show {
+      opacity: 1;
+    }
+
+    .signoff {
+      margin-top: 28px;
+      font-family: 'Caveat', cursive;
+      font-size: 28px;
+      color: #9c6b84;
+      background: rgba(255,255,255,0.2);
+      padding: 8px 24px;
+      border-radius: 60px;
+      backdrop-filter: blur(2px);
+    }
+    .signoff .tiny {
+      display: block;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: rgba(107, 58, 82, 0.5);
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    /* confetti */
+    .confetti-piece {
+      position: fixed;
+      top: -10px;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      pointer-events: none;
+      z-index: 10;
+      animation: confettiFall linear forwards;
+      box-shadow: 0 0 14px rgba(255,255,255,0.3);
+    }
+    @keyframes confettiFall {
+      0% { transform: translateY(0) rotate(0deg) scale(0.9); opacity: 1; }
+      100% { transform: translateY(115vh) rotate(720deg) scale(1.3); opacity: 0; }
+    }
+
+    /* extra sparkle */
+    .sparkle {
+      position: fixed;
+      pointer-events: none;
+      z-index: 3;
+      background: radial-gradient(circle, #fff9e6, rgba(255,215,0,0.3));
+      border-radius: 50%;
+      filter: blur(2px);
+      animation: sparklePulse 2s ease-in-out infinite alternate;
+    }
+    @keyframes sparklePulse {
+      0% { opacity: 0.2; transform: scale(0.9); }
+      100% { opacity: 0.8; transform: scale(1.3); }
+    }
+
+    @media (max-width: 480px) {
+      .card { padding: 28px 16px 24px; }
+      .gift-btn { padding: 12px 24px; font-size: 14px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bottle, .confetti-piece, body::before, body::after { animation: none; display: none; }
+      .gift-btn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- floating champagne bottles (background) -->
+  <div class="champagne-bg">
+    <div class="bottle bottle-1"></div>
+    <div class="bottle bottle-2"></div>
+    <div class="bottle bottle-3"></div>
+    <div class="bottle bottle-4"></div>
+    <div class="bottle bottle-5"></div>
+  </div>
+
+  <!-- sparkle orbs -->
+  <div class="sparkle" style="width:80px;height:80px;top:10%;left:6%;"></div>
+  <div class="sparkle" style="width:60px;height:60px;bottom:15%;right:6%;animation-delay:-1s;"></div>
+  <div class="sparkle" style="width:100px;height:100px;top:30%;right:2%;animation-delay:-0.5s;filter:blur(4px);"></div>
+  <div class="sparkle" style="width:70px;height:70px;bottom:20%;left:3%;animation-delay:-2s;"></div>
+
+  <div class="wrap">
+    <div class="eyebrow">✨ a little something Mickey ✨</div>
+    <h1>Happy Birthday <span class="name">TaMiz, Mizozo Mickey!</span></h1>
+    <div class="subtitle">🥂 it's officially your day 🥂</div>
+
+    <div class="card">
+      <div class="message">
+        <p>Haibo! wazalwa and stuff <strong>in this economy</strong> happpyyyy birthdayyyyy bestie!! Ndikthanda lanto ehlebisayo...</p>
+        <p>🎉 Welcome to the <strong>23 club</strong>!! 🎉</p>
+        <p>I can't wait to see what the new year will have in store<br>To more love, more blessings, more laughs and more softness</p>
+        <p>Ohk akhonyo ungayaziyo ta</p>
+      </div>
+      <button class="gift-btn" id="giftBtn">🥂 Mayiqale ibang!! 🥂</button>
+      <div class="surprise" id="surprise">#tamizturns23 ✨🍾</div>
+    </div>
+
+    <p class="signoff">
+      With love, Shavonne
+      <span class="tiny">(& Fanny) 🥂</span>
+    </p>
+  </div>
+
+  <script>
+    (function() {
+      const btn = document.getElementById('giftBtn');
+      const surprise = document.getElementById('surprise');
+      const confettiColors = ['#ff8fab', '#ffcf6b', '#e9d9ff', '#ff5d8f', '#fffbe6', '#ffb6c9', '#ffd98d', '#f7b2b2', '#b8a9d4'];
+
+      // also add some extra balloon effect (champagne pop)
+      function createChampagnePop() {
+        for (let i = 0; i < 20; i++) {
+          const pop = document.createElement('div');
+          pop.style.position = 'fixed';
+          pop.style.pointerEvents = 'none';
+          pop.style.zIndex = '15';
+          pop.style.fontSize = (20 + Math.random() * 32) + 'px';
+          pop.style.left = (10 + Math.random() * 80) + '%';
+          pop.style.top = (10 + Math.random() * 60) + '%';
+          pop.style.opacity = '0.9';
+          pop.style.transform = 'scale(0.5)';
+          pop.style.transition = 'all 1.2s cubic-bezier(0.2, 0.8, 0.3, 1.2)';
+          pop.textContent = ['🥂', '🍾', '✨', '🎉', '💫', '🥂', '🍾'][Math.floor(Math.random() * 7)];
+          document.body.appendChild(pop);
+          requestAnimationFrame(() => {
+            pop.style.transform = 'scale(1.8) translateY(-80px) rotate(20deg)';
+            pop.style.opacity = '0';
+          });
+          setTimeout(() => pop.remove(), 1500);
+        }
+      }
+
+      btn.addEventListener('click', function() {
+        // show surprise text
+        surprise.classList.add('show');
+
+        // confetti burst
+        for (let i = 0; i < 140; i++) {
+          const piece = document.createElement('div');
+          piece.className = 'confetti-piece';
+          piece.style.left = Math.random() * 100 + 'vw';
+          piece.style.background = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+          piece.style.animationDuration = (1.6 + Math.random() * 2.4) + 's';
+          piece.style.animationDelay = (Math.random() * 0.25) + 's';
+          const size = 6 + Math.random() * 12;
+          piece.style.width = size + 'px';
+          piece.style.height = size + 'px';
+          piece.style.borderRadius = Math.random() > 0.5 ? '999px' : '2px';
+          piece.style.boxShadow = `0 0 12px ${confettiColors[Math.floor(Math.random() * confettiColors.length)]}`;
+          document.body.appendChild(piece);
+          setTimeout(() => piece.remove(), 5000);
+        }
+
+        // champagne pop emojis
+        createChampagnePop();
+        // second wave
+        setTimeout(createChampagnePop, 300);
+        setTimeout(createChampagnePop, 700);
+
+        // also add a few extra floating bottles in foreground (quick animation)
+        for (let i = 0; i < 6; i++) {
+          const mini = document.createElement('div');
+          mini.style.position = 'fixed';
+          mini.style.zIndex = '12';
+          mini.style.pointerEvents = 'none';
+          mini.style.fontSize = (28 + Math.random() * 28) + 'px';
+          mini.style.left = (5 + Math.random() * 90) + '%';
+          mini.style.bottom = '-40px';
+          mini.style.opacity = '0.9';
+          mini.textContent = '🥂';
+          mini.style.transition = 'all 4s cubic-bezier(0.2, 0.6, 0.3, 1.2)';
+          document.body.appendChild(mini);
+          requestAnimationFrame(() => {
+            mini.style.transform = `translateY(-${80 + Math.random() * 60}vh) rotate(${20 - Math.random() * 40}deg)`;
+            mini.style.opacity = '0.2';
+          });
+          setTimeout(() => mini.remove(), 4500);
+        }
+      });
+
+      // optional: click on surprise to reset? no, just fun.
+    })();
+  </script>
+</body>
+</html>
