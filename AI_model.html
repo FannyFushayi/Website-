@@ -1,19 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>✨ SUPER ADVANCED AI VISION ✨ (jk it's basic)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>✨ SUPER ADVANCED AI VISION ✨ (jk it's basic) | Fanny Fushayi</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap');
-        
+
         :root {
             --warning-yellow: #fffacd;
             --error-red: #ffcccc;
             --silly-blue: #add8e6;
             --silly-purple: #e6c8ff;
         }
-        
+
         body {
             margin: 0;
             padding: 20px;
@@ -29,12 +28,12 @@
             align-items: center;
             text-align: center;
         }
-        
+
         .container {
             background: white;
             border-radius: 20px;
             padding: 2rem;
-            box-shadow: 
+            box-shadow:
                 0 10px 20px rgba(0,0,0,0.1),
                 0 0 0 10px #ffeb3b,
                 0 0 0 15px #ff9800;
@@ -42,7 +41,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .container::before {
             content: "⚠️ WARNING: VERY ADVANCED AI ⚠️";
             position: absolute;
@@ -62,7 +61,7 @@
             text-align: center;
             font-size: 0.8rem;
         }
-        
+
         h1 {
             font-family: 'Bangers', cursive;
             color: #ff5722;
@@ -71,13 +70,13 @@
             text-shadow: 3px 3px 0 #ffeb3b;
             letter-spacing: 2px;
         }
-        
+
         .subtitle {
             font-size: 1.2rem;
             margin-bottom: 1.5rem;
             color: #666;
         }
-        
+
         .upload-area {
             border: 4px dashed #ff9800;
             border-radius: 15px;
@@ -87,17 +86,17 @@
             transition: all 0.3s;
             background: var(--warning-yellow);
         }
-        
+
         .upload-area:hover {
             background: #fffacd;
             transform: rotate(1deg);
         }
-        
+
         .upload-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
         }
-        
+
         #previewImage {
             max-width: 100%;
             max-height: 200px;
@@ -107,7 +106,7 @@
             border: 5px solid #4caf50;
             box-shadow: 0 0 0 5px #8bc34a;
         }
-        
+
         #predictBtn {
             background: #ff5722;
             color: white;
@@ -123,23 +122,23 @@
             box-shadow: 0 5px 0 #e64a19;
             transition: all 0.1s;
         }
-        
+
         #predictBtn:hover {
             transform: translateY(2px);
             box-shadow: 0 3px 0 #e64a19;
         }
-        
+
         #predictBtn:active {
             transform: translateY(5px);
             box-shadow: none;
         }
-        
+
         #predictBtn:disabled {
             background: #ccc;
             box-shadow: 0 5px 0 #999;
             cursor: not-allowed;
         }
-        
+
         #result {
             min-height: 100px;
             padding: 1rem;
@@ -149,7 +148,7 @@
             border: 3px solid #2196f3;
             position: relative;
         }
-        
+
         #result::before {
             content: "AI SPEAKS:";
             position: absolute;
@@ -160,7 +159,7 @@
             font-weight: bold;
             color: #2196f3;
         }
-        
+
         .prediction {
             font-size: 1.8rem;
             font-weight: bold;
@@ -168,30 +167,30 @@
             margin-bottom: 0.5rem;
             font-family: 'Bangers', cursive;
         }
-        
+
         .confidence {
             font-size: 1.2rem;
             color: #3f51b5;
         }
-        
+
         .loading {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
         }
-        
+
         .loading-dots::after {
             content: "...";
             animation: dots 1.5s steps(5, end) infinite;
         }
-        
+
         @keyframes dots {
             0%, 20% { content: "."; }
             40% { content: ".."; }
             60%, 100% { content: "..."; }
         }
-        
+
         .disclaimer {
             font-size: 0.8rem;
             color: #666;
@@ -200,11 +199,11 @@
             padding: 10px;
             border-radius: 5px;
         }
-        
+
         #imageInput {
             display: none;
         }
-        
+
         .floating-emoji {
             position: absolute;
             font-size: 2rem;
@@ -212,55 +211,43 @@
             opacity: 0.7;
             z-index: -1;
         }
-        
+
         @keyframes float {
             0%, 100% { transform: translateY(0) rotate(0deg); }
             50% { transform: translateY(-20px) rotate(10deg); }
         }
     </style>
-</head>
-<body>
-    <!-- Floating silly emojis -->
-    <div class="floating-emoji" style="top:10%; left:10%;">🐶</div>
-    <div class="floating-emoji" style="top:20%; right:15%; animation-delay:0.5s;">🐱</div>
-    <div class="floating-emoji" style="bottom:15%; left:20%; animation-delay:1s;">🤖</div>
-    <div class="floating-emoji" style="bottom:25%; right:10%; animation-delay:1.5s;">❓</div>
-    <div class="floating-emoji" style="top:5%; left:50%; animation-delay:2s;">🍕</div>
-    <div class="floating-emoji" style="bottom:5%; right:30%; animation-delay:3s;">🧠</div>
-    <div class="floating-emoji" style="top:45%; left:5%; animation-delay:4s;">🪄</div>
-    
-
-
-
-
+<meta name="description" content="✨ SUPER ADVANCED AI VISION ✨ (jk it's basic) | Fanny Fushayi"><link rel="icon" href="/Images/favicon.ico"><link rel="canonical" href="https://fushayifanny.co.za/AI_model.html"><meta property="og:title" content="✨ SUPER ADVANCED AI VISION ✨ (jk it's basic) | Fanny Fushayi"><meta property="og:description" content="✨ SUPER ADVANCED AI VISION ✨ (jk it's basic) | Fanny Fushayi"><meta property="og:url" content="https://fushayifanny.co.za/AI_model.html"><meta property="og:type" content="website"><meta property="og:image" content="https://fushayifanny.co.za/Images/Photo.png"><meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="/site.css" data-shared="styles"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" data-shared="fonts"></head>
+<body class="inner-page site">
+    <a class="skip" data-shared="skip" href="#main">Skip to content</a><nav class="nav site-nav" data-shared="navigation" aria-label="Main navigation"><div class="nav-inner"><a class="brand" href="/index.html">FANNY FUSHAYI</a><button class="menu" aria-controls="site-links" aria-expanded="false" type="button">Menu</button><div class="nav-links" id="site-links"><a href="/index.html">Home</a><a href="/Projects.html">Projects</a><a href="/about.html">About</a><a href="/blog.html">Writing</a><a href="/Contact.html">Contact</a></div></div></nav><main id="main" class="reading-layout"><!-- Floating silly emojis -->
     <div class="container">
         <h1>DOUBLE DOUBLE MEGA SUPER  AI IMAGE Classifier 9000</h1>
         <div class="subtitle">
             " A Universe's Most Advanced" Image Recognition " <br>
             <small>(Assuming the infinite Universe Theory)</small>
         </div>
-        
+
         <div class="upload-area" id="uploadArea">
             <div class="upload-icon">🖼️</div>
             <div>DROP YOUR IMAGE HERE</div>
             <div><small>Warning: Only works with cats and dogs<br>
             (and even then it's kinda iffy)</small></div>
             <img id="previewImage" alt="Preview">
-            <input type="file" id="imageInput" accept="image/*">
+            <input type="file" id="imageInput" accept="image/*" aria-label="Choose a cat or dog image to classify">
         </div>
-        
-        <button id="predictBtn" disabled> PRESS HERE </button>
-        
+
+        <button id="predictBtn" disabled>Classify image</button>
+
         <div id="result">
             Waiting for your totally normal image...
         </div>
-        
+
         <div class="disclaimer">
-            ⚠️ Disclaimer: No conscious neural networks were creeated in the making of this demo.
+            ⚠️ Disclaimer: No conscious neural networks were created in the making of this demo.
         </div>
     </div>
 
-    <script type="module">
+    </main><script type="module">
         import { Client } from "https://cdn.jsdelivr.net/npm/@gradio/client/+esm";
 
         // Elements
@@ -287,14 +274,14 @@
                 "Analyzing... slowly... dramatically...",
                 "If this fails, blame the intern."
             ];
-            
+
             let counter = 0;
             const loadingInterval = setInterval(() => {
-                resultDiv.innerHTML = loadingMessages[counter % loadingMessages.length] + 
+                resultDiv.innerHTML = loadingMessages[counter % loadingMessages.length] +
                                     '<span class="loading-dots"></span>';
                 counter++;
             }, 2000);
-            
+
             try {
                 client = await Client.connect("CurrentlyUncertain/minimal");
                 clearInterval(loadingInterval);
@@ -323,7 +310,7 @@
 
         // Handle image upload
         uploadArea.addEventListener('click', () => imageInput.click());
-        
+
         imageInput.addEventListener('change', (event) => {
             const file = event.target.files[0];
             if (file) {
@@ -341,19 +328,19 @@
         // Handle prediction with humorous responses
         predictBtn.addEventListener('click', async () => {
             const file = imageInput.files[0];
-            
+
             if (!file) {
                 resultDiv.innerHTML = "You gotta pick an image first, buddy.";
                 return;
             }
-            
+
             if (!client) {
                 resultDiv.innerHTML = "Our AI is still in bed. Try again later.";
                 return;
             }
 
             predictBtn.disabled = true;
-            
+
             const loadingPhrases = [
                 "Consulting the magic 8-ball...",
                 "Asking a toddler what they see...",
@@ -366,19 +353,19 @@
                 "Our neural network neural'd too hard it's just getting a glass of good ol H2O.",
                 "Please insert more coins to continue, Just kidding your coin is no good here it's free if you're that pretty."
             ];
-            
+
             const randomLoading = loadingPhrases[Math.floor(Math.random() * loadingPhrases.length)];
             resultDiv.innerHTML = randomLoading + '<span class="loading-dots"></span>';
-            
+
             try {
                 // Add artificial delay to make it seem like it's "thinking"
                 await new Promise(resolve => setTimeout(resolve, 1500));
-                
+
                 const result = await client.predict("/predict", { img: file });
-                const topPrediction = result.data[0].confidences.reduce((prev, current) => 
+                const topPrediction = result.data[0].confidences.reduce((prev, current) =>
                     (prev.confidence > current.confidence) ? prev : current
                 );
-                
+
                 let response;
                 if (isFirstPrediction) {
                     response = `
@@ -406,9 +393,9 @@
                         </div>
                     `;
                 }
-                
+
                 resultDiv.innerHTML = response;
-                
+
             } catch (error) {
                 const errorMessages = [
                     "Our AI had an existential crisis.",
@@ -429,5 +416,5 @@
             }
         });
     </script>
-</body>
+<footer class="site-footer" data-shared="footer"><div class="shell footer-inner"><div><span>Fanny Fushayi</span><p>Engineering for the physical world.</p></div><nav aria-label="Footer navigation"><a href="/index.html">Home</a><a href="/Projects.html">Projects</a><a href="/about.html">About</a><a href="/blog.html">Writing</a><a href="/Contact.html">Contact</a></nav><div><a href="https://github.com/FannyFushayi">GitHub ↗</a> · <a href="https://www.linkedin.com/in/fanny-fushayi-529880235">LinkedIn ↗</a><p>© <span id="year">2026</span> Fanny Fushayi</p></div></div></footer><script data-shared="script" src="/site.js" defer></script></body>
 </html>

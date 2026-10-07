@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TODO: Article title | Fanny Fushayi</title>
+  <meta name="description" content="TODO: A short, accurate article description.">
+</head>
+<body class="article-page">
+  <!-- Add the root-level URL/title/category to writing-index.json.
+       Run scripts/build_site.py for navigation, metadata, reading time,
+       previous/next articles and the shared footer. -->
+  <main id="main">
+    <header>
+      <h1>TODO: Article title</h1>
+      <p class="subtitle">TODO: Subtitle, if useful.</p>
+      <!-- Add a semantic time element only when the publication date is known. -->
+    </header>
+    <article>
+      <p>TODO: Article introduction.</p>
+      <section><h2>TODO: Section title</h2><p>TODO: Article body.</p></section>
+      <!-- Optional: figure/figcaption, pre/code, equations, references. -->
+    </article>
+  </main>
+</body>
+</html>

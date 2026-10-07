@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TODO: Project title | Fanny Fushayi</title>
+  <meta name="description" content="TODO: One factual sentence about the problem and solution.">
+  <!-- Keep a draft out of search results until all content is verified. -->
+  <meta name="robots" content="noindex, follow">
+</head>
+<body class="case-study draft">
+  <!-- Copy to a root-level .html file, then run scripts/build_site.py. -->
+  <main id="main">
+    <header class="page-intro">
+      <p class="overline">TODO: Discipline / verified year if available</p>
+      <h1>TODO: Project title</h1>
+      <p>TODO: One-sentence description, grounded in documented work.</p>
+    </header>
+    <section><h2>Context / problem</h2><p>TODO: Why the system was needed.</p></section>
+    <section><h2>My role</h2><p>TODO: Your responsibilities; distinguish team contributions.</p></section>
+    <section><h2>System / solution</h2><p>TODO: What was designed or implemented.</p></section>
+    <!-- Optional: architecture figure with descriptive alt text and caption. -->
+    <section><h2>Engineering decisions</h2><p>TODO: Alternatives, constraints and trade-offs.</p></section>
+    <section><h2>Technologies</h2><p>TODO: Only tools actually used.</p></section>
+    <section><h2>Challenges</h2><p>TODO: Technical difficulties and how they were addressed.</p></section>
+    <section><h2>Outcome</h2><p>TODO: State the evidence: experiment, simulation, calculation or estimate. Include the baseline and limitations for quantitative claims.</p></section>
+    <!-- Optional: lessons, approved images and videos. Omit irrelevant sections. -->
+  </main>
+</body>
+</html>

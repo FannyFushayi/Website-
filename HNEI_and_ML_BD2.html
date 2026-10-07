@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navigating the Non-Linear Path of Battery Life Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Navigating the Non-Linear Path of Battery Life Prediction | Fanny Fushayi</title>
     <style>
         body {
             font-family: Georgia, 'Times New Roman', serif;
@@ -145,20 +145,20 @@
             body {
                 padding: 20px 15px;
             }
-            
+
             h1 {
                 font-size: 1.8em;
             }
-            
+
             table {
                 font-size: 0.8em;
             }
         }
     </style>
-</head>
-<body>
-    <a href="blog.html" class="home-button">← Home</a>
-    
+<meta name="description" content="To kick things off, the Hawaii Natural Energy Institute (HNEI) dataset was chosen as the starting point for model development. Compared to the NASA Battery Agin"><link rel="icon" href="/Images/favicon.ico"><link rel="canonical" href="https://fushayifanny.co.za/HNEI_and_ML_BD2.html"><meta property="og:title" content="Navigating the Non-Linear Path of Battery Life Prediction | Fanny Fushayi"><meta property="og:description" content="To kick things off, the Hawaii Natural Energy Institute (HNEI) dataset was chosen as the starting point for model development. Compared to the NASA Battery Agin"><meta property="og:url" content="https://fushayifanny.co.za/HNEI_and_ML_BD2.html"><meta property="og:type" content="article"><meta property="og:image" content="https://fushayifanny.co.za/Images/Photo.png"><meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="/site.css" data-shared="styles"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" data-shared="fonts"></head>
+<body class="case-study inner-page site">
+    <a class="skip" data-shared="skip" href="#main">Skip to content</a><nav class="nav site-nav" data-shared="navigation" aria-label="Main navigation"><div class="nav-inner"><a class="brand" href="/index.html">FANNY FUSHAYI</a><button class="menu" aria-controls="site-links" aria-expanded="false" type="button">Menu</button><div class="nav-links" id="site-links"><a href="/index.html">Home</a><a href="/Projects.html" aria-current="page">Projects</a><a href="/about.html">About</a><a href="/blog.html">Writing</a><a href="/Contact.html">Contact</a></div></div></nav><main id="main" class="reading-layout"><p data-shared="article-meta" class="article-meta">Engineering · 9 min read <span> / <a href="blog.html">Back to Writing</a></span></p><a href="blog.html" class="home-button">← Home</a>
+
     <h1>Navigating the Non-Linear Path of Battery Life Prediction</h1>
 
     <div class="abstract">
@@ -233,7 +233,7 @@
 
     <div class="version-section">
         <div class="version-title">Version 1: Data Exploration and First Model Run [ <a href="https://colab.research.google.com/drive/1Ka1GBcjUoSjvlVJ44iDyVvkXWWWXE4mQ"> Notebook</a> ]</div>
-        
+
         <p>The first version served primarily as a diagnostic tool—a rapid, exploratory sweep to confirm whether machine learning could effectively capture degradation patterns within the HNEI dataset. A comprehensive data inspection was conducted, confirming no missing values or duplicates. Early correlation analysis identified relationships between input features and the RUL target.</p>
 
         <p>Crucially, this phase highlighted a significant insight: certain columns, particularly the cycle index, were highly correlated with the target variable, introducing severe data leakage if included, as the results will show </p>
@@ -290,7 +290,7 @@
 
     <div class="version-section">
         <div class="version-title">Version 2: Battery Split Validation [ <a href="https://colab.research.google.com/drive/1bsbEtcKzKqwT0zxOLXzAS9_iyrbrSMgi"> Notebook</a> ]</div>
-        
+
         <p>Version 2 marked a significant shift in data approach. Instead of randomly sampling data points, the strategy involved withholding entire batteries from the training set. This battery-wise split more accurately simulates a real-world scenario: deploying a model on a battery it has never seen before.</p>
 
         <p>Consequently, performance dropped—precisely as expected. This revealed that earlier results were likely inflated by leakage between train and test data originating from the same battery, allowing the model to memorize rather than generalize.</p>
@@ -344,19 +344,19 @@
         </div>
 
 
-        <p>While the Extra Trees Regressor (selected via PyCaret's compare_models()) achieved strong battery-wise generalization (RMSE=35.97, R²=0.9876), further validation is critical: time-based splits should test temporal robustness, and leave-multiple-battery-out evaluation could reveal dependency on specific units. Though performance aligns with literature (e.g., Zhang et al.'s physics-informed models ( <a href="https://doi.org/10.1016/j.jpowsour.2020.228710" target="_blank">Zhang et al., 2020</a>)), PyCaret's automated feature selection warrants inspection—key degradation features may dominate. Future work should compare against sequential models (e.g., LSTMs) and validate on heterogeneous battery datasets to assess industrial applicability.</p>
+        <p>While the Extra Trees Regressor (selected via PyCaret's compare_models()) achieved strong battery-wise generalization (RMSE=35.97, R²=0.9876), further validation is critical: time-based splits should test temporal robustness, and leave-multiple-battery-out evaluation could reveal dependency on specific units. Though performance aligns with literature (e.g., Zhang et al.'s physics-informed models ( <a href="https://doi.org/10.1016/j.jpowsour.2020.228710" target="_blank" rel="noopener noreferrer">Zhang et al., 2020</a>)), PyCaret's automated feature selection warrants inspection—key degradation features may dominate. Future work should compare against sequential models (e.g., LSTMs) and validate on heterogeneous battery datasets to assess industrial applicability.</p>
 
 
-        <p>The consistent inverse relationship between prediction error and RUL—higher errors near end-of-life (EOL)—reflects fundamental degradation physics: early-stage capacity fade often follows quasi-linear trends (well-captured by PyCaret’s top-performing tree models), while EOL behavior becomes nonlinear due to cascading failures such as lithium plating and SEI layer breakdown (<a href="https://doi.org/10.1149/2.0411913jes" target="_blank">J. Electrochem. Soc. (2019)</a>). This pattern aligns with observations from the <a href="https://ti.arc.nasa.gov/tech/dash/groups/pcoe/" target="_blank">NASA PCoE Dataset</a>, where prediction uncertainty spikes below 50 cycles RUL. While PyCaret’s compare_models() efficiently surfaces this trend via aggregated metrics, targeted mitigation—such as EOL-focused ensemble weights or survival analysis techniques (<a href="https://doi.org/10.1016/j.est.2022.105346" target="_blank">Energy Storage (2022)</a>)—could further improve actionable warning times.</p>
+        <p>The consistent inverse relationship between prediction error and RUL—higher errors near end-of-life (EOL)—reflects fundamental degradation physics: early-stage capacity fade often follows quasi-linear trends (well-captured by PyCaret’s top-performing tree models), while EOL behavior becomes nonlinear due to cascading failures such as lithium plating and SEI layer breakdown (<a href="https://doi.org/10.1149/2.0411913jes" target="_blank" rel="noopener noreferrer">J. Electrochem. Soc. (2019)</a>). This pattern aligns with observations from the <a href="https://ti.arc.nasa.gov/tech/dash/groups/pcoe/" target="_blank" rel="noopener noreferrer">NASA PCoE Dataset</a>, where prediction uncertainty spikes below 50 cycles RUL. While PyCaret’s compare_models() efficiently surfaces this trend via aggregated metrics, targeted mitigation—such as EOL-focused ensemble weights or survival analysis techniques (<a href="https://doi.org/10.1016/j.est.2022.105346" target="_blank" rel="noopener noreferrer">Energy Storage (2022)</a>)—could further improve actionable warning times.</p>
     </div>
 
     <div class="version-section">
- <div class="version-title">Version 3: Finally Some Structure [ <a href=https://colab.research.google.com/drive/1KDEShRlfxGNq2d7QzcP6o7aIdSl30wnq#scrollTo=EQbaDkoo2SNr> Notebook</a> ]</div>
-        
+ <div class="version-title">Version 3: Finally Some Structure [ <a href="https://colab.research.google.com/drive/1KDEShRlfxGNq2d7QzcP6o7aIdSl30wnq#scrollTo=EQbaDkoo2SNr"> Notebook</a> ]</div>
+
         <p>Version 3 represents a methodological maturation—moving from ad-hoc experimentation to rigorous ML engineering practices. The key insight: <strong>proper validation requires proper structure</strong>, both in data splitting and model evaluation.</p>
 
         <h4>The Structural Revolution</h4>
-        
+
         <p>Building on Version 2's battery-wise splitting revelation, Version 3 introduces <strong>leave-multiple-batteries-out validation</strong> with systematic preprocessing pipelines. Instead of arbitrary single-battery holdouts, this version implements a more robust approach by leaving out batteries 13 and 14 for testing.</p>
 
         <p>More critically, Version 3 eliminates the battery_id leakage trap that plagued earlier versions. While Version 2 showed that including battery_id as a feature boosted performance (RMSE: 15.61), Version 3 properly excludes it from model training while preserving it for GroupKFold validation—critical for real-world deployment scenarios.</p>
@@ -416,8 +416,5 @@
 
     <p>Stay tuned for more updates. And if you've ever felt overwhelmed by a pile of half-working notebooks scattered across multiple "final" versions—rest assured, you're not alone.</p>
 
-    <footer>
-        <p>&copy; Fanny Fushayi 2025. All rights reserved.</p>
-    </footer>
-</body>
+    <nav data-shared="article-pagination" class="article-pagination" aria-label="More writing"><a href="blog.html">All writing ↑</a><a href="Battery_Data_driven.html">← RUL Estimation</a><a href="RUL_Part_3.html">The LSTM Strikes Again →</a></nav></main><footer class="site-footer" data-shared="footer"><div class="shell footer-inner"><div><span>Fanny Fushayi</span><p>Engineering for the physical world.</p></div><nav aria-label="Footer navigation"><a href="/index.html">Home</a><a href="/Projects.html" aria-current="page">Projects</a><a href="/about.html">About</a><a href="/blog.html">Writing</a><a href="/Contact.html">Contact</a></nav><div><a href="https://github.com/FannyFushayi">GitHub ↗</a> · <a href="https://www.linkedin.com/in/fanny-fushayi-529880235">LinkedIn ↗</a><p>© <span id="year">2026</span> Fanny Fushayi</p></div></div></footer><script data-shared="script" src="/site.js" defer></script></body>
 </html>

@@ -1,10 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Vanity Card Showcase</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vanity Card Showcase | Fanny Fushayi</title>
     <style>
         * {
             margin: 0;
@@ -241,11 +240,11 @@
                 min-height: 300px;
                 max-height: 70vh;
             }
-            
+
             .card {
                 padding: 1.2rem;
             }
-            
+
             .card-message {
                 font-size: 0.85rem;
                 line-height: 1.5;
@@ -258,19 +257,19 @@
             .title {
                 font-size: 1.5rem;
             }
-            
+
             .card-title {
                 font-size: 1.2rem;
             }
-            
+
             .card-message {
                 font-size: 0.85rem;
             }
-            
+
             .navigation {
                 gap: 0.5rem;
             }
-            
+
             .nav-btn {
                 padding: 6px 12px;
                 font-size: 0.75rem;
@@ -278,11 +277,11 @@
             }
         }
     </style>
-</head>
-<body>
-    <div class="container">
+<meta name="description" content='"Most of what I write on the blog is processed. I have always entertained the idea of understanding (everything), and while the processed blog helps me make sen'><link rel="icon" href="/Images/favicon.ico"><link rel="canonical" href="https://fushayifanny.co.za/VAnity_cards.html"><meta property="og:title" content="Vanity Card Showcase | Fanny Fushayi"><meta property="og:description" content='"Most of what I write on the blog is processed. I have always entertained the idea of understanding (everything), and while the processed blog helps me make sen'><meta property="og:url" content="https://fushayifanny.co.za/VAnity_cards.html"><meta property="og:type" content="website"><meta property="og:image" content="https://fushayifanny.co.za/Images/Photo.png"><meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="/site.css" data-shared="styles"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" data-shared="fonts"></head>
+<body class="inner-page site">
+    <a class="skip" data-shared="skip" href="#main">Skip to content</a><nav class="nav site-nav" data-shared="navigation" aria-label="Main navigation"><div class="nav-inner"><a class="brand" href="/index.html">FANNY FUSHAYI</a><button class="menu" aria-controls="site-links" aria-expanded="false" type="button">Menu</button><div class="nav-links" id="site-links"><a href="/index.html">Home</a><a href="/Projects.html">Projects</a><a href="/about.html">About</a><a href="/blog.html">Writing</a><a href="/Contact.html">Contact</a></div></div></nav><main id="main" class="reading-layout"><div class="container">
         <h1 class="title">Vanity Cards</h1>
-        
+
         <div class="card-container">
             <div class="card active" data-index="0">
                 <div class="card-number">Card #000</div>
@@ -292,7 +291,7 @@
                     <div class="card-date">Submitted: July 14, 2025</div>
                 </div>
             </div>
-            
+
             <div class="card" data-index="1">
                 <div class="card-number">Card #001</div>
                 <div class="card-content">
@@ -301,13 +300,13 @@
                     <div class="card-date">Submitted: July 20, 2025</div>
                 </div>
             </div>
-            
+
             <!-- Add more cards here as needed -->
 
 
 
         </div>
-        
+
         <div class="navigation">
             <button class="nav-btn" id="prevBtn">Previous</button>
             <div class="dots" id="dots"></div>
@@ -316,7 +315,7 @@
         </div>
     </div>
 
-    <script>
+    </main><script>
         document.addEventListener('DOMContentLoaded', function() {
             const cards = document.querySelectorAll('.card');
             const prevBtn = document.getElementById('prevBtn');
@@ -324,45 +323,45 @@
             const dotsContainer = document.getElementById('dots');
             const currentCounter = document.getElementById('current');
             const totalCounter = document.getElementById('total');
-            
+
             let currentIndex = 0;
             const totalCards = cards.length;
-            
+
             // Initialize the showcase
             function init() {
                 createDots();
                 updateCounters();
                 updateButtons();
                 adjustCardHeight();
-                
+
                 // Add event listeners
                 prevBtn.addEventListener('click', prevCard);
                 nextBtn.addEventListener('click', nextCard);
-                
+
                 // Keyboard navigation
                 document.addEventListener('keydown', function(e) {
                     if (e.key === 'ArrowLeft') prevCard();
                     if (e.key === 'ArrowRight') nextCard();
                 });
-                
+
                 // Touch/swipe support
                 const container = document.querySelector('.card-container');
                 let touchStartX = 0;
                 let touchEndX = 0;
-                
+
                 container.addEventListener('touchstart', function(e) {
                     touchStartX = e.changedTouches[0].screenX;
                 }, { passive: true });
-                
+
                 container.addEventListener('touchend', function(e) {
                     touchEndX = e.changedTouches[0].screenX;
                     handleSwipe();
                 }, { passive: true });
-                
+
                 // Window resize listener
                 window.addEventListener('resize', adjustCardHeight);
             }
-            
+
             // Create navigation dots
             function createDots() {
                 dotsContainer.innerHTML = '';
@@ -376,43 +375,43 @@
                     dotsContainer.appendChild(dot);
                 }
             }
-            
+
             // Go to specific card
             function goToCard(index) {
                 if (index === currentIndex || index < 0 || index >= totalCards) return;
-                
+
                 cards[currentIndex].classList.remove('active');
                 cards[currentIndex].classList.add('prev');
-                
+
                 currentIndex = index;
-                
+
                 cards[currentIndex].classList.remove('prev');
                 cards[currentIndex].classList.add('active');
-                
+
                 updateDots();
                 updateCounters();
                 updateButtons();
             }
-            
+
             // Go to next card
             function nextCard() {
                 if (currentIndex < totalCards - 1) {
                     goToCard(currentIndex + 1);
                 }
             }
-            
+
             // Go to previous card
             function prevCard() {
                 if (currentIndex > 0) {
                     goToCard(currentIndex - 1);
                 }
             }
-            
+
             // Handle swipe gestures
             function handleSwipe() {
                 const threshold = 50;
                 const diff = touchStartX - touchEndX;
-                
+
                 if (Math.abs(diff) > threshold) {
                     if (diff > 0) {
                         nextCard();
@@ -421,7 +420,7 @@
                     }
                 }
             }
-            
+
             // Update navigation dots
             function updateDots() {
                 const dots = document.querySelectorAll('.dot');
@@ -433,45 +432,45 @@
                     }
                 });
             }
-            
+
             // Update counter display
             function updateCounters() {
                 currentCounter.textContent = currentIndex + 1;
                 totalCounter.textContent = totalCards;
             }
-            
+
             // Update button states
             function updateButtons() {
                 prevBtn.disabled = currentIndex === 0;
                 nextBtn.disabled = currentIndex === totalCards - 1;
             }
-            
+
             // Adjust card height to match tallest card
             function adjustCardHeight() {
                 // Reset heights
                 cards.forEach(card => {
                     card.style.height = 'auto';
                 });
-                
+
                 // Find tallest card
                 let maxHeight = 0;
                 cards.forEach(card => {
                     maxHeight = Math.max(maxHeight, card.offsetHeight);
                 });
-                
+
                 // Set all cards to max height
                 cards.forEach(card => {
                     card.style.height = `${maxHeight}px`;
                 });
-                
+
                 // Update container height
                 const container = document.querySelector('.card-container');
                 container.style.minHeight = `${maxHeight}px`;
             }
-            
+
             // Initialize the showcase
             init();
         });
     </script>
-</body>
+<footer class="site-footer" data-shared="footer"><div class="shell footer-inner"><div><span>Fanny Fushayi</span><p>Engineering for the physical world.</p></div><nav aria-label="Footer navigation"><a href="/index.html">Home</a><a href="/Projects.html">Projects</a><a href="/about.html">About</a><a href="/blog.html">Writing</a><a href="/Contact.html">Contact</a></nav><div><a href="https://github.com/FannyFushayi">GitHub ↗</a> · <a href="https://www.linkedin.com/in/fanny-fushayi-529880235">LinkedIn ↗</a><p>© <span id="year">2026</span> Fanny Fushayi</p></div></div></footer><script data-shared="script" src="/site.js" defer></script></body>
 </html>

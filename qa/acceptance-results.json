@@ -1,0 +1,386 @@
+[
+  {
+    "name": "Mobile menu opens",
+    "passed": true
+  },
+  {
+    "name": "Escape closes menu and returns focus",
+    "passed": true
+  },
+  {
+    "name": "Mobile project navigation",
+    "passed": true
+  },
+  {
+    "name": "Writing search returns keyboard links",
+    "passed": true
+  },
+  {
+    "name": "Writing search link navigates",
+    "passed": true
+  },
+  {
+    "name": "Tool examples open without custom scripts",
+    "passed": true
+  },
+  {
+    "name": "Shona translation toggle",
+    "passed": true
+  },
+  {
+    "name": "Existing vanity-card navigation",
+    "passed": true
+  },
+  {
+    "name": "Custom 404 response",
+    "passed": true
+  },
+  {
+    "name": "404 returns home from nested URLs",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: 404.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: about.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: AI_model.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: alyosha_blog_post.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: AprilsChristmas.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: ATTIHD.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: Battery_Data_driven.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: blog.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: books.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: brothers_karamazov.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: BuildingAI.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: Cable_design.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: CAP_review.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: circle_attack.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: Contact.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: control_animation.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: currentaffairs.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: Data_science.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: deep_learning.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: Digitwin.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: dzichava_nhoroondo_blog.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: edge-plc-data.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: emegence_anal.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: Financial.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: fun_projects.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: graduation_blog.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: HelloWorld.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: HNEI_and_ML_BD2.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: How_to_Deploy.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: How_to_survive.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: index.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: industrial-digital-twin.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: industrial-reject-control.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: Intro_to_AI.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: just_above_zero.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: losing.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: metamorph.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: ML.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: Pandora_box.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: Photography.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: plc-scada-upgrade.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: PowerSystemProt.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: project-hess.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: Project-MDPS.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: Project-PV.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: Projects.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: pulse.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: robot-car.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: RUL_Part_3.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: SGPT.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: solar_system_guide.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: theenergyrevolution.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: time_extrapolation.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: TLEN.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: Tsumo.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: Uninspired1.html",
+    "passed": true
+  },
+  {
+    "name": "No-JS content and navigation: VAnity_cards.html",
+    "passed": true
+  },
+  {
+    "name": "Reduced-motion visible content: index.html",
+    "passed": true
+  },
+  {
+    "name": "Reduced-motion visible content: blog.html",
+    "passed": true
+  },
+  {
+    "name": "Reduced-motion visible content: Projects.html",
+    "passed": true
+  },
+  {
+    "name": "Reduced-motion visible content: Uninspired1.html",
+    "passed": true
+  },
+  {
+    "name": "Reduced-motion visible content: VAnity_cards.html",
+    "passed": true
+  },
+  {
+    "name": "Decoded images: index.html",
+    "passed": true
+  },
+  {
+    "name": "Loaded-font layout: index.html / 1440",
+    "passed": true
+  },
+  {
+    "name": "Loaded-font layout: index.html / 375",
+    "passed": true
+  },
+  {
+    "name": "Decoded images: Projects.html",
+    "passed": true
+  },
+  {
+    "name": "Loaded-font layout: Projects.html / 1440",
+    "passed": true
+  },
+  {
+    "name": "Loaded-font layout: Projects.html / 375",
+    "passed": true
+  },
+  {
+    "name": "Decoded images: blog.html",
+    "passed": true
+  },
+  {
+    "name": "Loaded-font layout: blog.html / 1440",
+    "passed": true
+  },
+  {
+    "name": "Loaded-font layout: blog.html / 375",
+    "passed": true
+  },
+  {
+    "name": "Decoded images: about.html",
+    "passed": true
+  },
+  {
+    "name": "Loaded-font layout: about.html / 1440",
+    "passed": true
+  },
+  {
+    "name": "Loaded-font layout: about.html / 375",
+    "passed": true
+  },
+  {
+    "name": "Decoded images: project-hess.html",
+    "passed": true
+  },
+  {
+    "name": "Loaded-font layout: project-hess.html / 1440",
+    "passed": true
+  },
+  {
+    "name": "Loaded-font layout: project-hess.html / 375",
+    "passed": true
+  },
+  {
+    "name": "Decoded images: Battery_Data_driven.html",
+    "passed": true
+  },
+  {
+    "name": "Loaded-font layout: Battery_Data_driven.html / 1440",
+    "passed": true
+  },
+  {
+    "name": "Loaded-font layout: Battery_Data_driven.html / 375",
+    "passed": true
+  },
+  {
+    "name": "Decoded images: Digitwin.html",
+    "passed": true
+  },
+  {
+    "name": "Loaded-font layout: Digitwin.html / 1440",
+    "passed": true
+  },
+  {
+    "name": "Loaded-font layout: Digitwin.html / 375",
+    "passed": true
+  },
+  {
+    "name": "Decoded images: Contact.html",
+    "passed": true
+  },
+  {
+    "name": "Loaded-font layout: Contact.html / 1440",
+    "passed": true
+  },
+  {
+    "name": "Loaded-font layout: Contact.html / 375",
+    "passed": true
+  }
+]

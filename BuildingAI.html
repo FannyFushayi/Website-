@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Building a Digit Recognizer from Scratch with MNIST</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Building a Digit Recognizer from Scratch with MNIST | Fanny Fushayi</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -13,18 +13,18 @@
             margin: 0 auto;
             padding: 20px;
         }
-        
+
         h1 {
             color: #2c3e50;
             border-bottom: 2px solid #3498db;
             padding-bottom: 10px;
         }
-        
+
         h2 {
             color: #2c3e50;
             margin-top: 30px;
         }
-        
+
         pre {
             background-color: #f8f8f8;
             padding: 15px;
@@ -32,11 +32,11 @@
             overflow-x: auto;
             border-left: 4px solid #3498db;
         }
-        
+
         code {
             font-family: 'Courier New', Courier, monospace;
         }
-        
+
         img {
             max-width: 100%;
             height: auto;
@@ -44,17 +44,17 @@
             margin: 20px auto;
             border-radius: 5px;
         }
-        
+
         .date {
             color: #7f8c8d;
             font-style: italic;
         }
-        
+
         .highlight {
             background-color: #ffffcc;
             padding: 2px;
         }
-        
+
         .note, .definition {
             border-radius: 8px;
             padding: 15px;
@@ -66,34 +66,34 @@
             background-color: #fff3cd;
             border-left: 5px solid #ffc107;
         }
-        
+
         .results {
             margin: 20px 0;
             padding: 15px;
             background-color: #f0f7fa;
             border-radius: 5px;
         }
-    
+
 
 
         .equation {
             text-align: center;
             margin: 1.5em 0;
         }
-    
+
     </style>
 
-</head>
-<body>
+<meta name="description" content="In the previous post in the AI series, I provided a general introduction to artificial intelligence. Now, I want to delve deeper into the subject, and what bett"><link rel="icon" href="/Images/favicon.ico"><link rel="canonical" href="https://fushayifanny.co.za/BuildingAI.html"><meta property="og:title" content="Building a Digit Recognizer from Scratch with MNIST | Fanny Fushayi"><meta property="og:description" content="In the previous post in the AI series, I provided a general introduction to artificial intelligence. Now, I want to delve deeper into the subject, and what bett"><meta property="og:url" content="https://fushayifanny.co.za/BuildingAI.html"><meta property="og:type" content="article"><meta property="og:image" content="https://fushayifanny.co.za/Images/Photo.png"><meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="/site.css" data-shared="styles"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" data-shared="fonts"></head>
+<body class="case-study inner-page site">
 
-    <h1>Building a Digit Recognizer from Scratch with MNIST</h1>
-    <p class="date">March 1, 2025 | Projects & Tutorials | <a href="blog.html">Home</a></p>
-    
+    <a class="skip" data-shared="skip" href="#main">Skip to content</a><nav class="nav site-nav" data-shared="navigation" aria-label="Main navigation"><div class="nav-inner"><a class="brand" href="/index.html">FANNY FUSHAYI</a><button class="menu" aria-controls="site-links" aria-expanded="false" type="button">Menu</button><div class="nav-links" id="site-links"><a href="/index.html">Home</a><a href="/Projects.html" aria-current="page">Projects</a><a href="/about.html">About</a><a href="/blog.html">Writing</a><a href="/Contact.html">Contact</a></div></div></nav><main id="main" class="reading-layout"><p data-shared="article-meta" class="article-meta">Artificial Intelligence · 13 min read <span> / <a href="blog.html">Back to Writing</a></span></p><h1>Building a Digit Recognizer from Scratch with MNIST</h1>
+    <p class="date">March 1, 2025 | Projects &amp; Tutorials | <a href="blog.html">Home</a></p>
+
 
     <p>
         In the previous post in the AI series, I provided a general introduction to artificial intelligence. Now, I want to delve deeper into the subject, and what better way to learn than by getting hands-on!
     </p>
-    
+
     <p>
         This week, we'll explore the basics of neural networks through practical experience. We'll dissect the machine learning cycle, understand how each component functions, and unravel the mathematics that power these intelligent systems.
     </p>
@@ -104,26 +104,26 @@
     <p>
         In machine learning, a neuron serves as the fundamental building block of neural networks, inspired by the neurons in the human brain. Mathematically, a neuron performs two main operations:
     </p>
-    
+
     <ul>
         <li><strong>Linear Transformation:</strong> Computes a weighted sum of inputs.</li>
         <li><strong>Activation Function:</strong> Applies a non-linear function to introduce complexity.</li>
     </ul>
-    
+
     <p>
         Putting it together:
         <br>
-        <div class="equation"></div>
+        </p><div class="equation"></div>
             Neuron Output = Activation Function (Weighted Sum + Bias)
-        </div>
-    </p>
-    
+
+
+
     <p>
         Specifically:
         <br>
         <span style="font-size: 18px; font-weight: bold; display: inline-block; margin-top: 10px; text-align: center; width: 100%;"></span>
             <strong>A <sup>k</sup> = g(w ⋅ Z + b)</strong>
-        </span>
+
         <br>
         Where:
     </p>
@@ -136,10 +136,10 @@
     <p>
         The linear component (<code>w ⋅ Z + b</code>) aggregates the input signals, while the activation function <code>g</code> introduces non-linearity, enabling the network to learn complex patterns.
     </p>
-    
+
 <hr>
     <h2>Activation Functions</h2>
-    
+
     <p>
         <strong>Sigmoid Function:
             <br>
@@ -152,7 +152,7 @@
         Pros: Smooth gradient, outputs between 0 and 1.<br>
         Cons: Can cause vanishing gradients.
     </p>
-    
+
     <p>
         <strong>ReLU (Rectified Linear Unit):
             <br>
@@ -178,7 +178,7 @@
         Pros: Outputs probabilities that sum to 1.
     </p>
 
-  
+
     <div class="note">
         <ul>
             <li>ReLU is the preferred choice for hidden layers in deep networks due to its efficiency.</li>
@@ -187,13 +187,13 @@
         </ul>
     </div>
     <hr>
-    
+
     <h2>What We're Building</h2>
 
     <p>Machine learning libraries like TensorFlow and PyTorch have made building complex models incredibly accessible. But have you ever wondered what happens under the hood? In this project, we're going back to basics by building a handwritten digit recognizer from scratch using only <strong>NumPy</strong> and the <strong>MNIST dataset</strong>. No high-level ML libraries allowed! The project is built in google collab.</p>
-    
+
     <p>Instead of using pre-built deep learning frameworks, we'll implement a <strong>simple but effective neural network</strong> to recognize handwritten digits. Our approach will involve:</p>
-    
+
     <ul>
         <li>Building a fully connected neural network from first principles</li>
         <li>Using techniques like forward and backward propagation</li>
@@ -207,8 +207,8 @@
 
     <h2>Architecture Overview</h2>
     <p>Before we dive into the code, let's outline the steps we'll take to build our digit recognizer,Here's a high-level overview of the architecture we'll be building:</p>
-    <img src="Images/Plan.png" alt="Architecture Overview">
-    
+    <img src="Images/optimized/Images/Plan.webp" alt="Architecture Overview" width="1080" height="1800" decoding="async" loading="lazy">
+
     <h2>Setting Up the Data <em>(Data Preprocessing)</em></h2>
     <p>First, let's set up our development environment. We'll need to install a few packages:</p>
     <ul>
@@ -216,15 +216,15 @@
         <li><strong>TensorFlow (only for loading MNIST data — and a lazy one-hot encoding):</strong> We will use TensorFlow's built-in dataset utilities to conveniently load and preprocess the MNIST dataset which contains contains 70,000 images of handwritten digits (60,000 for training and 10,000 for testing), each 28x28 pixels in size.</li>
         <li><strong>Matplotlib:</strong> This library will help us visualize the dataset and plot metrics such as accuracy and loss during training.</li>
     </ul>
-    
+
     <pre><code>
         import numpy as np
         import matplotlib.pyplot as plt
-        from tensorflow.keras.datasets import mnist 
+        from tensorflow.keras.datasets import mnist
         <span style="color: green;"># Just for MNIST (AND one hot) but </span>
         <span style="color: green;"># That's all from tensorflow promise....</span>
 
-        # Load dataset from MNIST 
+        # Load dataset from MNIST
         (X_train, y_train), (X_test, y_test) = mnist.load_data()
 
         # Print dataset shape, the data is going to be 3D
@@ -239,7 +239,7 @@
         # I won't even try to show how the 3D data looks because it is messy.
         # But... I can Display some images from the data to show how the data looks
         # Get a feel of how this is all going to work
-        </span>
+
 
         fig, axes = plt.subplots(2, 5, figsize=(10, 5))
         for i, ax in enumerate(axes.flat):
@@ -251,13 +251,13 @@
     </code></pre>
 
     <p>The next step in preparing the dataset is normalizing the pixel values. The MNIST dataset contains grayscale images with pixel values ranging from 0 to 255. To improve the efficiency of our model, we scale these values to a range of [0, 1] by dividing by 255. This normalization helps with faster training and improves performance by keeping numerical values small.</p>
-    
+
     <p>Next, we reshape each image from a 28x28 matrix into a 1D vector of size 784. Since neural networks work with flat input vectors, this step converts each image into a format that can be processed efficiently.</p>
-    
+
     <p>After reshaping, we print the new shape of the dataset, which should be (60000, 784) for training and (10000, 784) for testing. This confirms that each image is now a single row in our dataset.</p>
-    
+
     <div class="note">For classification, we use one-hot encoding to convert the labels (digits 0-9) into binary vectors. Instead of representing a label as a single integer (e.g., '3'), it is converted into a 10-element vector where only the index corresponding to the digit is 1, and the rest are 0. This encoding ensures that the neural network treats the classification task appropriately when using softmax activation in the output layer.</div>
-    
+
     <pre><code>
         # Normalize pixel values to be between 0 and 1
         X_train = X_train / 255.0
@@ -273,36 +273,36 @@
 
         <span style="color: red;"># Training data shape: (60000, 784)</span>
         <span style="color: red;"># Testing data shape: (10000, 784)</span>
-    </code></pre>    
-    
+    </code></pre>
+
 
 
     <hr>
 
 
 <h2>Forward Propagation</h2>
-    
+
 <p>Forward propagation is the first phase in the operation of a neural network, where input data flows through the network layer by layer to generate an output prediction. In forward propagation, data moves in one direction only - from the input layer, through the hidden layers, and finally to the output layer. At each layer, the network performs two key operations:</p>
-        
+
         <div class="step">
             <p>1. Weighted sum calculation</p>
             <p>2. Activation function application</p>
         </div>
-        
+
         <h3>Layer-by-Layer Computation</h3>
         <p>For a neural network with L layers (including input layer):</p>
-        
+
         <div class="equation">
             <p><strong>Input Layer (layer 0):</strong></p>
             <p>a<sup>[0]</sup> = X (the input data)</p>
         </div>
-        
+
         <div class="equation">
             <p><strong>For each layer l (1 to L):</strong></p>
             <p>z<sup>[l]</sup> = W<sup>[l]</sup> · a<sup>[l-1]</sup> + b<sup>[l]</sup></p>
             <p>a<sup>[l]</sup> = g<sup>[l]</sup>(z<sup>[l]</sup>)</p>
         </div>
-        
+
         <p>Where:</p>
         <ul>
             <li><strong>a<sup>[l-1]</sup></strong>: Activations from the previous layer</li>
@@ -312,7 +312,7 @@
             <li><strong>g<sup>[l]</sup></strong>: Activation function for the current layer</li>
             <li><strong>a<sup>[l]</sup></strong>: Activations (output) of the current layer</li>
         </ul>
-    
+
     <p>Let's implement the forward propagation algorithm for a simple neural network with one hidden layer, for the first iteration however we need "seed" parameters to start the learning process</p>
 
     <pre><code>
@@ -368,16 +368,16 @@ def forward_propagation(X):
 
     <h2>Back Propagation</h2>
     <p>After forward propagation computes the predicted outputs, backpropagation calculates the gradients of the cost function with respect to the weights and biases. These gradients are then used to update the parameters and improve the network's performance.</p>
-   
+
 
 
     <h3>Cost Function</h3>
     <p>First, we need a cost function to measure the error of our predictions. A common choice for binary classification is the binary cross-entropy:</p>
-    
+
     <div class="equation">
         <p>J = -1/m ∑<sub>i=1</sub><sup>m</sup> [y<sup>(i)</sup> log(a<sup>[L](i)</sup>) + (1-y<sup>(i)</sup>) log(1-a<sup>[L](i)</sup>)]</p>
     </div>
-    
+
     <p>Where:</p>
     <ul>
         <li><strong>J</strong>: Cost function</li>
@@ -385,25 +385,25 @@ def forward_propagation(X):
         <li><strong>y<sup>(i)</sup></strong>: True label for example i</li>
         <li><strong>a<sup>[L](i)</sup></strong>: Predicted output for example i (from the output layer L)</li>
     </ul>
-    
+
     <h3>Key Backpropagation Equations</h3>
-    
+
     <p>For a neural network with L layers, backpropagation works from the output layer back to the first hidden layer:</p>
-    
+
     <div class="equation">
         <p><strong>Output Layer (layer L):</strong></p>
         <p>dZ<sup>[L]</sup> = A<sup>[L]</sup> - Y</p>
         <p>dW<sup>[L]</sup> = (1/m) · dZ<sup>[L]</sup> · (A<sup>[L-1]</sup>)<sup>T</sup></p>
         <p>db<sup>[L]</sup> = (1/m) · ∑<sub>i</sub> dZ<sup>[L]</sup></p>
     </div>
-    
+
     <div class="equation">
         <p><strong>Hidden Layers (layer l, for l = L-1, L-2, ..., 1):</strong></p>
         <p>dZ<sup>[l]</sup> = (W<sup>[l+1]</sup>)<sup>T</sup> · dZ<sup>[l+1]</sup> ⊙ g<sup>[l]</sup>'(Z<sup>[l]</sup>)</p>
         <p>dW<sup>[l]</sup> = (1/m) · dZ<sup>[l]</sup> · (A<sup>[l-1]</sup>)<sup>T</sup></p>
         <p>db<sup>[l]</sup> = (1/m) · ∑<sub>i</sub> dZ<sup>[l]</sup></p>
     </div>
-    
+
     <p>Where:</p>
     <ul>
         <li><strong>dZ<sup>[l]</sup></strong>: Derivative of the cost with respect to the weighted input Z at layer l</li>
@@ -412,76 +412,76 @@ def forward_propagation(X):
         <li><strong>⊙</strong>: Element-wise multiplication (Hadamard product)</li>
         <li><strong>g<sup>[l]</sup>'</strong>: Derivative of the activation function used in layer l</li>
     </ul>
-    
+
     <h3>Derivatives of Common Activation Functions</h3>
-    
+
     <div class="equation">
         <p><strong>Sigmoid:</strong> g'(z) = g(z) · (1 - g(z))</p>
         <p><strong>Tanh:</strong> g'(z) = 1 - (tanh(z))<sup>2</sup></p>
-        <p><strong>ReLU:</strong> g'(z) = 1 if z > 0, 0 otherwise</p>
-        <p><strong>Leaky ReLU:</strong> g'(z) = 1 if z > 0, α otherwise</p>
+        <p><strong>ReLU:</strong> g'(z) = 1 if z &gt; 0, 0 otherwise</p>
+        <p><strong>Leaky ReLU:</strong> g'(z) = 1 if z &gt; 0, α otherwise</p>
     </div>
-    
+
     <h3>Parameter Updates</h3>
-    
+
     <p>After computing the gradients, we update the parameters using gradient descent:</p>
-    
+
     <div class="equation">
         <p>W<sup>[l]</sup> = W<sup>[l]</sup> - α · dW<sup>[l]</sup></p>
         <p>b<sup>[l]</sup> = b<sup>[l]</sup> - α · db<sup>[l]</sup></p>
     </div>
-    
+
     <p>Where α is the learning rate.</p>
-    
+
     <h3>Example: Backpropagation in a 2-Layer Network</h3>
-    
+
     <p>For a neural network with one hidden layer (ReLU activation) and an output layer (sigmoid activation):</p>
-    
+
     <div class="equation">
         <p><strong>Output Layer (layer 2):</strong></p>
         <p>dZ<sup>[2]</sup> = A<sup>[2]</sup> - Y</p>
         <p>dW<sup>[2]</sup> = (1/m) · dZ<sup>[2]</sup> · (A<sup>[1]</sup>)<sup>T</sup></p>
         <p>db<sup>[2]</sup> = (1/m) · ∑<sub>i</sub> dZ<sup>[2]</sup></p>
-        
+
         <p><strong>Hidden Layer (layer 1):</strong></p>
-        <p>dZ<sup>[1]</sup> = (W<sup>[2]</sup>)<sup>T</sup> · dZ<sup>[2]</sup> ⊙ (Z<sup>[1]</sup> > 0)</p>
+        <p>dZ<sup>[1]</sup> = (W<sup>[2]</sup>)<sup>T</sup> · dZ<sup>[2]</sup> ⊙ (Z<sup>[1]</sup> &gt; 0)</p>
         <p>dW<sup>[1]</sup> = (1/m) · dZ<sup>[1]</sup> · X<sup>T</sup></p>
         <p>db<sup>[1]</sup> = (1/m) · ∑<sub>i</sub> dZ<sup>[1]</sup></p>
     </div>
-    
-    <p>Note: (Z<sup>[1]</sup> > 0) is the derivative of the ReLU function, which equals 1 where Z<sup>[1]</sup> > 0 and 0 elsewhere.</p>
-    
+
+    <p>Note: (Z<sup>[1]</sup> &gt; 0) is the derivative of the ReLU function, which equals 1 where Z<sup>[1]</sup> &gt; 0 and 0 elsewhere.</p>
+
     <h3>Vectorized Implementation</h3>
-    
+
     <p>For m training examples, the vectorized implementation is:</p>
-    
+
     <div class="equation">
         <p><strong>Output Layer:</strong></p>
         <p>dZ<sup>[2]</sup> = A<sup>[2]</sup> - Y</p>
         <p>dW<sup>[2]</sup> = (1/m) · dZ<sup>[2]</sup> · (A<sup>[1]</sup>)<sup>T</sup></p>
         <p>db<sup>[2]</sup> = (1/m) · ∑<sub>axis=1</sub> dZ<sup>[2]</sup></p>
-        
+
         <p><strong>Hidden Layer:</strong></p>
-        <p>dZ<sup>[1]</sup> = (W<sup>[2]</sup>)<sup>T</sup> · dZ<sup>[2]</sup> ⊙ (Z<sup>[1]</sup> > 0)</p>
+        <p>dZ<sup>[1]</sup> = (W<sup>[2]</sup>)<sup>T</sup> · dZ<sup>[2]</sup> ⊙ (Z<sup>[1]</sup> &gt; 0)</p>
         <p>dW<sup>[1]</sup> = (1/m) · dZ<sup>[1]</sup> · X<sup>T</sup></p>
         <p>db<sup>[1]</sup> = (1/m) · ∑<sub>axis=1</sub> dZ<sup>[1]</sup></p>
     </div>
-    
+
     <div class="note">during vectorized operations, you often need to add a bias term (a scalar or a vector) to every sample in a batch. However, the batch is typically represented as a matrix where each row corresponds to a sample. To perform this addition, the bias term needs to be "replicated" across all rows of the matrix so that the dimensions match for element-wise addition.
 
         Instead of manually replicating the bias (which would waste memory and computation), broadcasting automatically handles this by virtually expanding the smaller array (bias) to match the shape of the larger array (batch matrix). The concept is called broadcasting . Broadcasting is a powerful feature in libraries like NumPy that allows operations between arrays of different shapes, such as adding a scalar or a smaller array to a larger one</div>
     <h2>Computational Graph Perspective</h2>
-    
+
     <p>Backpropagation can be understood as applying the chain rule of calculus repeatedly along the computational graph of the neural network:</p>
-    
+
     <div class="equation">
         <p>∂J/∂W<sup>[l]</sup> = ∂J/∂Z<sup>[l]</sup> · ∂Z<sup>[l]</sup>/∂W<sup>[l]</sup></p>
         <p>∂J/∂b<sup>[l]</sup> = ∂J/∂Z<sup>[l]</sup> · ∂Z<sup>[l]</sup>/∂b<sup>[l]</sup></p>
     </div>
-    
+
     <p>Where ∂J/∂Z<sup>[l]</sup> is propagated backward from layer to layer using the chain rule.</p>
-    
- 
+
+
 
 
    <pre><code>
@@ -489,7 +489,7 @@ def forward_propagation(X):
     # Loss function (categorical cross-entropy)
 def compute_loss(y_true, y_pred):
     m = y_true.shape[0]  # Number of samples
-    loss = -np.sum(y_true * np.log(y_pred + 1e-8)) / m 
+    loss = -np.sum(y_true * np.log(y_pred + 1e-8)) / m
     # Add small value for numerical stability
     return loss
 
@@ -504,7 +504,7 @@ def backpropagation(X, Y, A1, A2, learning_rate=0.01):
     dW2 = (1 / m) * np.dot(A1.T, dZ2)
     db2 = (1 / m) * np.sum(dZ2, axis=0, keepdims=True)
 
-    dZ1 = np.dot(dZ2, W2.T) * (A1 > 0)  # ReLU derivative
+    dZ1 = np.dot(dZ2, W2.T) * (A1 &gt; 0)  # ReLU derivative
     dW1 = (1 / m) * np.dot(X.T, dZ1)
     db1 = (1 / m) * np.sum(dZ1, axis=0, keepdims=True)
 
@@ -521,23 +521,23 @@ def backpropagation(X, Y, A1, A2, learning_rate=0.01):
 
 
 
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    <hr>
 
     <h2>Training Our Model</h2>
@@ -547,7 +547,7 @@ def backpropagation(X, Y, A1, A2, learning_rate=0.01):
     <strong>Epochs:</strong> The training data, is "recycled" and epocs are the number of recycles that the model does. The more epochs, the more the model learns, but it can also lead to overfitting.
     </div>
 
-    
+
 <pre><code>
 epochs = 1000
 for epoch in range(epochs):
@@ -578,14 +578,14 @@ for epoch in range(epochs):
 <hr>
 
 
-<img src="Images/meme.jpeg" alt="A Spongebob meme">
+<img src="Images/meme.jpeg" alt="A Spongebob meme" width="168" height="300" decoding="async" loading="lazy">
 
 
 <hr>
-    
-<h2>........Evaluating the Model</h2>
+
+<h2>Evaluating the Model</h2>
     <p>Let's evaluate our model on the test set:</p>
-    
+
 <pre><code>
     # Predict on test data
 _, y_pred_probs = forward_propagation(X_test)  # Get A2 (predicted probabilities)
@@ -603,13 +603,13 @@ print(f"Test Accuracy: {accuracy:.2f}%")
         <p style="color: red;">Test Accuracy: 79.17%</p>
         <p>Which is Terrible... but it's ours! Random predictions will only be 10% accurate</p>
     </div>
-    
+
 <hr>
 
 
     <h2>Improving the Model</h2>
     <p>Here are a few ways we can improve our model:</p>
-    
+
     <ul>
         <li><strong>Hyperparameter Tuning:</strong> Experiment with different learning rates, hidden layer sizes, and activation functions.</li>
         <li><strong>Regularization:</strong> Add L1 or L2 regularization to prevent overfitting.</li>
@@ -673,8 +673,5 @@ model.fit(X_train, y_train, epochs=10, batch_size=32, validation_data=(X_test, y
     The choice of parameters, number of neurons, or network architecture is largely intuitive and depends on the complexity of the problem. While there are guidelines, much of the design process involves experimentation and fine-tuning. Most importantly, neural networks thrive on data—the more, the better. Without a large dataset, even the most well-structured model would struggle to generalize and perform effectively.
 </p>
 
-<footer style="text-align: center; margin-top: 3rem; padding: 1rem; background-color: #f1f1f1; border-top: 1px solid #ddd; color: #666; font-size: 0.9rem;"></footer>
-Fanny Fushayi 2025
-</footer>
-</body>
+<nav data-shared="article-pagination" class="article-pagination" aria-label="More writing"><a href="blog.html">All writing ↑</a><a href="Intro_to_AI.html">← AI Summer</a><a href="Data_science.html">Part 1: Data Analysis →</a></nav></main><footer class="site-footer" data-shared="footer"><div class="shell footer-inner"><div><span>Fanny Fushayi</span><p>Engineering for the physical world.</p></div><nav aria-label="Footer navigation"><a href="/index.html">Home</a><a href="/Projects.html" aria-current="page">Projects</a><a href="/about.html">About</a><a href="/blog.html">Writing</a><a href="/Contact.html">Contact</a></nav><div><a href="https://github.com/FannyFushayi">GitHub ↗</a> · <a href="https://www.linkedin.com/in/fanny-fushayi-529880235">LinkedIn ↗</a><p>© <span id="year">2026</span> Fanny Fushayi</p></div></div></footer><script data-shared="script" src="/site.js" defer></script></body>
 </html>

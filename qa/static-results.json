@@ -1,0 +1,170 @@
+{
+  "issues": [],
+  "external_links": [
+    "https://arxiv.org/pdf/2409.17931.pdf",
+    "https://cbi-lowvoltage.co.za/",
+    "https://chatgpt.com/share/6804bd2e-df60-8005-b7fe-11e08d988877",
+    "https://claude.ai/public/artifacts/4b1d76c4-6cfe-42d3-865e-99ec35dd0f44",
+    "https://cleantechnica.com/2023/10/03/how-much-hvdc-transmission-is-there-now-coming-where/#:~:text=There%20are%20about%20200%20GW%20of%20HVDC%20cables,China%2C%20of%20course.%20Let%E2%80%99s%20start%20with%20the%20why.",
+    "https://colab.research.google.com/drive/12R6oOuikMWyIBVTCcv9AvX_RXbMjg3AB#scrollTo=c5eceea3",
+    "https://colab.research.google.com/drive/1Bn0ZSu35MEGEQtOuZXjfNnMyC4VVO0JJ",
+    "https://colab.research.google.com/drive/1KDEShRlfxGNq2d7QzcP6o7aIdSl30wnq#scrollTo=EQbaDkoo2SNr",
+    "https://colab.research.google.com/drive/1Ka1GBcjUoSjvlVJ44iDyVvkXWWWXE4mQ",
+    "https://colab.research.google.com/drive/1SgQeE9xZ3lOTI0w8sJG0AjBa2_6QBCoL",
+    "https://colab.research.google.com/drive/1bsbEtcKzKqwT0zxOLXzAS9_iyrbrSMgi",
+    "https://colab.research.google.com/drive/1vUt_tyasyZcDl-Up-fjDKaE26dRMg7rs?usp=sharing",
+    "https://data.worldbank.org/indicator/IT.NET.USER.ZS?locations=ZW",
+    "https://deepmind.google/research/breakthroughs/alphago/",
+    "https://doaj.org/article/a60204eee2b9496f8992178f1249c80a",
+    "https://doi.org/10.1016/j.est.2022.105346",
+    "https://doi.org/10.1016/j.jpowsour.2020.228710",
+    "https://doi.org/10.1149/2.0411913jes",
+    "https://en.wikipedia.org/wiki/Carbon_nanotube",
+    "https://en.wikipedia.org/wiki/Confirmation_bias#:~:text=Confirmation%20bias%20(also%20confirmatory%20bias,one's%20prior%20beliefs%20or%20values.",
+    "https://en.wikipedia.org/wiki/Potter%27s_wheel",
+    "https://en.wikipedia.org/wiki/Spindle_(textiles)",
+    "https://en.wikipedia.org/wiki/Thomas_Edison",
+    "https://github.com/FannyFushayi",
+    "https://github.com/FannyFushayi/Classical-Machine-Learning-Algorithms-/blob/main/Advance_Recommender.ipynb",
+    "https://github.com/FannyFushayi/Classical-Machine-Learning-Algorithms-/blob/main/Decision%20Tree%20on%20Loan%20Data.ipynb",
+    "https://github.com/FannyFushayi/Classical-Machine-Learning-Algorithms-/blob/main/Linear%20Regression%20on%20Ecommerce%20Customer.ipynb",
+    "https://github.com/FannyFushayi/Classical-Machine-Learning-Algorithms-/blob/main/Logistic%20Regression%20on%20Advertising%20Data.ipynb",
+    "https://github.com/FannyFushayi/Classical-Machine-Learning-Algorithms-/blob/main/NLP%20Project%20Yelp%20Reviews.ipynb",
+    "https://github.com/FannyFushayi/Deep_learning_learning/blob/main/Convolutiona_NN.ipynb",
+    "https://github.com/FannyFushayi/Deep_learning_learning/blob/main/RN_Net.ipynb",
+    "https://github.com/FannyFushayi/Random-Models-/blob/main/House_pred.ipynb",
+    "https://github.com/FannyFushayi/Random-Models-/blob/main/Titanic_with_deepLearning.ipynb",
+    "https://github.com/features/copilot",
+    "https://global.abb/group/en",
+    "https://huggingface.co/spaces/CurrentlyUncertain/minimal",
+    "https://journals.sagepub.com/doi/10.1177/0956797611417006",
+    "https://medium.com/@dukekongo16/how-i-won-the-localised-precipitation-forecasting-challenge-my-full-ml-pipeline-b28f551f43ee",
+    "https://moonpiepress.wordpress.com/poets/alice-n-persons/",
+    "https://onlinelibrary.wiley.com/doi/full/10.1002/est2.476",
+    "https://openai.com/blog/chatgpt",
+    "https://plato.stanford.edu/entries/chinese-room/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC11143267/",
+    "https://poetryunbound.org",
+    "https://selinc.com/",
+    "https://standards.ieee.org/standard/C37_13-2015.html",
+    "https://thundersaidenergy.com/downloads/power-grids-transmission-and-distribution-kilometers-by-country",
+    "https://ti.arc.nasa.gov/tech/dash/groups/pcoe/",
+    "https://webstore.iec.ch/publication/2597",
+    "https://webstore.iec.ch/publication/6029",
+    "https://www.cecm.sfu.ca/organics/papers/borwein/paper/html/local/bdigits.html",
+    "https://www.elementsofai.com/",
+    "https://www.frontiersin.org/journals/energy-research/articles/10.3389/fenrg.2022.937035/full",
+    "https://www.frontiersin.org/journals/energy-research/articles/10.3389/fenrg.2022.984991/full",
+    "https://www.goodreads.com/author/quotes/11004.Denis_Diderot",
+    "https://www.google.com/search?gs_ssp=eJzj4tDP1TcwTjatNGD04ktPLCqqVMhOLC5ILMovAwBmaAiH&q=garry+kasparov&oq=Garry+&gs_lcrp=EgZjaHJvbWUqDAgBEC4YQxiABBiKBTIGCAAQRRg5MgwIARAuGEMYgAQYigUyDAgCEAAYQxiABBiKBTIMCAMQABhDGIAEGIoFMgwIBBAAGEMYgAQYigUyDAgFEC4YQxiABBiKBTIMCAYQABhDGIAEGIoFMgwIBxAuGEMYgAQYigUyDAgIEC4YQxiABBiKBTIHCAkQABiPAtIBCDQ4ODJqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8",
+    "https://www.google.com/search?gs_ssp=eJzj4tDP1TdILsnJNmD04ktJLElUKC5JLFIoKUrNBgBssgiP&q=data+star+trek&oq=data+star&gs_lcrp=EgZjaHJvbWUqBwgBEC4YgAQyCQgAEEUYORiABDIHCAEQLhiABDIHCAIQLhiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIJCAYQABgKGIAEMgcIBxAAGIAEMgcICBAAGIAE0gEINTIyNmowajeoAgCwAgA&sourceid=chrome&ie=UTF-8",
+    "https://www.gutenberg.org/files/38145/38145-h/38145-h.htm",
+    "https://www.ibm.com/history/deep-blue",
+    "https://www.iea.org/reports/world-energy-outlook-2023",
+    "https://www.kaggle.com",
+    "https://www.kaggle.com/code/darshanjajoria/battery-voltage-prediction-using-nasa-battery-data",
+    "https://www.kaggle.com/code/harshsiloiya/li-ion-rul-estimation",
+    "https://www.kaggle.com/code/siddhantpurkayastha/soc-pred-sid-v1",
+    "https://www.kaggle.com/datasets/ignaciovinuales/battery-remaining-useful-life-rul/data",
+    "https://www.kaggle.com/datasets/patrickfleith/nasa-battery-dataset",
+    "https://www.linkedin.com/in/fanny-fushayi-529880235",
+    "https://www.mdpi.com/2071-1050/15/7/6261",
+    "https://www.mdpi.com/2079-9292/13/17/3475",
+    "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4087085/",
+    "https://www.nkt.com/references/nordlink-the-north-sea-norway-germany",
+    "https://www.nsenergybusiness.com/projects/changji-guquan-uhvdc-transmission-project/?cf-view",
+    "https://www.philosophizethis.org/podcast/episode-201-transcript-bkx3e-37rkx-bpl83-ysc9b-kkg62-rk7n2-8j6gw-p837t-fwc2c-armek-de5ar-2at4j-l2jz9-7zdw5-7exg8-8b7k4-rk3et",
+    "https://www.samaritanspurse.org/what-we-do/operation-christmas-child/",
+    "https://www.sciencedirect.com/science/article/abs/pii/S2352152X25007376",
+    "https://www.sciencedirect.com/science/article/pii/S014206152500170X",
+    "https://www.se.com/za/en/",
+    "https://www.stooq.com",
+    "https://www.tandfonline.com/doi/abs/10.1207/s15326985ep4102_1",
+    "https://www.techtarget.com/searchenterpriseai/definition/Turing-test#:~:text=The%20Turing%20Test%20is%20a,cryptanalyst%2C%20mathematician%20and%20theoretical%20biologist.",
+    "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(23)01129-7/fulltext#:~:text=Moravec's%20paradox%20is%20a%20phenomenon,large%2Dscale%20data%20analysis)%20are",
+    "https://www.theoi.com/Text/HesiodTheogony.html",
+    "https://www.theoi.com/Text/HesiodWorksDays.html",
+    "https://www.youtube.com/watch?v=KKNCiRWd_j0",
+    "https://www.youtube.com/watch?v=KuXjwB4LzSA&t=36s",
+    "https://www.youtube.com/watch?v=LY7x2Ihqjmc",
+    "https://www.youtube.com/watch?v=fa8k8IQ1_X0",
+    "https://www.youtube.com/watch?v=sqDLI-7vJ6w",
+    "https://zindi.africa/competitions/localised-precipitation-forecasting-in-brazzaville-in-republic-of-congo-using-ai",
+    "https://zindi.africa/competitions/localised-precipitation-forecasting-in-brazzaville-in-republic-of-congo-using-ai/discussions/28154",
+    "https:/www.amberkinetics.com",
+    "https:/www.torus.co"
+  ],
+  "copy_changes_for_review": [
+    {
+      "file": "about.html",
+      "changed_or_removed_paragraphs": [
+        "Hi, I’m Fanny — an Electrical Engineering graduate, a writer (wannabe at best), and an explorer at the intersection of technology and meaning.",
+        "By day, I’m knee-deep in power systems, energy systems, and the evolving logic of machines. By night (and let’s be honest, often by day too), I write, and read — blending ideas from literature, AI, and the human condition."
+      ]
+    },
+    {
+      "file": "index.html",
+      "changed_or_removed_paragraphs": [
+        "The tools change. The engineering mindset, remains; Innovation through excellence."
+      ]
+    },
+    {
+      "file": "project-hess.html",
+      "changed_or_removed_paragraphs": [
+        "This project focused on developing a Hybrid Energy Storage System (HESS) for an electric go-kart. The system combines a supercapacitor and battery to enhance energy efficiency and power delivery and eventually increase economic feasibility of electric vehicles by reducing battery costs . Leveraging advanced control systems and energy management logic, the project addresses key challenges in modern electric vehicle design, including regenerative braking and dynamic load management.",
+        "The HESS go-kart demonstrated improved energy efficiency and vehicle performance compared to traditional battery-only systems. Key outcomes, based on the internal resistance battery model, include:"
+      ]
+    },
+    {
+      "file": "Project-MDPS.html",
+      "changed_or_removed_paragraphs": [
+        "A colaborative project involving each team member to develop a subsystem for the robot and then integrating the system",
+        "The system utilizes measurement and control systems including:",
+        "The hybrid system demonstrated significant cost savings across different scenarios:",
+        "TSL25911 Light Sensor Installation for Irradiance Measurement"
+      ]
+    },
+    {
+      "file": "Project-PV.html",
+      "changed_or_removed_paragraphs": [
+        "The hybrid system demonstrated significant cost savings across different scenarios:"
+      ]
+    },
+    {
+      "file": "Projects.html",
+      "changed_or_removed_paragraphs": [
+        "Built and deployed a convolutional neural network (CNN) for handwritten digit recognition. Focused on practical computer vision and web hosting.",
+        "The project involved development of a Hybrid Energy Storage System (HESS) for an electric go-kart. I designed and implemented a system that combines a battery and a supercapacitor to optimize energy efficiency, improve performance, and extend battery life.",
+        "This project focused on analyzing and optimizing hybrid power systems combining photovoltaic (PV), battery, and diesel generator setups. It involved parameter measurement, simulation, and results interpretation to improve system efficiency and minimize operational costs.",
+        "The findings demonstrated significant cost savings, enhanced power flow management, and the potential for sustainable energy integration in various applications ranging from microgrids to commercial power systems.",
+        "This project involved independent design of a Motor driver and Power subsystem for a Maze Navigating robot. I developed a low-power H-bridge motor driver from first principles using a combination of N & P channel Mosfets.",
+        "Successfully addressed thermal management issues and switching losses through innovative circuit design and component selection, resulting in a highly efficient system that outperformed commercial alternatives.",
+        "Developed a robot car for the prestigious Annual Robot Car Race at the University of Pretoria. The firmware was written entirely in PIC 18 Assembly language.",
+        "The robot car successfully completed the race course with competitive timing and demonstrated exceptional reliability throughout the competition, showcasing strong fundamentals in embedded systems design and optimization.",
+        "The analysis provided valuable insights into the frequency and distribution of emergency calls, peak times for different types of emergencies, and geographical hotspots. The findings can help improve emergency response strategies and resource allocation.",
+        "Conducted a comprehensive financial data analysis project to uncover trends, patterns, and insights in financial markets. The project involved data collection, cleaning, and advanced statistical analysis.",
+        "The analysis revealed significant patterns in market behavior, provided insights into risk factors, and demonstrated the potential for predictive modeling in financial markets. The interactive dashboards enabled stakeholders to explore data and gain actionable insights.",
+        "Explored various machine learning techniques and implemented projects using the Scikit-learn library. The projects include regression and classification models, as well as natural language processing (NLP) with text analysis.",
+        "The projects demonstrated the ability to predict outcomes with high accuracy, uncover patterns in data, and analyze text effectively. These findings highlight the potential of machine learning in solving real-world problems across various domains."
+      ]
+    },
+    {
+      "file": "test.html",
+      "changed_or_removed_paragraphs": [
+        "Engineering, intelligence, ideas, and the untidy questions that make them worth pursuing.",
+        "The undefined is not the absence of definition. It is the space where a system, a story, or an idea is still becoming.",
+        "A 24-hour journey through data and iteration—from complete bewilderment to a leaderboard position by starting small and improving relentlessly.",
+        "A small collection of observations from Artideclare—placed here as a pause between the newest note and the full archive.",
+        "Essays and experiments organised by the questions they return to: how things work, what they mean, and where we are going.",
+        "Literature, creativity, faith, absurdity, and everyday survival.",
+        "Search by title, topic, or a few remembered words. The archive is still growing, but the threads are already here."
+      ]
+    },
+    {
+      "file": "theenergyrevolution.html",
+      "changed_or_removed_paragraphs": [
+        "In hybrid energy storage systems, FESS complements lithium-ion batteries by handling short-duration, high-power demands. This reduces the frequency and depth of discharge cycles for lithium-ion batteries, effectively doubling their operational lifespan. By mitigating wear on chemical batteries, FESS not only enhances system reliability but also lowers the total cost of ownership for hybrid energy systems."
+      ]
+    }
+  ]
+}

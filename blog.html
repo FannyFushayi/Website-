@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -10,1029 +10,23 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;1,600&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;1,600&amp;family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 
   <!-- Font Awesome 6 (Free) for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-  <style>
-    /* ===== Custom Properties ===== */
-    :root {
-      --ink: #242923;
-      --ink-soft: #3b4039;
-      --paper: #e4dfd2;
-      --paper-deep: #d0c8b8;
-      --oxide: #a45e35;
-      --olive: #68705a;
-      --rule: rgba(36, 41, 35, .22);
-      --max: 1400px;
-      --shadow: 0 12px 30px rgba(36, 41, 35, .12);
-      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* ===== Reset & Base ===== */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font: 400 16px / 1.5 Manrope, Arial, sans-serif;
-      transition: background var(--transition), color var(--transition);
-    }
-
-    img {
-      display: block;
-      width: 100%;
-      object-fit: cover;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    ::selection {
-      background: var(--oxide);
-      color: #fff;
-    }
-
-    /* ===== Utility ===== */
-    .shell {
-      max-width: var(--max);
-      margin: auto;
-      padding-inline: 38px;
-    }
-
-    .skip {
-      position: absolute;
-      top: -5rem;
-      left: 1rem;
-      z-index: 10;
-      background: var(--paper);
-      padding: .7rem 1rem;
-      border-radius: 4px;
-    }
-
-    .skip:focus {
-      top: 1rem;
-    }
-
-    .overline {
-      margin: 0;
-      font: 500 10px / 1.2 "DM Mono", monospace;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-    }
-
-    .overline::before {
-      content: "";
-      display: inline-block;
-      width: 21px;
-      height: 1px;
-      margin: -2px 9px 0 0;
-      vertical-align: middle;
-      background: currentColor;
-    }
-
-    .display,
-    .title {
-      margin: 15px 0;
-      font-family: "Barlow Condensed", Impact, sans-serif;
-      font-weight: 600;
-      line-height: .84;
-      letter-spacing: -.045em;
-      text-transform: uppercase;
-    }
-
-    .display {
-      font-size: clamp(4.3rem, 10vw, 10.5rem);
-    }
-
-    .title {
-      font-size: clamp(3.1rem, 6vw, 6.6rem);
-    }
-
-    /* ===== Navigation ===== */
-    .nav {
-      position: absolute;
-      inset: 0 0 auto;
-      z-index: 5;
-      color: #f3f0e9;
-      transition: background var(--transition), backdrop-filter var(--transition);
-    }
-
-    .nav.is-scrolled {
-      position: fixed;
-      background: rgba(36, 41, 35, .92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255, 255, 255, .15);
-    }
-
-    .nav-inner {
-      max-width: var(--max);
-      padding: 20px 38px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .brand {
-      font: 600 15px "DM Mono", monospace;
-      letter-spacing: .03em;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .brand::before {
-      content: "";
-      display: inline-block;
-      width: 9px;
-      height: 9px;
-      background: var(--oxide);
-      border-radius: 2px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      align-items: center;
-    }
-
-    .nav-links a {
-      font: 500 12px "DM Mono", monospace;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      opacity: .8;
-      transition: opacity var(--transition), transform var(--transition);
-      position: relative;
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 1.5px;
-      background: var(--oxide);
-      transition: width var(--transition);
-    }
-
-    .nav-links a:hover {
-      opacity: 1;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .menu {
-      display: none;
-      padding: 8px 12px;
-      border: 1px solid rgba(255, 255, 255, .4);
-      background: none;
-      color: #fff;
-      font: 500 11px "DM Mono", monospace;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background var(--transition);
-    }
-
-    .menu:hover {
-      background: rgba(255, 255, 255, .1);
-    }
-
-    /* ===== Hero ===== */
-    .hero {
-      position: relative;
-      min-height: 90svh;
-      overflow: hidden;
-      color: #f7f4eb;
-      background: var(--ink);
-      display: flex;
-      align-items: end;
-    }
-
-    .hero-images {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      grid-template-columns: 1.15fr .85fr 1fr;
-    }
-
-    .hero-images img {
-      height: 100%;
-      filter: saturate(.55) contrast(1.05) brightness(.61);
-      transition: transform 8s ease;
-    }
-
-    .hero:hover .hero-images img {
-      transform: scale(1.02);
-    }
-
-    .hero-images img:nth-child(1) {
-      object-position: center 25%;
-    }
-    .hero-images img:nth-child(2) {
-      object-position: center;
-    }
-    .hero-images img:nth-child(3) {
-      object-position: center 30%;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, rgba(16, 19, 16, .84), rgba(16, 19, 16, .48) 54%, rgba(16, 19, 16, .18)),
-        linear-gradient(0deg, rgba(16, 19, 16, .7), transparent 52%);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      padding-bottom: 43px;
-    }
-
-    .hero-copy {
-      max-width: 850px;
-    }
-
-    .hero-copy .overline {
-      color: #d9c799;
-    }
-
-    .hero-copy>p:not(.overline) {
-      max-width: 520px;
-      margin: 22px 0 0;
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      opacity: .9;
-    }
-
-    .hero-foot {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      margin-top: 72px;
-      font: 400 10px "DM Mono", monospace;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      opacity: .7;
-    }
-
-    .hero-foot span:last-child {
-      animation: bob 2.4s infinite ease-in-out;
-    }
-
-    @keyframes bob {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(4px); }
-    }
-
-    /* ===== Main ===== */
-    main {
-      padding: 120px 0 0;
-    }
-
-    /* ===== Intro ===== */
-    .intro {
-      display: grid;
-      grid-template-columns: minmax(200px, .66fr) 1.34fr;
-      gap: 50px;
-      margin-bottom: 120px;
-      align-items: center;
-    }
-
-    .intro p:last-child {
-      max-width: 750px;
-      margin: 0;
-      font-size: clamp(1.3rem, 2.6vw, 2.25rem);
-      line-height: 1.23;
-      letter-spacing: -.035em;
-      font-weight: 500;
-    }
-
-    /* ===== Featured ===== */
-    .featured {
-      background: var(--ink);
-      color: var(--paper);
-      padding: 0;
-      border-radius: 12px;
-      overflow: hidden;
-      margin-inline: 20px;
-      box-shadow: var(--shadow);
-    }
-
-    .featured-grid {
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      min-height: 570px;
-    }
-
-    .featured-image {
-      min-height: 400px;
-      overflow: hidden;
-    }
-
-    .featured-image img {
-      height: 100%;
-      filter: saturate(.6) contrast(1.05);
-      transition: transform 1.2s ease;
-    }
-
-    .featured:hover .featured-image img {
-      transform: scale(1.03);
-    }
-
-    .featured-copy {
-      display: flex;
-      flex-direction: column;
-      align-items: start;
-      justify-content: center;
-      padding: 70px clamp(35px, 7vw, 120px);
-    }
-
-    .featured-copy .overline {
-      color: #d9c799;
-    }
-
-    .featured-copy h2 {
-      font-size: clamp(3.2rem, 6vw, 6.7rem);
-    }
-
-    .featured-copy>p:not(.overline) {
-      max-width: 460px;
-      color: #d6d2c9;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      margin-top: 16px;
-      border: 1.5px solid currentColor;
-      padding: 12px 22px;
-      color: inherit;
-      font: 600 11px "DM Mono", monospace;
-      letter-spacing: .05em;
-      text-transform: uppercase;
-      transition: all var(--transition);
-      border-radius: 4px;
-      background: transparent;
-    }
-
-    .button:hover {
-      background: var(--paper);
-      color: var(--ink);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,.25);
-    }
-
-    .button i {
-      font-size: 14px;
-      transition: transform var(--transition);
-    }
-
-    .button:hover i {
-      transform: translateX(4px);
-    }
-
-    /* ===== Visual Journal ===== */
-    .visual-journal {
-      padding: 130px 0 118px;
-      overflow: hidden;
-    }
-
-    .journal-head {
-      display: grid;
-      grid-template-columns: .8fr 1.2fr;
-      gap: 35px;
-      align-items: end;
-      margin-bottom: 45px;
-    }
-
-    .journal-head p:last-child {
-      max-width: 530px;
-      margin: 0;
-      font-size: 1.06rem;
-      color: var(--ink-soft);
-    }
-
-    .art-collage {
-      display: grid;
-      grid-template-columns: 1.05fr .72fr 1.18fr .8fr;
-      grid-template-rows: 230px 185px;
-      gap: 14px;
-    }
-
-    .art-collage figure {
-      position: relative;
-      min-width: 0;
-      margin: 0;
-      overflow: hidden;
-      background: var(--ink);
-      border-radius: 8px;
-      box-shadow: var(--shadow);
-    }
-
-    .art-collage figure:nth-child(1) {
-      grid-row: span 2;
-    }
-    .art-collage figure:nth-child(3) {
-      grid-column: span 2;
-    }
-    .art-collage figure:nth-child(5) {
-      grid-column: span 2;
-    }
-
-    .art-collage img {
-      height: 100%;
-      filter: saturate(.68) contrast(1.04);
-      transition: transform .6s ease, filter .6s ease;
-    }
-
-    .art-collage figure:hover img {
-      transform: scale(1.06);
-      filter: saturate(.86) contrast(1.06);
-    }
-
-    .art-collage figcaption {
-      position: absolute;
-      right: 12px;
-      bottom: 10px;
-      color: #fff;
-      font: 400 9px "DM Mono", monospace;
-      letter-spacing: .08em;
-      text-shadow: 0 2px 10px rgba(0,0,0,.7);
-      text-transform: uppercase;
-      background: rgba(0,0,0,.3);
-      padding: 4px 10px;
-      border-radius: 20px;
-      backdrop-filter: blur(4px);
-    }
-
-    /* ===== Index / Archive Listing ===== */
-    .index {
-      padding-block: 130px;
-    }
-
-    .index-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 35px;
-      margin-bottom: 55px;
-    }
-
-    .index-head p:last-child {
-      max-width: 350px;
-      margin: 0;
-      color: var(--ink-soft);
-    }
-
-    /* ===== Categories ===== */
-    .category {
-      margin-top: 125px;
-      scroll-margin-top: 85px;
-    }
-
-    .category:first-of-type {
-      margin-top: 0;
-    }
-
-    /* Category header with collage integrated */
-    .category-header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      background: var(--ink);
-      color: var(--paper);
-      border-radius: 12px 12px 0 0;
-      overflow: hidden;
-      padding: 0;
-    }
-
-    .category-header-content {
-      padding: 42px 0 38px 46px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .category-header-content .category-number {
-      color: #d9c799;
-      font: 500 14px "DM Mono", monospace;
-      margin-bottom: 8px;
-    }
-
-    .category-header-content h3 {
-      margin: 0;
-      color: #fff;
-      font: 600 clamp(3.8rem, 6.6vw, 7.2rem) / .78 "Barlow Condensed", Impact, sans-serif;
-      letter-spacing: -.055em;
-      text-transform: uppercase;
-    }
-
-    .category-header-content .category-description {
-      max-width: 310px;
-      margin: 8px 0 0;
-      color: #d6d2c9;
-      font-size: .92rem;
-    }
-
-    .category-header-collage {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 6px;
-      padding: 6px;
-      background: rgba(0,0,0,.2);
-    }
-
-    .category-header-collage figure {
-      position: relative;
-      min-width: 0;
-      margin: 0;
-      overflow: hidden;
-      background: var(--ink);
-      border-radius: 6px;
-      aspect-ratio: 4/3;
-    }
-
-    .category-header-collage figure:first-child {
-      grid-row: span 2;
-      aspect-ratio: auto;
-    }
-
-    .category-header-collage figure:nth-child(3) {
-      grid-column: 2 / span 2;
-    }
-
-    .category-header-collage img {
-      height: 100%;
-      width: 100%;
-      filter: saturate(.65) contrast(1.05);
-      transition: transform .6s ease, filter .6s ease;
-    }
-
-    .category-header-collage figure:hover img {
-      transform: scale(1.06);
-      filter: saturate(.85) contrast(1.05);
-    }
-
-    .category-header-collage figcaption {
-      position: absolute;
-      right: 8px;
-      bottom: 6px;
-      color: #fff;
-      font: 400 8px "DM Mono", monospace;
-      letter-spacing: .06em;
-      text-shadow: 0 2px 10px rgba(0,0,0,.7);
-      text-transform: uppercase;
-      background: rgba(0,0,0,.3);
-      padding: 3px 8px;
-      border-radius: 12px;
-      backdrop-filter: blur(4px);
-      font-size: 7px;
-    }
-
-    /* ===== Post List ===== */
-    .post-list {
-      margin: 0;
-      padding: 0 46px;
-      list-style: none;
-      border: 1px solid var(--rule);
-      border-top: 0;
-      background: rgba(255, 255, 255, .13);
-      border-radius: 0 0 12px 12px;
-    }
-
-    .post-list li {
-      border-top: 1px solid var(--rule);
-    }
-
-    .post-list li:first-child {
-      border-top: 0;
-    }
-
-    .post-list a {
-      display: grid;
-      grid-template-columns: 90px minmax(250px, 1fr) 1.3fr auto;
-      gap: 22px;
-      align-items: center;
-      padding: 22px 0;
-      transition: color var(--transition), padding var(--transition), background var(--transition);
-      border-radius: 6px;
-      padding-inline: 8px;
-    }
-
-    .post-list a:hover {
-      color: var(--oxide);
-      padding-left: 16px;
-      background: rgba(164, 94, 53, .06);
-    }
-
-    .post-list .count {
-      font: 400 10px "DM Mono", monospace;
-      color: var(--olive);
-    }
-
-    .post-list strong {
-      font: 600 clamp(1.4rem, 2.4vw, 2.15rem) / 1 "Barlow Condensed", Impact, sans-serif;
-      letter-spacing: -.02em;
-      text-transform: uppercase;
-    }
-
-    .post-list span {
-      color: var(--ink-soft);
-      font-size: .88rem;
-    }
-
-    .post-list b {
-      font: 400 20px Manrope, sans-serif;
-      transition: transform var(--transition);
-    }
-
-    .post-list a:hover b {
-      transform: translateX(4px);
-    }
-
-    /* ===== Archive / Search ===== */
-    .archive {
-      background: var(--paper-deep);
-      padding: 95px 0;
-      border-radius: 12px;
-      margin-inline: 20px;
-    }
-
-    .archive-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 70px;
-      align-items: center;
-    }
-
-    .archive p:last-child {
-      margin: 0;
-      max-width: 570px;
-      font-size: 1.1rem;
-    }
-
-    .search-wrap {
-      position: relative;
-      max-width: 570px;
-      margin-top: 28px;
-    }
-
-    .search-bar {
-      width: 100%;
-      border: 0;
-      border-bottom: 2px solid var(--ink);
-      border-radius: 0;
-      padding: 13px 40px 13px 0;
-      background: transparent;
-      color: var(--ink);
-      font: 500 14px "DM Mono", monospace;
-      transition: border-color var(--transition);
-    }
-
-    .search-bar:focus {
-      outline: none;
-      border-color: var(--oxide);
-    }
-
-    .search-btn {
-      position: absolute;
-      right: 0;
-      top: 0;
-      height: 100%;
-      border: 0;
-      background: none;
-      cursor: pointer;
-      color: var(--ink);
-      font-size: 20px;
-      transition: color var(--transition), transform var(--transition);
-    }
-
-    .search-btn:hover {
-      color: var(--oxide);
-      transform: translateX(3px);
-    }
-
-    .search-results {
-      display: none;
-      position: absolute;
-      z-index: 2;
-      top: calc(100% + 10px);
-      width: 100%;
-      max-height: 280px;
-      overflow-y: auto;
-      background: var(--paper);
-      border: 1px solid var(--rule);
-      box-shadow: var(--shadow);
-      border-radius: 8px;
-    }
-
-    .search-result-item {
-      padding: 13px 16px;
-      cursor: pointer;
-      border-bottom: 1px solid var(--rule);
-      transition: background var(--transition);
-    }
-
-    .search-result-item:hover {
-      background: #eee9dc;
-    }
-
-    .search-result-title {
-      font-weight: 700;
-    }
-
-    .search-result-excerpt {
-      color: var(--ink-soft);
-      font-size: .83rem;
-    }
-
-    /* ===== Footer ===== */
-    footer {
-      background: var(--ink);
-      color: var(--paper);
-      margin-top: 60px;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      padding-top: 30px;
-      padding-bottom: 30px;
-      font: 400 10px "DM Mono", monospace;
-      letter-spacing: .07em;
-      text-transform: uppercase;
-      opacity: .7;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      justify-content: flex-end;
-    }
-
-    .footer-links a {
-      color: var(--paper);
-      text-decoration: none;
-      transition: opacity var(--transition);
-    }
-
-    .footer-links a:hover {
-      opacity: 1;
-    }
-
-    /* ===== Responsive ===== */
-    @media (max-width: 760px) {
-      .shell,
-      .nav-inner {
-        padding-inline: 20px;
-      }
-
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        padding: 24px 20px;
-        background: rgba(36, 41, 35, .98);
-        flex-direction: column;
-        align-items: start;
-        gap: 16px;
-        border-radius: 0 0 12px 12px;
-        backdrop-filter: blur(12px);
-      }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .menu {
-        display: block;
-      }
-
-      .hero {
-        min-height: 760px;
-      }
-
-      .hero-images {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .hero-images img:nth-child(3) {
-        display: none;
-      }
-
-      .hero-foot {
-        margin-top: 48px;
-      }
-
-      .intro,
-      .archive-inner,
-      .journal-head {
-        grid-template-columns: 1fr;
-        gap: 22px;
-      }
-
-      .intro {
-        margin-bottom: 80px;
-      }
-
-      .featured {
-        margin-inline: 0;
-        border-radius: 0;
-      }
-
-      .featured-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .featured-image {
-        height: 330px;
-        min-height: 0;
-      }
-
-      .featured-copy {
-        padding: 55px 20px;
-      }
-
-      .visual-journal {
-        padding: 80px 0;
-      }
-
-      .journal-head {
-        margin-bottom: 30px;
-      }
-
-      .art-collage {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 210px 145px 180px;
-        gap: 9px;
-      }
-
-      .art-collage figure:nth-child(1) {
-        grid-row: span 2;
-      }
-
-      .art-collage figure:nth-child(3) {
-        grid-column: auto;
-      }
-
-      .art-collage figure:nth-child(5) {
-        grid-column: span 2;
-      }
-
-      .index {
-        padding-block: 80px;
-      }
-
-      .index-head {
-        display: block;
-        margin-bottom: 38px;
-      }
-
-      .index-head p:last-child {
-        margin-top: 18px;
-      }
-
-      .category {
-        margin-top: 78px;
-      }
-
-      .category-header {
-        grid-template-columns: 1fr;
-        border-radius: 8px 8px 0 0;
-      }
-
-      .category-header-content {
-        padding: 30px 22px 20px;
-      }
-
-      .category-header-content h3 {
-        font-size: clamp(3.5rem, 15vw, 5.5rem);
-      }
-
-      .category-header-collage {
-        grid-template-columns: 1fr 1fr 1fr;
-        padding: 6px;
-        gap: 4px;
-      }
-
-      .category-header-collage figure:first-child {
-        grid-row: span 2;
-      }
-
-      .category-header-collage figure:nth-child(3) {
-        grid-column: 2 / span 2;
-      }
-
-      .post-list {
-        padding: 0 16px;
-        border-radius: 0 0 8px 8px;
-      }
-
-      .post-list a {
-        grid-template-columns: 30px 1fr auto;
-        gap: 11px;
-        padding: 18px 0;
-      }
-
-      .post-list span {
-        grid-column: 2;
-        grid-row: 2;
-      }
-
-      .post-list b {
-        grid-column: 3;
-        grid-row: 1 / span 2;
-      }
-
-      .archive {
-        padding: 70px 0;
-        margin-inline: 0;
-        border-radius: 0;
-      }
-
-      .footer-inner {
-        display: block;
-        line-height: 2;
-      }
-
-      .footer-inner span {
-        display: block;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-copy .display {
-        font-size: clamp(3.2rem, 14vw, 4.5rem);
-      }
-
-      .category-header-collage {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto;
-      }
-
-      .category-header-collage figure:first-child {
-        grid-row: span 2;
-      }
-
-      .category-header-collage figure:nth-child(3) {
-        grid-column: span 1;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <!-- ===== Skip Link ===== -->
-  <a class="skip" href="#main">Skip to content</a>
-
+  <link rel="stylesheet" href="writing.css">
+<link rel="icon" href="/Images/favicon.ico"><link rel="canonical" href="https://fushayifanny.co.za/blog.html"><meta property="og:title" content="The Undefined Blog | Fanny Fushayi"><meta property="og:description" content="Writing by Fanny Fushayi on engineering, artificial intelligence, philosophy, and life."><meta property="og:url" content="https://fushayifanny.co.za/blog.html"><meta property="og:type" content="website"><meta property="og:image" content="https://fushayifanny.co.za/Images/Photo.png"><meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="/site.css" data-shared="styles"></head>
+
+<body class="landing site">
+  <a class="skip" data-shared="skip" href="#main">Skip to content</a><nav class="nav site-nav" data-shared="navigation" aria-label="Main navigation"><div class="nav-inner"><a class="brand" href="/index.html">FANNY FUSHAYI</a><button class="menu" aria-controls="site-links" aria-expanded="false" type="button">Menu</button><div class="nav-links" id="site-links"><a href="/index.html">Home</a><a href="/Projects.html">Projects</a><a href="/about.html">About</a><a href="/blog.html" aria-current="page">Writing</a><a href="/Contact.html">Contact</a></div></div></nav><!-- ===== Skip Link ===== -->
   <!-- ===== Navigation ===== -->
-  <nav class="nav" id="nav">
-    <div class="nav-inner">
-      <a class="brand" href="index.html">FANNY FUSHAYI</a>
-
-      <button class="menu" type="button" aria-expanded="false" aria-controls="nav-links">
-        <i class="fas fa-bars"></i> Menu
-      </button>
-
-      <div class="nav-links" id="nav-links">
-        <a href="#engineering">Engineering</a>
-        <a href="#ai">AI</a>
-        <a href="#philosophy">Philosophy</a>
-        <a href="#life">Life</a>   
-        <a href="#stories">Short Stories</a>
-      </div>
-    </div>
-  </nav>
-
   <!-- ===== Hero ===== -->
   <header class="hero">
     <div class="hero-images" aria-hidden="true">
-      <img src="Images/ARTIDECLARE/Engineering/IMG_0530.JPEG" alt="">
-      <img src="Images/ARTIDECLARE/Short%20Stories/IMG_1766.JPEG" alt="">
-      <img src="Images/ARTIDECLARE/Short%20Stories/IMG_1443.JPEG" alt="">
+      <img src="Images/optimized/Images/ARTIDECLARE/Engineering/IMG_0530.webp" alt="" width="1350" height="1800" decoding="async">
+      <img src="Images/optimized/Images/ARTIDECLARE/Short%20Stories/IMG_1766.webp" alt="" width="1350" height="1800" decoding="async">
+      <img src="Images/optimized/Images/ARTIDECLARE/Short%20Stories/IMG_1443.webp" alt="" width="1800" height="1350" decoding="async">
     </div>
 
     <div class="hero-content shell">
@@ -1062,7 +56,7 @@
     <section class="featured">
       <div class="featured-grid">
         <div class="featured-image">
-          <img src="Images/ARTIDECLARE/Landscapes/IMG_1081.JPEG" alt="Abstract detail from Artideclare">
+          <img src="Images/optimized/Images/ARTIDECLARE/Landscapes/IMG_1081.webp" alt="Abstract detail from Artideclare" width="1800" height="1350" decoding="async">
         </div>
 
         <div class="featured-copy">
@@ -1086,23 +80,23 @@
 
       <div class="art-collage">
         <figure>
-          <img src="Images/ARTIDECLARE/Short%20Stories/IMG_0156.JPEG" loading="lazy" alt="Artideclare visual journal image">
+          <img src="Images/optimized/Images/ARTIDECLARE/Short%20Stories/IMG_0156.webp" loading="lazy" alt="Artideclare visual journal image" width="1800" height="1350" decoding="async">
           <figcaption><i class="fas fa-eye"></i> 01 / observation</figcaption>
         </figure>
         <figure>
-          <img src="Images/ARTIDECLARE/life%20Perhaps/IMG_0442.JPEG" loading="lazy" alt="Artideclare visual journal image">
+          <img src="Images/ARTIDECLARE/life%20Perhaps/IMG_0442.JPEG" loading="lazy" alt="Artideclare visual journal image" width="2048" height="1536" decoding="async">
           <figcaption><i class="fas fa-hand-peace"></i> 02 / texture</figcaption>
         </figure>
         <figure>
-          <img src="Images/ARTIDECLARE/Landscapes/IMG_0525.JPEG" loading="lazy" alt="Artideclare visual journal image">
+          <img src="Images/optimized/Images/ARTIDECLARE/Landscapes/IMG_0525.webp" loading="lazy" alt="Artideclare visual journal image" width="1799" height="1800" decoding="async">
           <figcaption><i class="fas fa-layer-group"></i> 03 / composition</figcaption>
         </figure>
         <figure>
-          <img src="Images/ARTIDECLARE/Landscapes/The_Shoe.jpg" loading="lazy" alt="Artideclare visual journal image">
+          <img src="Images/optimized/Images/ARTIDECLARE/Landscapes/The_Shoe.webp" loading="lazy" alt="Artideclare visual journal image" width="1350" height="1800" decoding="async">
           <figcaption><i class="fas fa-sun"></i> 04 / Futility</figcaption>
         </figure>
         <figure>
-          <img src="Images/ARTIDECLARE/Landscapes/PhotographyJPG.JPG" loading="lazy" alt="Artideclare visual journal image">
+          <img src="Images/optimized/Images/ARTIDECLARE/Landscapes/PhotographyJPG.webp" loading="lazy" alt="Artideclare visual journal image" width="1800" height="1350" decoding="async">
           <figcaption><i class="fas fa-cube"></i> 05 / Nature</figcaption>
         </figure>
       </div>
@@ -1128,15 +122,15 @@
           </div>
           <div class="category-header-collage">
             <figure>
-              <img src="Images/ARTIDECLARE/Engineering/IMG_0530.JPEG" loading="lazy" alt="Engineering collage">
+              <img src="Images/optimized/Images/ARTIDECLARE/Engineering/IMG_0530.webp" loading="lazy" alt="Engineering collage" width="1350" height="1800" decoding="async">
               <figcaption>field work</figcaption>
             </figure>
             <figure>
-              <img src="Images/ARTIDECLARE/Engineering/IMG_0768.JPEG" loading="lazy" alt="Engineering collage">
+              <img src="Images/optimized/Images/ARTIDECLARE/Engineering/IMG_0768.webp" loading="lazy" alt="Engineering collage" width="1350" height="1800" decoding="async">
               <figcaption>systems</figcaption>
             </figure>
             <figure>
-              <img src="Images/ARTIDECLARE/Engineering/IMG_1288.JPEG" loading="lazy" alt="Engineering collage">
+              <img src="Images/optimized/Images/ARTIDECLARE/Engineering/IMG_1288.webp" loading="lazy" alt="Engineering collage" width="1350" height="1800" decoding="async">
               <figcaption>detail</figcaption>
             </figure>
           </div>
@@ -1165,15 +159,15 @@
           </div>
           <div class="category-header-collage">
             <figure>
-              <img src="Images/ARTIDECLARE/Philosophy/IMG_0159.JPEG" loading="lazy" alt="Philosophy collage">
+              <img src="Images/optimized/Images/ARTIDECLARE/Philosophy/IMG_0159.webp" loading="lazy" alt="Philosophy collage" width="1350" height="1800" decoding="async">
               <figcaption>memory</figcaption>
             </figure>
             <figure>
-              <img src="Images/ARTIDECLARE/Philosophy/IMG_1917.JPEG" loading="lazy" alt="Philosophy collage">
+              <img src="Images/ARTIDECLARE/Philosophy/IMG_1917.JPEG" loading="lazy" alt="Philosophy collage" width="896" height="939" decoding="async">
               <figcaption>question</figcaption>
             </figure>
             <figure>
-              <img src="Images/ARTIDECLARE/Philosophy/IMG_1758.JPEG" loading="lazy" alt="Philosophy collage">
+              <img src="Images/ARTIDECLARE/Philosophy/IMG_1758.JPEG" loading="lazy" alt="Philosophy collage" width="828" height="695" decoding="async">
               <figcaption>reflection</figcaption>
             </figure>
           </div>
@@ -1197,15 +191,15 @@
           </div>
           <div class="category-header-collage">
             <figure>
-              <img src="Images/ARTIDECLARE/Artificial Intelligence/17FDA1B0-EFD1-45A3-BAF7-CFD27CB3B25D (1).JPEG" loading="lazy" alt="AI collage">
+              <img src="Images/optimized/Images/ARTIDECLARE/Artificial%20Intelligence/17FDA1B0-EFD1-45A3-BAF7-CFD27CB3B25D%20%281%29.webp" loading="lazy" alt="AI collage" width="1024" height="1114" decoding="async">
               <figcaption>process</figcaption>
             </figure>
             <figure>
-              <img src="Images/ARTIDECLARE/Artificial Intelligence/being.png" loading="lazy" alt="AI collage">
+              <img src="Images/optimized/Images/ARTIDECLARE/Artificial%20Intelligence/being.webp" loading="lazy" alt="AI collage" width="1024" height="1024" decoding="async">
               <figcaption>signal</figcaption>
             </figure>
             <figure>
-              <img src="Images/ARTIDECLARE/Artificial Intelligence/F905AC83-BB4E-4490-94D4-2818CAC17FFC.PNG" loading="lazy" alt="AI collage">
+              <img src="Images/optimized/Images/ARTIDECLARE/Artificial%20Intelligence/F905AC83-BB4E-4490-94D4-2818CAC17FFC.webp" loading="lazy" alt="AI collage" width="1536" height="1024" decoding="async">
               <figcaption>pattern</figcaption>
             </figure>
           </div>
@@ -1234,15 +228,15 @@
           </div>
           <div class="category-header-collage">
             <figure>
-              <img src="Images/ARTIDECLARE/Short%20Stories/IMG_1766.JPEG" loading="lazy" alt="Stories collage">
+              <img src="Images/optimized/Images/ARTIDECLARE/Short%20Stories/IMG_1766.webp" loading="lazy" alt="Stories collage" width="1350" height="1800" decoding="async">
               <figcaption>scene</figcaption>
             </figure>
             <figure>
-              <img src="Images/ARTIDECLARE/Short%20Stories/IMG_0156.JPEG" loading="lazy" alt="Stories collage">
+              <img src="Images/optimized/Images/ARTIDECLARE/Short%20Stories/IMG_0156.webp" loading="lazy" alt="Stories collage" width="1800" height="1350" decoding="async">
               <figcaption>interval</figcaption>
             </figure>
             <figure>
-              <img src="Images/ARTIDECLARE/Short%20Stories/IMG_1443.JPEG" loading="lazy" alt="Stories collage">
+              <img src="Images/optimized/Images/ARTIDECLARE/Short%20Stories/IMG_1443.webp" loading="lazy" alt="Stories collage" width="1800" height="1350" decoding="async">
               <figcaption>passage</figcaption>
             </figure>
           </div>
@@ -1265,15 +259,15 @@
           </div>
           <div class="category-header-collage">
             <figure>
-              <img src="Images/ARTIDECLARE/life%20Perhaps/IMG_0560.JPEG" loading="lazy" alt="Life collage">
+              <img src="Images/optimized/Images/ARTIDECLARE/life%20Perhaps/IMG_0560.webp" loading="lazy" alt="Life collage" width="1350" height="1800" decoding="async">
               <figcaption>ordinary</figcaption>
             </figure>
             <figure>
-              <img src="Images/ARTIDECLARE/life%20Perhaps/IMG_1265.JPEG" loading="lazy" alt="Life collage">
+              <img src="Images/optimized/Images/ARTIDECLARE/life%20Perhaps/IMG_1265.webp" loading="lazy" alt="Life collage" width="1350" height="1800" decoding="async">
               <figcaption>notes</figcaption>
             </figure>
             <figure>
-              <img src="Images/ARTIDECLARE/life%20Perhaps/IMG_1764.JPEG" loading="lazy" alt="Life collage">
+              <img src="Images/optimized/Images/ARTIDECLARE/life%20Perhaps/IMG_1764.webp" loading="lazy" alt="Life collage" width="1350" height="1800" decoding="async">
               <figcaption>becoming</figcaption>
             </figure>
           </div>
@@ -1306,7 +300,7 @@
           <div class="search-wrap">
             <input type="search" class="search-bar" placeholder="Search posts…" aria-label="Search posts">
             <button class="search-btn" aria-label="Search"><i class="fas fa-arrow-right"></i></button>
-            <div class="search-results"></div>
+            <div class="search-results" aria-live="polite"></div>
           </div>
         </div>
       </div>
@@ -1314,17 +308,6 @@
   </main>
 
   <!-- ===== Footer ===== -->
-  <footer>
-    <div class="footer-inner shell">
-      <span><i class="far fa-copyright"></i> <span id="year"></span> Fanny Fushayi</span>
-      <div class="footer-links">
-        <a href="https://www.instagram.com/fanny_fushayi" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <a href="https://open.substack.com/pub/fannyfushayi" target="_blank" rel="noopener noreferrer">Substack</a>
-      </div>
-      <span><i class="fas fa-cogs"></i> Engineering for the physical world.</span>
-    </div>
-  </footer>
-
   <!-- ===== JavaScript ===== -->
   <script>
     // ============================================================
@@ -1354,10 +337,10 @@
 
       results.innerHTML = found.length
         ? found.map(p => `
-            <div class="search-result-item" data-url="${p.url}">
+            <a class="search-result-item" href="${p.url}">
               <div class="search-result-title"><i class="fas fa-file-alt" style="margin-right:8px;opacity:.5;"></i>${p.title}</div>
               <div class="search-result-excerpt">${p.excerpt}</div>
-            </div>
+            </a>
           `).join('')
         : '<div class="search-result-item"><i class="fas fa-exclamation-circle" style="margin-right:8px;"></i>No matching posts found.</div>';
 
@@ -1376,69 +359,6 @@
       if (!e.target.closest('.search-wrap')) results.style.display = 'none';
     });
 
-    // ============================================================
-    // 2. Nav: scroll behaviour
-    // ============================================================
-    const nav = document.querySelector('.nav');
-
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('is-scrolled', window.scrollY > 36);
-    }, { passive: true });
-
-    // ============================================================
-    // 3. Nav: mobile menu toggle
-    // ============================================================
-    const menu = document.querySelector('.menu');
-    const links = document.querySelector('.nav-links');
-
-    menu.addEventListener('click', () => {
-      const open = links.classList.toggle('open');
-      menu.setAttribute('aria-expanded', open);
-      menu.innerHTML = open ? '<i class="fas fa-times"></i> Close' : '<i class="fas fa-bars"></i> Menu';
-    });
-
-    links.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        links.classList.remove('open');
-        menu.setAttribute('aria-expanded', 'false');
-        menu.innerHTML = '<i class="fas fa-bars"></i> Menu';
-      });
-    });
-
-    // ============================================================
-    // 4. Footer: current year
-    // ============================================================
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // ============================================================
-    // 5. Intersection Observer for fade-in sections
-    // ============================================================
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.category, .visual-journal, .intro').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(30px)';
-      el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-      observer.observe(el);
-    });
-
-    // trigger initial visibility for items already in view
-    setTimeout(() => {
-      document.querySelectorAll('.category, .visual-journal, .intro').forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight) {
-          el.style.opacity = '1';
-          el.style.transform = 'translateY(0)';
-        }
-      });
-    }, 200);
   </script>
-</body>
+<footer class="site-footer" data-shared="footer"><div class="shell footer-inner"><div><span>Fanny Fushayi</span><p>Engineering for the physical world.</p></div><nav aria-label="Footer navigation"><a href="/index.html">Home</a><a href="/Projects.html">Projects</a><a href="/about.html">About</a><a href="/blog.html" aria-current="page">Writing</a><a href="/Contact.html">Contact</a></nav><div><a href="https://github.com/FannyFushayi">GitHub ↗</a> · <a href="https://www.linkedin.com/in/fanny-fushayi-529880235">LinkedIn ↗</a><p>© <span id="year">2026</span> Fanny Fushayi</p></div></div></footer><script data-shared="script" src="/site.js" defer></script></body>
 </html>

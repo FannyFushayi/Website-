@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Twins: The Future of System Analysis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Digital Twins: The Future of System Analysis | Fanny Fushayi</title>
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -13,20 +13,20 @@
             --text-color: #333;
             --light-gray: #ecf0f1;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
             background-color: var(--background-color);
             color: var(--text-color);
             line-height: 1.6;
         }
-        
+
         header {
             background-color: var(--primary-color);
             color: white;
@@ -35,12 +35,12 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .header-content {
             position: relative;
             z-index: 2;
         }
-        
+
         .header-bg {
             position: absolute;
             top: 0;
@@ -50,23 +50,23 @@
             z-index: 1;
             opacity: 0.1;
         }
-        
+
         h1 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
         }
-        
+
         .subtitle {
             font-size: 1.2rem;
             font-weight: 300;
         }
-        
+
         main {
             max-width: 1000px;
             margin: 0 auto;
             padding: 2rem;
         }
-        
+
         section {
             margin-bottom: 3rem;
             background-color: white;
@@ -75,31 +75,31 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease;
         }
-        
+
         section:hover {
             transform: translateY(-5px);
         }
-        
+
         h2 {
             color: var(--primary-color);
             margin-bottom: 1rem;
             border-bottom: 2px solid var(--light-gray);
             padding-bottom: 0.5rem;
         }
-        
+
         p, ul {
             margin-bottom: 1rem;
         }
-        
+
         ul {
             padding-left: 1.5rem;
         }
-        
+
         .highlight {
             color: var(--accent-color);
             font-weight: bold;
         }
-        
+
         .interactive-demo {
             background-color: var(--light-gray);
             padding: 1.5rem;
@@ -107,7 +107,7 @@
             margin: 1.5rem 0;
             text-align: center;
         }
-        
+
         .twin-container {
             display: flex;
             flex-wrap: wrap;
@@ -115,7 +115,7 @@
             justify-content: center;
             margin-top: 20px;
         }
-        
+
         .physical-system, .digital-twin {
             width: 45%;
             min-width: 300px;
@@ -125,37 +125,37 @@
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             position: relative;
         }
-        
+
         .physical-system {
             border: 2px solid var(--primary-color);
         }
-        
+
         .digital-twin {
             border: 2px solid var(--secondary-color);
         }
-        
+
         .panel-title {
             font-weight: bold;
             text-align: center;
             margin-bottom: 1rem;
             color: var(--primary-color);
         }
-        
+
         .parameter {
             margin: 10px 0;
             display: flex;
             justify-content: space-between;
         }
-        
+
         .parameter-name {
             font-weight: 500;
         }
-        
+
         .parameter-value {
             font-weight: bold;
             transition: color 0.3s ease;
         }
-        
+
         button {
             background-color: var(--secondary-color);
             color: white;
@@ -167,11 +167,11 @@
             margin-top: 15px;
             transition: background-color 0.3s ease;
         }
-        
+
         button:hover {
             background-color: #2980b9;
         }
-        
+
         .data-flow {
             height: 10px;
             width: 0;
@@ -180,21 +180,21 @@
             transition: width 1s ease;
             border-radius: 5px;
         }
-        
+
         .disturbance-container {
             margin-top: 20px;
             text-align: center;
         }
-        
+
         .slider-container {
             width: 100%;
             margin: 15px 0;
         }
-        
+
         #disturbance-slider {
             width: 80%;
         }
-        
+
         .key-components {
             display: flex;
             flex-wrap: wrap;
@@ -202,7 +202,7 @@
             margin-top: 1.5rem;
             gap: 15px;
         }
-        
+
         .component-card {
             flex: 1 1 300px;
             background-color: var(--light-gray);
@@ -210,17 +210,17 @@
             padding: 1rem;
             transition: background-color 0.3s ease;
         }
-        
+
         .component-card:hover {
             background-color: #e2e8f0;
         }
-        
+
         .component-title {
             font-weight: bold;
             color: var(--primary-color);
             margin-bottom: 0.5rem;
         }
-        
+
         .conclusion {
             background-color: var(--primary-color);
             color: white;
@@ -228,12 +228,12 @@
             border-radius: 8px;
             margin-top: 2rem;
         }
-        
+
         .conclusion h2 {
             color: white;
             border-bottom-color: rgba(255, 255, 255, 0.2);
         }
-        
+
         footer {
             background-color: var(--primary-color);
             color: white;
@@ -245,39 +245,39 @@
             justify-content: center;
             align-items: center;
         }
-        
+
         @media (max-width: 768px) {
             .twin-container {
                 flex-direction: column;
                 align-items: center;
             }
-            
+
             .physical-system, .digital-twin {
                 width: 100%;
             }
         }
     </style>
-</head>
-<body>
-    <header>
+<meta name="description" content="Exploring virtual replicas that transform how we understand physical systems Home"><link rel="icon" href="/Images/favicon.ico"><link rel="canonical" href="https://fushayifanny.co.za/Digitwin.html"><meta property="og:title" content="Digital Twins: The Future of System Analysis | Fanny Fushayi"><meta property="og:description" content="Exploring virtual replicas that transform how we understand physical systems Home"><meta property="og:url" content="https://fushayifanny.co.za/Digitwin.html"><meta property="og:type" content="article"><meta property="og:image" content="https://fushayifanny.co.za/Images/Photo.png"><meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="/site.css" data-shared="styles"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" data-shared="fonts"></head>
+<body class="article-page inner-page site">
+    <a class="skip" data-shared="skip" href="#main">Skip to content</a><nav class="nav site-nav" data-shared="navigation" aria-label="Main navigation"><div class="nav-inner"><a class="brand" href="/index.html">FANNY FUSHAYI</a><button class="menu" aria-controls="site-links" aria-expanded="false" type="button">Menu</button><div class="nav-links" id="site-links"><a href="/index.html">Home</a><a href="/Projects.html">Projects</a><a href="/about.html">About</a><a href="/blog.html" aria-current="page">Writing</a><a href="/Contact.html">Contact</a></div></div></nav><main id="main" class="reading-layout">
+        <p data-shared="article-meta" class="article-meta">Engineering · 3 min read <span> / <a href="blog.html">Back to Writing</a></span></p><header>
         <div class="header-bg" id="header-particles"></div>
         <div class="header-content">
             <h1>Digital Twins: The Future of System Analysis</h1>
             <p class="subtitle">Exploring virtual replicas that transform how we understand physical systems  <a href="blog.html">Home</a></p>
         </div>
     </header>
-    
-    <main>
-        <section>
+
+    <section>
             <h2>What Are Digital Twins?</h2>
             <p>In an increasingly digitized world, the concept of a digital twin—a dynamic, real-time virtual replica of a physical system—is transforming how we understand, analyze, and improve physical systems. These digital replicas enable experimentation and analysis without risking harm to the actual system, leading to smarter design, predictive maintenance, and optimized operations.</p>
             <p>A digital twin is essentially a <span class="highlight">virtual model designed to accurately reflect a physical object</span>. The concept goes beyond simple simulation—digital twins use real-time data from sensors on the physical object to mirror its current state and predict future performance.</p>
         </section>
-        
+
         <section>
             <h2>How Digital Twins Work</h2>
             <p>At their core, digital twins rely on data. Sensors attached to a physical system collect real-time information, feeding it into a digital model. This model is built using sophisticated algorithms, simulations, and machine learning to replicate the system's behavior accurately. Continuous synchronization ensures that the digital twin mirrors the real system's state, allowing engineers to simulate disturbances, predict failures, and optimize performance under various conditions.</p>
-            
+
             <div class="key-components">
                 <div class="component-card">
                     <div class="component-title">Data Collection</div>
@@ -301,13 +301,13 @@
                 </div>
             </div>
         </section>
-        
-        
-        
+
+
+
         <section>
             <h2>HESS Case Study: Digital Twin for Hybrid Energy Storage</h2>
             <p>Drawing from my <a href="project-hess.html">final year project</a>, where I worked on a Hybrid Energy Storage System (HESS) for an electric go-kart, here's how one could create a digital twin for such a system:</p>
-            
+
             <ul>
                 <li><strong>Define the System Components:</strong> Identify the main elements of the HESS, such as the battery, supercapacitor, bidirectional converters, and motor controller.</li>
                 <li><strong>Data Acquisition:</strong> Integrate sensors to measure key parameters like voltage, current, temperature, and state of charge (SoC) for both the battery and supercapacitor.</li>
@@ -316,12 +316,12 @@
                 <li><strong>Simulation Environment:</strong> Build the digital twin using simulation software like MATLAB/Simulink to test different conditions and observe HESS responses.</li>
                 <li><strong>Real-Time Synchronization:</strong> Establish a data feedback loop where sensor data continuously updates the model.</li>
             </ul>
-            
+
             <p>This approach ensures that any modifications or optimizations can be safely tested in the digital environment before applying them to the physical go-kart, reducing risk and enhancing system performance.</p>
         </section>
 
         <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>HESS Digital Twin Demo</title>
   <style>
     body { font-family: Arial, sans-serif; display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; gap: 20px; }
@@ -335,8 +335,8 @@
     .metric { font-size: 0.9em; color: #666; }
     h3 { margin-top: 0; color: #2c3e50; }
   </style>
-</head>
-<body>
+
+
   <div class="container" id="physical-system">
     <h2>🏭 Physical Hybrid System</h2>
     <div class="status">
@@ -345,7 +345,7 @@
       <div id="physical-battery-soc">80% (32 kWh remaining)</div>
       <div class="metric">Time to empty: 8h at current load</div>
     </div>
-    
+
     <div class="status">
       <div>Supercapacitor Status:</div>
       <div class="soc-bar"><div class="soc-fill" id="physical-supercap-bar" style="width: 90%; background: #2196F3;"></div></div>
@@ -391,16 +391,16 @@
         <section>
             <h2>Applications and Benefits</h2>
             <p>Beyond the specific HESS application, digital twins have broad applications, including:</p>
-            
+
             <ul>
                 <li><strong>Energy Systems:</strong> Simulating power grids or storage systems to test responses to fluctuations without affecting actual operations.</li>
                 <li><strong>Manufacturing:</strong> Optimizing production lines by simulating workflows and identifying bottlenecks.</li>
                 <li><strong>Healthcare:</strong> Creating patient-specific models to simulate treatment outcomes.</li>
                 <li><strong>Urban Planning:</strong> Modeling city infrastructure to improve traffic flow, utilities, and sustainability.</li>
             </ul>
-            
+
             <p>The use of digital twins offers several benefits:</p>
-            
+
             <ul>
                 <li><strong>Risk-Free Experimentation:</strong> Test scenarios without jeopardizing the actual system.</li>
                 <li><strong>Cost Efficiency:</strong> Reduce downtime and maintenance costs by predicting issues.</li>
@@ -408,11 +408,11 @@
                 <li><strong>Improved Decision-Making:</strong> Data-driven insights lead to better strategic choices.</li>
             </ul>
         </section>
-        
+
         <section>
             <h2>Challenges and Considerations</h2>
                 <p>While digital twins offer significant advantages, challenges include:</p>
-                
+
                 <ul>
                     <li><strong>Data Accuracy:</strong> Inaccurate data can lead to flawed simulations.</li>
                     <li><strong>Complexity:</strong> Developing and maintaining an accurate digital twin can be resource-intensive.</li>
@@ -422,15 +422,11 @@
                     <li><strong>Integration Challenges:</strong> Legacy systems may need significant upgrades to support digital twin implementation.</li>
                 </ul>
             </section>
-            
+
             <section class="conclusion">
                 <p>Digital twins represent a significant leap forward in how we interact with and understand complex systems. By enabling safe, cost-effective, and innovative experimentation, they are shaping the future of industries worldwide. As technology continues to evolve, digital twins will likely become an integral part of system design, analysis, and optimization, offering new pathways for innovation and efficiency.</p>
             </section>
-        </main>
-        
-        <footer>
-            <p>&copy; 2025 Fanny Fushayi</p>
-        </footer>
+        <nav data-shared="article-pagination" class="article-pagination" aria-label="More writing"><a href="blog.html">All writing ↑</a><a href="control_animation.html">← Control Systems</a><a href="solar_system_guide.html">PV System Design →</a></nav></main>
 
         <script>
             let batterySoC = 80;  // 0-100%
@@ -438,38 +434,38 @@
             let currentLoad = 150; // kW
             let isSimulating = true;
             let simulationInterval;
-        
+
             function clampSOC(value) {
               return Math.max(0, Math.min(100, value));
             }
-        
+
             function updateSystem() {
               // Physical system update
               const loadFactor = currentLoad / 150;
               batterySoC = clampSOC(batterySoC - (0.1 * loadFactor));
               supercapSoC = clampSOC(supercapSoC - (0.2 * loadFactor));
-        
+
               // Update displays
-              document.getElementById('physical-battery-soc').textContent = 
+              document.getElementById('physical-battery-soc').textContent =
                 `${batterySoC.toFixed(1)}% (${(batterySoC*0.4).toFixed(1)} kWh remaining)`;
-              document.getElementById('physical-supercap-soc').textContent = 
+              document.getElementById('physical-supercap-soc').textContent =
                 `${supercapSoC.toFixed(1)}% (${(supercapSoC*0.5).toFixed(1)} kW capacity)`;
-              
+
               document.getElementById('physical-battery-bar').style.width = `${batterySoC}%`;
               document.getElementById('physical-supercap-bar').style.width = `${supercapSoC}%`;
-        
+
               // Digital twin predictions
               const predictBattery = clampSOC(batterySoC - (0.5 * loadFactor));
               const predictSupercap = clampSOC(supercapSoC - (1 * loadFactor));
-              
-              document.getElementById('predicted-battery-soc').textContent = 
+
+              document.getElementById('predicted-battery-soc').textContent =
                 `${predictBattery.toFixed(1)}% in 1 hour`;
-              document.getElementById('predicted-supercap-soc').textContent = 
+              document.getElementById('predicted-supercap-soc').textContent =
                 `${predictSupercap.toFixed(1)}% in 1 hour`;
-              
+
               document.getElementById('predicted-battery-bar').style.width = `${predictBattery}%`;
               document.getElementById('predicted-supercap-bar').style.width = `${predictSupercap}%`;
-        
+
               // Generate insights
               const suggestions = {
                 highLoad: '🔺 High load detected: Consider activating backup storage',
@@ -477,7 +473,7 @@
                 optimalSell: '💰 High capacity: Sell excess to grid at peak rates',
                 faultDetected: '⚠️ Cell imbalance detected: Schedule maintenance'
               };
-        
+
               if (currentLoad > 250) {
                 showAlert(suggestions.highLoad, 'alert');
               } else if (batterySoC < 20) {
@@ -488,26 +484,26 @@
                 showAlert('✅ System Status Normal', 'normal');
               }
             }
-        
+
             function showAlert(message, type) {
               const alertDiv = document.getElementById('anomaly-alert');
               alertDiv.textContent = message;
               alertDiv.className = `status ${type === 'alert' ? 'alert' : type === 'suggestion' ? 'suggestion' : ''}`;
             }
-        
+
             function toggleSimulation() {
               isSimulating = !isSimulating;
               document.getElementById('sim-button').textContent = isSimulating ? '⏸️ Pause' : '▶️ Resume';
               if (isSimulating) simulationInterval = setInterval(updateSystem, 1500);
               else clearInterval(simulationInterval);
             }
-        
+
             function simulateScenario(type) {
               // Reset to initial state
               batterySoC = 80;
               supercapSoC = 90;
               currentLoad = 150;
-              
+
               switch(type) {
                 case 'peak':
                   currentLoad = 300;
@@ -524,17 +520,17 @@
               document.getElementById('load-adjust').value = currentLoad;
               updateSystem();
             }
-        
+
             // Initial setup
             document.getElementById('load-adjust').oninput = function(e) {
               currentLoad = e.target.value;
               document.getElementById('current-load').textContent = `${currentLoad} kW`;
               updateSystem();
             };
-        
+
             simulationInterval = setInterval(updateSystem, 1500);
           </script>
-        
-        
-    </body>
-    </html>
+
+
+
+    <footer class="site-footer" data-shared="footer"><div class="shell footer-inner"><div><span>Fanny Fushayi</span><p>Engineering for the physical world.</p></div><nav aria-label="Footer navigation"><a href="/index.html">Home</a><a href="/Projects.html">Projects</a><a href="/about.html">About</a><a href="/blog.html" aria-current="page">Writing</a><a href="/Contact.html">Contact</a></nav><div><a href="https://github.com/FannyFushayi">GitHub ↗</a> · <a href="https://www.linkedin.com/in/fanny-fushayi-529880235">LinkedIn ↗</a><p>© <span id="year">2026</span> Fanny Fushayi</p></div></div></footer><script data-shared="script" src="/site.js" defer></script></body></html>

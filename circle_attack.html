@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Circle Strike</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Circle Strike | Fanny Fushayi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {
             background: #111827;
@@ -16,8 +16,8 @@
             align-items: center;
             overflow-x: hidden;
         }
-        h1 { 
-            font-size: 2.5em; 
+        h1 {
+            font-size: 2.5em;
             margin: 0.5em 0;
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
             background: linear-gradient(90deg, #3b82f6, #ef4444);
@@ -35,11 +35,11 @@
             width: 80%;
             max-width: 600px;
         }
-        .panel h2 { 
-            margin: 0.5em 0; 
+        .panel h2 {
+            margin: 0.5em 0;
             font-size: 1.5em;
         }
-        .panel p { 
+        .panel p {
             margin: 0.5em 0;
             line-height: 1.4;
         }
@@ -56,7 +56,7 @@
             font-weight: bold;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
-        .btn:hover { 
+        .btn:hover {
             background: #1d4ed8;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.3);
@@ -130,7 +130,7 @@
         .pulse {
             animation: pulse 1.5s infinite;
         }
-        
+
         /* Mobile-specific styles */
         @media (max-width: 800px) {
             body {
@@ -140,56 +140,56 @@
                 width: 100%;
                 height: 100%;
             }
-            
+
             canvas {
                 width: 100%;
                 height: auto;
                 max-height: 80vh;
                 border: none;
             }
-            
+
             .panel, .rules {
                 width: 90%;
                 padding: 0.5em;
                 font-size: 0.9em;
             }
-            
+
             h1 {
                 font-size: 1.8em;
                 margin: 0.3em 0;
             }
-            
+
             .btn {
                 padding: 1em;
                 font-size: 1.1em;
             }
-            
+
             .power-meter {
                 width: 150px;
             }
         }
     </style>
-</head>
-<body>
-    <h1>⚡ CIRCLE STRIKE ⚡</h1>
-    
+<meta name="description" content="🎯 How to Play: Click/touch and drag from your disc to aim. Release to shoot!"><link rel="icon" href="/Images/favicon.ico"><link rel="canonical" href="https://fushayifanny.co.za/circle_attack.html"><meta property="og:title" content="Circle Strike | Fanny Fushayi"><meta property="og:description" content="🎯 How to Play: Click/touch and drag from your disc to aim. Release to shoot!"><meta property="og:url" content="https://fushayifanny.co.za/circle_attack.html"><meta property="og:type" content="website"><meta property="og:image" content="https://fushayifanny.co.za/Images/Photo.png"><meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="/site.css" data-shared="styles"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" data-shared="fonts"></head>
+<body class="inner-page site">
+    <a class="skip" data-shared="skip" href="#main">Skip to content</a><nav class="nav site-nav" data-shared="navigation" aria-label="Main navigation"><div class="nav-inner"><a class="brand" href="/index.html">FANNY FUSHAYI</a><button class="menu" aria-controls="site-links" aria-expanded="false" type="button">Menu</button><div class="nav-links" id="site-links"><a href="/index.html">Home</a><a href="/Projects.html">Projects</a><a href="/about.html">About</a><a href="/blog.html">Writing</a><a href="/Contact.html">Contact</a></div></div></nav><main id="main" class="reading-layout"><h1>⚡ CIRCLE STRIKE ⚡</h1>
+
     <div class="scoreboard">
         <div class="player-score blue" id="score-p1">Player 1: 0</div>
         <div class="player-score red" id="score-p2">Player 2: 0</div>
     </div>
-    
+
     <div class="panel" id="panel"></div>
-    
+
     <div class="bot-controls">
         <button class="btn" id="toggleBot">Enable Bot (Player 2)</button>
     </div>
-    
+
     <div class="power-meter">
         <div class="power-level" id="powerMeter"></div>
     </div>
-    
+
     <canvas id="game" width="800" height="600"></canvas>
-    
+
     <div class="rules">
         <p><strong>🎯 How to Play:</strong> Click/touch and drag from your disc to aim. Release to shoot!</p>
         <p><strong>🏆 Goal:</strong> Enter the <span class="yellow">yellow circle</span> to get "loaded", then eliminate your opponent.</p>
@@ -197,7 +197,7 @@
         <p><strong>⚡ Power-ups:</strong> Collect flashing orbs for special abilities!</p>
     </div>
 
-    <script>
+    </main><script>
         // --- Game Constants ---
         const CANVAS_WIDTH = 800;
         const CANVAS_HEIGHT = 600;
@@ -211,31 +211,31 @@
         // --- Game State ---
         let gameState = {
             players: [
-                { 
-                    x: 100, 
-                    y: 300, 
-                    vx: 0, 
-                    vy: 0, 
-                    loaded: false, 
+                {
+                    x: 100,
+                    y: 300,
+                    vx: 0,
+                    vy: 0,
+                    loaded: false,
                     color: '#3b82f6',
                     score: 0,
                     powerUps: []
                 },
-                { 
-                    x: 700, 
-                    y: 300, 
-                    vx: 0, 
-                    vy: 0, 
-                    loaded: false, 
+                {
+                    x: 700,
+                    y: 300,
+                    vx: 0,
+                    vy: 0,
+                    loaded: false,
                     color: '#ef4444',
                     score: 0,
                     powerUps: []
                 }
             ],
-            circle: { 
-                x: 400, 
-                y: 300, 
-                radius: 40 
+            circle: {
+                x: 400,
+                y: 300,
+                radius: 40
             },
             obstacles: [
                 { x: 250, y: 200, radius: 25 },
@@ -282,7 +282,7 @@
                 powerUp: new Audio('data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU...'),
                 win: new Audio('data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU...')
             };
-            
+
             // Reduce volume for all sounds
             Object.values(gameState.sounds).forEach(sound => {
                 sound.volume = 0.3;
@@ -305,36 +305,36 @@
         function spawnPowerUp(type_ind) {
             const now = Date.now();
             if (now - gameState.lastPowerUpSpawn < 10000 && gameState.powerUps.length > 0) return;
-            
+
             const types = ['speed', 'shield', 'double-shot'];
             const type = types[type_ind];
-            
+
             let x, y, validPosition;
             do {
                 validPosition = true;
                 x = randomInt(50, CANVAS_WIDTH - 50);
                 y = randomInt(50, CANVAS_HEIGHT - 50);
-                
+
                 // Check if too close to players
                 gameState.players.forEach(player => {
                     if (distance({x, y}, player) < 50) validPosition = false;
                 });
-                
+
                 // Check if too close to circle
                 if (distance({x, y}, gameState.circle) < 80) validPosition = false;
-                
+
                 // Check if too close to obstacles
                 gameState.obstacles.forEach(obstacle => {
                     if (distance({x, y}, obstacle) < obstacle.radius + 30) validPosition = false;
                 });
-                
+
                 // Check if too close to other power-ups
                 gameState.powerUps.forEach(pu => {
                     if (distance({x, y}, pu) < 40) validPosition = false;
                 });
-                
+
             } while (!validPosition);
-            
+
             gameState.powerUps.push({
                 x,
                 y,
@@ -343,7 +343,7 @@
                 spawnTime: now,
                 active: true
             });
-            
+
             gameState.lastPowerUpSpawn = now;
         }
 
@@ -351,7 +351,7 @@
         function getInputCoordinates(event) {
             const rect = canvas.getBoundingClientRect();
             let clientX, clientY;
-            
+
             if (event.type.includes('touch')) {
                 clientX = event.touches[0].clientX;
                 clientY = event.touches[0].clientY;
@@ -360,7 +360,7 @@
                 clientX = event.clientX;
                 clientY = event.clientY;
             }
-            
+
             return {
                 x: clientX - rect.left,
                 y: clientY - rect.top
@@ -372,7 +372,7 @@
             const { x, y } = getInputCoordinates(event);
             const currentPlayer = gameState.players[gameState.currentPlayer];
             const playerDistance = distance({ x, y }, currentPlayer);
-            
+
             if (playerDistance < PLAYER_RADIUS + 30) {
                 gameState.isAiming = true;
                 gameState.aimStart = { x: currentPlayer.x, y: currentPlayer.y };
@@ -393,21 +393,21 @@
 
         function handleInputEnd() {
             if (!gameState.isAiming || !gameState.aimStart || !gameState.aimEnd) return;
-            
+
             const dx = gameState.aimEnd.x - gameState.aimStart.x;
             const dy = gameState.aimEnd.y - gameState.aimStart.y;
             const aimDistance = Math.sqrt(dx * dx + dy * dy);
             const power = Math.min(aimDistance / 4, MAX_POWER);
-            
+
             if (power > 0.5) {
                 const angle = Math.atan2(dy, dx);
                 let vx = Math.cos(angle) * power;
                 let vy = Math.sin(angle) * power;
-                
+
                 // Check for double shot
                 const currentPlayer = gameState.players[gameState.currentPlayer];
                 const hasDoubleShot = currentPlayer.powerUps.some(pu => pu.type === 'double-shot');
-                
+
                 if (hasDoubleShot && gameState.gamePhase === 'attacking') {
                     // Create a second shot at a slight angle
                     const angle2 = angle + 0.3;
@@ -419,13 +419,13 @@
                     };
                     gameState.players = newPlayers;
                 }
-                
+
                 let newPlayers = [...gameState.players];
                 newPlayers[gameState.currentPlayer] = {
                     ...newPlayers[gameState.currentPlayer],
                     vx, vy
                 };
-                
+
                 gameState = {
                     ...gameState,
                     players: newPlayers,
@@ -434,13 +434,13 @@
                     aimStart: null,
                     aimEnd: null
                 };
-                
+
                 // Play shoot sound
                 if (gameState.sounds.shoot) {
                     gameState.sounds.shoot.currentTime = 0;
                     gameState.sounds.shoot.play();
                 }
-                
+
                 draw();
                 updatePanel();
                 if (animationRef) cancelAnimationFrame(animationRef);
@@ -456,18 +456,18 @@
         // --- Advanced Bot Logic ---
         function performBotTurn() {
             if (gameState.gamePhase !== 'aiming' || gameState.currentPlayer !== 1) return;
-            
+
             const bot = gameState.players[1];
             const human = gameState.players[0];
             const now = Date.now();
-            
+
             // 1. Decision Making - Choose best action
             let target, power, angle;
             const timeSinceLastShot = now - (bot.lastShotTime || 0);
-            
+
             // Strategic options with weights
             const options = [];
-            
+
             // Option 1: Go for circle if not loaded
             if (!bot.loaded) {
                 const circlePath = getPathToTarget(bot, gameState.circle);
@@ -478,7 +478,7 @@
                     target: gameState.circle
                 });
             }
-            
+
             // Option 2: Attack human if loaded
             if (bot.loaded) {
                 const attackPath = getPathToTarget(bot, human, true);
@@ -489,7 +489,7 @@
                     target: human
                 });
             }
-            
+
             // Option 3: Collect power-up if available and valuable
             gameState.powerUps.forEach(pu => {
                 if (pu.active && now - pu.spawnTime < 8000) { // Only consider fresh power-ups
@@ -503,7 +503,7 @@
                     });
                 }
             });
-            
+
             // Option 4: Defensive positioning if human is loaded
             if (human.loaded) {
                 const safeSpot = findSafePosition(bot, human);
@@ -516,11 +516,11 @@
                     });
                 }
             }
-            
+
             // Select best option based on priority and path quality
             let bestOption = null;
             let bestScore = -Infinity;
-            
+
             options.forEach(option => {
                 const pathScore = option.path.difficulty * option.priority;
                 if (pathScore > bestScore) {
@@ -528,7 +528,7 @@
                     bestOption = option;
                 }
             });
-            
+
             // If no good options (shouldn't happen), default to circle
             if (!bestOption) {
                 bestOption = {
@@ -536,7 +536,7 @@
                     path: { angle: Math.atan2(gameState.circle.y - bot.y, gameState.circle.x - bot.x), power: MAX_POWER * 0.7 }
                 };
             }
-            
+
             // 2. Calculate shot with prediction and skill adjustment
             if (bestOption.type === 'attack') {
                 // Predict human movement
@@ -544,7 +544,7 @@
                     human,
                     timeSinceLastShot > 2000 ? 1.0 : 0.7 // More prediction if human hasn't moved recently
                 );
-                
+
                 // Calculate intercept course
                 const intercept = calculateIntercept(bot, predictedPos, human.vx, human.vy);
                 angle = intercept.angle;
@@ -554,15 +554,15 @@
                 angle = bestOption.path.angle;
                 power = bestOption.path.power;
             }
-            
+
             // 3. Apply skill level (0-1, where 1 is perfect)
             const botSkill = 1; // Adjust this between 0.7 (good) and 0.95 (expert)
             applySkillLevel(angle, power, botSkill);
-            
+
             // 4. Execute the shot
             const vx = Math.cos(angle) * power;
             const vy = Math.sin(angle) * power;
-            
+
             let newPlayers = [...gameState.players];
             newPlayers[1] = {
                 ...newPlayers[1],
@@ -570,19 +570,19 @@
                 vy,
                 lastShotTime: now
             };
-            
+
             gameState = {
                 ...gameState,
                 players: newPlayers,
                 gamePhase: 'moving'
             };
-            
+
             // Play sound
             if (gameState.sounds.shoot) {
                 gameState.sounds.shoot.currentTime = 0;
                 gameState.sounds.shoot.play();
             }
-            
+
             draw();
             updatePanel();
             if (animationRef) cancelAnimationFrame(animationRef);
@@ -597,22 +597,22 @@
             let dy = target.y - bot.y;
             let directDistance = Math.sqrt(dx * dx + dy * dy);
             let directAngle = Math.atan2(dy, dx);
-            
+
             // Find obstacles in the way
             let obstacleInPath = null;
             let minObstacleDist = Infinity;
-            
+
             gameState.obstacles.forEach(obstacle => {
                 const obstacleToBot = distance(bot, obstacle);
                 const obstacleToTarget = distance(target, obstacle);
-                
+
                 // Simple line-circle intersection test
                 const obstacleRadius = obstacle.radius + PLAYER_RADIUS + 5;
                 const intersection = lineCircleIntersection(
                     bot.x, bot.y, target.x, target.y,
                     obstacle.x, obstacle.y, obstacleRadius
                 );
-                
+
                 if (intersection) {
                     const dist = distance(bot, {x: intersection.x, y: intersection.y});
                     if (dist < minObstacleDist) {
@@ -621,41 +621,41 @@
                     }
                 }
             });
-            
+
             // If no obstacle, simple direct path
             if (!obstacleInPath) {
-                const power = isAttack ? 
-                    Math.min(MAX_POWER * 0.95, directDistance / 4.5) : 
+                const power = isAttack ?
+                    Math.min(MAX_POWER * 0.95, directDistance / 4.5) :
                     Math.min(MAX_POWER * 0.8, directDistance / 5);
-                
+
                 return {
                     angle: directAngle,
                     power: power,
                     difficulty: 1.0 // Easy path
                 };
             }
-            
+
             // Calculate path around obstacle
             const obstacle = obstacleInPath;
             const goLeft = Math.random() > 0.5; // Randomize which way to go around
-            
+
             // Calculate tangent points
             const tangentPoints = getTangentPoints(
-                bot.x, bot.y, 
-                obstacle.x, obstacle.y, 
+                bot.x, bot.y,
+                obstacle.x, obstacle.y,
                 obstacle.radius + PLAYER_RADIUS + 10,
                 goLeft
             );
-            
+
             // Choose best tangent point based on target direction
             let bestTangent = null;
             let bestScore = -Infinity;
-            
+
             tangentPoints.forEach(point => {
                 const angleToTarget = Math.atan2(target.y - point.y, target.x - point.x);
                 const angleFromBot = Math.atan2(point.y - bot.y, point.x - bot.x);
                 const angleDiff = Math.abs(angleToTarget - angleFromBot);
-                
+
                 // Score based on how little we have to turn after going around
                 const score = 1.0 - (angleDiff / Math.PI);
                 if (score > bestScore) {
@@ -663,21 +663,21 @@
                     bestTangent = point;
                 }
             });
-            
+
             // Calculate angles and power for two-part path
             const angleToTangent = Math.atan2(bestTangent.y - bot.y, bestTangent.x - bot.x);
             const angleToTarget = Math.atan2(target.y - bestTangent.y, target.x - bestTangent.x);
-            
+
             // Weighted average angle
             const distToTangent = distance(bot, bestTangent);
             const distTangentToTarget = distance(bestTangent, target);
             const totalDist = distToTangent + distTangentToTarget;
-            
+
             const weightedAngle = (
-                angleToTangent * distToTangent + 
+                angleToTangent * distToTangent +
                 angleToTarget * distTangentToTarget
             ) / totalDist;
-            
+
             return {
                 angle: weightedAngle,
                 power: Math.min(MAX_POWER * 0.9, totalDist / 5),
@@ -689,7 +689,7 @@
             // Predict where target will be based on current velocity
             const framesToPredict = 10 * predictionFactor; // Adjust based on skill
             const friction = Math.pow(FRICTION, framesToPredict);
-            
+
             return {
                 x: target.x + target.vx * framesToPredict * friction,
                 y: target.y + target.vy * framesToPredict * friction
@@ -700,18 +700,18 @@
             // Simple intercept calculation (could be enhanced)
             const dist = distance(shooter, target);
             const timeToImpact = dist / MAX_POWER; // Approximate
-            
+
             const predictedX = target.x + targetVx * timeToImpact * 0.7;
             const predictedY = target.y + targetVy * timeToImpact * 0.7;
-            
+
             const dx = predictedX - shooter.x;
             const dy = predictedY - shooter.y;
             const angle = Math.atan2(dy, dx);
-            
+
             // Adjust power based on distance and prediction confidence
             const actualDist = distance(shooter, {x: predictedX, y: predictedY});
             const power = Math.min(MAX_POWER * 0.95, actualDist / 4.3);
-            
+
             return { angle, power };
         }
 
@@ -720,45 +720,45 @@
             const maxAttempts = 10;
             let bestPosition = null;
             let bestScore = -Infinity;
-            
+
             for (let i = 0; i < maxAttempts; i++) {
                 // Try positions on opposite side of circle from threat
-                const angle = Math.atan2(bot.y - threat.y, bot.x - threat.x) + 
+                const angle = Math.atan2(bot.y - threat.y, bot.x - threat.x) +
                             (Math.random() - 0.5) * Math.PI * 0.5;
-                
+
                 const distanceFromThreat = Math.min(
-                    CANVAS_WIDTH * 0.4, 
+                    CANVAS_WIDTH * 0.4,
                     CANVAS_HEIGHT * 0.4,
                     distance(bot, threat) * 1.3
                 );
-                
+
                 const pos = {
                     x: threat.x + Math.cos(angle) * distanceFromThreat,
                     y: threat.y + Math.sin(angle) * distanceFromThreat
                 };
-                
+
                 // Keep within bounds
                 pos.x = Math.max(PLAYER_RADIUS, Math.min(CANVAS_WIDTH - PLAYER_RADIUS, pos.x));
                 pos.y = Math.max(PLAYER_RADIUS, Math.min(CANVAS_HEIGHT - PLAYER_RADIUS, pos.y));
-                
+
                 // Score based on distance from threat and proximity to circle
                 const threatDist = distance(pos, threat);
                 const circleDist = distance(pos, gameState.circle);
                 const score = threatDist - circleDist * 0.3;
-                
+
                 if (score > bestScore) {
                     bestScore = score;
                     bestPosition = pos;
                 }
             }
-            
+
             return bestPosition;
         }
 
         function getPowerUpValue(type, bot) {
             // Calculate how valuable a power-up is to the bot right now
             const hasShield = bot.powerUps.some(pu => pu.type === 'shield');
-            
+
             switch (type) {
                 case 'shield':
                     return hasShield ? 0.3 : 1.0;
@@ -775,14 +775,14 @@
             // skill is between 0 (bad) and 1 (perfect)
             const maxAngleError = (1 - skill) * Math.PI / 8;
             const maxPowerError = (1 - skill) * MAX_POWER * 0.3;
-            
+
             // Apply random error based on skill
             angle += (Math.random() - 0.5) * maxAngleError;
             power *= 1 + (Math.random() - 0.5) * (1 - skill) * 0.4;
-            
+
             // Ensure power is within bounds
             power = Math.max(MAX_POWER * 0.3, Math.min(MAX_POWER, power));
-            
+
             return { angle, power };
         }
 
@@ -791,18 +791,18 @@
             // Vector from point 1 to point 2
             const dx = x2 - x1;
             const dy = y2 - y1;
-            
+
             // Vector from point 1 to circle center
             const fx = cx - x1;
             const fy = cy - y1;
-            
+
             const a = dx * dx + dy * dy;
             const b = 2 * (fx * dx + fy * dy);
             const c = fx * fx + fy * fy - r * r;
             const discriminant = b * b - 4 * a * c;
-            
+
             if (discriminant < 0) return null;
-            
+
             const t = (-b - Math.sqrt(discriminant)) / (2 * a);
             if (t >= 0 && t <= 1) {
                 return {
@@ -810,7 +810,7 @@
                     y: y1 + t * dy
                 };
             }
-            
+
             return null;
         }
 
@@ -818,12 +818,12 @@
             const dx = x2 - x1;
             const dy = y2 - y1;
             const dist = Math.sqrt(dx * dx + dy * dy);
-            
+
             if (dist <= r) return []; // No tangents
-            
+
             const angle = Math.atan2(dy, dx);
             const tangentAngle = Math.acos(r / dist);
-            
+
             return [
                 {
                     x: x2 + r * Math.cos(angle + tangentAngle + (left ? 0 : Math.PI)),
@@ -838,11 +838,11 @@
         // --- Drawing ---
         function draw() {
             ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-            
+
             // Background with subtle grid
             ctx.fillStyle = '#1f2937';
             ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-            
+
             // Draw grid lines
             ctx.strokeStyle = 'rgba(55, 65, 81, 0.3)';
             ctx.lineWidth = 1;
@@ -891,33 +891,33 @@
             gameState.powerUps = gameState.powerUps.filter(pu => {
                 if (!pu.active) return false;
                 if (now - pu.spawnTime > 10000) return false; // 10 second lifespan
-                
+
                 // Flash effect when about to expire
                 if (now - pu.spawnTime > 8000) {
                     const flashPhase = Math.floor(now / 200) % 2;
                     if (flashPhase === 0) return true;
                 }
-                
+
                 let color;
                 switch (pu.type) {
                     case 'speed': color = '#22c55e'; break;
                     case 'shield': color = '#3b82f6'; break;
                     case 'double-shot': color = '#fbbf24'; break;
                 }
-                
+
                 ctx.fillStyle = color;
                 ctx.beginPath();
                 ctx.arc(pu.x, pu.y, POWER_UP_RADIUS, 0, Math.PI * 2);
                 ctx.fill();
-                
+
                 // Draw icon based on type
                 ctx.fillStyle = 'white';
                 ctx.font = '14px Arial';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                
+
                 switch (pu.type) {
-                    case 'speed': 
+                    case 'speed':
                         ctx.fillText('⚡', pu.x, pu.y);
                         break;
                     case 'shield':
@@ -927,14 +927,14 @@
                         ctx.fillText('✖', pu.x, pu.y);
                         break;
                 }
-                
+
                 return true;
             });
 
             // Players with effects
             gameState.players.forEach((player, index) => {
                 ctx.save();
-                
+
                 // Shield effect if player has shield power-up
                 const hasShield = player.powerUps.some(pu => pu.type === 'shield');
                 if (hasShield) {
@@ -944,7 +944,7 @@
                     ctx.arc(player.x, player.y, PLAYER_RADIUS + 8, 0, Math.PI * 2);
                     ctx.stroke();
                 }
-                
+
                 // Player disc with glow when loaded
                 ctx.fillStyle = player.color;
                 if (player.loaded) {
@@ -961,18 +961,18 @@
                 ctx.font = 'bold 14px Arial';
                 ctx.textAlign = 'center';
                 ctx.fillText(`P${index + 1}`, player.x, player.y - 22);
-                
+
                 if (player.loaded) {
                     ctx.fillStyle = '#fbbf24';
                     ctx.font = 'bold 12px Arial';
                     ctx.fillText('LOADED', player.x, player.y + 25);
                 }
-                
+
                 // Draw active power-up icons
                 if (player.powerUps.length > 0) {
                     const iconSize = 14;
                     const startX = player.x - (player.powerUps.length * iconSize) / 2 + iconSize/2;
-                    
+
                     player.powerUps.forEach((pu, i) => {
                         let icon = '';
                         switch (pu.type) {
@@ -980,13 +980,13 @@
                             case 'shield': icon = '🛡️'; break;
                             case 'double-shot': icon = '✖'; break;
                         }
-                        
+
                         ctx.fillStyle = 'white';
                         ctx.font = `${iconSize}px Arial`;
                         ctx.fillText(icon, startX + i * iconSize, player.y + 40);
                     });
                 }
-                
+
                 ctx.restore();
             });
 
@@ -998,7 +998,7 @@
                 ctx.beginPath();
                 ctx.arc(currentPlayer.x, currentPlayer.y, PLAYER_RADIUS + 8, 0, Math.PI * 2);
                 ctx.stroke();
-                
+
                 // Draw turn arrow
                 ctx.fillStyle = '#ffffff';
                 ctx.beginPath();
@@ -1015,7 +1015,7 @@
                 const dy = gameState.aimEnd.y - gameState.aimStart.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 const power = Math.min(distance / 4, MAX_POWER);
-                
+
                 // Update power meter
                 powerMeter.style.width = `${(power / MAX_POWER) * 100}%`;
 
@@ -1024,14 +1024,14 @@
                 const headLength = 15;
                 const endX = gameState.aimStart.x + dx * 0.95;
                 const endY = gameState.aimStart.y + dy * 0.95;
-                
+
                 ctx.strokeStyle = `rgba(255,255,255,${Math.max(0.3, power / MAX_POWER)})`;
                 ctx.lineWidth = 3;
                 ctx.beginPath();
                 ctx.moveTo(gameState.aimStart.x, gameState.aimStart.y);
                 ctx.lineTo(endX, endY);
                 ctx.stroke();
-                
+
                 // Draw arrow head
                 ctx.fillStyle = `rgba(255,255,255,${Math.max(0.3, power / MAX_POWER)})`;
                 ctx.beginPath();
@@ -1068,16 +1068,16 @@
 
             let newPlayers = gameState.players.map(player => {
                 let newPlayer = { ...player };
-                
+
                 // Apply velocity
                 newPlayer.x += newPlayer.vx;
                 newPlayer.y += newPlayer.vy;
-                
+
                 // Apply speed boost if player has speed power-up
                 const speedBoost = player.powerUps.some(pu => pu.type === 'speed') ? 1.3 : 1;
                 newPlayer.vx *= FRICTION * speedBoost;
                 newPlayer.vy *= FRICTION * speedBoost;
-                
+
                 // Bounce off walls
                 if (newPlayer.x - PLAYER_RADIUS <= 0 || newPlayer.x + PLAYER_RADIUS >= CANVAS_WIDTH) {
                     newPlayer.vx *= -0.7;
@@ -1087,7 +1087,7 @@
                     newPlayer.vy *= -0.7;
                     newPlayer.y = Math.max(PLAYER_RADIUS, Math.min(CANVAS_HEIGHT - PLAYER_RADIUS, newPlayer.y));
                 }
-                
+
                 // Obstacles
                 gameState.obstacles.forEach(obstacle => {
                     if (checkCollision(newPlayer, obstacle)) {
@@ -1111,7 +1111,7 @@
                         }
                     }
                 });
-                
+
                 return newPlayer;
             });
 
@@ -1119,7 +1119,7 @@
             const now = Date.now();
             gameState.powerUps = gameState.powerUps.filter(pu => {
                 if (!pu.active) return false;
-                
+
                 newPlayers.forEach((player, playerIndex) => {
                     if (distance(player, pu) < PLAYER_RADIUS + POWER_UP_RADIUS) {
                         // Add power-up to player
@@ -1127,20 +1127,20 @@
                             type: pu.type,
                             expireTime: now + POWER_UP_DURATION
                         });
-                        
+
                         // Play sound
                         if (gameState.sounds.powerUp) {
                             gameState.sounds.powerUp.currentTime = 0;
                             gameState.sounds.powerUp.play();
                         }
-                        
+
                         pu.active = false;
                     }
                 });
-                
+
                 return pu.active;
             });
-            
+
             // Remove expired power-ups
             newPlayers.forEach(player => {
                 player.powerUps = player.powerUps.filter(pu => pu.expireTime > now);
@@ -1152,43 +1152,43 @@
 
             if (distance(player1, player2) < PLAYER_RADIUS * 2) {
                 let winner = null;
-                
+
                 // Check if either player has double-shot power-up
                 const p1DoubleShot = player1.powerUps.some(pu => pu.type === 'double-shot');
                 const p2DoubleShot = player2.powerUps.some(pu => pu.type === 'double-shot');
                 const p1Shield = player1.powerUps.some(pu => pu.type ==='shield')
                 const p2Shield = player2.powerUps.some(pu => pu.type ==='shield')
-                
+
                 if (player1.loaded && !player2.loaded && !p2DoubleShot && !p2Shield) winner = 0;
                 else if (player2.loaded && !player1.loaded && !p1DoubleShot && !p1Shield) winner = 1;
                 else if (player1.loaded && player2.loaded) {
                     // Both loaded - check for shields
                     const p1Shield = player1.powerUps.some(pu => pu.type === 'shield');
                     const p2Shield = player2.powerUps.some(pu => pu.type === 'shield');
-                    
+
                     if (p1Shield && !p2Shield) winner = 0;
                     else if (p2Shield && !p1Shield) winner = 1;
                     else winner = gameState.currentPlayer; // Current player wins in tie
                 }
-                
+
                 if (winner !== null) {
                     // Update score
                     newPlayers[winner].score++;
                     updateScores();
-                    
+
                     gameState = {
                         ...gameState,
                         players: newPlayers,
                         gamePhase: 'gameOver',
                         winner
                     };
-                    
+
                     // Play win sound
                     if (gameState.sounds.win) {
                         gameState.sounds.win.currentTime = 0;
                         gameState.sounds.win.play();
                     }
-                    
+
                     draw();
                     updatePanel();
                     return;
@@ -1287,7 +1287,7 @@
                 if (gameState.players[gameState.currentPlayer].loaded) {
                     html += `<p class="yellow"><b>You are LOADED and can attack!</b></p>`;
                 }
-                
+
                 // Show active power-ups
                 const powerUps = gameState.players[gameState.currentPlayer].powerUps;
                 if (powerUps.length > 0) {
@@ -1302,13 +1302,13 @@
                     html += `</p>`;
                 }
             }
-            
+
             panel.innerHTML = html;
-            
+
             // Button handlers
             const playAgain = document.getElementById('playAgain');
             if (playAgain) playAgain.onclick = resetGame;
-            
+
             const attackBtn = document.getElementById('attackBtn');
             if (attackBtn) attackBtn.onclick = function() {
                 gameState.gamePhase = 'aiming';
@@ -1323,25 +1323,25 @@
                 cancelAnimationFrame(animationRef);
                 animationRef = null;
             }
-            
+
             gameState = {
                 players: [
-                    { 
-                        x: 100, 
-                        y: 300, 
-                        vx: 0, 
-                        vy: 0, 
-                        loaded: false, 
+                    {
+                        x: 100,
+                        y: 300,
+                        vx: 0,
+                        vy: 0,
+                        loaded: false,
                         color: '#3b82f6',
                         score: gameState.players[0].score,
                         powerUps: []
                     },
-                    { 
-                        x: 700, 
-                        y: 300, 
-                        vx: 0, 
-                        vy: 0, 
-                        loaded: false, 
+                    {
+                        x: 700,
+                        y: 300,
+                        vx: 0,
+                        vy: 0,
+                        loaded: false,
                         color: '#ef4444',
                         score: gameState.players[1].score,
                         powerUps: []
@@ -1367,7 +1367,7 @@
                 botEnabled: gameState.botEnabled, // Preserve bot setting
                 sounds: gameState.sounds
             };
-            
+
             draw();
             updatePanel();
         }
@@ -1375,7 +1375,7 @@
         // --- Init ---
         function initGame() {
             initSounds();
-            
+
             // Set up event listeners
             canvas.addEventListener('mousedown', handleInputStart);
             canvas.addEventListener('touchstart', handleInputStart, { passive: false });
@@ -1384,29 +1384,29 @@
             canvas.addEventListener('mouseup', handleInputEnd);
             canvas.addEventListener('touchend', handleInputEnd);
             canvas.addEventListener('touchcancel', handleInputEnd);
-            
+
             // Bot toggle button
             toggleBotBtn.addEventListener('click', function() {
                 gameState.botEnabled = !gameState.botEnabled;
-                this.textContent = gameState.botEnabled ? 
-                    'Disable Bot (Player 2)' : 
+                this.textContent = gameState.botEnabled ?
+                    'Disable Bot (Player 2)' :
                     'Enable Bot (Player 2)';
-                
+
                 // If it's currently the bot's turn, let it move
                 if (gameState.botEnabled && gameState.currentPlayer === 1) {
                     performBotTurn();
                 }
             });
-            
+
             draw();
             updatePanel();
             updateScores();
-            
+
             // Start with one power-up
             setTimeout(() => spawnPowerUp(0), 2000);
         }
 
         initGame();
     </script>
-</body>
+<footer class="site-footer" data-shared="footer"><div class="shell footer-inner"><div><span>Fanny Fushayi</span><p>Engineering for the physical world.</p></div><nav aria-label="Footer navigation"><a href="/index.html">Home</a><a href="/Projects.html">Projects</a><a href="/about.html">About</a><a href="/blog.html">Writing</a><a href="/Contact.html">Contact</a></nav><div><a href="https://github.com/FannyFushayi">GitHub ↗</a> · <a href="https://www.linkedin.com/in/fanny-fushayi-529880235">LinkedIn ↗</a><p>© <span id="year">2026</span> Fanny Fushayi</p></div></div></footer><script data-shared="script" src="/site.js" defer></script></body>
 </html>

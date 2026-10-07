@@ -1,0 +1,1314 @@
+{
+  "pages": [
+    {
+      "file": "404.html",
+      "title": "Nothing here | Fanny Fushayi",
+      "headings": [
+        "Nothing here."
+      ],
+      "inline_styles": 0,
+      "scripts": 1,
+      "bytes": 2608
+    },
+    {
+      "file": "about.html",
+      "title": "About Fanny",
+      "headings": [
+        "About me",
+        "Engineering",
+        "Outside engineering",
+        "What I’m exploring"
+      ],
+      "inline_styles": 0,
+      "scripts": 1,
+      "bytes": 5020
+    },
+    {
+      "file": "AI_model.html",
+      "title": "✨ SUPER ADVANCED AI VISION ✨ (jk it's basic) | Fanny Fushayi",
+      "headings": [
+        "DOUBLE DOUBLE MEGA SUPER AI IMAGE Classifier 9000"
+      ],
+      "inline_styles": 1,
+      "scripts": 2,
+      "bytes": 17045
+    },
+    {
+      "file": "alyosha_blog_post.html",
+      "title": "Alyosha the Absurdly Good | Fanny Fushayi",
+      "headings": [
+        "Alyosha the Absurdly Good"
+      ],
+      "inline_styles": 1,
+      "scripts": 2,
+      "bytes": 16871
+    },
+    {
+      "file": "AprilsChristmas.html",
+      "title": "A Cube for April Christmas – On Scarcity, Abundance, and the Struggles Worth Having | Fanny Fushayi",
+      "headings": [
+        "A Cube for April Christmas",
+        "Scarcity vs. Abundance: The Two Faces of Creativity",
+        "First Principles vs. Ready-Made Solutions",
+        "AI, Cognitive Offloading, and the Risk of Losing the Thread",
+        "How to Keep Thinking in an Instant-Answer Age"
+      ],
+      "inline_styles": 1,
+      "scripts": 1,
+      "bytes": 15329
+    },
+    {
+      "file": "ATTIHD.html",
+      "title": "A Thousand Times, I've Died | Fanny Fushayi",
+      "headings": [
+        "A Thousand Times, I've Died"
+      ],
+      "inline_styles": 1,
+      "scripts": 2,
+      "bytes": 12765
+    },
+    {
+      "file": "Battery_Data_driven.html",
+      "title": "Battery RUL Estimation | Fanny Fushayi",
+      "headings": [
+        "Battery Remaining Useful Life Prediction",
+        "Introduction",
+        "Literature Review and Existing Approaches"
+      ],
+      "inline_styles": 1,
+      "scripts": 2,
+      "bytes": 35961
+    },
+    {
+      "file": "blog.html",
+      "title": "The Undefined Blog | Fanny Fushayi",
+      "headings": [
+        "The Undefined Blog.",
+        "Just above zero.",
+        "Fragments And Experience.",
+        "Choose a thread.",
+        "Search the notebook."
+      ],
+      "inline_styles": 0,
+      "scripts": 2,
+      "bytes": 23213
+    },
+    {
+      "file": "books.html",
+      "title": "dead authors society | Fanny Fushayi",
+      "headings": [
+        "Dead Author Society",
+        "Authors &amp; Books"
+      ],
+      "inline_styles": 1,
+      "scripts": 1,
+      "bytes": 6823
+    },
+    {
+      "file": "brothers_karamazov.html",
+      "title": "Marginalia of a Meltdown | Fanny Fushayi",
+      "headings": [
+        "Marginalia of a Meltdown",
+        "My Underlined Passages"
+      ],
+      "inline_styles": 2,
+      "scripts": 2,
+      "bytes": 22752
+    },
+    {
+      "file": "BuildingAI.html",
+      "title": "Building a Digit Recognizer from Scratch with MNIST | Fanny Fushayi",
+      "headings": [
+        "Building a Digit Recognizer from Scratch with MNIST",
+        "Neurons",
+        "Activation Functions",
+        "What We're Building",
+        "Architecture Overview",
+        "Setting Up the Data (Data Preprocessing)",
+        "Forward Propagation",
+        "Back Propagation",
+        "Computational Graph Perspective",
+        "Training Our Model",
+        "Evaluating the Model",
+        "Improving the Model",
+        "Conclusion"
+      ],
+      "inline_styles": 1,
+      "scripts": 1,
+      "bytes": 30367
+    },
+    {
+      "file": "Cable_design.html",
+      "title": "Power Grid Cable Design | Fanny Fushayi",
+      "headings": [
+        "Transmission Cable Design",
+        "",
+        "Part 1: How Cables Fail (Electrically)",
+        "Part 2: The Design Process",
+        "Case Study: Designing for a Crusher and Conveyor System",
+        "Project Gallery",
+        "Conclusion"
+      ],
+      "inline_styles": 1,
+      "scripts": 1,
+      "bytes": 20410
+    },
+    {
+      "file": "CAP_review.html",
+      "title": "CAP_review | Fanny Fushayi",
+      "headings": [
+        "Crime and Punishment: A Philosophical Review",
+        "Rodion Raskolnikov – Guilt, Morality, and Redemption",
+        "Sonia Marmeladov – Sacrifice, Compassion, and Redemption",
+        "Fyodor Dmítrich Marmeladov – Despair and the Consequences of Addiction",
+        "Dunya Raskolnikova – Sacrifice, Loyalty, and Moral Strength",
+        "Porfiry Petrovich – Intellect, Justice, and Psychological Insight",
+        "Arkady Ivanovich Svidrigailov – Moral Corruption, Nihilism, and Despair",
+        "Lizaveta Ivanovna – Innocence, Suffering, and Tragic Fate"
+      ],
+      "inline_styles": 1,
+      "scripts": 1,
+      "bytes": 22742
+    },
+    {
+      "file": "circle_attack.html",
+      "title": "Circle Strike | Fanny Fushayi",
+      "headings": [
+        "⚡ CIRCLE STRIKE ⚡",
+        "Player ${gameState.winner + 1} Wins!",
+        "Player ${gameState.currentPlayer + 1} - ATTACK TURN!",
+        "Movement in Progress...",
+        "Player ${gameState.currentPlayer + 1}'s Turn"
+      ],
+      "inline_styles": 1,
+      "scripts": 2,
+      "bytes": 54944
+    },
+    {
+      "file": "Contact.html",
+      "title": "Contact | Fanny Fushayi",
+      "headings": [
+        "Let’s solve something real.",
+        "Start a conversation",
+        "Giving back"
+      ],
+      "inline_styles": 0,
+      "scripts": 1,
+      "bytes": 3555
+    },
+    {
+      "file": "control_animation.html",
+      "title": "Temperature Control System Simulation | Fanny Fushayi",
+      "headings": [
+        "Introduction To Control Systems"
+      ],
+      "inline_styles": 1,
+      "scripts": 2,
+      "bytes": 26669
+    },
+    {
+      "file": "currentaffairs.html",
+      "title": "Current Affairs | Fanny Fushayi",
+      "headings": [
+        "Current Affairs",
+        "1. War on Currents",
+        "2. The AC electric Grid",
+        "3. Renewable Systems Integration",
+        "4. DC Transmission?",
+        "5. The Elephant in the room",
+        "Powering Tomorrow",
+        "References"
+      ],
+      "inline_styles": 1,
+      "scripts": 1,
+      "bytes": 19357
+    },
+    {
+      "file": "Data_science.html",
+      "title": "Data Science Journey | Python Analytics | Fanny Fushayi",
+      "headings": [
+        "My Data Science Journey with Python",
+        "Introduction",
+        "The Python Data Toolkit",
+        "Capstone Projects",
+        "Key Insights &amp; Future Directions"
+      ],
+      "inline_styles": 1,
+      "scripts": 1,
+      "bytes": 23086
+    },
+    {
+      "file": "deep_learning.html",
+      "title": "Deep learning | Part 3 | Fanny Fushayi",
+      "headings": [
+        "PART 3(A): SUPERVISED DEEP LEARNING",
+        "INTRODUCTION: Welcome back to the Neural Circus!",
+        "Section 1: ANN – We (don't) ride at dawn.",
+        "Section 2: CNN – is it a CAT?",
+        "Section 3: RNN – The model that cried NO!",
+        "Conclusion – Brain Hurts, But Fun"
+      ],
+      "inline_styles": 1,
+      "scripts": 1,
+      "bytes": 22848
+    },
+    {
+      "file": "Digitwin.html",
+      "title": "Digital Twins: The Future of System Analysis | Fanny Fushayi HESS Digital Twin Demo",
+      "headings": [
+        "Digital Twins: The Future of System Analysis",
+        "What Are Digital Twins?",
+        "How Digital Twins Work",
+        "HESS Case Study: Digital Twin for Hybrid Energy Storage",
+        "🏭 Physical Hybrid System",
+        "👥 Digital Twin Analysis",
+        "Applications and Benefits",
+        "Challenges and Considerations"
+      ],
+      "inline_styles": 2,
+      "scripts": 2,
+      "bytes": 24217
+    },
+    {
+      "file": "dzichava_nhoroondo_blog.html",
+      "title": "Dzichava Nhoroondo | Fanny Fushayi",
+      "headings": [
+        "Dzichava Nhoroondo",
+        "So How Do We Do It?"
+      ],
+      "inline_styles": 1,
+      "scripts": 2,
+      "bytes": 10612
+    },
+    {
+      "file": "edge-plc-data.html",
+      "title": "Edge PLC Data Acquisition / Industrial Data Logger | Fanny Fushayi",
+      "headings": [
+        "Edge PLC Data Acquisition / Industrial Data Logger",
+        "Context / problem",
+        "My role",
+        "System / solution",
+        "Engineering decisions",
+        "Challenges and validation",
+        "Outcome"
+      ],
+      "inline_styles": 0,
+      "scripts": 1,
+      "bytes": 4046
+    },
+    {
+      "file": "emegence_anal.html",
+      "title": "911 Emergency Calls Analysis | Data Science Portfolio | Fanny Fushayi",
+      "headings": [
+        "911 Emergency Calls Analysis (Course Capstone Project)",
+        "Project Overview",
+        "Dataset Description",
+        "Methodology",
+        "Key Visualizations",
+        "Key Findings (These are not applied to any 'real world solution')",
+        "Conclusions",
+        "Technical Skills Demonstrated"
+      ],
+      "inline_styles": 2,
+      "scripts": 1,
+      "bytes": 18525
+    },
+    {
+      "file": "Financial.html",
+      "title": "Financial Analysis | Data Science Portfolio | Fanny Fushayi",
+      "headings": [
+        "Financial Data Analysis",
+        "Project Overview",
+        "Dataset Description",
+        "Methodology",
+        "Key Visualizations",
+        "Key Findings"
+      ],
+      "inline_styles": 2,
+      "scripts": 1,
+      "bytes": 13726
+    },
+    {
+      "file": "fun_projects.html",
+      "title": "Fun Projects - Fanny's Portfolio",
+      "headings": [
+        "Fun Projects"
+      ],
+      "inline_styles": 1,
+      "scripts": 2,
+      "bytes": 14035
+    },
+    {
+      "file": "graduation_blog.html",
+      "title": "The Weight of Applause | Fanny Fushayi",
+      "headings": [
+        "The Weight of Applause"
+      ],
+      "inline_styles": 1,
+      "scripts": 1,
+      "bytes": 18200
+    },
+    {
+      "file": "HelloWorld.html",
+      "title": "Hello World, again | Fanny Fushayi",
+      "headings": [
+        "Hello World, again"
+      ],
+      "inline_styles": 1,
+      "scripts": 1,
+      "bytes": 16467
+    },
+    {
+      "file": "HNEI_and_ML_BD2.html",
+      "title": "Navigating the Non-Linear Path of Battery Life Prediction | Fanny Fushayi",
+      "headings": [
+        "Navigating the Non-Linear Path of Battery Life Prediction",
+        "Establishing a Foundation: The HNEI Dataset",
+        "The Versions So Far—and What They've Taught Me",
+        "Up Next"
+      ],
+      "inline_styles": 1,
+      "scripts": 1,
+      "bytes": 25784
+    },
+    {
+      "file": "How_to_Deploy.html",
+      "title": "How to Deploy a Machine Learning Algorithm | Fanny Fushayi",
+      "headings": [
+        "How to Deploy a Machine Learning Algorithm",
+        "On Learning",
+        "PART 1: Low Level",
+        "PART 2: Practical Application"
+      ],
+      "inline_styles": 2,
+      "scripts": 1,
+      "bytes": 30039
+    },
+    {
+      "file": "How_to_survive.html",
+      "title": "The Ultimate Guide to Surviving Alien Abduction | Fanny Fushayi",
+      "headings": [
+        "How to survive, AN ALIEN ABDUCTION",
+        "A Field Manual for the Cosmically Kidnapped, HOME (Not earth)"
+      ],
+      "inline_styles": 1,
+      "scripts": 2,
+      "bytes": 23986
+    },
+    {
+      "file": "index.html",
+      "title": "Fanny Fushayi — Engineering intelligent systems",
+      "headings": [
+        "Hi, I’m Fanny. I solve problems.",
+        "The work begins with what is there.",
+        "Systems with a job to do.",
+        "Systems Thinking Creative Problem-Solving.",
+        "Let’s solve something real.",
+        "Pass it on."
+      ],
+      "inline_styles": 0,
+      "scripts": 1,
+      "bytes": 13760
+    },
+    {
+      "file": "industrial-digital-twin.html",
+      "title": "Industrial Digital Twin Prototype | Fanny Fushayi",
+      "headings": [
+        "Industrial Digital Twin Prototype",
+        "Context / problem",
+        "My role",
+        "System / solution",
+        "Engineering decisions",
+        "Challenges and validation",
+        "Outcome"
+      ],
+      "inline_styles": 0,
+      "scripts": 1,
+      "bytes": 4006
+    },
+    {
+      "file": "industrial-reject-control.html",
+      "title": "Industrial Reject Control System | Fanny Fushayi",
+      "headings": [
+        "Industrial Reject Control System",
+        "Context / problem",
+        "My role",
+        "System / solution",
+        "Engineering decisions",
+        "Challenges and validation",
+        "Outcome"
+      ],
+      "inline_styles": 0,
+      "scripts": 1,
+      "bytes": 4006
+    },
+    {
+      "file": "Intro_to_AI.html",
+      "title": "AI Summer: Understanding Artificial Intelligence | Fanny Fushayi",
+      "headings": [
+        "AI SUMMER",
+        "Introduction",
+        "What is AI?",
+        "CORE CONCEPTS IN AI",
+        "IMPLICATIONS OF AI"
+      ],
+      "inline_styles": 1,
+      "scripts": 2,
+      "bytes": 26953
+    },
+    {
+      "file": "just_above_zero.html",
+      "title": "Just Above Zero · A Data Journey | Fanny Fushayi",
+      "headings": [
+        "Just Above Zero",
+        "The Data Dilemma",
+        "Baseline: Keep It Simple",
+        "Submission Hell",
+        "The Breakthrough: Weighted Recent Performance",
+        "The Predictions: Reasonable and Optimistic",
+        "Final Scores and Lessons"
+      ],
+      "inline_styles": 1,
+      "scripts": 1,
+      "bytes": 20883
+    },
+    {
+      "file": "losing.html",
+      "title": "Losing My First Machine Learning Competition | Fanny Fushayi",
+      "headings": [
+        "Losing My First Machine Learning Competition",
+        "INDEX 0 MY TIME TO SHINE!",
+        "INDEX 1 RAIN-DANCE",
+        "INDEX 2 Quentin Tarantino Level of Temporal Confusion",
+        "INDEX 3 EUREKA!",
+        "INDEX 4 THE BETTER MAN PART 1",
+        "INDEX 4 THE BETTER MAN PART 3"
+      ],
+      "inline_styles": 1,
+      "scripts": 11,
+      "bytes": 53157
+    },
+    {
+      "file": "metamorph.html",
+      "title": "Do I Wanna Know? | Fanny Fushayi",
+      "headings": [
+        "Do I Wanna Know?"
+      ],
+      "inline_styles": 1,
+      "scripts": 1,
+      "bytes": 8772
+    },
+    {
+      "file": "ML.html",
+      "title": "Part 2 Machine Learning | Fanny Fushayi",
+      "headings": [
+        "Part 2: Machine Learning",
+        "Introduction",
+        "Essential Tools &amp; Libraries",
+        "Capstone Projects Overview",
+        "Featured Projects",
+        "Key Insights &amp; Future Directions"
+      ],
+      "inline_styles": 1,
+      "scripts": 1,
+      "bytes": 30333
+    },
+    {
+      "file": "Pandora_box.html",
+      "title": "Pandora's Box (Jar) | Fanny Fushayi",
+      "headings": [
+        "Pandora's Box (Jar)"
+      ],
+      "inline_styles": 1,
+      "scripts": 1,
+      "bytes": 13016
+    },
+    {
+      "file": "Photography.html",
+      "title": "Photography Portfolio | Fanny Fushayi",
+      "headings": [
+        "Photography Collections",
+        "BlackIn",
+        "Old MacNaphin",
+        "Rusty",
+        "Kapnus"
+      ],
+      "inline_styles": 1,
+      "scripts": 1,
+      "bytes": 7715
+    },
+    {
+      "file": "plc-scada-upgrade.html",
+      "title": "PLC / SCADA Upgrade Architecture | Fanny Fushayi",
+      "headings": [
+        "PLC / SCADA Upgrade Architecture",
+        "Context / problem",
+        "My role",
+        "System / solution",
+        "Engineering decisions",
+        "Challenges and validation",
+        "Outcome"
+      ],
+      "inline_styles": 0,
+      "scripts": 1,
+      "bytes": 3992
+    },
+    {
+      "file": "PowerSystemProt.html",
+      "title": "Power System Protection | Fanny Fushayi",
+      "headings": [
+        "Power System Protection",
+        "Fault Classification",
+        "Power System Protection Components"
+      ],
+      "inline_styles": 1,
+      "scripts": 2,
+      "bytes": 25795
+    },
+    {
+      "file": "project-hess.html",
+      "title": "Fanny Fushayi - Hybrid Energy Storage System Project",
+      "headings": [
+        "Hybrid energy storage for an electric go-kart",
+        "Context / problem",
+        "My role / system implementation",
+        "Engineering decisions",
+        "Challenges",
+        "Architecture",
+        "Technologies",
+        "Project Gallery",
+        "Project Videos",
+        "Model outcomes"
+      ],
+      "inline_styles": 1,
+      "scripts": 1,
+      "bytes": 10753
+    },
+    {
+      "file": "Project-MDPS.html",
+      "title": "Motor Driver and Power System for a Maze-Navigating Robot | Fanny Fushayi",
+      "headings": [
+        "Motor driver &amp; power system",
+        "Context / problem",
+        "My role",
+        "System / solution",
+        "Technologies",
+        "Challenges",
+        "Outcome and evidence"
+      ],
+      "inline_styles": 0,
+      "scripts": 1,
+      "bytes": 3966
+    },
+    {
+      "file": "Project-PV.html",
+      "title": "Hybrid Energy System Optimisation | Fanny Fushayi",
+      "headings": [
+        "Hybrid energy system optimisation",
+        "Context / problem",
+        "My role",
+        "Key Features",
+        "Technical Implementation",
+        "Model results",
+        "Project Gallery",
+        "Project Outcomes",
+        "Limitations and Future Work"
+      ],
+      "inline_styles": 0,
+      "scripts": 1,
+      "bytes": 7337
+    },
+    {
+      "file": "Projects.html",
+      "title": "Projects | Fanny Fushayi",
+      "headings": [
+        "Systems with a job to do.",
+        "Selected engineering work",
+        "Industrial automation",
+        "Experiments &amp; builds",
+        "Data &amp; machine learning"
+      ],
+      "inline_styles": 0,
+      "scripts": 1,
+      "bytes": 11549
+    },
+    {
+      "file": "pulse.html",
+      "title": "The Pulse of Being | Fanny Fushayi",
+      "headings": [
+        "The Pulse of Being"
+      ],
+      "inline_styles": 1,
+      "scripts": 2,
+      "bytes": 10402
+    },
+    {
+      "file": "robot-car.html",
+      "title": "Robot Car | Fanny Fushayi",
+      "headings": [
+        "Robot car",
+        "Context / problem",
+        "System / solution",
+        "Technologies",
+        "My role and outcome"
+      ],
+      "inline_styles": 0,
+      "scripts": 1,
+      "bytes": 3430
+    },
+    {
+      "file": "RUL_Part_3.html",
+      "title": "The LSTM Strikes Again: Lessons from Sequence Modeling on Battery Data | Fanny Fushayi",
+      "headings": [
+        "The LSTM Strikes Again: Lessons from Sequence Modeling on Battery Data",
+        "Why LSTMs?",
+        "The Challenges",
+        "The Outcome: A Spectacular Failure [ Bear Witness ]",
+        "What This Means for Application",
+        "The Problem of Alignment: More Than Just Metrics",
+        "Final Thoughts",
+        "References"
+      ],
+      "inline_styles": 1,
+      "scripts": 2,
+      "bytes": 21683
+    },
+    {
+      "file": "SGPT.html",
+      "title": "Building AI in My Mother Tongue - Blog | Fanny Fushayi",
+      "headings": [
+        "Building AI in My Mother Tongue",
+        "The Tech Stack",
+        "The Dataset",
+        "LOW-LEVEL ABSTRACTION"
+      ],
+      "inline_styles": 1,
+      "scripts": 2,
+      "bytes": 27142
+    },
+    {
+      "file": "solar_system_guide.html",
+      "title": "Off-Grid Solar System Design: A Complete Engineering Guide | Fanny Fushayi",
+      "headings": [
+        "Off-Grid Solar System Design",
+        "1. Site Inspection",
+        "2. Energy Audit",
+        "Energy Audit Report",
+        "3. Solar Array Sizing",
+        "4. Inverter and Charge Controller Design",
+        "5. Battery Design",
+        "6. Cable Sizing",
+        "PVSYST Simulation",
+        "Solar System Components &amp; Cost Breakdown",
+        "Optimization"
+      ],
+      "inline_styles": 1,
+      "scripts": 2,
+      "bytes": 45979
+    },
+    {
+      "file": "test.html",
+      "title": "Writing | Fanny Fushayi",
+      "headings": [],
+      "inline_styles": 0,
+      "scripts": 0,
+      "bytes": 389
+    },
+    {
+      "file": "theenergyrevolution.html",
+      "title": "A Battery That Spins | Fanny Fushayi",
+      "headings": [
+        "The energy storage Revolution",
+        "Introduction",
+        "Background",
+        "Working Principle",
+        "Energy Storage characteristics",
+        "Challenges",
+        "Future Work",
+        "References"
+      ],
+      "inline_styles": 1,
+      "scripts": 2,
+      "bytes": 28533
+    },
+    {
+      "file": "time_extrapolation.html",
+      "title": "The Time Extrapolation | Fanny Fushayi",
+      "headings": [
+        "THE TIME EXTRAPOLATION"
+      ],
+      "inline_styles": 1,
+      "scripts": 1,
+      "bytes": 12543
+    },
+    {
+      "file": "TLEN.html",
+      "title": "Think Like an Engineer | Fanny Fushayi",
+      "headings": [
+        "Think Like an Engineer"
+      ],
+      "inline_styles": 1,
+      "scripts": 1,
+      "bytes": 17991
+    },
+    {
+      "file": "Tsumo.html",
+      "title": "Freshly Grown Ancient Knowledge | Fanny Fushayi",
+      "headings": [
+        "Freshly Grown Ancient Knowledge",
+        "PART 2: Chara chimwe hachitswanyi inda (One person cannot do all things alone).",
+        "PART 3: Chiri mumusakasaka chinozvinzwira (In a bundle of advice, each person takes what applies to them.)",
+        "PART 4: CHITSVA CHIRI MURUTSOKA (What is new is in the journey.)",
+        "PART 5: kuudza mwana hupedzisira (translation avoided to not overexplain the joke)"
+      ],
+      "inline_styles": 1,
+      "scripts": 2,
+      "bytes": 19302
+    },
+    {
+      "file": "Uninspired1.html",
+      "title": "Silence Between Words | Fanny Fushayi",
+      "headings": [
+        "Uninspired 1"
+      ],
+      "inline_styles": 1,
+      "scripts": 1,
+      "bytes": 7174
+    },
+    {
+      "file": "VAnity_cards.html",
+      "title": "Vanity Card Showcase | Fanny Fushayi",
+      "headings": [
+        "Vanity Cards",
+        "Card Index 000",
+        "Card Index 001"
+      ],
+      "inline_styles": 1,
+      "scripts": 2,
+      "bytes": 17357
+    }
+  ],
+  "broken_local_references": [],
+  "quantitative_claims_for_review": [
+    {
+      "file": "AprilsChristmas.html",
+      "claim": "This was Kadoma. The 10th largest city in Zimbabwe, but still lightyears away from the kind of access that made such a puzzle solvable. No public library. No home internet. In fact, back then, only around 11–14% of the country had even occasional access to the web—mostly in the capital or major towns. For most of us, YouTube tutorials or online guides might as well have been science fiction."
+    },
+    {
+      "file": "Battery_Data_driven.html",
+      "claim": "The NASA dataset, developed by the Prognostics Center of Excellence at NASA Ames, comprises detailed measurements from multiple lithium-ion battery cells cycled under controlled conditions. Each cycle includes constant-current/constant-voltage charging, constant-current discharging, and electrochemical impedance spectroscopy (EIS) measurements. The experiments were terminated once the batteries experienced a 30% reduction in capacity, defined as the battery's end of life. This dataset includes t"
+    },
+    {
+      "file": "Battery_Data_driven.html",
+      "claim": "Interestingly, in many of these notebooks, XGBoost and LightGBM consistently outperform other methods, with RMSE values often under 70 cycles and MAPE below 7% in some cases. This reinforces the conclusion that, when data is clean and features are well-engineered—as in the HNEI dataset—traditional machine learning models remain highly competitive."
+    },
+    {
+      "file": "Battery_Data_driven.html",
+      "claim": "More recently, deep learning methods have demonstrated superior performance, particularly for modeling non-linear and temporal aspects of battery degradation. Long Short-Term Memory (LSTM) networks have been extensively applied due to their ability to model long-range dependencies in capacity degradation. Convolutional Neural Networks (CNNs) have been used to extract spatial features from voltage-capacity curves and enable early prediction using data from as few as 100 cycles. Transformer-based "
+    },
+    {
+      "file": "Battery_Data_driven.html",
+      "claim": "Hybrid approaches have also been proposed, combining CNNs with LSTMs to exploit spatial and temporal degradation features. Ensemble methods, such as Bayesian Model Averaging (BMA) applied to multiple LSTM networks, have demonstrated improved robustness and predictive confidence through probabilistic model integration. These models enhance prediction accuracy and provide uncertainty quantification, essential for practical deployment in safety-critical systems."
+    },
+    {
+      "file": "Battery_Data_driven.html",
+      "claim": "Several advanced techniques are emerging in the field. Transfer learning methods have been developed to enable generalization across different battery chemistries and usage conditions. Explainable AI (XAI) methods, such as SHAP (Shapley Additive Explanations), are increasingly used to interpret model outputs and identify the most influential features affecting RUL. Furthermore, early prediction models using deep neural networks have demonstrated the capability to estimate battery lifespan with h"
+    },
+    {
+      "file": "Battery_Data_driven.html",
+      "claim": "Generalization refers to a model’s ability to make accurate predictions on unseen data—such as batteries outside the training set—while specialization involves optimizing a model to perform exceptionally well on a narrow, well-defined subset of data. Both approaches come with trade-offs. Specialized models may deliver higher predictive accuracy within their target subset but are likely to perform poorly when applied to other batteries with different usage or degradation characteristics. On the o"
+    },
+    {
+      "file": "Battery_Data_driven.html",
+      "claim": "The final step will involve ensemble learning, where both machine learning and deep learning models contribute to the final prediction. This could take the form of a stacked ensemble, where model outputs are fed into a meta-learner, or a weighted averaging scheme based on validation performance. Such a hybrid strategy leverages the interpretability and efficiency of classical models, along with the temporal modeling capacity of deep learning, offering a more robust and generalizable solution."
+    },
+    {
+      "file": "brothers_karamazov.html",
+      "claim": "Current status: 47% through Book 3"
+    },
+    {
+      "file": "BuildingAI.html",
+      "claim": "ReLU is the preferred choice for hidden layers in deep networks due to its efficiency."
+    },
+    {
+      "file": "BuildingAI.html",
+      "claim": "Training the model on the MNIST dataset to achieve high accuracy"
+    },
+    {
+      "file": "BuildingAI.html",
+      "claim": "Matplotlib: This library will help us visualize the dataset and plot metrics such as accuracy and loss during training."
+    },
+    {
+      "file": "BuildingAI.html",
+      "claim": "The next step in preparing the dataset is normalizing the pixel values. The MNIST dataset contains grayscale images with pixel values ranging from 0 to 255. To improve the efficiency of our model, we scale these values to a range of [0, 1] by dividing by 255. This normalization helps with faster training and improves performance by keeping numerical values small."
+    },
+    {
+      "file": "BuildingAI.html",
+      "claim": "# Compute accuracy"
+    },
+    {
+      "file": "BuildingAI.html",
+      "claim": "accuracy = np.mean(y_pred == y_true) * 100"
+    },
+    {
+      "file": "BuildingAI.html",
+      "claim": "print(f\"Test Accuracy: {accuracy:.2f}%\")"
+    },
+    {
+      "file": "BuildingAI.html",
+      "claim": "Test Accuracy: 79.17%"
+    },
+    {
+      "file": "BuildingAI.html",
+      "claim": "Which is Terrible... but it's ours! Random predictions will only be 10% accurate"
+    },
+    {
+      "file": "BuildingAI.html",
+      "claim": "model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])"
+    },
+    {
+      "file": "BuildingAI.html",
+      "claim": "Test Accuracy: 97.65%"
+    },
+    {
+      "file": "Cable_design.html",
+      "claim": "In AC systems, the cable’s physical layout creates unintended capacitance and inductance. This introduces “noise” and reactive power (VARs) into the system, which reduces real efficiency by drawing more current just to do the same work. In digital systems, these parasitic effects can even cause large voltage spikes that trigger cryptic errors like “LINK OVERVOLTAGE”—a frustrating problem that’s notoriously difficult to diagnose but often roots back to cable design and selection."
+    },
+    {
+      "file": "Cable_design.html",
+      "claim": "Power Factor (for AC loads)- This is crucial as it determines the amount of reactive power, which is the power that oscillates back and forth in the system without being consumed this can increase line current by 10–30% with no additional real power delivered"
+    },
+    {
+      "file": "Cable_design.html",
+      "claim": "The final check is to ensure the voltage at the load is within acceptable limits. Even a properly sized cable (from a heating perspective) can cause too much voltage drop over a long distance. You must calculate the voltage drop and ensure it is less than the maximum allowed by your design standards (e.g., 3% for branch circuits, 5% for feeder circuits is a common benchmark, though always consult your local code, like the SANS 10142-1 wiring code in South Africa)."
+    },
+    {
+      "file": "Cable_design.html",
+      "claim": "Feeder (210 m): 2-Core 300 mm² XLPE/SWA/PVC cable was selected, primarily to minimize resistance and control voltage drop within strict limits (&lt;2.5% at full load), rather than for ampacity alone."
+    },
+    {
+      "file": "control_animation.html",
+      "claim": "The gains Kp, Ki, and Kd must be carefully tuned to balance responsiveness, stability, and accuracy."
+    },
+    {
+      "file": "control_animation.html",
+      "claim": "While these foundational steps are essential, it’s also important to recognize that more advanced control schemes are continually being developed, offering enhanced precision, adaptability, and efficiency. Control systems play a pivotal role in numerous industries—from manufacturing and robotics to aerospace and energy management—and their ability to regulate processes, maintain stability, and improve productivity cannot be overstated."
+    },
+    {
+      "file": "currentaffairs.html",
+      "claim": "Power generation primarily involves converting energy sources (fossil fuels, nuclear, renewable) into electricity. Synchronous generators, which produce AC power, are widely used due to their higher efficiency than DC generators, and compatibility with transformers, which are vital in minimizing transmission losses."
+    },
+    {
+      "file": "currentaffairs.html",
+      "claim": "Power Transformers enable efficient (98%) transformation of low voltage AC to high voltage AC during Transmission and vice-versa during distribution to the consumer. They facilitate transmission of Electric power as high voltage reducing the current by the equation,"
+    },
+    {
+      "file": "currentaffairs.html",
+      "claim": "Due to the rise in renewable energy systems, such as solar and wind, which typically produce direct current (DC) or variable-frequency power, the compatibility with the traditional AC grid is increasingly challenged. These systems require power electronic converters to synchronize their output with the grid's fixed frequency (typically 50 Hz or 60 Hz, depending on the region). This synchronization introduces conversion inefficiencies, as DC power must be converted to AC. In some cases, multi-sta"
+    },
+    {
+      "file": "Data_science.html",
+      "claim": "Deep learning models, like neural networks, don’t inherently understand the world. They learn by analyzing massive datasets, identifying correlations, and making predictions based on patterns. The accuracy and efficiency of these models depend heavily on data preprocessing, feature engineering, and statistical analysis—key aspects of data science. Without proper data handling, even the most advanced AI models are useless."
+    },
+    {
+      "file": "Data_science.html",
+      "claim": "Discovered significant seasonal variations with winter showing 23% more medical emergencies"
+    },
+    {
+      "file": "Data_science.html",
+      "claim": "Built predictive models achieving 87% accuracy for call volume forecasting"
+    },
+    {
+      "file": "Data_science.html",
+      "claim": "Revealed Bank A outperformed the sector with 12% higher returns during market downturns"
+    },
+    {
+      "file": "Data_science.html",
+      "claim": "Detected volatility patterns showing 28% increase during quarterly reporting periods"
+    },
+    {
+      "file": "deep_learning.html",
+      "claim": "Apply ANNs to predict house prices with enhanced accuracy."
+    },
+    {
+      "file": "Digitwin.html",
+      "claim": "Algorithms that learn from historical and real-time data to improve predictive accuracy and decision-making."
+    },
+    {
+      "file": "Digitwin.html",
+      "claim": "80% (32 kWh remaining)"
+    },
+    {
+      "file": "Digitwin.html",
+      "claim": "90% (45 kW capacity)"
+    },
+    {
+      "file": "Digitwin.html",
+      "claim": "78% in 1 hour"
+    },
+    {
+      "file": "Digitwin.html",
+      "claim": "88% in 1 hour"
+    },
+    {
+      "file": "Digitwin.html",
+      "claim": "Cost Efficiency: Reduce downtime and maintenance costs by predicting issues."
+    },
+    {
+      "file": "Digitwin.html",
+      "claim": "Data Accuracy: Inaccurate data can lead to flawed simulations."
+    },
+    {
+      "file": "Digitwin.html",
+      "claim": "Digital twins represent a significant leap forward in how we interact with and understand complex systems. By enabling safe, cost-effective, and innovative experimentation, they are shaping the future of industries worldwide. As technology continues to evolve, digital twins will likely become an integral part of system design, analysis, and optimization, offering new pathways for innovation and efficiency."
+    },
+    {
+      "file": "emegence_anal.html",
+      "claim": "Certain zip codes and townships generated significantly more calls than others, suggesting targeted resource allocation could improve response efficiency."
+    },
+    {
+      "file": "HNEI_and_ML_BD2.html",
+      "claim": "When I started this project, the core goal was straightforward: quantify how much extending a battery's lifespan is possible by reducing thermal stress through a supercapacitor-hybrid system. That fundamental objective still guides my work, but as any data scientist or engineer can attest, real progress rarely follows a straight line. It often emerges from a landscape of messy, poorly documented notebooks, abandoned scripts, and perplexing outliers that challenge every assumption."
+    },
+    {
+      "file": "HNEI_and_ML_BD2.html",
+      "claim": "Mean Squared Error (MSE): Average of squared prediction errors (lower is better, but sensitive to outliers). As a rule of thumb, a \"good\" MSE is about 10% of your target variable’s variance in this case RUL has a variance of 103,961."
+    },
+    {
+      "file": "HNEI_and_ML_BD2.html",
+      "claim": "7.22%"
+    },
+    {
+      "file": "HNEI_and_ML_BD2.html",
+      "claim": "8.28%"
+    },
+    {
+      "file": "HNEI_and_ML_BD2.html",
+      "claim": "Outlier removal offered the most significant improvement, bringing the RMSE down by over 5 cycles but this is not useful because baseline has not been established yet, as model is unrealistically good and I still need to make it trustworthy."
+    },
+    {
+      "file": "HNEI_and_ML_BD2.html",
+      "claim": "Adding battery_id as a feature increased accuracy but introduced the risk of leakage"
+    },
+    {
+      "file": "HNEI_and_ML_BD2.html",
+      "claim": "The MAPE of ~42% might seem high, but context is critical. Battery degradation exhibits high variability even within identical units due to manufacturing tolerances, thermal history, and usage patterns. Academic literature often reports overly optimistic results due to similar leakage issues that Version 3 explicitly addresses. The consistent R² of 0.94+ across proper validation suggests the model captures fundamental degradation physics, not just memorized patterns."
+    },
+    {
+      "file": "How_to_Deploy.html",
+      "claim": "valid_pct=0.2, # 20% validation split"
+    },
+    {
+      "file": "How_to_Deploy.html",
+      "claim": "learn = vision_learner(dls, resnet34, metrics=accuracy)"
+    },
+    {
+      "file": "How_to_Deploy.html",
+      "claim": "Obviously, this is surface level, and if you were to go down the rabbit hole, I'm sure you'd need both at some point; the theory and the tooling. There's a lot of nuanced discussion that can come out of all this. Another one of the projects I did was a family facial recognition system because someone said we all look alike... Not very true, apparently, because it took just one epoch and only 10 images per person to hit 90% accuracy. Go figure. (NB: This is outside the technical section, I am not"
+    },
+    {
+      "file": "How_to_survive.html",
+      "claim": "Studies show that 68% of aliens respond positively to human humor. The other 32% consider laughter a sign of respiratory distress and may attempt emergency surgery."
+    },
+    {
+      "file": "Intro_to_AI.html",
+      "claim": "Regression techniques play a crucial role in training neural networks. They are used to extract the weights that define the connections between neurons.backpropagation is the primary method for adjusting weights. It works by: Calculating the error between the network’s prediction and the actual result. Propagating this error backward through the network to update the weights. Repeating this process iteratively to improve accuracy."
+    },
+    {
+      "file": "just_above_zero.html",
+      "claim": "0.897 Stage Accuracy"
+    },
+    {
+      "file": "just_above_zero.html",
+      "claim": "Cascaded model – Classification first, then regression on the same results. No improvement."
+    },
+    {
+      "file": "losing.html",
+      "claim": "[WARNING] Confidence level: 23.7%"
+    },
+    {
+      "file": "losing.html",
+      "claim": "[INFO] Loading enthusiasm... 100%"
+    },
+    {
+      "file": "losing.html",
+      "claim": "[INFO] Loading domain knowledge... 15%"
+    },
+    {
+      "file": "losing.html",
+      "claim": "Evaluation: RMSE on a 70% private test set."
+    },
+    {
+      "file": "losing.html",
+      "claim": "Accuracy: 58% (Not great)"
+    },
+    {
+      "file": "losing.html",
+      "claim": "0%"
+    },
+    {
+      "file": "losing.html",
+      "claim": "By the end of this experiment, I had no improvement in my leaderboard score, only a hard-earned lesson: without a time-ordered split, traditional time-series models were useless. I abandoned the LSTM approach and returned to more robust methods, now with a clearer understanding of the competition's constraints."
+    },
+    {
+      "file": "losing.html",
+      "claim": "+2%"
+    },
+    {
+      "file": "losing.html",
+      "claim": "+1.5%"
+    },
+    {
+      "file": "losing.html",
+      "claim": "+1%"
+    },
+    {
+      "file": "losing.html",
+      "claim": "+0.5%"
+    },
+    {
+      "file": "losing.html",
+      "claim": "Model training complete. Loss: 0.22 (Knowledge gained: 100%)"
+    },
+    {
+      "file": "ML.html",
+      "claim": "Model Evaluation Metrics : Learned to evaluate models using metrics like accuracy, precision, recall, and F1-score."
+    },
+    {
+      "file": "ML.html",
+      "claim": "accuracy = model.score(X_test, y_test)"
+    },
+    {
+      "file": "ML.html",
+      "claim": "print(f\"Accuracy: {accuracy}\")"
+    },
+    {
+      "file": "ML.html",
+      "claim": "Applied for text classification in the NLP project due to its efficiency in handling text-based tasks."
+    },
+    {
+      "file": "ML.html",
+      "claim": "Supervised learning includes techniques like K-Nearest Neighbors (KNN), a non-parametric method that classifies or predicts based on the proximity of data points in the feature space. Decision Trees and Random Forests are tree-based models used for classification and regression, with decision trees employing a hierarchical structure and random forests enhancing accuracy through ensemble learning."
+    },
+    {
+      "file": "ML.html",
+      "claim": "Achieved 85% accuracy in predicting ad clicks."
+    },
+    {
+      "file": "ML.html",
+      "claim": "Achieved 90% accuracy in predicting loan repayment outcomes."
+    },
+    {
+      "file": "ML.html",
+      "claim": "Classified Yelp reviews as 1-star or 5-star based on their text content. Using NLP methods, I employed classification models that utilized word frequency, sentiment analysis, and text vectorization techniques. By building a sentiment classifier with pipeline methods, I ensured efficiency and scalability in processing textual data."
+    },
+    {
+      "file": "ML.html",
+      "claim": "Achieved 88% accuracy in classifying Yelp reviews."
+    },
+    {
+      "file": "ML.html",
+      "claim": "Throughout these projects, I encountered several challenges. For instance, in the NLP project, handling text preprocessing efficiently was tricky—removing stop words helped improve accuracy, but too much cleaning risked losing valuable context. Choosing the right machine learning model was another challenge, especially in classification tasks where trade-offs between interpretability and accuracy had to be considered. Additionally, working with real-world data, particularly in the LendingClub pr"
+    },
+    {
+      "file": "PowerSystemProt.html",
+      "claim": "Since single-line-to-ground faults account for over 80% of all occurring faults, this introduction simplifies the discussion by reducing the power system to a single phase. Protection elements are then defined accordingly. In a single-phase context, faults can be further categorized as follows:"
+    },
+    {
+      "file": "PowerSystemProt.html",
+      "claim": "Thermal Trip (Overload Protection) : A bimetallic strip heats and bends when sustained overcurrent (e.g., 110% of rated current) flows through it. As the strip deforms, it triggers a mechanical latch to open the contacts, typically within seconds to minutes."
+    },
+    {
+      "file": "PowerSystemProt.html",
+      "claim": "Circuit breakers come in various types, each designed for specific applications. Miniature Circuit Breakers (MCBs) are used in homes and commercial buildings for low-voltage protection, while Molded Case Circuit Breakers (MCCBs) handle higher currents in industrial settings. Air Circuit Breakers (ACBs) are found in main power distribution systems, and Vacuum Circuit Breakers (VCBs) are used for medium-voltage applications due to their durability. For high-voltage transmission, SF₆ Circuit Breake"
+    },
+    {
+      "file": "PowerSystemProt.html",
+      "claim": "Power system protection is the backbone of modern electrical infrastructure, ensuring reliability, safety, and efficiency. As power systems continue to evolve—with the integration of renewable energy sources, smart grids, and advancements in transmission technologies—the role of protection systems becomes even more critical. The advent of DC circuit breakers , designed to handle high-speed fault interruption in direct current (DC) systems, marks a significant milestone in this evolution. These b"
+    },
+    {
+      "file": "project-hess.html",
+      "claim": "Hybrid energy storage for an electric go-kart Optimizing energy efficiency and performance for next-generation electric vehicles."
+    },
+    {
+      "file": "project-hess.html",
+      "claim": "14.6% improvement in acceleration response."
+    },
+    {
+      "file": "project-hess.html",
+      "claim": "1.7% Increased energy recovery efficiency during regenerative braking."
+    },
+    {
+      "file": "project-hess.html",
+      "claim": "2.1 % Enhanced battery lifespan by reducing high-current demands."
+    },
+    {
+      "file": "project-hess.html",
+      "claim": "Range improvement: the original figure “2.7” has no stated unit or baseline and requires review."
+    },
+    {
+      "file": "project-hess.html",
+      "claim": "TODO: Add the model assumptions, comparison baseline and calculation or simulation outputs supporting these figures, including the lifespan estimate."
+    },
+    {
+      "file": "Project-MDPS.html",
+      "claim": "Motor Driver and Power System for a Maze-Navigating Robot | Fanny Fushayi Skip to content FANNY FUSHAYI Menu Home Projects About Writing Contact ← All projects Embedded systems / July–November 2023 Motor driver &amp; power system A subsystem for a maze-navigating robot, developed independently and integrated with the team’s robot. Context / problem The robot needed a motor driver and power subsystem that could integrate with the other team members’ subsystems. My role I independently designed a "
+    },
+    {
+      "file": "Project-PV.html",
+      "claim": "Battery management system with 85% charging and 100% discharge efficiency"
+    },
+    {
+      "file": "Project-PV.html",
+      "claim": "54.5 kWh nominal battery capacity with 50% depth of discharge allowance"
+    },
+    {
+      "file": "Project-PV.html",
+      "claim": "Model results TODO: Confirm the scenario duration, tariff and fuel-price assumptions, and provide the calculation outputs. The listed 85% charge efficiency and 100% discharge efficiency are model assumptions."
+    },
+    {
+      "file": "Project-PV.html",
+      "claim": "Successful implementation of PV power generation with efficiency ranging from 0.128 to 0.137"
+    },
+    {
+      "file": "Project-PV.html",
+      "claim": "Several areas for future improvement were identified:"
+    },
+    {
+      "file": "Projects.html",
+      "claim": "Projects | Fanny Fushayi Skip to content FANNY FUSHAYI Menu Home Projects About Writing Contact Engineering / portfolio Systems with a job to do. From energy storage and power systems to embedded control and data. A closer look at the problems, the builds and the decisions behind them. Selected work Industrial automation Experiments &amp; builds Data &amp; machine learning 01 / In depth Selected engineering work Feb 2024 - Nov 2024 / Engineering Hybrid Energy Storage System (HESS) for Electric G"
+    },
+    {
+      "file": "solar_system_guide.html",
+      "claim": "The north-facing roof of my grandmother's house in Gutu, Zimbabwe, is 10° off from true north. While that's not perfectly aligned, it only reduces the system's efficiency by about 1.5%, which is negligible in most home setups."
+    },
+    {
+      "file": "solar_system_guide.html",
+      "claim": "Runs all day, but cycles on/off (~50% duty)"
+    },
+    {
+      "file": "solar_system_guide.html",
+      "claim": "System Efficiency Assumption:"
+    },
+    {
+      "file": "solar_system_guide.html",
+      "claim": "Let's assume system losses of ~20%, so efficiency = 0.8"
+    },
+    {
+      "file": "solar_system_guide.html",
+      "claim": "PV Size (kW) = E_daily / (Efficiency × PSH) = 5 / (0.8 × 5.08) ≈ 1.23 kW"
+    },
+    {
+      "file": "solar_system_guide.html",
+      "claim": "Add a safety margin of ~25%:"
+    },
+    {
+      "file": "solar_system_guide.html",
+      "claim": "Efficiency"
+    },
+    {
+      "file": "solar_system_guide.html",
+      "claim": "~70–80%"
+    },
+    {
+      "file": "solar_system_guide.html",
+      "claim": "~95–98%"
+    },
+    {
+      "file": "solar_system_guide.html",
+      "claim": "Larger systems, max efficiency"
+    },
+    {
+      "file": "solar_system_guide.html",
+      "claim": "Total Ah = Total Energy* Days of Autonomy/ (Bus Voltage* Depth of Discharge*Efficiency)"
+    },
+    {
+      "file": "solar_system_guide.html",
+      "claim": "We add a 25% safety margin:"
+    },
+    {
+      "file": "solar_system_guide.html",
+      "claim": "It gives &lt;3% voltage drop and stays cool under load."
+    },
+    {
+      "file": "solar_system_guide.html",
+      "claim": "Try to keep the voltage drop under 3% for DC systems."
+    },
+    {
+      "file": "solar_system_guide.html",
+      "claim": "The PVsyst simulation confirms the manual design’s assumptions, proving that a 1.35 kW solar array and 6-battery bank can reliably power the home year-round. The system meets 100% of the load with no missing energy, while maintaining healthy battery operation and generating slightly more than needed — ensuring resilience even during less sunny periods. Minor excess energy during peak months confirms the array has headroom, which can be valuable in future upgrades or load increases."
+    },
+    {
+      "file": "solar_system_guide.html",
+      "claim": "20.3% unused energy (battery full)"
+    },
+    {
+      "file": "solar_system_guide.html",
+      "claim": "11.8% temperature losses"
+    },
+    {
+      "file": "solar_system_guide.html",
+      "claim": "3.7% wiring losses"
+    },
+    {
+      "file": "solar_system_guide.html",
+      "claim": "0% loss of load"
+    },
+    {
+      "file": "solar_system_guide.html",
+      "claim": "The system meets 100% of the load with no blackouts."
+    },
+    {
+      "file": "solar_system_guide.html",
+      "claim": "Performance Ratio: 60.6%"
+    },
+    {
+      "file": "solar_system_guide.html",
+      "claim": "Excess (unused): 495 kWh/year (~20%)"
+    },
+    {
+      "file": "solar_system_guide.html",
+      "claim": "MPPT improves efficiency over PWM"
+    },
+    {
+      "file": "solar_system_guide.html",
+      "claim": "The 6-battery setup can be optimized in a few ways. One option is to use 3 higher-capacity batteries (e.g., 12V 300Ah), which would meet the energy demand with fewer units, though these can be bulky and harder to source affordably. Alternatively, you could deep cycle 3 × 12V 200Ah batteries, pushing them to around 75–80% depth of discharge — this would meet the energy need, but at the cost of reduced lifespan and reliability, making it a short-term solution. A smarter long-term alternative is sw"
+    },
+    {
+      "file": "solar_system_guide.html",
+      "claim": "This means each row must be spaced at least 0.77 meters behind the one in front to prevent shading during low-sun periods. While this slightly increases the total area required, it ensures maximum efficiency year-round by reducing power loss from shading—especially important in compact or budget-constrained systems where every watt matters."
+    },
+    {
+      "file": "theenergyrevolution.html",
+      "claim": "The energy delivered by a flywheel to a load is influenced by several factors, including the efficiency of the power electronics, control algorithms, the electric machine (motor/generator), and self-discharge losses. These losses arise primarily from friction (including aerodynamic drag and bearing friction) and, to a lesser extent, hysteresis losses in the motor/generator core. Temperature effects can also play a role, particularly in the performance of power electronics and bearing lubricants "
+    },
+    {
+      "file": "theenergyrevolution.html",
+      "claim": "Induction Machines (IMs): Offer high power output, ruggedness, and relatively low cost. However, they require more complex control schemes, especially for variable-speed operation, and exhibit lower efficiency compared to PM machines."
+    },
+    {
+      "file": "theenergyrevolution.html",
+      "claim": "Permanent Magnet (PM) Machines: Offer the highest efficiency and power density, minimizing rotor losses. However, they are generally more expensive due to the cost of permanent magnets and can have limitations in high-temperature operation and mechanical robustness (particularly demagnetization risk)."
+    },
+    {
+      "file": "theenergyrevolution.html",
+      "claim": "Hybrid PM-Reluctance Machines: These designs aim to combine the advantages of both PM and VRM technologies, seeking to achieve high efficiency and power density while mitigating some of the drawbacks of each type. The specific characteristics of a hybrid machine depend heavily on the detailed design."
+    },
+    {
+      "file": "theenergyrevolution.html",
+      "claim": "In hybrid energy storage systems, FESS complements lithium-ion batteries by handling short-duration, high-power demands. This reduces the frequency and depth of discharge cycles for lithium-ion batteries, potentially reducing battery wear; any lifespan improvement depends on the operating conditions and requires supporting evidence. By mitigating wear on chemical batteries, FESS not only enhances system reliability but also lowers the total cost of ownership for hybrid energy systems."
+    },
+    {
+      "file": "theenergyrevolution.html",
+      "claim": "Improved Bearing Technologies: Further development of magnetic bearings, including active and superconducting magnetic bearings, is focused on reducing friction losses even further and improving system efficiency and longevity. Research is also exploring more cost-effective manufacturing methods for these advanced bearings."
+    },
+    {
+      "file": "theenergyrevolution.html",
+      "claim": "Hybrid System Integration and Control Strategies: Developing sophisticated control algorithms and strategies for integrating FESS with other energy storage technologies, such as batteries and supercapacitors, is crucial for creating efficient and cost-effective hybrid energy storage solutions. This involves optimizing energy dispatch, managing power flow, and maximizing the lifespan of all components in the hybrid system."
+    },
+    {
+      "file": "Tsumo.html",
+      "claim": "There is one more hallmark of the tsumo I must honour: its breathtaking efficiency. The language often uses a tiny story—a vessel—to carry a profound idea, ensuring the knowledge arrives as a complete package with its own example. This requires almost supernatural concision."
+    }
+  ]
+}

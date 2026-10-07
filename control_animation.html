@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Temperature Control System Simulation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Temperature Control System Simulation | Fanny Fushayi</title>
   <style>
             :root {
             --accent-1: #FF6B6B;
@@ -150,9 +150,9 @@
             margin: 1.5em 0;
         }
   </style>
-</head>
-<body>
-  <header>         
+<meta name="description" content="Once a system has been installed, it often becomes necessary to develop a way to control its operation. Control systems, in their simplest form, are present all"><link rel="icon" href="/Images/favicon.ico"><link rel="canonical" href="https://fushayifanny.co.za/control_animation.html"><meta property="og:title" content="Temperature Control System Simulation | Fanny Fushayi"><meta property="og:description" content="Once a system has been installed, it often becomes necessary to develop a way to control its operation. Control systems, in their simplest form, are present all"><meta property="og:url" content="https://fushayifanny.co.za/control_animation.html"><meta property="og:type" content="article"><meta property="og:image" content="https://fushayifanny.co.za/Images/Photo.png"><meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="/site.css" data-shared="styles"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" data-shared="fonts"></head>
+<body class="article-page inner-page site">
+  <a class="skip" data-shared="skip" href="#main">Skip to content</a><nav class="nav site-nav" data-shared="navigation" aria-label="Main navigation"><div class="nav-inner"><a class="brand" href="/index.html">FANNY FUSHAYI</a><button class="menu" aria-controls="site-links" aria-expanded="false" type="button">Menu</button><div class="nav-links" id="site-links"><a href="/index.html">Home</a><a href="/Projects.html">Projects</a><a href="/about.html">About</a><a href="/blog.html" aria-current="page">Writing</a><a href="/Contact.html">Contact</a></div></div></nav><main id="main" class="reading-layout"><p data-shared="article-meta" class="article-meta">Engineering · 9 min read <span> / <a href="blog.html">Back to Writing</a></span></p><header>
     <h1 class="post-title">Introduction To Control Systems</h1>
     <div class="post-meta">
         Posted on February 17 • 7 minutes 55 seconds • <a href="blog.html">Home</a>
@@ -162,17 +162,17 @@
     <p>Once a system has been installed, it often becomes necessary to develop a way to control its operation. Control systems, in their simplest form, are present all around us in everyday life. Consider a lighting system for a room: once the wiring is complete and the lightbulb is installed, there is still a need to control when the light turns on (at night) or off (during the day). A common solution is a light switch, which forms the basis of a type of control system known as open-loop control.</p>
 
     <p>In open-loop control, the user sets a desired output—in this case, turning the light on or off—and the system executes this action. The light switch directly dictates the state of the lightbulb, which relies solely on the user's input. For basic lighting needs, this open-loop approach is often sufficient. However, open-loop systems operate without feedback; they don't monitor the actual output (light being on or off) or the surrounding environment to adjust their operation.</p>
-    
+
     <p>In more complex scenarios, it can be beneficial for the lighting system to be "aware" of its surroundings. For instance, large institutions with multiple rooms may experience erratic human behavior—rooms may be occupied at unpredictable times, or people may forget to turn the lights off when leaving. In such cases, relying solely on human "control" may not be efficient— leading to large energy waste. In a case where there is a need to ensure consistent day and night lighting without human intervention, closed-loop control systems become increasingly valuable.</p>
-    
+
     <p>Closed-loop control systems incorporate sensors to gather information about their surroundings. Using an ambient light sensor as an example, the system can sense the level of natural light. This sensor information provides feedback, allowing the system to monitor the actual output or environmental conditions. Based on this feedback, the control system can then automatically adjust the output to achieve the desired outcome. For instance, if the ambient light sensor detects low light levels (e.g., at night or on a cloudy day), the system can automatically turn the lights on. Conversely, if sufficient natural light is present, the lights can be turned off, even without direct user input at that moment. This reliance on sensor feedback is the defining characteristic of closed-loop control, enabling more automated and responsive system behavior.</p>
-    
+
     <p style="background-color: #d5f5e3; padding: 12px; border-left: 4px solid #27ae60; border-radius: 5px;">
         At its core, a closed-loop control system involves three key components: a sensor, a controller, and an actuator. The sensor measures the current state of the system (e.g., light level), the controller processes this information and determines the appropriate action, and the actuator executes the action (e.g., turning on a light). While this process may seem straightforward, its complexity depends on the dynamics of the system being controlled.
     </p>
 
     <hr style="border: none; border-top: 2px dashed #941e83; margin: 20px 0;">
-    
+
     <p>Control systems are simpler to design and implement when dealing with high-inertia systems—systems that change slowly over time. For example, the transition from daylight to darkness occurs over several hours, making it relatively easy for a lighting control system to adjust. Similarly, a car’s cruise control operates in a high-inertia environment because the vehicle’s mass makes it (relatively) slow to accelerate or decelerate. These slow changes give the control system ample time to respond, reducing the risk of instability.</p>
 
     <p>In contrast, low-inertia systems—where changes can occur almost instantaneously—present a greater challenge for control systems. For example, in electronic circuits, voltage or current can change in microseconds. If the control system reacts too aggressively, it may overshoot the desired value, causing oscillations or instability. Similarly, in robotics, controlling the position of a lightweight robotic arm requires careful tuning because the arm can move very quickly, and any delay or overcorrection by the controller can lead to erratic behavior. In such cases, the control system must be carefully designed to ensure stability, often using advanced algorithms like PID control or model predictive control.</p>
@@ -189,16 +189,16 @@
     <p>Let’s consider a room where we want to maintain a temperature of 20°C using a thermostat. This is a classic example of a closed-loop control system because it continuously measures the room’s temperature and adjusts the heater to maintain the desired setpoint.</p>
 
     <p>Bang-bang control operates on a basic binary principle—the heater runs at full power when the temperature drops below 20°C and completely shuts off when it rises above this setpoint.
-        <ul style="list-style-type: disc;">
+        </p><ul style="list-style-type: disc;">
             <li>When the temperature is below 20°C, the heater is fully on.</li>
-            <li>When the temperature is above 20°C, the heater is fully off.</li>            
+            <li>When the temperature is above 20°C, the heater is fully off.</li>
         </ul>
-        
-    This results in oscillation around the setpoint due to the delay in temperature reading and the actuation of the heater. For example: When the heater is on, the room heats up and overshoots 20°C. Once the temperature exceeds 20°C, the heater turns off, but the room continues to cool down below 20°C before the heater kicks back on. While bang-bang control is simple and effective for some applications, it’s not ideal for maintaining precise temperature control because of these oscillations. To achieve smoother and more accurate control, we can use proportional control.</p>
-    
+
+    This results in oscillation around the setpoint due to the delay in temperature reading and the actuation of the heater. For example: When the heater is on, the room heats up and overshoots 20°C. Once the temperature exceeds 20°C, the heater turns off, but the room continues to cool down below 20°C before the heater kicks back on. While bang-bang control is simple and effective for some applications, it’s not ideal for maintaining precise temperature control because of these oscillations. To achieve smoother and more accurate control, we can use proportional control.
+
     <hr style="border: none; border-top: 2px dashed #941e83; margin: 20px 0;">
-    
-    
+
+
     <p>In proportional control, the heater’s output is adjusted proportionally to the difference between the current temperature and the setpoint. This difference is called the error.</p>
     <div class="equation">Error=Setpoint−Current Temperature</div>
 
@@ -225,8 +225,8 @@
         <li>Ki is the integral gain.</li>
         <li>∫(Error)dt represents the sum of all past errors, an accumulation over time.</li>
     </ul>
-    
-    
+
+
 
     <p>The integral term considers the accumulated error over time, meaning it adds up all past errors and adjusts the heater’s power accordingly. If the temperature has been below the setpoint for a long time, the integral term increases the heater’s power to correct the error. If the room temperature is consistently below 20°C, the integral term accumulates over time, increasing the heater’s output until the temperature reaches the setpoint. Once the setpoint is reached, the integral term stops growing, and the system stabilizes.</p>
     The integral term eliminates steady-state error by considering the accumulated error over time.
@@ -242,9 +242,9 @@
 
     <p>The derivative term considers the rate of change of the error, or how quickly the temperature is approaching or moving away from the setpoint. The derivative term is calculated as:</p>
     <div class="equation">Derivative Term = Kd × (d(Error)/dt)</div>
-        
-        
-    </div>
+
+
+
 
     <p>Where:</p>
     <ul>
@@ -253,7 +253,7 @@
     </ul>
     <p>If the temperature is rising too quickly, the derivative term reduces the heater’s power to prevent overshooting. If the temperature is dropping rapidly, it increases the heater’s power to counteract the change.</p>
 
-    <ul>       
+    <ul>
         <li>If the temperature is rising quickly toward the setpoint, the derivative term reduces the heater’s output to prevent overshooting.</li>
         <li>If the temperature is falling quickly, the derivative term increases the heater’s output to stabilize the system.</li>
     </ul>
@@ -278,7 +278,7 @@
     </p>
 
 
-</div>
+
 
 
   <div class="controls">
@@ -301,7 +301,7 @@
   </div>
 
   <div class="textContent">
-    
+
     <p>Tuning a PID Controller:</p>
     <ul>
       <li>The gains Kp, Ki, and Kd must be carefully tuned to balance responsiveness, stability, and accuracy.</li>
@@ -314,15 +314,15 @@
 
 <ol>
   <li><strong>Problem Definition</strong>: Clearly understanding the system and defining what you want to control—be it temperature, speed, position, or any other variable—is the critical first step. Without a clear objective, the rest of the design process lacks direction.</li>
-  
+
   <li><strong>System Modeling</strong>: Developing a mathematical model of the system is essential. This could involve differential equations, transfer functions, or state-space representations, allowing engineers to predict how the system will behave under different conditions.</li>
-  
+
   <li><strong>Control Strategy Selection</strong>: Choosing the right control strategy is crucial. For simpler systems, PID controllers may suffice, while more complex systems might require advanced techniques like optimal control, model predictive control, or adaptive control. The choice depends on the complexity of the system and the desired performance.</li>
-  
+
   <li><strong>Controller Design and Tuning</strong>: Once the strategy is selected, the controller must be implemented and its parameters (such as gains) tuned to achieve the desired behavior. This step often involves simulation tools and real-world experimentation to ensure the system performs as expected.</li>
-  
+
   <li><strong>Implementation</strong>: The controller is then physically integrated into the system, which may involve programming microcontrollers, integrating sensors, and ensuring real-time responsiveness. This step bridges the gap between theory and practice.</li>
-  
+
   <li><strong>Testing and Iteration</strong>: Finally, the system must be rigorously tested under various conditions to ensure robustness. If issues arise, adjustments are made, and the design process begins anew. This "trial and error" phase is vital for refining the system and achieving reliable performance.</li>
 </ol>
 
@@ -332,7 +332,7 @@
 
 </div>
 
-  <script>
+  <nav data-shared="article-pagination" class="article-pagination" aria-label="More writing"><a href="blog.html">All writing ↑</a><a href="PowerSystemProt.html">← Power System Protection</a><a href="Digitwin.html">Digital Twins →</a></nav></main><script>
     const SETPOINT = 20;
     const SAMPLE_RATE = 100;
     const MAX_POINTS = 100;
@@ -473,9 +473,5 @@
   </script>
 
 
-<footer style="background-color: #f1f1f1; padding: 10px; text-align: center; border-top: 2px solid #5d4343;"></footer>
-    © 2025 Fanny Fushayi 
-</footer>
-
-</body>
+<footer class="site-footer" data-shared="footer"><div class="shell footer-inner"><div><span>Fanny Fushayi</span><p>Engineering for the physical world.</p></div><nav aria-label="Footer navigation"><a href="/index.html">Home</a><a href="/Projects.html">Projects</a><a href="/about.html">About</a><a href="/blog.html" aria-current="page">Writing</a><a href="/Contact.html">Contact</a></nav><div><a href="https://github.com/FannyFushayi">GitHub ↗</a> · <a href="https://www.linkedin.com/in/fanny-fushayi-529880235">LinkedIn ↗</a><p>© <span id="year">2026</span> Fanny Fushayi</p></div></div></footer><script data-shared="script" src="/site.js" defer></script></body>
 </html>

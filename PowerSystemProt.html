@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Power System Protection </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Power System Protection | Fanny Fushayi</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -100,16 +100,16 @@
             to { opacity: 1; }
         }
     </style>
-</head>
-<body>
-    <div class="title-container">
+<meta name="description" content="The power system is one of the most crucial systems in operation today. Power engineers design, operate, and maintain the system with careful consideration to m"><link rel="icon" href="/Images/favicon.ico"><link rel="canonical" href="https://fushayifanny.co.za/PowerSystemProt.html"><meta property="og:title" content="Power System Protection | Fanny Fushayi"><meta property="og:description" content="The power system is one of the most crucial systems in operation today. Power engineers design, operate, and maintain the system with careful consideration to m"><meta property="og:url" content="https://fushayifanny.co.za/PowerSystemProt.html"><meta property="og:type" content="article"><meta property="og:image" content="https://fushayifanny.co.za/Images/Photo.png"><meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="/site.css" data-shared="styles"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" data-shared="fonts"></head>
+<body class="article-page inner-page site">
+    <a class="skip" data-shared="skip" href="#main">Skip to content</a><nav class="nav site-nav" data-shared="navigation" aria-label="Main navigation"><div class="nav-inner"><a class="brand" href="/index.html">FANNY FUSHAYI</a><button class="menu" aria-controls="site-links" aria-expanded="false" type="button">Menu</button><div class="nav-links" id="site-links"><a href="/index.html">Home</a><a href="/Projects.html">Projects</a><a href="/about.html">About</a><a href="/blog.html" aria-current="page">Writing</a><a href="/Contact.html">Contact</a></div></div></nav><main id="main" class="reading-layout"><p data-shared="article-meta" class="article-meta">Engineering · 9 min read <span> / <a href="blog.html">Back to Writing</a></span></p><div class="title-container">
         <!-- Animated SVG of a circuit breaker -->
-        <svg class="breaker-animation" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <rect x="10" y="10" width="80" height="80" fill="#3498db" rx="10" />
-            <rect x="20" y="20" width="60" height="20" fill="#ffffff" rx="5" />
-            <rect x="20" y="50" width="60" height="20" fill="#ffffff" rx="5" />
-            <line x1="30" y1="30" x2="70" y2="30" stroke="#2c3e50" stroke-width="2" />
-            <line x1="30" y1="60" x2="70" y2="60" stroke="#2c3e50" stroke-width="2" />
+        <svg class="breaker-animation" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="10" width="80" height="80" fill="#3498db" rx="10"></rect>
+            <rect x="20" y="20" width="60" height="20" fill="#ffffff" rx="5"></rect>
+            <rect x="20" y="50" width="60" height="20" fill="#ffffff" rx="5"></rect>
+            <line x1="30" y1="30" x2="70" y2="30" stroke="#2c3e50" stroke-width="2"></line>
+            <line x1="30" y1="60" x2="70" y2="60" stroke="#2c3e50" stroke-width="2"></line>
         </svg>
         <h1>Power System Protection</h1>
         <br>
@@ -127,30 +127,30 @@
     <h2>Fault Classification</h2>
 
     <p>Faults can be classified based on their <em>nature, location, and impact</em>. The power grid operates in three phases, and the types of faults in such a system include:</p>
-    
+
     <p><span style="color: #e74c3c; font-weight: bold;">Symmetrical Faults:</span> These are rare but severe faults that affect all three phases equally, such as a three-phase short circuit.</p>
-    
+
     <p><span style="color: #3498db; font-weight: bold;">Unsymmetrical Faults:</span> These are more common and affect one or more (but not all) phases. Examples include:</p>
     <ul style="background-color: white; padding: 10px; border-radius: 5px;">
         <li>Single-line-to-ground faults</li>
         <li>Line-to-line faults</li>
         <li>Double-line-to-ground faults</li>
     </ul>
-    
-    <p>Since single-line-to-ground faults account for over 80% of all occurring faults, this introduction simplifies the discussion by reducing the power system to a single phase. Protection elements are then defined accordingly. In a single-phase context, faults can be further categorized as follows:</p>
-    
 
-    
+    <p>Since single-line-to-ground faults account for over 80% of all occurring faults, this introduction simplifies the discussion by reducing the power system to a single phase. Protection elements are then defined accordingly. In a single-phase context, faults can be further categorized as follows:</p>
+
+
+
     <p><strong style="font-size: 1.2em;">1. Short Circuit Faults</strong></p>
-    
+
     <p>A short circuit is defined as a <span style="color: #c0392b; font-weight: bold;">low-impedance path</span> that causes an excessive flow of current. These faults can occur in different forms:</p>
-    
+
     <ul style="background-color: white; padding: 15px; border-radius: 8px;">
         <li><strong>Single-line-to-ground (SLG) fault:</strong> A phase conductor makes contact with the ground due to insulation failure or external contact (e.g., tree branches or lightning strikes).</li>
         <li><strong>Line-to-line (LL) fault:</strong> Two phase conductors come into contact, often due to insulation breakdown.</li>
         <li><strong>Three-phase fault:</strong> All three conductors short together, typically due to severe insulation failure or equipment breakdown.</li>
     </ul>
-    
+
     <p style="background-color: #d5f5e3; padding: 12px; border-left: 4px solid #27ae60; border-radius: 5px;">
         <strong>💡 Key Insight:</strong> Short-circuit currents can be several orders of magnitude greater than nominal operating currents. If not cleared quickly, they can cause severe thermal damage to equipment, melting conductors, or even leading to fires.
     </p>
@@ -158,27 +158,27 @@
     <p style="background-color: #fdf2e9; padding: 10px; border-left: 5px solid #f39c12; border-radius: 5px;">
         ⚠️ <strong>Note:</strong> Due to the rotational inertia of power generators, they cannot instantly disconnect during a fault. Instead, faulted regions must be isolated by protective devices such as <strong>circuit breakers</strong> and <strong>relays</strong>.
     </p>
-    
 
-    
+
+
     <p><strong style="font-size: 1.2em;">2. Open Circuit Faults</strong></p>
-    
+
     <p>An open circuit fault occurs when a break in the conductor prevents current from flowing. This can happen due to:</p>
-    
+
     <ul style="background-color: white; padding: 15px; border-radius: 8px;">
         <li><strong>Mechanical damage:</strong> e.g., a fallen transmission line.</li>
         <li><strong>Equipment failure:</strong> e.g., a blown fuse or disconnected joint.</li>
         <li><strong>Corrosion or wear and tear:</strong> Gradual degradation over time.</li>
     </ul>
-    
+
     <p>Open circuit faults can lead to <span style="color: #c0392b; font-weight: bold;">voltage imbalances</span>, overloading of other phases, or inefficient power transfer.</p>
-    
-  
-    
+
+
+
     <p><strong style="font-size: 1.2em;">3. Voltage-Based Faults</strong></p>
-    
+
     <p>Voltage deviations from the nominal operating level can cause major disruptions in power systems. These include:</p>
-    
+
     <p><span style="color: #e74c3c; font-weight: bold;">Overvoltage:</span> Voltage exceeds the rated level for an extended period. Causes include:</p>
     <ul style="background-color: white; padding: 10px; border-radius: 5px;">
         <li>Lightning strikes injecting high-energy transients.</li>
@@ -186,52 +186,52 @@
         <li>Generator excitation control issues.</li>
         <li>Load rejection (sudden decrease in demand).</li>
     </ul>
-    
+
     <p style="background-color: #fdf2e9; padding: 12px; border-left: 5px solid #f39c12; border-radius: 5px;">
         ⚠️ Overvoltage can cause <strong>insulation breakdown</strong> and damage sensitive electronic equipment.
     </p>
-    
+
     <p><span style="color: #3498db; font-weight: bold;">Undervoltage (Brownout):</span> Voltage drops below the rated level for an extended period. Causes include:</p>
     <ul style="background-color: white; padding: 15px; border-radius: 8px;">
         <li>Overloaded power systems.</li>
         <li>Generator or transformer malfunctions.</li>
         <li>Transmission line losses.</li>
     </ul>
-    
+
     <p style="background-color: #d5f5e3; padding: 12px; border-left: 4px solid #27ae60; border-radius: 5px;">
         💡 Undervoltage can lead to inefficient operation, increased heat generation in motors, and system instability.
     </p>
-    
+
     <p><span style="color: #8e44ad; font-weight: bold;">Voltage Swells:</span> Temporary voltage increases lasting milliseconds to seconds. Causes include:</p>
     <ul style="background-color: white; padding: 10px; border-radius: 5px;">
         <li>Sudden load shedding (large loads turning off).</li>
         <li>Fault clearing in other parts of the system.</li>
         <li>Capacitor switching events.</li>
     </ul>
-    
+
     <p>These can cause disruptions in <strong>control systems</strong> and sensitive electronics.</p>
-    
-  
-    
+
+
+
     <p style="background-color: #fdf2e9; padding: 10px; border-left: 5px solid #f39c12; border-radius: 5px;">
         ⚠️ Left undetected, faults can escalate into <strong>equipment damage</strong>, safety hazards (fires, electrocution), or cascading outages. This is why <strong>power system protection</strong> is critical.
     </p>
-    
+
     <p><em>As defined by J. Lewis Blackburn, a pioneer in the field:</em></p>
-    
+
     <blockquote style="background-color: #ecf0f1; padding: 15px; border-left: 4px solid #7f8c8d; border-radius: 5px;">
         <strong>“Power system protection is the science, skill, and art of applying and setting protective relays and/or fuses to provide maximum sensitivity to faults and undesirable conditions while avoiding operation under all permissible or tolerable scenarios.”</strong>
     </blockquote>
 
     <hr style="border: none; border-top: 2px dashed #7f8c8d; margin: 20px 0;">
-    
+
     <h2>Power System Protection Components</h2>
     <p>Modern protection systems rely on devices like <strong>circuit breakers, relays, and surge arrestors</strong> to detect anomalies, isolate faulted sections within milliseconds, and restore normal operation.</p>
-    
+
     <p style="background-color: #d5f5e3; padding: 12px; border-left: 4px solid #27ae60; border-radius: 5px;">
         ✅ By combining <strong>rapid response</strong> with <strong>layered redundancy</strong>, engineers safeguard both infrastructure and end-users from the cascading consequences of faults.
     </p>
-     
+
 
 
     <p>Modern protection systems rely on devices like circuit breakers, relays, and surge arrestors to detect anomalies, isolate faulted sections within milliseconds, and restore normal operation. By combining rapid response with layered redundancy, engineers safeguard both infrastructure and end-users from the cascading consequences of faults.</p>
@@ -244,7 +244,7 @@
 </ul>
 
 <div class="diagram">
-    <img src="Images/Functional Diagram.drawio.png" alt="Functional Diagram with basic operation of the protection system:">
+    <img src="Images/Functional%20Diagram.drawio.png" alt="Functional Diagram with basic operation of the protection system:" width="501" height="211" decoding="async" loading="lazy">
     <p>Figure (1) Basic Functionality of a power system protection system</p>
 </div>
 
@@ -254,7 +254,7 @@
 
 
 <div class="diagram">
-    <img src="Images/Power System Protection.drawio.png" alt="Functional Diagram with basic operation of the protection system:">
+    <img src="Images/Power%20System%20Protection.drawio.png" alt="Functional Diagram with basic operation of the protection system:" width="651" height="462" decoding="async" loading="lazy">
     <p>Figure (2) Single Phase power system protection operation </p>
 </div>
 <p><strong>INSTRUMENT TRANSFORMERS:</strong></p>
@@ -273,7 +273,7 @@
 </ol>
 
 <div class="diagram">
-    <img src="Images/Curves.drawio.png" alt="Functional Diagram with basic operation of the protection system:">
+    <img src="Images/Curves.drawio.png" alt="Functional Diagram with basic operation of the protection system:" width="541" height="422" decoding="async" loading="lazy">
     <p>Figure (3) Typical relay curve showing how sensitivity (Pin adjustment) and delay time (Knob adjustment) affect the operation of the relay</p>
 </div>
 
@@ -329,17 +329,13 @@
 <p><strong>About Disconnectors:</strong></p>
 Disconnectors, also known as isolators, are mechanical switches used to isolate sections of the power system for maintenance or operational purposes. Unlike circuit breakers, disconnectors are not designed to interrupt fault currents. If a disconnector is operated under fault conditions, it may lead to the formation of arcs due to the high current flow, potentially causing damage to equipment or posing safety risks. Therefore, disconnectors should only be used when the circuit is de-energized or under normal load conditions.
 </div>
-    </div>
 
-    <footer>
-        © 2025 Fanny Fushayi 
-    </footer>
 
-    <script>
+    <nav data-shared="article-pagination" class="article-pagination" aria-label="More writing"><a href="blog.html">All writing ↑</a><a href="currentaffairs.html">← Current Affairs</a><a href="control_animation.html">Control Systems →</a></nav></main><script>
         function toggleFact() {
             const content = document.getElementById('factContent');
             const btn = document.getElementById('funFactBtn');
-            
+
             if(content.style.display === 'none' || content.style.display === '') {
                 content.style.display = 'block';
                 btn.textContent = 'Hide Answer';
@@ -349,5 +345,5 @@ Disconnectors, also known as isolators, are mechanical switches used to isolate 
             }
         }
     </script>
-</body>
+<footer class="site-footer" data-shared="footer"><div class="shell footer-inner"><div><span>Fanny Fushayi</span><p>Engineering for the physical world.</p></div><nav aria-label="Footer navigation"><a href="/index.html">Home</a><a href="/Projects.html">Projects</a><a href="/about.html">About</a><a href="/blog.html" aria-current="page">Writing</a><a href="/Contact.html">Contact</a></nav><div><a href="https://github.com/FannyFushayi">GitHub ↗</a> · <a href="https://www.linkedin.com/in/fanny-fushayi-529880235">LinkedIn ↗</a><p>© <span id="year">2026</span> Fanny Fushayi</p></div></div></footer><script data-shared="script" src="/site.js" defer></script></body>
 </html>

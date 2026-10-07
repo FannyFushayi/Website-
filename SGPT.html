@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Building AI in My Mother Tongue - Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Building AI in My Mother Tongue - Blog | Fanny Fushayi</title>
     <style>
         * {
             margin: 0;
@@ -152,19 +152,19 @@
             h1 {
                 font-size: 1.8rem;
             }
-            
+
             h2 {
                 font-size: 1.4rem;
             }
-            
+
             h3 {
                 font-size: 1.2rem;
             }
         }
     </style>
-</head>
-<body>
-    <div class="container">
+<meta name="description" content="On the transformer architecture , attention mechanisms, and preserving African languages in AI"><link rel="icon" href="/Images/favicon.ico"><link rel="canonical" href="https://fushayifanny.co.za/SGPT.html"><meta property="og:title" content="Building AI in My Mother Tongue - Blog | Fanny Fushayi"><meta property="og:description" content="On the transformer architecture , attention mechanisms, and preserving African languages in AI"><meta property="og:url" content="https://fushayifanny.co.za/SGPT.html"><meta property="og:type" content="article"><meta property="og:image" content="https://fushayifanny.co.za/Images/Photo.png"><meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="/site.css" data-shared="styles"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" data-shared="fonts"></head>
+<body class="article-page inner-page site">
+    <a class="skip" data-shared="skip" href="#main">Skip to content</a><nav class="nav site-nav" data-shared="navigation" aria-label="Main navigation"><div class="nav-inner"><a class="brand" href="/index.html">FANNY FUSHAYI</a><button class="menu" aria-controls="site-links" aria-expanded="false" type="button">Menu</button><div class="nav-links" id="site-links"><a href="/index.html">Home</a><a href="/Projects.html">Projects</a><a href="/about.html">About</a><a href="/blog.html" aria-current="page">Writing</a><a href="/Contact.html">Contact</a></div></div></nav><main id="main" class="reading-layout"><p data-shared="article-meta" class="article-meta">Artificial Intelligence · 10 min read <span> / <a href="blog.html">Back to Writing</a></span></p><div class="container">
         <header>
             <a href="index.html" class="home-link">← Back to Home</a>
             <h1>Building AI in My Mother Tongue</h1>
@@ -172,7 +172,7 @@
             <button class="language-toggle" id="languageToggle">Kana usingadi dudziro dzvanya apa</button>
         </header>
 
-        <main>
+        <div class="legacy-content">
             <p>Large language models (LLMs) have become an integral part of our society. Like everything else I've ever used, I've always wondered how it all comes together at the most fundamental level of abstraction.</p>
 
             <p>So I turned to the paper that started it all: Attention Is All You Need. And using Andrej Karpathy's lecture based on the same paper, I built up the simplest form of a chatbot: a text generator. To give it a personal twist, I made it speak my mother tongue, Shona.</p>
@@ -360,13 +360,9 @@
             <p>To improve it meaningfully, we'd need more — and better — data. I couldn't find a digitized, open-source Shona book corpus. Most of what's available is dry and formulaic — which is why the model currently sounds like a newsreader stuck in 2011.</p>
 
             <p>Long-term, a language-specific tokenizer would help. Shona has its own structure: roots, prefixes, infixes — a rhythm to how meaning is built. Reconnecting with that, even computationally, brought me back to my O-Level Shona lessons, and gave me a new respect for my teacher, Ms. Chihewure, who made that structure make sense long before transformers did.</p>
-        </main>
+        </div>
     </div>
-    <footer>
-        @ Fanny Fushayi 2025 <a href="VAnity_cards.html"> Card 001</a>
-    </footer>
-
-    <script>
+    <nav data-shared="article-pagination" class="article-pagination" aria-label="More writing"><a href="blog.html">All writing ↑</a><a href="How_to_Deploy.html">← How to Deploy ML</a><a href="losing.html">Losing My First ML Competition →</a></nav></main><script>
         document.addEventListener('DOMContentLoaded', function() {
             const toggleButton = document.getElementById('languageToggle');
             const bilingualTexts = document.querySelectorAll('.bilingual-text');
@@ -375,7 +371,7 @@
             // Function to toggle language display
             function toggleLanguage() {
                 showingShonaWithTranslation = !showingShonaWithTranslation;
-                
+
                 bilingualTexts.forEach(text => {
                     if (showingShonaWithTranslation) {
                         // Show Shona with English translation in parentheses
@@ -405,5 +401,5 @@
             toggleButton.addEventListener('click', toggleLanguage);
         });
     </script>
-</body>
+<footer class="site-footer" data-shared="footer"><div class="shell footer-inner"><div><span>Fanny Fushayi</span><p>Engineering for the physical world.</p></div><nav aria-label="Footer navigation"><a href="/index.html">Home</a><a href="/Projects.html">Projects</a><a href="/about.html">About</a><a href="/blog.html" aria-current="page">Writing</a><a href="/Contact.html">Contact</a></nav><div><a href="https://github.com/FannyFushayi">GitHub ↗</a> · <a href="https://www.linkedin.com/in/fanny-fushayi-529880235">LinkedIn ↗</a><p>© <span id="year">2026</span> Fanny Fushayi</p></div></div></footer><script data-shared="script" src="/site.js" defer></script></body>
 </html>

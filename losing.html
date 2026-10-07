@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Losing My First Machine Learning Competition</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Losing My First Machine Learning Competition | Fanny Fushayi</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
@@ -20,7 +20,7 @@
             line-height: 1.6;
             color: #333;
             background-color: #f5f5f5;
-            background-image: 
+            background-image:
                 linear-gradient(45deg, #e0e0e0 25%, transparent 25%),
                 linear-gradient(-45deg, #e0e0e0 25%, transparent 25%),
                 linear-gradient(45deg, transparent 75%, #e0e0e0 75%),
@@ -519,9 +519,9 @@
             margin: 20px 0;
         }
     </style>
-</head>
-<body>
-    <div class="container">
+<meta name="description" content="It was three weeks ago. I had spent the entire day being ruthlessly defeated by LSTMs in the battery Remaining Useful Life (RUL) prediction project. Just as I w"><link rel="icon" href="/Images/favicon.ico"><link rel="canonical" href="https://fushayifanny.co.za/losing.html"><meta property="og:title" content="Losing My First Machine Learning Competition | Fanny Fushayi"><meta property="og:description" content="It was three weeks ago. I had spent the entire day being ruthlessly defeated by LSTMs in the battery Remaining Useful Life (RUL) prediction project. Just as I w"><meta property="og:url" content="https://fushayifanny.co.za/losing.html"><meta property="og:type" content="article"><meta property="og:image" content="https://fushayifanny.co.za/Images/Photo.png"><meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="/site.css" data-shared="styles"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" data-shared="fonts"></head>
+<body class="article-page inner-page site">
+    <a class="skip" data-shared="skip" href="#main">Skip to content</a><nav class="nav site-nav" data-shared="navigation" aria-label="Main navigation"><div class="nav-inner"><a class="brand" href="/index.html">FANNY FUSHAYI</a><button class="menu" aria-controls="site-links" aria-expanded="false" type="button">Menu</button><div class="nav-links" id="site-links"><a href="/index.html">Home</a><a href="/Projects.html">Projects</a><a href="/about.html">About</a><a href="/blog.html" aria-current="page">Writing</a><a href="/Contact.html">Contact</a></div></div></nav><main id="main" class="reading-layout"><p data-shared="article-meta" class="article-meta">Artificial Intelligence · 8 min read <span> / <a href="blog.html">Back to Writing</a></span></p><div class="container">
         <div class="header">
             <a href="blog.html" class="home-btn">← Back to Terminal</a>
             <h1>Losing My First Machine Learning Competition</h1>
@@ -530,8 +530,8 @@
 
         <div class="content">
             <h2><span class="section-index">INDEX 0</span>MY TIME TO SHINE!</h2>
-            
-            <p>It was three weeks ago. I had spent the entire day being ruthlessly defeated by LSTMs in the battery Remaining Useful Life (RUL) prediction project. Just as I was ready to embrace the day's defeat, a notification caught my eye: <a href="https://zindi.africa/competitions/localised-precipitation-forecasting-in-brazzaville-in-republic-of-congo-using-ai" target="_blank">Localised Precipitation Forecasting in Brazzaville Using AI</a>, a Zindi competition. This opportunity was exactly what I needed to get my hands a bit dirty.</p>
+
+            <p>It was three weeks ago. I had spent the entire day being ruthlessly defeated by LSTMs in the battery Remaining Useful Life (RUL) prediction project. Just as I was ready to embrace the day's defeat, a notification caught my eye: <a href="https://zindi.africa/competitions/localised-precipitation-forecasting-in-brazzaville-in-republic-of-congo-using-ai" target="_blank" rel="noopener noreferrer">Localised Precipitation Forecasting in Brazzaville Using AI</a>, a Zindi competition. This opportunity was exactly what I needed to get my hands a bit dirty.</p>
 
             <div class="model-visualization">
                 <canvas id="rainfallChart"></canvas>
@@ -614,7 +614,7 @@
             <h2><span class="section-index">INDEX 1</span>RAIN-DANCE</h2>
 
             <div class="notebook-info">
-                <strong>NOTEBOOK:</strong> <a href="https://colab.research.google.com/drive/1SgQeE9xZ3lOTI0w8sJG0AjBa2_6QBCoL" target="_blank">raindance.ipynb</a><br>
+                <strong>NOTEBOOK:</strong> <a href="https://colab.research.google.com/drive/1SgQeE9xZ3lOTI0w8sJG0AjBa2_6QBCoL" target="_blank" rel="noopener noreferrer">raindance.ipynb</a><br>
                 <span class="tools">Tools: pycaret, pandas, numpy, seaborn, matplotlib.pyplot, sklearn.metrics.mean_squared_error, zipfile</span>
             </div>
 
@@ -653,17 +653,17 @@
                         const actual2 = parseFloat(document.getElementById('actual2').value) || 0;
                         const pred3 = parseFloat(document.getElementById('pred3').value) || 0;
                         const actual3 = parseFloat(document.getElementById('actual3').value) || 0;
-                        
+
                         const errors = [
                             Math.pow(pred1 - actual1, 2),
                             Math.pow(pred2 - actual2, 2),
                             Math.pow(pred3 - actual3, 2)
                         ];
-                        
+
                         const mse = errors.reduce((a, b) => a + b, 0) / errors.length;
                         const rmse = Math.sqrt(mse);
-                        
-                        document.getElementById('rmseResult').innerHTML = 
+
+                        document.getElementById('rmseResult').innerHTML =
                             `<strong>RMSE:</strong> ${rmse.toFixed(2)}<br>
                              <small>Lower is better (perfect score = 0)</small>`;
                     }
@@ -688,7 +688,7 @@
                 profile.to_file(<span class="string">"rainfall_eda.html"</span>)<br>
                 <br>
                 <span class="comment"># Basic outlier detection</span><br>
-                df = df[(df[<span class="string">'precipitation'</span>] >= <span class="number">0</span>) & (df[<span class="string">'precipitation'</span>] <= <span class="number">200</span>)]
+                df = df[(df[<span class="string">'precipitation'</span>] &gt;= <span class="number">0</span>) &amp; (df[<span class="string">'precipitation'</span>] &lt;= <span class="number">200</span>)]
             </div>
 
             <p><strong>Rapid Prototyping:</strong><br>
@@ -793,7 +793,7 @@
             <h2><span class="section-index">INDEX 2</span>Quentin Tarantino Level of Temporal Confusion</h2>
 
             <div class="notebook-info">
-                <strong>NOTEBOOK:</strong> <a href="https://colab.research.google.com/drive/12R6oOuikMWyIBVTCcv9AvX_RXbMjg3AB#scrollTo=c5eceea3" target="_blank">temporal_confusion.ipynb</a>
+                <strong>NOTEBOOK:</strong> <a href="https://colab.research.google.com/drive/12R6oOuikMWyIBVTCcv9AvX_RXbMjg3AB#scrollTo=c5eceea3" target="_blank" rel="noopener noreferrer">temporal_confusion.ipynb</a>
             </div>
 
             <p>The next day, I found myself pushed out of the top 10 as more competitive solutions flooded the leaderboard. Determined to regain ground, I turned my attention to the temporal aspects of the data, convinced that leveraging time-series modeling would give me an edge. I assumed that an LSTM or RNN, properly configured, would capture the sequential nature of rainfall patterns and improve predictions.</p>
@@ -937,7 +937,7 @@
 
             <h2><span class="section-index">INDEX 4</span>THE BETTER MAN PART 1</h2>
 
-            <p>After the competition ended, I dug into the <a href="https://medium.com/@dukekongo16/how-i-won-the-localised-precipitation-forecasting-challenge-my-full-ml-pipeline-b28f551f43ee" target="_blank">first-place solution</a>. A clean, MLOps-ready pipeline that felt worlds apart from my own hastily-evolving notebook. What stood out first was the structure: separate scripts for data loading, preprocessing, model training, utilities, and a command-line interface for training and inference. It wasn't just a model; it was a system.</p>
+            <p>After the competition ended, I dug into the <a href="https://medium.com/@dukekongo16/how-i-won-the-localised-precipitation-forecasting-challenge-my-full-ml-pipeline-b28f551f43ee" target="_blank" rel="noopener noreferrer">first-place solution</a>. A clean, MLOps-ready pipeline that felt worlds apart from my own hastily-evolving notebook. What stood out first was the structure: separate scripts for data loading, preprocessing, model training, utilities, and a command-line interface for training and inference. It wasn't just a model; it was a system.</p>
 
             <div class="code-block">
                 <span class="comment"># Winner's pipeline structure</span><br>
@@ -1017,7 +1017,7 @@
 
             <h2><span class="section-index">INDEX 4</span>THE BETTER MAN PART 3</h2>
 
-            <p>The <a href="https://zindi.africa/competitions/localised-precipitation-forecasting-in-brazzaville-in-republic-of-congo-using-ai/discussions/28154" target="_blank">third-place solution</a> took a methodical approach to feature engineering that revealed clear gaps in my own workflow. While I had briefly experimented with lag features, my implementation didn't yield meaningful gains, and I abandoned them early. This competitor, however, implemented a systematic temporal encoding strategy that captured both short-term weather memory and seasonal cycles. Their lag features at intervals of [1, 2, 3, 4, 7, 21, 30] days for precipitation and eight key atmospheric variables created a detailed climate fingerprint of Brazzaville. The inclusion of 21- and 30-day lags particularly impressed me — these longer windows captured monthly cycles I hadn't properly leveraged.</p>
+            <p>The <a href="https://zindi.africa/competitions/localised-precipitation-forecasting-in-brazzaville-in-republic-of-congo-using-ai/discussions/28154" target="_blank" rel="noopener noreferrer">third-place solution</a> took a methodical approach to feature engineering that revealed clear gaps in my own workflow. While I had briefly experimented with lag features, my implementation didn't yield meaningful gains, and I abandoned them early. This competitor, however, implemented a systematic temporal encoding strategy that captured both short-term weather memory and seasonal cycles. Their lag features at intervals of [1, 2, 3, 4, 7, 21, 30] days for precipitation and eight key atmospheric variables created a detailed climate fingerprint of Brazzaville. The inclusion of 21- and 30-day lags particularly impressed me — these longer windows captured monthly cycles I hadn't properly leveraged.</p>
 
             <div class="interactive-demo">
                 <h3>Feature Engineering Simulator</h3>
@@ -1052,7 +1052,7 @@
                     function simulateFeatureImpact() {
                         let score = 15.0; // Starting RMSE
                         let features = [];
-                        
+
                         if (document.getElementById('temp').checked) {
                             score -= 0.5;
                             features.push("Temperature");
@@ -1077,11 +1077,11 @@
                             score -= 0.5;
                             features.push("30-day Lag");
                         }
-                        
+
                         // Add some randomness
                         score += (Math.random() - 0.5) * 0.3;
-                        
-                        document.getElementById('featureImpactResult').innerHTML = 
+
+                        document.getElementById('featureImpactResult').innerHTML =
                             `<strong>Features used:</strong> ${features.join(", ")}<br>
                              <strong>Simulated RMSE:</strong> ${score.toFixed(2)}`;
                     }
@@ -1093,10 +1093,10 @@
             <div class="code-block">
                 <span class="comment"># Winner's feature selection approach</span><br>
                 <span class="keyword">def</span> <span class="function">remove_correlated_features</span>(df, threshold=<span class="number">0.8</span>):<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;corr_matrix = df.corr().abs()<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;upper = corr_matrix.where(np.triu(np.ones(corr_matrix.shape), k=<span class="number">1</span>).astype(bool)<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;to_drop = [column <span class="keyword">for</span> column <span class="keyword">in</span> upper.columns <span class="keyword">if</span> any(upper[column] > threshold)]<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> df.drop(to_drop, axis=<span class="number">1</span>)<br>
+                    corr_matrix = df.corr().abs()<br>
+                    upper = corr_matrix.where(np.triu(np.ones(corr_matrix.shape), k=<span class="number">1</span>).astype(bool)<br>
+                    to_drop = [column <span class="keyword">for</span> column <span class="keyword">in</span> upper.columns <span class="keyword">if</span> any(upper[column] &gt; threshold)]<br>
+                    <span class="keyword">return</span> df.drop(to_drop, axis=<span class="number">1</span>)<br>
                 <br>
                 <span class="comment"># Cyclical encoding for datetime features</span><br>
                 df[<span class="string">'month_sin'</span>] = np.sin(<span class="number">2</span> * np.pi * df[<span class="string">'month'</span>]/<span class="number">12</span>)<br>
@@ -1115,16 +1115,14 @@
             </div>
         </div>
 
-        <div class="footer">
-            <p>Blog post about learning from failure in machine learning competitions</p>
-            <p>Model training complete. Loss: 0.22 (Knowledge gained: 100%)</p>
         </div>
-    </div>
 
     <div class="floating-ml-icons">
         <span title="Feature Engineering">🧩</span>
         <span title="Hyperparameter Tuning">⚙️</span>
         <span title="Model Training">🤖</span>
     </div>
-</body>
+<div class="article-ending"><p>Blog post about learning from failure in machine learning competitions</p>
+            </div><div class="article-ending"><p>Model training complete. Loss: 0.22 (Knowledge gained: 100%)</p>
+        </div><nav data-shared="article-pagination" class="article-pagination" aria-label="More writing"><a href="blog.html">All writing ↑</a><a href="SGPT.html">← Shona Tiny Language Model</a><a href="time_extrapolation.html">The Time Extrapolation →</a></nav></main><footer class="site-footer" data-shared="footer"><div class="shell footer-inner"><div><span>Fanny Fushayi</span><p>Engineering for the physical world.</p></div><nav aria-label="Footer navigation"><a href="/index.html">Home</a><a href="/Projects.html">Projects</a><a href="/about.html">About</a><a href="/blog.html" aria-current="page">Writing</a><a href="/Contact.html">Contact</a></nav><div><a href="https://github.com/FannyFushayi">GitHub ↗</a> · <a href="https://www.linkedin.com/in/fanny-fushayi-529880235">LinkedIn ↗</a><p>© <span id="year">2026</span> Fanny Fushayi</p></div></div></footer><script data-shared="script" src="/site.js" defer></script></body>
 </html>

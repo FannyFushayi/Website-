@@ -1,0 +1,167 @@
+[
+  {
+    "url": "theenergyrevolution.html",
+    "title": "The Energy Revolution",
+    "category": "Engineering"
+  },
+  {
+    "url": "currentaffairs.html",
+    "title": "Current Affairs",
+    "category": "Engineering"
+  },
+  {
+    "url": "PowerSystemProt.html",
+    "title": "Power System Protection",
+    "category": "Engineering"
+  },
+  {
+    "url": "control_animation.html",
+    "title": "Control Systems",
+    "category": "Engineering"
+  },
+  {
+    "url": "Digitwin.html",
+    "title": "Digital Twins",
+    "category": "Engineering"
+  },
+  {
+    "url": "solar_system_guide.html",
+    "title": "PV System Design",
+    "category": "Engineering"
+  },
+  {
+    "url": "Battery_Data_driven.html",
+    "title": "RUL Estimation",
+    "category": "Engineering"
+  },
+  {
+    "url": "HNEI_and_ML_BD2.html",
+    "title": "Battery Life Prediction",
+    "category": "Engineering"
+  },
+  {
+    "url": "RUL_Part_3.html",
+    "title": "The LSTM Strikes Again",
+    "category": "Engineering"
+  },
+  {
+    "url": "Pandora_box.html",
+    "title": "Pandora's Box",
+    "category": "Philosophy"
+  },
+  {
+    "url": "CAP_review.html",
+    "title": "Crime and Punishment",
+    "category": "Philosophy"
+  },
+  {
+    "url": "ATTIHD.html",
+    "title": "A Thousand Times, I've Died",
+    "category": "Philosophy"
+  },
+  {
+    "url": "dzichava_nhoroondo_blog.html",
+    "title": "Dzichava Nhoroondo",
+    "category": "Philosophy"
+  },
+  {
+    "url": "just_above_zero.html",
+    "title": "Just Above Zero",
+    "category": "Artificial Intelligence"
+  },
+  {
+    "url": "Intro_to_AI.html",
+    "title": "AI Summer",
+    "category": "Artificial Intelligence"
+  },
+  {
+    "url": "BuildingAI.html",
+    "title": "Building a Digit Recognizer",
+    "category": "Artificial Intelligence"
+  },
+  {
+    "url": "Data_science.html",
+    "title": "Part 1: Data Analysis",
+    "category": "Artificial Intelligence"
+  },
+  {
+    "url": "ML.html",
+    "title": "Part 2: Machine Learning",
+    "category": "Artificial Intelligence"
+  },
+  {
+    "url": "deep_learning.html",
+    "title": "Part 3(A): Deep Learning",
+    "category": "Artificial Intelligence"
+  },
+  {
+    "url": "How_to_Deploy.html",
+    "title": "How to Deploy ML",
+    "category": "Artificial Intelligence"
+  },
+  {
+    "url": "SGPT.html",
+    "title": "Shona Tiny Language Model",
+    "category": "Artificial Intelligence"
+  },
+  {
+    "url": "losing.html",
+    "title": "Losing My First ML Competition",
+    "category": "Artificial Intelligence"
+  },
+  {
+    "url": "time_extrapolation.html",
+    "title": "The Time Extrapolation",
+    "category": "Short Stories"
+  },
+  {
+    "url": "graduation_blog.html",
+    "title": "Graduation",
+    "category": "Short Stories"
+  },
+  {
+    "url": "pulse.html",
+    "title": "The Pulse of Being",
+    "category": "Short Stories"
+  },
+  {
+    "url": "How_to_survive.html",
+    "title": "How to Survive an Alien Abduction",
+    "category": "Life, perhaps"
+  },
+  {
+    "url": "Uninspired1.html",
+    "title": "Uninspired: One",
+    "category": "Life, perhaps"
+  },
+  {
+    "url": "brothers_karamazov.html",
+    "title": "Marginalia of a Mental Meltdown",
+    "category": "Life, perhaps"
+  },
+  {
+    "url": "AprilsChristmas.html",
+    "title": "A Cube for April Christmas",
+    "category": "Life, perhaps"
+  },
+  {
+    "url": "metamorph.html",
+    "title": "Do You Wanna Know?",
+    "category": "Life, perhaps"
+  },
+  {
+    "url": "alyosha_blog_post.html",
+    "title": "Alyosha the Absurdly Good",
+    "category": "Life, perhaps"
+  },
+  {
+    "url": "TLEN.html",
+    "title": "Think Like an Engineer",
+    "category": "Life, perhaps"
+  },
+  {
+    "url": "Tsumo.html",
+    "title": "Freshly Grown Ancient Knowledge",
+    "category": "Life, perhaps"
+  }
+]
