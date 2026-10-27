@@ -1,2 +1,121 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Industrial Reject Control System | Fanny Fushayi</title><meta name="description" content="Draft outline for an anonymised industrial automation case study."><link rel="icon" href="/Images/favicon.ico"><meta name="robots" content="noindex, follow"><link rel="canonical" href="https://fushayifanny.co.za/industrial-reject-control.html"><meta property="og:title" content="Industrial Reject Control System | Fanny Fushayi"><meta property="og:description" content="Draft outline for an anonymised industrial automation case study."><meta property="og:url" content="https://fushayifanny.co.za/industrial-reject-control.html"><meta property="og:type" content="website"><meta property="og:image" content="https://fushayifanny.co.za/Images/Photo.png"><meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="/site.css" data-shared="styles"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" data-shared="fonts"></head><body class="case-study draft inner-page site"><a class="skip" data-shared="skip" href="#main">Skip to content</a><nav class="nav site-nav" data-shared="navigation" aria-label="Main navigation"><div class="nav-inner"><a class="brand" href="/index.html">FANNY FUSHAYI</a><button class="menu" aria-controls="site-links" aria-expanded="false" type="button">Menu</button><div class="nav-links" id="site-links"><a href="/index.html">Home</a><a href="/Projects.html" aria-current="page">Projects</a><a href="/about.html">About</a><a href="/blog.html">Writing</a><a href="/Contact.html">Contact</a></div></div></nav><main id="main" class="reading-layout"><p data-shared="project-back" class="article-meta"><a href="Projects.html">← All projects</a></p><header class="page-intro"><p class="overline">Industrial automation / draft outline</p><h1>Industrial Reject Control System</h1><p class="content-todo">Awaiting project details. This page is a proposed outline and does not assert an implementation, responsibility or result.</p><p>Proposed topics: PLC control · sensing · conveyor tracking · reject actuation · HMI.</p></header><section><h2>Context / problem</h2><p class="content-todo">TODO: Describe the process and the control or data problem without identifying confidential clients.</p></section><section><h2>My role</h2><p class="content-todo">TODO: Confirm your responsibilities and distinguish individual work from team contributions.</p></section><section><h2>System / solution</h2><p class="content-todo">TODO: Confirm which of the proposed technologies were actually used. Add an approved system diagram.</p></section><section><h2>Engineering decisions</h2><p class="content-todo">TODO: Explain the alternatives considered and the reason for each choice.</p></section><section><h2>Challenges and validation</h2><p class="content-todo">TODO: Describe fault handling, testing conditions and known limitations.</p></section><section><h2>Outcome</h2><p class="content-todo">TODO: Add only documented outcomes, specifying whether evidence comes from testing, simulation or calculations.</p></section></main><footer class="site-footer" data-shared="footer"><div class="shell footer-inner"><div><span>Fanny Fushayi</span><p>Engineering for the physical world.</p></div><nav aria-label="Footer navigation"><a href="/index.html">Home</a><a href="/Projects.html" aria-current="page">Projects</a><a href="/about.html">About</a><a href="/blog.html">Writing</a><a href="/Contact.html">Contact</a></nav><div><a href="https://github.com/FannyFushayi">GitHub ↗</a> · <a href="https://www.linkedin.com/in/fanny-fushayi-529880235">LinkedIn ↗</a><p>© <span id="year">2026</span> Fanny Fushayi</p></div></div></footer><script data-shared="script" src="/site.js" defer></script></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Industrial Reject Control System | Fanny Fushayi</title>
+  <meta name="description" content="A modular Siemens S7-1200 PLC system for bottle tracking and high-speed reject control in a confidential industrial application.">
+  <link rel="icon" href="/Images/favicon.ico">
+  <link rel="canonical" href="https://fushayifanny.co.za/industrial-reject-control.html">
+  <meta property="og:title" content="Industrial Reject Control System | Fanny Fushayi">
+  <meta property="og:description" content="A modular Siemens S7-1200 PLC system for bottle tracking and high-speed reject control in a confidential industrial application.">
+  <meta property="og:url" content="https://fushayifanny.co.za/industrial-reject-control.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://fushayifanny.co.za/Images/Photo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/site.css" data-shared="styles">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" data-shared="fonts">
+</head>
+<body class="case-study inner-page site">
+  <a class="skip" data-shared="skip" href="#main">Skip to content</a>
+  <nav class="nav site-nav" data-shared="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a class="brand" href="/index.html">FANNY FUSHAYI</a>
+      <button class="menu" aria-controls="site-links" aria-expanded="false" type="button">Menu</button>
+      <div class="nav-links" id="site-links">
+        <a href="/index.html">Home</a>
+        <a href="/Projects.html" aria-current="page">Projects</a>
+        <a href="/about.html">About</a>
+        <a href="/blog.html">Writing</a>
+        <a href="/Contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+  <main id="main" class="reading-layout">
+    <p data-shared="project-back" class="article-meta"><a href="Projects.html">← All Projects</a></p>
+    <header class="page-intro">
+      <p class="overline">Industrial Automation · PLC Programming · Sensor Integration · High-Speed Conveyor Control</p>
+      <h1>Industrial Reject Control System</h1>
+      <p>Developed a PLC-based rejection control system for a high-speed bottle conveyor in a confidential industrial application. The system identified defective bottles and coordinated their rejection at a downstream station while maintaining accurate product tracking at high throughput.</p>
+      <p>The primary engineering challenge was reliably associating detected defects with the corresponding bottles as they travelled along the conveyor, accounting for conveyor speed, sensor response times, product spacing and actuator timing.</p>
+    </header>
+    <section>
+      <h2>My role</h2>
+      <p>Contributed to the system design and implementation, including control-system architecture, hardware and sensor integration, PLC software development and functional testing.</p>
+      <p>Developed modular control logic for sensor monitoring, product synchronisation, conveyor tracking, rejection decisions, actuator control and fault handling. Supported system integration and simulation-based verification to assess the behaviour of individual modules and the overall rejection sequence.</p>
+    </section>
+    <section>
+      <h2>System / solution</h2>
+      <p>Implemented the control system using a <strong>Siemens SIMATIC S7-1200 PLC</strong>, programmed in <strong>TIA Portal V19</strong>.</p>
+      <p>The software was structured into functional modules to separate input processing, product tracking, process monitoring, rejection logic, actuator control and fault management. Sensor signals were processed to establish product synchronisation and track bottle positions through the inspection and rejection zones.</p>
+      <p>The controller used the tracking data and configured rejection parameters to determine when a defective bottle reached the rejection point, triggering the relevant actuator within the required timing window. Additional monitoring logic supported fault detection and prevented rejection actuation when critical process conditions, such as valid conveyor-speed information, were not satisfied.</p>
+    </section>
+    <section>
+      <h2>Engineering decisions</h2>
+      <p>A key design decision involved selecting a suitable sensing approach for identifying bottle characteristics relevant to the rejection process.</p>
+      <p>A <strong>photoelectric sensor-based approach</strong> was selected for the relevant detection task rather than relying on a machine-vision system. Photoelectric sensing offered a comparatively simple integration path, fast response, predictable signal processing and lower computational complexity for the required detection function.</p>
+      <p>The PLC-based architecture combined sensor inputs with conveyor-tracking logic rather than relying solely on instantaneous sensor states. This enabled the controller to maintain the association between a detected bottle and its subsequent rejection event, even as the bottle moved beyond the original sensing position.</p>
+      <p>The software was also divided into reusable functional modules to improve maintainability, simplify testing and support fault isolation during commissioning.</p>
+    </section>
+    <section>
+      <h2>Challenges and validation</h2>
+      <p>The main engineering challenges involved maintaining accurate product tracking and coordinating rejection actuation under high-speed operating conditions.</p>
+      <p>Key considerations included:</p>
+      <ul>
+        <li><strong>Timing and synchronisation:</strong> Associating detected products with the correct rejection event as they travelled along the conveyor.</li>
+        <li><strong>Speed measurement:</strong> Processing conveyor-speed information to support distance and timing calculations.</li>
+        <li><strong>Detection reliability:</strong> Monitoring sensor signals and identifying abnormal or invalid operating conditions.</li>
+        <li><strong>Actuator coordination:</strong> Ensuring rejection commands were issued at the appropriate point in the product's travel.</li>
+        <li><strong>Fault handling:</strong> Preventing unreliable tracking information from producing unintended rejection commands.</li>
+      </ul>
+      <p>The control software was developed and tested in functional modules before integration. Simulation and software testing were used to verify signal processing, synchronisation, tracking behaviour, rejection decisions and fault-handling sequences.</p>
+    </section>
+    <section id="project-gallery">
+      <h2>Project media</h2>
+      <div class="project-gallery">
+        <figure>
+          <video controls playsinline preload="metadata">
+            <source src="Images/optimized/Images/MyWorks/IMG_1349.MP4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <figcaption>Industrial reject-control system in operation.</figcaption>
+        </figure>
+        <figure>
+          <img src="Images/optimized/Images/MyWorks/IMG_1552.JPEG" alt="Whiteboard design notes showing conveyor bottle spacing, tracking distance, timing calculations and simulation frequencies." decoding="async" loading="lazy">
+          <figcaption>Whiteboard design and timing calculations for conveyor tracking.</figcaption>
+        </figure>
+        <figure>
+          <img src="Images/optimized/Images/MyWorks/Screenshot%202026-02-27%20095549.png" alt="HMI screen for Downware Line 2 showing start/stop, setup, automatic and semi-automatic modes, bottle and conveyor speed values, and reject count." decoding="async" loading="lazy">
+          <figcaption>HMI screen for Downware Line 2 with operating modes, speed values and reject count.</figcaption>
+        </figure>
+      </div>
+    </section>
+    <section>
+      <h2>Outcome</h2>
+      <p>The system achieved the intended high-speed rejection-control functionality, with a reported operating throughput of approximately <strong>two milliseconds per bottle</strong>, as recorded during project testing.</p>
+      <p>The implementation established a modular PLC control architecture for sensor-based defect detection, conveyor tracking and coordinated reject actuation. The project also provided a foundation for further optimisation of timing accuracy, fault diagnostics and maintainability in high-throughput industrial applications.</p>
+      <p><em>Client identity and confidential process details have been omitted.</em></p>
+    </section>
+  </main>
+  <footer class="site-footer" data-shared="footer">
+    <div class="shell footer-inner">
+      <div>
+        <span>Fanny Fushayi</span>
+        <p>Engineering for the physical world.</p>
+      </div>
+      <nav aria-label="Footer navigation">
+        <a href="/index.html">Home</a>
+        <a href="/Projects.html" aria-current="page">Projects</a>
+        <a href="/about.html">About</a>
+        <a href="/blog.html">Writing</a>
+        <a href="/Contact.html">Contact</a>
+      </nav>
+      <div>
+        <a href="https://github.com/FannyFushayi">GitHub ↗</a> · <a href="https://www.linkedin.com/in/fanny-fushayi-529880235">LinkedIn ↗</a>
+        <p>© <span id="year">2026</span> Fanny Fushayi</p>
+      </div>
+    </div>
+  </footer>
+  <script data-shared="script" src="/site.js" defer></script>
+</body>
+</html>

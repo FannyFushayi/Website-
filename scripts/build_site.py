@@ -11,7 +11,7 @@ R=Path(__file__).resolve().parents[1]
 catalog=json.loads((R/'writing-index.json').read_text(encoding='utf-8'))
 lookup={p['url']:p for p in catalog}
 NAV=[('index.html','Home'),('Projects.html','Projects'),('about.html','About'),('blog.html','Writing'),('Contact.html','Contact')]
-PROJECTS={'project-hess.html','Project-PV.html','Project-MDPS.html','robot-car.html','Battery_Data_driven.html','emegence_anal.html','Financial.html','ML.html','BuildingAI.html','HNEI_and_ML_BD2.html','industrial-reject-control.html','edge-plc-data.html','industrial-digital-twin.html','plc-scada-upgrade.html'}
+PROJECTS={'project-hess.html','Project-PV.html','Project-MDPS.html','robot-car.html','Battery_Data_driven.html','emegence_anal.html','Financial.html','ML.html','BuildingAI.html','HNEI_and_ML_BD2.html','industrial-reject-control.html','edge-plc-data.html','crusher-plant-power-systems.html','lime-slurry-plant-automation.html'}
 def fragment(s): return html.fragments_fromstring(s)[0]
 def remove(el):
     if el.getparent() is not None: el.getparent().remove(el)

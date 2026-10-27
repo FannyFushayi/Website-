@@ -84,6 +84,9 @@ body.site{display:block;margin:0;padding:0;max-width:none;background:var(--paper
 .inner-page .gallery-item p{font-size:.85rem}
 .inner-page .video-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px}
 .inner-page video{height:auto;width:100%}
+.case-study .project-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px}
+.case-study .project-gallery figure{min-width:0;margin:0}
+.case-study .project-gallery img,.case-study .project-gallery video{display:block;width:100%;height:auto}
 .inner-page h1,.inner-page h2,.inner-page h3{opacity:1}
 .inner-page blockquote{border-left:2px solid var(--oxide);padding:10px 20px;margin-inline:0;color:var(--ink-soft);background:#ded8cb}
 .inner-page img{height:auto;border-radius:0;object-fit:contain}
@@ -96,6 +99,7 @@ body.site{display:block;margin:0;padding:0;max-width:none;background:var(--paper
 .site .overline,.site .article-meta{font:500 12px/1.7 'DM Mono',monospace;letter-spacing:.06em;text-transform:uppercase}
 .site .article-meta{border-bottom:1px solid var(--rule);padding-bottom:20px;margin:0 0 35px;color:var(--ink-soft)}
 .site .article-meta span{display:inline-block}
+.site .project h3{color:#fff}
 .page-intro{margin-bottom:70px}
 .page-intro>p{max-width:690px}
 .site .section-index{display:flex;flex-wrap:wrap;gap:12px 24px;position:static;padding:20px 0;background:none;box-shadow:none;width:auto;border-block:1px solid var(--rule);margin-top:32px;backdrop-filter:none}
